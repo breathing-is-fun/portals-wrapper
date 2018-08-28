@@ -2,11 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-04-24 15:34:46
  * @Last Modified by: zy9
- * @Last Modified time: 2018-08-28 11:37:26
+ * @Last Modified time: 2018-08-28 16:27:16
  */
 // import DataInstance from '../core/data-instance';
 
-// const frames = Array.from(document.getElementsByTagName('iframe'));
 let execObjects = [];
 
 fetch('./mock/frameDatas.json')
@@ -17,20 +16,9 @@ fetch('./mock/frameDatas.json')
 		for (let i = 0, len = data.length; i < len; i++) {
 			const { url } = data[i];
 
-			let frame = document.getElementById('module_' + (i + 1));
+			const node = document.getElementById('module_' + (i + 1));
 
-			execObjects.push({
-				node: frame,
-				url,
-				method: { key: 'changeBackgroundColor', params: '#ccc' }
-			});
-			// frame.src = url;
-
-			// frame.onload = e => {
-			// 	let dataIns = document.getElementById('module_' + (i + 1)).contentWindow;
-
-			// 	dataIns.changeBackgroundColor && dataIns.changeBackgroundColor('#ccc');
-			// };
+			execObjects.push({ node, url, method: [{ key: 'changeBackgroundColor', params: '#ccc' }] });
 		}
 
 		recurseIframeLoad(execObjects, 0, () => {
@@ -53,14 +41,17 @@ const recurseIframeLoad = (execObjects = [], index = 0, callback) => {
 	if(index < execObjects.length) {
 		const item = execObjects[index];
 		const { node, url, method } = item;
-		const { key, params } = method;
 
 		node.src = url;
 
 		node.onload = e => {
 			const instance = node.contentWindow;
 
-			instance[key] && instance[key](params);
+			for(let item of method) {
+				const { key, params } = item;
+
+				instance[key] && instance[key](params);
+			}
 
 			recurseIframeLoad(execObjects, ++index, callback);
 		};
