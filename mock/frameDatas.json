@@ -1,0 +1,7 @@
+{
+    "data": [
+        { "url": "../demo/module_1" },
+        { "url": "../demo/module_2" },
+        { "url": "../demo/module_3" }
+    ]
+}
