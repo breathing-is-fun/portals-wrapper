@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-04-24 15:34:46
  * @Last Modified by: zy9
- * @Last Modified time: 2018-08-29 14:26:15
+ * @Last Modified time: 2018-08-29 16:33:57
  */
 // import DataInstance from '../core/data-instance';
 
@@ -13,29 +13,31 @@ fetch('./mock/frameDatas.json')
 	.then(result => {
 		const { data } = result;
 
-		document.getElementById('wrapper_1').addEventListener('dragstart', event => {
-			event.dataTransfer.setData('Text', event.target.id);
-		}, false);
+		// document.getElementById('wrapper_1').addEventListener('dragstart', event => {
+		// 	event.dataTransfer.setData('Text', event.target.id);
+		// }, false);
 
-		document.getElementById('wrapper_2').addEventListener('dragenter', event => {
-			event.preventDefault();
-		}, false);
+		// document.getElementById('wrapper_2').addEventListener('dragenter', event => {
+		// 	event.preventDefault();
+		// }, false);
 
-		document.getElementById('wrapper_2').addEventListener('dragover', event => {
-			event.preventDefault();
-		}, false);
+		// document.getElementById('wrapper_2').addEventListener('dragover', event => {
+		// 	event.preventDefault();
+		// }, false);
 
-		document.getElementById('wrapper_2').addEventListener('drop', event => {
-			event.preventDefault();
-			const data = event.dataTransfer.getData('Text');
+		// document.getElementById('wrapper_2').addEventListener('drop', event => {
+		// 	event.preventDefault();
+		// 	const data = event.dataTransfer.getData('Text');
 
-			event.target.innerText = 'test';
-		}, false);
+		// 	event.target.innerText = 'test';
+		// }, false);
+
+		initWrapper(data);
 
 		for (let i = 0, len = data.length; i < len; i++) {
 			const { url } = data[i];
 
-			const node = document.getElementById('module_' + (i + 1));
+			let node = document.getElementById('module_' + (i + 1));
 
 			execObjects.push({ node, url, method: [{ key: 'changeBackgroundColor', params: '#ccc' }] });
 		}
@@ -45,6 +47,26 @@ fetch('./mock/frameDatas.json')
 		});
 	});
 
+/**
+ * 初始化根节点及模块容器
+ * @param options 配置数据
+ */
+const initWrapper = options => {
+	const root = document.getElementById('root');
+
+	for(let item of options) {
+		const { left, top, width, style, id } = item;
+
+		root.innerHTML += `
+			<div style='left: ${ left }; top: ${ top }; width: ${ width }; ${ style }' id='wrapper_${ id }' draggable='true' class='wrapper'>
+				<div class='title'>
+					<span>title_${ id }</span>
+				</div>
+				<iframe id='module_${ id }' frameborder='0'></iframe>
+			</div>
+		`;
+	}
+};
 /**
  * iframe按顺序加载
  * @param execObjects [{ node: DomNode, url: string, method: [{ key: string, params: {} }] }]

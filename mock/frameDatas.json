@@ -1,7 +1,28 @@
 {
     "data": [
-        { "url": "../demo/module_1" },
-        { "url": "../demo/module_2" },
-        { "url": "../demo/module_3" }
+        {
+            "url": "../demo/module_1",
+            "left": "1%",
+            "top": "1%",
+            "width": "60%",
+            "id": "1",
+            "style": "background: #ccc;"
+        },
+        {
+            "url": "../demo/module_2",
+            "left": "33%",
+            "top": "1%",
+            "width": "40%",
+            "id": "2",
+            "style": "background: #fff;"
+        },
+        {
+            "url": "../demo/module_3",
+            "left": "67%",
+            "top": "50%",
+            "width": "40%",
+            "id": "3",
+            "style": "background: #fff;"
+        }
     ]
 }
