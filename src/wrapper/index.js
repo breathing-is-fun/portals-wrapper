@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-04-24 15:34:46
  * @Last Modified by: zy9
- * @Last Modified time: 2018-08-28 16:27:16
+ * @Last Modified time: 2018-08-29 14:26:15
  */
 // import DataInstance from '../core/data-instance';
 
@@ -12,6 +12,25 @@ fetch('./mock/frameDatas.json')
 	.then(result => result.json())
 	.then(result => {
 		const { data } = result;
+
+		document.getElementById('wrapper_1').addEventListener('dragstart', event => {
+			event.dataTransfer.setData('Text', event.target.id);
+		}, false);
+
+		document.getElementById('wrapper_2').addEventListener('dragenter', event => {
+			event.preventDefault();
+		}, false);
+
+		document.getElementById('wrapper_2').addEventListener('dragover', event => {
+			event.preventDefault();
+		}, false);
+
+		document.getElementById('wrapper_2').addEventListener('drop', event => {
+			event.preventDefault();
+			const data = event.dataTransfer.getData('Text');
+
+			event.target.innerText = 'test';
+		}, false);
 
 		for (let i = 0, len = data.length; i < len; i++) {
 			const { url } = data[i];
