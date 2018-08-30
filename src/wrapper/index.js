@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-04-24 15:34:46
  * @Last Modified by: zy9
- * @Last Modified time: 2018-08-29 16:33:57
+ * @Last Modified time: 2018-08-29 17:31:23
  */
 // import DataInstance from '../core/data-instance';
 
@@ -39,7 +39,7 @@ fetch('./mock/frameDatas.json')
 
 			let node = document.getElementById('module_' + (i + 1));
 
-			execObjects.push({ node, url, method: [{ key: 'changeBackgroundColor', params: '#ccc' }] });
+			execObjects.push({ node, url, method: [{ key: 'changeBackgroundColor', params: '#aaa' }] });
 		}
 
 		recurseIframeLoad(execObjects, 0, () => {
@@ -55,11 +55,11 @@ const initWrapper = options => {
 	const root = document.getElementById('root');
 
 	for(let item of options) {
-		const { left, top, width, style, id } = item;
+		const { left, top, width, height, style, id } = item;
 
 		root.innerHTML += `
-			<div style='left: ${ left }; top: ${ top }; width: ${ width }; ${ style }' id='wrapper_${ id }' draggable='true' class='wrapper'>
-				<div class='title'>
+			<div style='left: ${ left }; top: ${ top }; width: ${ width }; height: ${ height }; ${ style }' id='wrapper_${ id }' draggable='true' class='wrapper'>
+				<div class='title' style='cursor: default;'>
 					<span>title_${ id }</span>
 				</div>
 				<iframe id='module_${ id }' frameborder='0'></iframe>

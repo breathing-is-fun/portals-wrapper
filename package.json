@@ -1,6 +1,6 @@
 {
   "name": "portals-wrapper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "node webpack.dev.js",
     "build": "node webpack.prod.js"
