@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-23 10:01:11
+ * @Last Modified time: 2018-09-26 14:21:58
  */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -21,26 +21,12 @@ plugins.push(
 			from: __dirname + '/src/assets',
 			to: __dirname + '/dist/assets'
 		},
-		{
-			from: __dirname + '/manifest.json',
-			to: __dirname + '/dist',
-			force: true
-		},
-		{
-			from: __dirname + '/contentScript/css',
-			to: __dirname + '/dist/assets/contentScript'
-		}
 	])
 );
 
 plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
 
 plugins.push(new TohoLogPlugin({ dev }));
-
-dev && plugins.push(new CleanWebpackPlugin(['dist'], {
-	exclude: ['mainifest.json'], // 如果不加这个，在rebuild时，不会再复制json到dist中
-	verbose: false
-}));
 
 !dev && plugins.push(new CleanWebpackPlugin(['dist'], {
 	verbose: false
@@ -57,10 +43,7 @@ const options = {
 	},
 	devtool: dev ? 'source-map' : '',
 	entry: {
-		background: __dirname + '/background',
-		contentScript: __dirname + '/contentScript',
 		main: __dirname + '/src',
-		inject: __dirname + '/inject'
 	},
 	output: {
 		path: __dirname + '/dist',
