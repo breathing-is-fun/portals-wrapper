@@ -2,13 +2,15 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 11:40:38
+ * @Last Modified time: 2018-09-27 14:04:40
  */
 import React, { Component } from 'react';
 
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
+
+import { testModule } from '../../../demo/module_4/testModule';
 
 export default class Wrapper extends Component {
 	constructor (props) {
@@ -20,21 +22,23 @@ export default class Wrapper extends Component {
 	}
 
     componentDidMount = () => {
-    	this.loadLayout();
+    	this.loadLayout(() => {
+    		testModule(this.testDom);
+    	});
     }
 
-	loadLayout = () => {
+	loadLayout = callback => {
 		fetch('../../mock/layoutDatas.json')
 			.then(result => result.json())
 			.then(result => {
 				const { layout } = result;
 
-				this.setState({ layout });
+				this.setState({ layout }, () => callback && callback());
 			});
 	}
 
     handleLayoutChange = layout => {
-    	console.log(layout);
+    	// console.log(layout);
     }
 
     render = () => {
@@ -57,9 +61,7 @@ export default class Wrapper extends Component {
     					layout.map((item, index) => {
     						const { i } = item;
 
-    						return (
-    							<div key={ i } data-grid={ item } style={{ background: '#ccc' }}>test{ index }</div>
-    						);
+    						return <div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this.testDom = ref } />;
     					})
     				}
     			</GridLayout>
