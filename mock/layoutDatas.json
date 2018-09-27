@@ -6,7 +6,8 @@
             "y": 0,
             "w": 1,
             "h": 2,
-            "static": true
+            "static": true,
+            "path": "../../../demo/module_4/index.js"
         },
         {
             "i": "b",
@@ -15,14 +16,16 @@
             "w": 3,
             "h": 2,
             "minW": 2,
-            "maxW": 4
+            "maxW": 4,
+            "path": "../../../demo/module_5/index.js"
         },
         {
             "i": "c",
             "x": 4,
             "y": 0,
             "w": 1,
-            "h": 2
+            "h": 2,
+            "path": "../../../demo/module_6/index.js"
         }
     ]
 }

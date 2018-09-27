@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 11:24:35
+ * @Last Modified time: 2018-09-27 15:56:57
  */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -22,8 +22,12 @@ plugins.push(
 			to: __dirname + '/dist/assets'
 		},
 		{
-			from: __dirname + '/src/mock',
+			from: __dirname + '/mock',
 			to: __dirname + '/dist/mock'
+		},
+		{
+			from: __dirname + '/demo',
+			to: __dirname + '/dist/demo'
 		}
 	])
 );
@@ -50,7 +54,7 @@ const options = {
 		main: __dirname + '/src',
 	},
 	output: {
-		path: __dirname + '/dist',
+		path: __dirname + '/dist/lib/main',
 		filename: '[name].js',
 		chunkFilename: dev ? 'main/vendor/[name].[chunkHash:8].js' : 'main/vendor/[name].js'
 	},
