@@ -7,7 +7,7 @@
             "w": 1,
             "h": 2,
             "static": true,
-            "path": "../../../demo/module_4/index.js"
+            "path": "../../../thirdModules/module_4/index.js"
         },
         {
             "i": "b",
@@ -17,7 +17,7 @@
             "h": 2,
             "minW": 2,
             "maxW": 4,
-            "path": "../../../demo/module_5/index.js"
+            "path": "../../../thirdModules/module_5/index.js"
         },
         {
             "i": "c",
@@ -25,7 +25,7 @@
             "y": 0,
             "w": 1,
             "h": 2,
-            "path": "../../../demo/module_6/index.js"
+            "path": "../../../thirdModules/module_6/index.js"
         }
     ]
 }

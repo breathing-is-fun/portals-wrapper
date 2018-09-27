@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 15:56:57
+ * @Last Modified time: 2018-09-27 16:18:36
  */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -11,7 +11,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TohoLogPlugin = require('toho-log-plugin');
 const { commonModule, commonPlugin } = require('./webpack.common');
 
-const dev = !!process.argv.includes('development');
+const dev = !!process.argv.toString().includes('development');
 
 let plugins = commonPlugin;
 
@@ -26,8 +26,8 @@ plugins.push(
 			to: __dirname + '/dist/mock'
 		},
 		{
-			from: __dirname + '/demo',
-			to: __dirname + '/dist/demo'
+			from: __dirname + '/thirdModules',
+			to: __dirname + '/dist/thirdModules'
 		}
 	])
 );
