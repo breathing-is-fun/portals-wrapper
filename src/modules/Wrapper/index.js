@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 11:23:18
+ * @Last Modified time: 2018-09-27 11:40:38
  */
 import React, { Component } from 'react';
 
@@ -15,41 +15,53 @@ export default class Wrapper extends Component {
 		super(props);
 
 		this.state = {
-
+			layout: [],
 		};
 	}
 
     componentDidMount = () => {
-
+    	this.loadLayout();
     }
+
+	loadLayout = () => {
+		fetch('../../mock/layoutDatas.json')
+			.then(result => result.json())
+			.then(result => {
+				const { layout } = result;
+
+				this.setState({ layout });
+			});
+	}
 
     handleLayoutChange = layout => {
     	console.log(layout);
     }
 
     render = () => {
-    	const layout = [
-    		{ i: 'a', x: 0, y: 0, w: 1, h: 2, static: true },
-    		{ i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4 },
-    		{ i: 'c', x: 4, y: 0, w: 1, h: 2 }
-    	];
+    	const { layout } = this.state;
 
     	const layoutProps = {
     		className: 'layout',
-    		layout,
+    		// layout,
     		cols: 12,
     		rowHeight: 30,
     		width: document.documentElement.clientWidth || document.body.clientWidth,
     		margin: [10, 10],
-    		onLayoutchange: this.handleLayoutChange
+    		onLayoutChange: this.handleLayoutChange
     	};
 
     	return (
     		<div className='Wrapper'>
     			<GridLayout { ...layoutProps }>
-    				<div key='a' style={{ background: '#F96' }}>static</div>
-    				<div key='b' style={{ background: '#aaa' }}>b</div>
-    				<div key='c' style={{ background: '#ccc' }}>c</div>
+    				{
+    					layout.map((item, index) => {
+    						const { i } = item;
+
+    						return (
+    							<div key={ i } data-grid={ item } style={{ background: '#ccc' }}>test{ index }</div>
+    						);
+    					})
+    				}
     			</GridLayout>
     		</div>
     	);
