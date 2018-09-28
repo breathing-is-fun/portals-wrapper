@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 15:30:02
+ * @Last Modified time: 2018-09-28 15:35:20
  */
 import React, { Component } from 'react';
 
@@ -21,27 +21,27 @@ export default class Wrapper extends Component {
 
     componentDidMount = () => {
     	this.loadLayout(() => {
-    		// const { layout } = this.state;
-    		// let pathArr = [];
+    		const { layout } = this.state;
+    		let pathArr = [];
 
-    		// for(let item of layout) {
-    		// 	const { path } = item;
+    		for(let item of layout) {
+    			const { path, type } = item;
 
-    		// 	pathArr.push(`import('${ path }')`);
-    		// }
-    		// pathArr = `[${ pathArr.toString() }]`;
+    			type != 'iframe' && pathArr.push(`import('${ path }')`);
+    		}
+    		pathArr = `[${ pathArr.toString() }]`;
 
-    		// /* eslint-disable no-eval */
-    		// Promise.all(eval(`${ pathArr }`)).then(modules => {
-    		// 	for(let i = 0; i < layout.length; i++) {
-    		// 		const { TestModule } = modules[i];
-    		// 		const { i: key } = layout[i];
-    		// 		const testModule = new TestModule(this[key]);
-    		// 		const { _moduleOnMount } = testModule;
+    		/* eslint-disable no-eval */
+    		Promise.all(eval(`${ pathArr }`)).then(modules => {
+    			for(let i = 0; i < layout.length; i++) {
+    				const { TestModule } = modules[i];
+    				const { i: key } = layout[i];
+    				const testModule = new TestModule(this[key]);
+    				const { _moduleOnMount } = testModule;
 
-    		// 		_moduleOnMount && _moduleOnMount.call(testModule);
-    		// 	}
-    		// });
+    				_moduleOnMount && _moduleOnMount.call(testModule);
+    			}
+    		});
     	});
     }
 
