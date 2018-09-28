@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 16:18:13
+ * @Last Modified time: 2018-09-28 11:24:18
  */
 import React, { Component } from 'react';
 
@@ -36,8 +36,28 @@ export default class Wrapper extends Component {
     			for(let i = 0; i < layout.length; i++) {
     				const { TestModule } = modules[i];
     				const { i: key } = layout[i];
+    				const testModule = new TestModule(this[key]);
+    				const { changeBackgroundColor } = testModule;
 
-    				new TestModule(this[key]);
+    				for(let key in testModule) {
+    					console.log(key);
+    				}
+
+    				if(changeBackgroundColor) {
+    					let color = '#F96';
+    					const colorOrigin = '#F96';
+    					const colorChange = 'green';
+
+    					setInterval(() => {
+    						if(color == colorOrigin) {
+    							changeBackgroundColor(colorChange);
+    							color = colorChange;
+    						} else {
+    							changeBackgroundColor(colorOrigin);
+    							color = colorOrigin;
+    						}
+    					}, 2000);
+    				}
     			}
     		});
     	});
@@ -54,7 +74,7 @@ export default class Wrapper extends Component {
 	}
 
     handleLayoutChange = layout => {
-    	// console.log(layout);
+    	console.log(layout);
     }
 
     render = () => {
