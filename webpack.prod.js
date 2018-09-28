@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 16:18:36
+ * @Last Modified time: 2018-09-27 17:05:51
  */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -56,7 +56,7 @@ const options = {
 	output: {
 		path: __dirname + '/dist/lib/main',
 		filename: '[name].js',
-		chunkFilename: dev ? 'main/vendor/[name].[chunkHash:8].js' : 'main/vendor/[name].js'
+		chunkFilename: dev ? 'vendor/[name].[chunkHash:8].js' : 'vendor/[name].js'
 	},
 	plugins,
 	module: commonModule
