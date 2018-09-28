@@ -31,10 +31,11 @@
             "i": "d",
             "x": 5,
             "y": 0,
-            "w": 1,
-            "h": 2,
+            "w": 6,
+            "h": 5,
             "path": "http://47.95.1.229:9003/MAIN/Main_NB.aspx",
-            "type": "iframe"
+            "type": "iframe",
+            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg"
         }
     ]
 }

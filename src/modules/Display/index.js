@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 09:33:59
+ * @Last Modified time: 2018-09-28 15:45:53
  */
 import React, { Component } from 'react';
 
@@ -25,19 +25,21 @@ export default class Display extends Component {
     		let pathArr = [];
 
     		for(let item of layout) {
-    			const { path } = item;
+    			const { path, type } = item;
 
-    			pathArr.push(`import('${ path }')`);
+    			type != 'iframe' && pathArr.push(`import('${ path }')`);
     		}
     		pathArr = `[${ pathArr.toString() }]`;
 
     		/* eslint-disable no-eval */
     		Promise.all(eval(`${ pathArr }`)).then(modules => {
-    			for(let i = 0; i < layout.length; i++) {
+    			for(let i = 0; i < modules.length; i++) {
     				const { TestModule } = modules[i];
     				const { i: key } = layout[i];
+    				const testModule = new TestModule(this[key]);
+    				const { _moduleOnMount } = testModule;
 
-    				new TestModule(this[key]);
+    				_moduleOnMount && _moduleOnMount.call(testModule);
     			}
     		});
     	});
@@ -80,9 +82,15 @@ export default class Display extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i } = item;
+    						const { i, type, path } = item;
 
-    						return <div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />;
+    						return type == 'iframe' ? (
+    							<div key={ i } data-grid={ item }>
+    								<iframe src={ path } style={{ border: 'none', width: '100%', height: '100%', overflow: 'auto' }}></iframe>
+    							</div>
+    						) : (
+    							<div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />
+    						);
     					})
     				}
     			</GridLayout>

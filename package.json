@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "sortablejs": "^1.7.0"
+    "antd": "^3.9.3"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

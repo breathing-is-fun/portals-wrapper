@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 15:37:58
+ * @Last Modified time: 2018-09-28 15:46:56
  */
 import React, { Component } from 'react';
 
@@ -77,11 +77,11 @@ export default class Wrapper extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, path } = item;
+    						const { i, type, imgUrl } = item;
 
     						return type == 'iframe' ? (
     							<div key={ i } data-grid={ item }>
-    								<iframe src={ path } style={{ border: 'none', width: '100%', height: '100%', overflow: 'auto' }}></iframe>
+    								<img src={ imgUrl } style={{ width: '100%', height: '100%' }} />
     							</div>
     						) : (
     							<div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />
