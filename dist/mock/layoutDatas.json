@@ -26,6 +26,15 @@
             "w": 1,
             "h": 2,
             "path": "../../../thirdModules/module_6/index.js"
+        },
+        {
+            "i": "d",
+            "x": 5,
+            "y": 0,
+            "w": 1,
+            "h": 2,
+            "path": "http://47.95.1.229:9003/MAIN/Main_NB.aspx",
+            "type": "iframe"
         }
     ]
 }

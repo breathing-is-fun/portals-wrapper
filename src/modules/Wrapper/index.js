@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 11:24:18
+ * @Last Modified time: 2018-09-28 15:30:02
  */
 import React, { Component } from 'react';
 
@@ -21,45 +21,27 @@ export default class Wrapper extends Component {
 
     componentDidMount = () => {
     	this.loadLayout(() => {
-    		const { layout } = this.state;
-    		let pathArr = [];
+    		// const { layout } = this.state;
+    		// let pathArr = [];
 
-    		for(let item of layout) {
-    			const { path } = item;
+    		// for(let item of layout) {
+    		// 	const { path } = item;
 
-    			pathArr.push(`import('${ path }')`);
-    		}
-    		pathArr = `[${ pathArr.toString() }]`;
+    		// 	pathArr.push(`import('${ path }')`);
+    		// }
+    		// pathArr = `[${ pathArr.toString() }]`;
 
-    		/* eslint-disable no-eval */
-    		Promise.all(eval(`${ pathArr }`)).then(modules => {
-    			for(let i = 0; i < layout.length; i++) {
-    				const { TestModule } = modules[i];
-    				const { i: key } = layout[i];
-    				const testModule = new TestModule(this[key]);
-    				const { changeBackgroundColor } = testModule;
+    		// /* eslint-disable no-eval */
+    		// Promise.all(eval(`${ pathArr }`)).then(modules => {
+    		// 	for(let i = 0; i < layout.length; i++) {
+    		// 		const { TestModule } = modules[i];
+    		// 		const { i: key } = layout[i];
+    		// 		const testModule = new TestModule(this[key]);
+    		// 		const { _moduleOnMount } = testModule;
 
-    				for(let key in testModule) {
-    					console.log(key);
-    				}
-
-    				if(changeBackgroundColor) {
-    					let color = '#F96';
-    					const colorOrigin = '#F96';
-    					const colorChange = 'green';
-
-    					setInterval(() => {
-    						if(color == colorOrigin) {
-    							changeBackgroundColor(colorChange);
-    							color = colorChange;
-    						} else {
-    							changeBackgroundColor(colorOrigin);
-    							color = colorOrigin;
-    						}
-    					}, 2000);
-    				}
-    			}
-    		});
+    		// 		_moduleOnMount && _moduleOnMount.call(testModule);
+    		// 	}
+    		// });
     	});
     }
 
@@ -74,7 +56,7 @@ export default class Wrapper extends Component {
 	}
 
     handleLayoutChange = layout => {
-    	console.log(layout);
+    	// console.log(layout);
     }
 
     render = () => {
@@ -95,9 +77,15 @@ export default class Wrapper extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i } = item;
+    						const { i, type, path } = item;
 
-    						return <div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />;
+    						return type == 'iframe' ? (
+    							<div key={ i } data-grid={ item }>
+    								<iframe src={ path } style={{ border: 'none', width: '100%', height: '100%', overflow: 'auto' }}></iframe>
+    							</div>
+    						) : (
+    							<div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />
+    						);
     					})
     				}
     			</GridLayout>
