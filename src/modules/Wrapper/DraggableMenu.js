@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 11:26:32
+ * @Last Modified time: 2018-09-29 14:24:30
  */
 import React, { Component } from 'react';
 
@@ -10,12 +10,15 @@ import { Menu, Icon } from 'antd';
 
 const SubMenu = Menu.SubMenu;
 
+import DragMenuItem from './DragMenuItem';
+
 export default class DraggableMenu extends Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			menuDatas: []
+			menuDatas: [],
+			openKeys: [],
 		};
 	}
 
@@ -28,8 +31,9 @@ export default class DraggableMenu extends Component {
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
+				const menuDatas = this.handleMenuGroup(data);
 
-				this.setState({ menuDatas: this.handleMenuGroup(data) });
+				this.setState({ menuDatas, openKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [] });
 			});
 	}
 
@@ -65,36 +69,37 @@ export default class DraggableMenu extends Component {
 			result.push(childResult);
 		}
 
-		console.log(result);
 		return result;
 	}
 
+	handleOnOpenChange = openKeys => this.setState({ openKeys });
+
     render = () => {
-    	const { menuDatas } = this.state;
+    	const { menuDatas, openKeys } = this.state;
     	const menuProps = {
-    		onClick: this.handleMenuClick,
+    		// onClick: this.handleMenuClick,
     		style: { width: 256 },
-    		defaultSelectedKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [],
-    		defaultOpenKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [],
-    		mode: 'inline'
+    		openKeys,
+    		mode: 'inline',
+    		onOpenChange: this.handleOnOpenChange
     	};
 
     	return (
     		<div className='Menu'>
-    			<Menu { ...menuProps }>
+    			<Menu { ...menuProps } ref={ ref => this.menuIns = ref }>
     				{
-    					menuDatas.map((item, i) => {
+    					menuDatas.map(item => {
     						const { groupName, children, group } = item;
 
     						return (
-    							<SubMenu key={ `subMenu${ i }` } title={ <span><Icon type='laptop' theme='outlined' /><span>{ groupName }</span></span> }>
+    							<SubMenu key={ group } title={ <span><Icon type='laptop' theme='outlined' /><span>{ groupName }</span></span> }>
     								{
-    									children.map((jtem, j) => {
-    										const { draggable, text, url } = jtem;
+    									children.map(jtem => {
+    										// const { key } = jtem;
+    										const { draggable = true, text, key, url } = jtem;
 
-    										return (
-    											<Menu.Item key={ `menuItem${ j }` } draggable={ draggable }>{ text }</Menu.Item>
-    										);
+    										return <DragMenuItem key={ `dragMenuItem${ key }` } item={ jtem } />;
+    										// return <Menu.Item key={ `menuItem${ key }` } draggable={ draggable } onDragStart={ e => console.log(e) }>{ text }</Menu.Item>;
     									})
     								}
     							</SubMenu>

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 10:27:15
+ * @Last Modified time: 2018-09-29 13:46:41
  */
 import React, { Component } from 'react';
 
@@ -69,7 +69,7 @@ export default class Grid extends Component {
     		rowHeight: 30,
     		width: document.documentElement.clientWidth || document.body.clientWidth,
     		margin: [10, 10],
-    		onLayoutChange: this.handleLayoutChange
+    		onLayoutChange: this.handleLayoutChange,
     	};
 
     	return (

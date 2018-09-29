@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 15:45:53
+ * @Last Modified time: 2018-09-29 13:47:31
  */
 import React, { Component } from 'react';
 
@@ -45,23 +45,13 @@ export default class Display extends Component {
     	});
     }
 
-    transStaticDatas = dataSource => {
-    	let result = [];
-
-    	for(let item of dataSource) {
-    		result.push(Object.assign({}, item, { static: true }));
-    	}
-
-    	return result;
-    }
-
     loadLayout = callback => {
     	fetch('../../../mock/layoutDatas.json')
     		.then(result => result.json())
     		.then(result => {
     			const { layout } = result;
 
-    			this.setState({ layout: this.transStaticDatas(layout) }, () => callback && callback());
+    			this.setState({ layout }, () => callback && callback());
     		});
     }
 
@@ -75,6 +65,8 @@ export default class Display extends Component {
     		rowHeight: 30,
     		width: document.documentElement.clientWidth || document.body.clientWidth,
     		margin: [10, 10],
+    		isDraggable: false,
+    		isResizable: false
     	};
 
     	return (
