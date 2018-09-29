@@ -1,0 +1,46 @@
+{
+    "data": [
+        {
+            "text": "水情套餐1",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "sq",
+            "order": 1
+        },
+        {
+            "text": "水情套餐2",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "sq",
+            "order": 2
+        },
+        {
+            "text": "水情套餐3",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "sq",
+            "order": 3
+        },
+        {
+            "text": "雨情套餐1",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "yq",
+            "order": 1
+        },
+        {
+            "text": "雨情套餐2",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "yq",
+            "order": 2
+        },
+        {
+            "text": "雨情套餐3",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "draggable": true,
+            "group": "yq",
+            "order": 3
+        }
+    ]
+}
