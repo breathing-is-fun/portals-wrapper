@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 14:24:30
+ * @Last Modified time: 2018-09-29 15:03:27
  */
 import React, { Component } from 'react';
 
@@ -77,8 +77,7 @@ export default class DraggableMenu extends Component {
     render = () => {
     	const { menuDatas, openKeys } = this.state;
     	const menuProps = {
-    		// onClick: this.handleMenuClick,
-    		style: { width: 256 },
+    		// style: { width: 256 },
     		openKeys,
     		mode: 'inline',
     		onOpenChange: this.handleOnOpenChange
@@ -90,18 +89,16 @@ export default class DraggableMenu extends Component {
     				{
     					menuDatas.map(item => {
     						const { groupName, children, group } = item;
+    						const subMenuTitle = (
+    							<span>
+    								<Icon type='laptop' theme='outlined' />
+    								<span>{ groupName }</span>
+    							</span>
+    						);
 
     						return (
-    							<SubMenu key={ group } title={ <span><Icon type='laptop' theme='outlined' /><span>{ groupName }</span></span> }>
-    								{
-    									children.map(jtem => {
-    										// const { key } = jtem;
-    										const { draggable = true, text, key, url } = jtem;
-
-    										return <DragMenuItem key={ `dragMenuItem${ key }` } item={ jtem } />;
-    										// return <Menu.Item key={ `menuItem${ key }` } draggable={ draggable } onDragStart={ e => console.log(e) }>{ text }</Menu.Item>;
-    									})
-    								}
+    							<SubMenu key={ group } title={ subMenuTitle }>
+    								{ children.map(jtem => <DragMenuItem key={ `dragMenuItem${ jtem.key }` } item={ jtem } />) }
     							</SubMenu>
     						);
     					})
