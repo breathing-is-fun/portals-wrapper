@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 10:27:49
+ * @Last Modified time: 2018-09-29 11:26:32
  */
 import React, { Component } from 'react';
 
@@ -15,42 +15,92 @@ export default class DraggableMenu extends Component {
 		super(props);
 
 		this.state = {
-
+			menuDatas: []
 		};
 	}
 
     componentDidMount = () => {
-
+    	this.loadMenuDatas();
     }
 
+	loadMenuDatas = () => {
+		fetch('../../../mock/menuDatas.json')
+			.then(result => result.json())
+			.then(result => {
+				const { data } = result;
+
+				this.setState({ menuDatas: this.handleMenuGroup(data) });
+			});
+	}
+
+	handleMenuGroup = dataSource => {
+		let result = [], groupDatas = [], tempGroupDatas = [];
+
+		// 分出有哪几组及组别名称
+		for(let item of dataSource) {
+			const { group, groupName } = item;
+
+			tempGroupDatas.push(JSON.stringify({ group, groupName }));
+		}
+		tempGroupDatas = Array.from(new Set(tempGroupDatas));
+
+		for(let item of tempGroupDatas) {
+			groupDatas.push(JSON.parse(item));
+		}
+
+		// 凑菜单数据结构，[{ groupName: '', children: [{ text: '', url: '' }] }]
+		for(let item of groupDatas) {
+			const { group, groupName } = item;
+
+			let childResult = { groupName, group, children: [] };
+
+			for(let jtem of dataSource) {
+				const { group: groupChild } = jtem;
+				const { children } = childResult;
+
+				if(groupChild == group) {
+					children.push(jtem);
+				}
+			}
+			result.push(childResult);
+		}
+
+		console.log(result);
+		return result;
+	}
+
     render = () => {
+    	const { menuDatas } = this.state;
     	const menuProps = {
     		onClick: this.handleMenuClick,
     		style: { width: 256 },
-    		defaultSelectedKeys: ['1'],
-    		defaultOpenKeys: ['sub1'],
+    		defaultSelectedKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [],
+    		defaultOpenKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [],
     		mode: 'inline'
     	};
 
     	return (
     		<div className='Menu'>
     			<Menu { ...menuProps }>
-    				<SubMenu key='sub1' title={<span><Icon type='mail' /><span>Navigation One</span></span>}>
-    					<Menu.Item key='1' draggable>Option 1</Menu.Item>
-    					<Menu.Item key='2'>Option 2</Menu.Item>
-    					<Menu.Item key='3'>Option 3</Menu.Item>
-    					<Menu.Item key='4'>Option 4</Menu.Item>
-    				</SubMenu>
-    				<SubMenu key='sub2' title={<span><Icon type='appstore' /><span>Navigation Two</span></span>}>
-    					<Menu.Item key='5'>Option 5</Menu.Item>
-    					<Menu.Item key='6'>Option 6</Menu.Item>
-    				</SubMenu>
-    				<SubMenu key='sub4' title={<span><Icon type='setting' /><span>Navigation Three</span></span>}>
-    					<Menu.Item key='9'>Option 9</Menu.Item>
-    					<Menu.Item key='10'>Option 10</Menu.Item>
-    					<Menu.Item key='11'>Option 11</Menu.Item>
-    					<Menu.Item key='12'>Option 12</Menu.Item>
-    				</SubMenu>
+    				{
+    					menuDatas.map((item, i) => {
+    						const { groupName, children, group } = item;
+
+    						return (
+    							<SubMenu key={ `subMenu${ i }` } title={ <span><Icon type='laptop' theme='outlined' /><span>{ groupName }</span></span> }>
+    								{
+    									children.map((jtem, j) => {
+    										const { draggable, text, url } = jtem;
+
+    										return (
+    											<Menu.Item key={ `menuItem${ j }` } draggable={ draggable }>{ text }</Menu.Item>
+    										);
+    									})
+    								}
+    							</SubMenu>
+    						);
+    					})
+    				}
     			</Menu>
     		</div>
     	);

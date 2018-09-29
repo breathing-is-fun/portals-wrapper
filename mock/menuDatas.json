@@ -5,6 +5,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "sq",
+            "groupName": "水情",
             "order": 1
         },
         {
@@ -12,6 +13,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "sq",
+            "groupName": "水情",
             "order": 2
         },
         {
@@ -19,6 +21,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "sq",
+            "groupName": "水情",
             "order": 3
         },
         {
@@ -26,6 +29,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "yq",
+            "groupName": "雨情",
             "order": 1
         },
         {
@@ -33,6 +37,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "yq",
+            "groupName": "雨情",
             "order": 2
         },
         {
@@ -40,6 +45,7 @@
             "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
             "draggable": true,
             "group": "yq",
+            "groupName": "雨情",
             "order": 3
         }
     ]
