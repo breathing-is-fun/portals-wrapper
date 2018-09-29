@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 13:46:41
+ * @Last Modified time: 2018-09-29 15:46:01
  */
 import React, { Component } from 'react';
 
@@ -56,8 +56,27 @@ export default class Grid extends Component {
 	}
 
     handleLayoutChange = layout => {
-    	// console.log(layout);
+    	console.log(layout);
     }
+
+	handleDragDrop = e => {
+		let { layout } = this.state;
+		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
+		const { key, url, text } = item;
+
+		layout.push({
+			i: '' + key + layout.length,
+			x: (layout.length * 2) % 12,
+			y: Infinity,
+			w: 2,
+			h: 9,
+			type: 'iframe',
+			imgUrl: url,
+			title: text
+		});
+
+		this.setState({ layout });
+	}
 
     render = () => {
     	const { layout } = this.state;
@@ -67,21 +86,22 @@ export default class Grid extends Component {
     		// layout,
     		cols: 12,
     		rowHeight: 30,
-    		width: document.documentElement.clientWidth || document.body.clientWidth,
+    		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
     	};
 
     	return (
-    		<div className='Grid'>
+    		<div className='Grid' onDrop={ this.handleDragDrop } onDragOver={ e => e.preventDefault() }>
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, imgUrl } = item;
+    						const { i, type, imgUrl, title } = item;
 
     						return type == 'iframe' ? (
     							<div key={ i } data-grid={ item } style={{ zIndex: 1 }}>
-    								<img src={ imgUrl } style={{ width: '100%', height: '100%' }} />
+    								<div style={{ height: 30, background: '#F96' }}>{ title }</div>
+    								<img src={ imgUrl } style={{ width: '100%', height: 'calc(100% - 30px)' }} />
     							</div>
     						) : (
     							<div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />

@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "text": "水情套餐1",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "sq",
+            "groupName": "水情",
+            "order": 1,
+            "key": "sq1"
+        },
+        {
+            "text": "水情套餐2",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "sq",
+            "groupName": "水情",
+            "order": 2,
+            "key": "sq2"
+        },
+        {
+            "text": "水情套餐3",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "sq",
+            "groupName": "水情",
+            "order": 3,
+            "key": "sq3"
+        },
+        {
+            "text": "雨情套餐1",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "yq",
+            "groupName": "雨情",
+            "order": 1,
+            "key": "yq1"
+        },
+        {
+            "text": "雨情套餐2",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "yq",
+            "groupName": "雨情",
+            "order": 2,
+            "key": "yq2"
+        },
+        {
+            "text": "雨情套餐3",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "group": "yq",
+            "groupName": "雨情",
+            "order": 3,
+            "key": "yq3"
+        }
+    ]
+}

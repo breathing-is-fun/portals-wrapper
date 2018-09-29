@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 15:03:28
+ * @Last Modified time: 2018-09-29 15:09:13
  */
 import React, { Component } from 'react';
 
@@ -17,7 +17,7 @@ export default class Wrapper extends Component {
     	return (
     		<div className='Wrapper'>
     			<Layout style={{ minHeight: '100vh' }}>
-    				<Sider>
+    				<Sider theme='light' width='256'>
     					<DraggableMenu />
     				</Sider>
 
