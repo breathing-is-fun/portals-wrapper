@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-08 11:23:15
+ * @Last Modified time: 2018-10-08 14:49:40
  */
 import React, { Component } from 'react';
 
@@ -58,7 +58,7 @@ export default class Grid extends Component {
 	}
 
     handleLayoutChange = layout => {
-    	console.log(layout);
+    	// console.log(layout);
     }
 
 	handleDragDrop = e => {
@@ -82,6 +82,7 @@ export default class Grid extends Component {
 
     render = () => {
     	const { layout } = this.state;
+    	const { isEdit = true } = this.props;
     	const layoutProps = {
     		className: 'layout',
     		// layout,
@@ -90,6 +91,8 @@ export default class Grid extends Component {
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
+    		isDraggable: isEdit,
+    		isResizable: isEdit
     	};
 
     	return (
@@ -97,15 +100,22 @@ export default class Grid extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, imgUrl, title } = item;
-    						const shellTitle = <div style={{ background: 'blue', height: 30 }}>{ title }</div>;
-
-    						return type == 'iframe' ? (
+    						const { i, type, imgUrl, title, path } = item;
+    						const shellTitle = <div style={{ background: '#ccc', height: 30 }}>{ title }</div>;
+    						const iframeChild = isEdit ? (
     							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
     								<img src={ imgUrl } style={{ width: '100%', height: 'calc(100% - 30px)' }} />
     							</Shell>
     						) : (
-    							<div key={ i } data-grid={ item } style={{ background: '#ccc' }} ref={ ref => this[i] = ref } />
+    							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
+    								<iframe src={ path } style={{ border: 'none', width: '100%', height: 'calc(100% - 30px)', overflow: 'auto' }}></iframe>
+    							</Shell>
+    						);
+
+    						return type == 'iframe' ? iframeChild : (
+    							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
+    								<div style={{ height: 'calc(100% - 30px)' }} ref={ ref => this[i] = ref } />
+    							</Shell>
     						);
     					})
     				}

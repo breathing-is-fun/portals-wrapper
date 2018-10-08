@@ -7,7 +7,8 @@
             "w": 1,
             "h": 2,
             "static": true,
-            "path": "../../../thirdModules/module_4/index.js"
+            "path": "../../../thirdModules/module_4/index.js",
+            "title": "title1"
         },
         {
             "i": "b",
@@ -17,7 +18,8 @@
             "h": 2,
             "minW": 2,
             "maxW": 4,
-            "path": "../../../thirdModules/module_5/index.js"
+            "path": "../../../thirdModules/module_5/index.js",
+            "title": "title2"
         },
         {
             "i": "c",
@@ -25,7 +27,8 @@
             "y": 0,
             "w": 1,
             "h": 2,
-            "path": "../../../thirdModules/module_6/index.js"
+            "path": "../../../thirdModules/module_6/index.js",
+            "title": "title3"
         },
         {
             "i": "d",
@@ -35,7 +38,8 @@
             "h": 9,
             "path": "http://47.95.1.229:9003/MAIN/Main_NB.aspx",
             "type": "iframe",
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg"
+            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",
+            "title": "title4"
         }
     ]
 }
