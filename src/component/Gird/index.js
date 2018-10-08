@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-08 14:49:40
+ * @Last Modified time: 2018-10-08 15:59:51
  */
 import React, { Component } from 'react';
 
@@ -102,19 +102,26 @@ export default class Grid extends Component {
     					layout.map(item => {
     						const { i, type, imgUrl, title, path } = item;
     						const shellTitle = <div style={{ background: '#ccc', height: 30 }}>{ title }</div>;
+    						const height = 'calc(100% - 30px)';
+    						const shellProps = {
+    							key: i,
+    							'data-grid': item,
+    							style: { zIndex: 1, userSelect: 'none', border: '1px solid #F96' },
+    							title: shellTitle
+    						};
     						const iframeChild = isEdit ? (
-    							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
-    								<img src={ imgUrl } style={{ width: '100%', height: 'calc(100% - 30px)' }} />
+    							<Shell { ...shellProps }>
+    								<img src={ imgUrl } style={{ width: '100%', height }} />
     							</Shell>
     						) : (
-    							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
-    								<iframe src={ path } style={{ border: 'none', width: '100%', height: 'calc(100% - 30px)', overflow: 'auto' }}></iframe>
+    							<Shell { ...shellProps }>
+    								<iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>
     							</Shell>
     						);
 
     						return type == 'iframe' ? iframeChild : (
-    							<Shell key={ i } data-grid={ item } style={{ zIndex: 1 }} title={ shellTitle }>
-    								<div style={{ height: 'calc(100% - 30px)' }} ref={ ref => this[i] = ref } />
+    							<Shell { ...shellProps }>
+    								<div style={{ height }} ref={ ref => this[i] = ref } />
     							</Shell>
     						);
     					})

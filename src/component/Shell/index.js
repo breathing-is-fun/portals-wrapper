@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-08 14:45:48
+ * @Last Modified time: 2018-10-08 15:37:30
  */
 import React, { Component } from 'react';
 
@@ -25,7 +25,7 @@ export default class Shell extends Component {
     	const { children, title } = this.props;
 
     	return (
-    		<div { ...Object.assign({}, { className: 'Shell' }, this.props) }>
+    		<div { ...this.props }>
     			{ title }
     			{ children }
     		</div>
