@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 20:07:21
+ * @Last Modified time: 2018-10-09 20:48:33
  */
 import React, { Component } from 'react';
 
@@ -102,6 +102,7 @@ export default class Grid extends Component {
     		onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
+    		compactType: 'horizontal'
     	};
 
     	return (
