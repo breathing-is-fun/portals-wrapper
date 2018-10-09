@@ -8,7 +8,10 @@
             "h": 2,
             "static": true,
             "path": "../../../thirdModules/module_4/index.js",
-            "title": "title1"
+            "title": "title1",
+            "style": {
+                "border": "1px solid #F96"
+            }
         },
         {
             "i": "b",
@@ -35,7 +38,7 @@
             "x": 5,
             "y": 0,
             "w": 2,
-            "h": 9,
+            "h": 10,
             "path": "http://47.95.1.229:9003/MAIN/Main_NB.aspx",
             "type": "iframe",
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg",

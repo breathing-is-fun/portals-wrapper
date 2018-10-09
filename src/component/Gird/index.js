@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-08 15:59:51
+ * @Last Modified time: 2018-10-09 11:01:18
  */
 import React, { Component } from 'react';
 
@@ -100,13 +100,14 @@ export default class Grid extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, imgUrl, title, path } = item;
+    						const { i, type, imgUrl, title, path, style: shellStyle } = item;
     						const shellTitle = <div style={{ background: '#ccc', height: 30 }}>{ title }</div>;
     						const height = 'calc(100% - 30px)';
     						const shellProps = {
     							key: i,
     							'data-grid': item,
-    							style: { zIndex: 1, userSelect: 'none', border: '1px solid #F96' },
+    							// style: { zIndex: 1, userSelect: 'none', border: '1px solid #F96' },
+    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
     							title: shellTitle
     						};
     						const iframeChild = isEdit ? (

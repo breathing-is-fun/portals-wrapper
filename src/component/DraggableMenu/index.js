@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-29 15:14:13
+ * @Last Modified time: 2018-10-09 11:30:09
  */
 import React, { Component } from 'react';
 
@@ -19,11 +19,14 @@ export default class DraggableMenu extends Component {
 		this.state = {
 			menuDatas: [],
 			openKeys: [],
+			shellStyleDatas: [],
 		};
 	}
 
     componentDidMount = () => {
     	this.loadMenuDatas();
+
+    	this.loadShellStyleDatas();
     }
 
 	loadMenuDatas = () => {
@@ -35,6 +38,12 @@ export default class DraggableMenu extends Component {
 
 				this.setState({ menuDatas, openKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [] });
 			});
+	}
+
+	loadShellStyleDatas = () => {
+		fetch('../../../mock/shellStyleDatas.json')
+			.then(result => result.json())
+			.then(result => this.setState({ shellStyleDatas: result.data }));
 	}
 
 	handleMenuGroup = dataSource => {
@@ -55,7 +64,6 @@ export default class DraggableMenu extends Component {
 		// 凑菜单数据结构，[{ groupName: '', children: [{ text: '', url: '' }] }]
 		for(let item of groupDatas) {
 			const { group, groupName } = item;
-
 			let childResult = { groupName, group, children: [] };
 
 			for(let jtem of dataSource) {
@@ -74,8 +82,12 @@ export default class DraggableMenu extends Component {
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
+	handleShellStyle = item => {
+		console.log(item);
+	}
+
     render = () => {
-    	const { menuDatas, openKeys } = this.state;
+    	const { menuDatas, openKeys, shellStyleDatas } = this.state;
     	const menuProps = {
     		// style: { width: 256 },
     		openKeys,
@@ -83,9 +95,33 @@ export default class DraggableMenu extends Component {
     		onOpenChange: this.handleOnOpenChange
     	};
 
+    	const styleSubTitle = (
+    		<span>
+    			<Icon type='retweet' theme='outlined' />
+    			<span>样式选择</span>
+    		</span>
+    	);
+
     	return (
-    		<div className='Menu'>
-    			<Menu { ...menuProps } ref={ ref => this.menuIns = ref }>
+    		<div className='DraggableMenu'>
+    			<Menu>
+    				<SubMenu title={ styleSubTitle }>
+    					{
+    						shellStyleDatas.map((item, i) => {
+    							const { thumbnailColor, text } = item;
+
+    							return (
+    								<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(item) }>
+    									<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
+    									<span style={{ userSelect: 'none' }}>{ text }</span>
+    								</Menu.Item>
+    							);
+    						})
+    					}
+    				</SubMenu>
+    			</Menu>
+
+    			<Menu { ...menuProps }>
     				{
     					menuDatas.map(item => {
     						const { groupName, children, group } = item;

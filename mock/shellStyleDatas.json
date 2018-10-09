@@ -1,0 +1,21 @@
+{
+    "data": [
+        {
+            "style": {
+                "border": "1px solid blue"
+            },
+            "thumbnailColor": "blue",
+            "text": "蓝色"
+        },
+        {
+            "border": "1px solid red",
+            "thumbnailColor": "red",
+            "text": "红色"
+        },
+        {
+            "border": "1px solid green",
+            "thumbnailColor": "green",
+            "text": "绿色"
+        }
+    ]
+}
