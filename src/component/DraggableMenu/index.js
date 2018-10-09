@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 11:30:09
+ * @Last Modified time: 2018-10-09 18:47:11
  */
 import React, { Component } from 'react';
 
@@ -20,6 +20,7 @@ export default class DraggableMenu extends Component {
 			menuDatas: [],
 			openKeys: [],
 			shellStyleDatas: [],
+			currentShellStyle: {},
 		};
 	}
 
@@ -43,7 +44,10 @@ export default class DraggableMenu extends Component {
 	loadShellStyleDatas = () => {
 		fetch('../../../mock/shellStyleDatas.json')
 			.then(result => result.json())
-			.then(result => this.setState({ shellStyleDatas: result.data }));
+			.then(result => {
+				if(result.data.length != 0)
+					this.setState({ shellStyleDatas: result.data, currentShellStyle: result.data[0].style });
+			});
 	}
 
 	handleMenuGroup = dataSource => {
@@ -82,12 +86,10 @@ export default class DraggableMenu extends Component {
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
-	handleShellStyle = item => {
-		console.log(item);
-	}
+	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
 
     render = () => {
-    	const { menuDatas, openKeys, shellStyleDatas } = this.state;
+    	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle } = this.state;
     	const menuProps = {
     		// style: { width: 256 },
     		openKeys,
@@ -108,10 +110,10 @@ export default class DraggableMenu extends Component {
     				<SubMenu title={ styleSubTitle }>
     					{
     						shellStyleDatas.map((item, i) => {
-    							const { thumbnailColor, text } = item;
+    							const { thumbnailColor, text, style } = item;
 
     							return (
-    								<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(item) }>
+    								<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(style) }>
     									<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
     									<span style={{ userSelect: 'none' }}>{ text }</span>
     								</Menu.Item>
@@ -134,7 +136,7 @@ export default class DraggableMenu extends Component {
 
     						return (
     							<SubMenu key={ group } title={ subMenuTitle }>
-    								{ children.map(jtem => <DragMenuItem key={ `dragMenuItem${ jtem.key }` } item={ jtem } />) }
+    								{ children.map(jtem => <DragMenuItem key={ `dragMenuItem${ jtem.key }` } item={ Object.assign({}, jtem, { style: currentShellStyle }) } />) }
     							</SubMenu>
     						);
     					})

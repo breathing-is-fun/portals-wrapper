@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 11:01:18
+ * @Last Modified time: 2018-10-09 18:48:20
  */
 import React, { Component } from 'react';
 
@@ -64,7 +64,7 @@ export default class Grid extends Component {
 	handleDragDrop = e => {
 		let { layout } = this.state;
 		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
-		const { key, url, text } = item;
+		const { key, url, text, style } = item;
 
 		layout.push({
 			i: '' + key + layout.length,
@@ -74,7 +74,8 @@ export default class Grid extends Component {
 			h: 9,
 			type: 'iframe',
 			imgUrl: url,
-			title: text
+			title: text,
+			style
 		});
 
 		this.setState({ layout });
@@ -100,15 +101,13 @@ export default class Grid extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, imgUrl, title, path, style: shellStyle } = item;
-    						const shellTitle = <div style={{ background: '#ccc', height: 30 }}>{ title }</div>;
+    						const { i, type, imgUrl, title, path, style: shellStyle = {} } = item;
     						const height = 'calc(100% - 30px)';
     						const shellProps = {
     							key: i,
     							'data-grid': item,
-    							// style: { zIndex: 1, userSelect: 'none', border: '1px solid #F96' },
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
-    							title: shellTitle
+    							title,
     						};
     						const iframeChild = isEdit ? (
     							<Shell { ...shellProps }>
