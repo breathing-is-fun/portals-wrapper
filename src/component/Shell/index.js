@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-10 11:00:08
+ * @Last Modified time: 2018-10-10 16:44:51
  */
 import React, { Component } from 'react';
 
@@ -31,6 +31,8 @@ export default class Shell extends Component {
 		const { onChange } = this.props;
 		const dataGrid = this.props['data-grid'] || {};
 
+		this.preventBubble(e);
+
 		onChange && onChange(dataGrid);
 	}
 
@@ -38,10 +40,29 @@ export default class Shell extends Component {
 		const { style } = this.props;
 		const dataGrid = this.props['data-grid'] || {};
 
+		this.preventBubble(e);
+
 		this.setState({
 			propertyBoardVisible: true,
 			propertyBoardDataSource: { title: dataGrid.title || '', style },
 		});
+	}
+
+	// 阻止react-grid-layout的拖拽事件在点击时生效
+	preventBubble = e => {
+		if(e.stopPropagation) {
+			e.stopPropagation();
+		} else {
+			e.cancelBubble = true;
+		}
+	}
+
+	handleDrawerOnClose = propertyBoardVisible => {
+		const { onDrawerOpen } = this.props;
+
+		onDrawerOpen && onDrawerOpen(propertyBoardVisible);
+
+		this.setState({ propertyBoardVisible });
 	}
 
     render = () => {
@@ -58,7 +79,7 @@ export default class Shell extends Component {
 
     	const propertyBoardProps = {
     		visible: propertyBoardVisible,
-    		onClose: propertyBoardVisible => this.setState({ propertyBoardVisible }),
+    		onClose: this.handleDrawerOnClose,
     		dataSource: propertyBoardDataSource,
     	};
 

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-10 11:00:18
+ * @Last Modified time: 2018-10-10 16:48:50
  */
 import React, { Component } from 'react';
 
@@ -19,6 +19,12 @@ export default class Grid extends Component {
 
 		this.state = {
 			layout: [],
+			/**
+			 * 由于raect-grid-layout的拖拽事件会在顶层，当抽屉显示时，在抽屉内部拖拽仍会触发外部元素事件
+			 * 该参数用作控制外部所有元素是否可拖拽
+			 * 也就是抽屉打开的时候，外部所有元素设置为不可拖拽
+			*/
+			isDrawerOpen: false,
 		};
 	}
 
@@ -90,7 +96,7 @@ export default class Grid extends Component {
 	}
 
     render = () => {
-    	const { layout } = this.state;
+    	const { layout, isDrawerOpen } = this.state;
     	const { isEdit = true } = this.props;
 
     	const layoutProps = {
@@ -101,9 +107,9 @@ export default class Grid extends Component {
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
-    		isDraggable: isEdit,
+    		isDraggable: isEdit && !isDrawerOpen,
     		isResizable: isEdit,
-    		compactType: 'horizontal'
+    		compactType: 'horizontal',
     	};
 
     	return (
@@ -112,14 +118,21 @@ export default class Grid extends Component {
     				{
     					layout.map(item => {
     						const { i, type, imgUrl, title, path, style: shellStyle = {} } = item;
+
     						const height = 'calc(100% - 30px)';
+
     						const shellProps = {
     							key: i,
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
     							title,
     							onChange: this.handleShellOnChange,
+    							onDrawerOpen: isDrawerOpen => {
+    								console.log(isDrawerOpen);
+    								this.setState({ isDrawerOpen });
+    							},
     						};
+
     						const iframeChild = isEdit ? (
     							<Shell { ...shellProps }>
     								<img src={ imgUrl } style={{ width: '100%', height }} />
