@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 18:47:11
+ * @Last Modified time: 2018-10-10 11:00:30
  */
 import React, { Component } from 'react';
 
@@ -90,6 +90,7 @@ export default class DraggableMenu extends Component {
 
     render = () => {
     	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle } = this.state;
+
     	const menuProps = {
     		// style: { width: 256 },
     		openKeys,

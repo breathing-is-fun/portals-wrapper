@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 20:48:33
+ * @Last Modified time: 2018-10-10 11:00:18
  */
 import React, { Component } from 'react';
 
@@ -92,6 +92,7 @@ export default class Grid extends Component {
     render = () => {
     	const { layout } = this.state;
     	const { isEdit = true } = this.props;
+
     	const layoutProps = {
     		className: 'layout',
     		// draggableHandle: '.layout',
@@ -117,7 +118,7 @@ export default class Grid extends Component {
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
     							title,
-    							onChange: this.handleShellOnChange
+    							onChange: this.handleShellOnChange,
     						};
     						const iframeChild = isEdit ? (
     							<Shell { ...shellProps }>
