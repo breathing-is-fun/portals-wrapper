@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 11:08:06
+ * @Last Modified time: 2018-10-11 15:13:27
  */
 import React, { Component } from 'react';
 
@@ -13,6 +13,7 @@ import 'react-resizable/css/styles.css';
 
 import Shell from '../../component/Shell';
 import PropertyBoard from '../PropertyBoard';
+import Loader from './ModulesLoader';
 
 export default class Grid extends Component {
 	constructor (props) {
@@ -20,38 +21,19 @@ export default class Grid extends Component {
 
 		this.state = {
 			layout: [],
-			/**
-			 * 由于raect-grid-layout的拖拽事件会在顶层，当抽屉显示时，在抽屉内部拖拽仍会触发外部元素事件
-			 * 该参数用作控制外部所有元素是否可拖拽
-			 * 也就是抽屉打开的时候，外部所有元素设置为不可拖拽
-			*/
 			isDrawerOpen: false,
+			propertyBoardDataSource: {},
 		};
+
+		this.roots = [];
 	}
 
     componentDidMount = () => {
     	this.loadLayout(() => {
     		const { layout } = this.state;
-    		let pathArr = [];
+    		const loader = new Loader(layout, this.roots);
 
-    		for(let item of layout) {
-    			const { path, type } = item;
-
-    			type != 'iframe' && pathArr.push(`import('${ path }')`);
-    		}
-    		pathArr = `[${ pathArr.toString() }]`;
-
-    		/* eslint-disable no-eval */
-    		Promise.all(eval(`${ pathArr }`)).then(modules => {
-    			for(let i = 0; i < modules.length; i++) {
-    				const { TestModule } = modules[i];
-    				const { i: key } = layout[i];
-    				const testModule = new TestModule(this[key]);
-    				const { _moduleOnMount } = testModule;
-
-    				_moduleOnMount && _moduleOnMount.call(testModule);
-    			}
-    		});
+    		loader.load();
     	});
     }
 
@@ -97,7 +79,7 @@ export default class Grid extends Component {
 	}
 
     render = () => {
-    	const { layout, isDrawerOpen } = this.state;
+    	const { layout, isDrawerOpen, propertyBoardDataSource } = this.state;
     	const { isEdit = true } = this.props;
 
     	const layoutProps = {
@@ -108,7 +90,6 @@ export default class Grid extends Component {
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
-    		// isDraggable: isEdit && !isDrawerOpen,
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		compactType: 'horizontal',
@@ -117,8 +98,7 @@ export default class Grid extends Component {
     	const propertyBoardProps = {
     		visible: isDrawerOpen,
     		onClose: isDrawerOpen => this.setState({ isDrawerOpen }),
-    		// dataSource: propertyBoardDataSource,
-    		dataSource: {},
+    		dataSource: propertyBoardDataSource,
     	};
 
     	return (
@@ -137,7 +117,7 @@ export default class Grid extends Component {
     							title,
     							onDelete: this.handleShellOnChange,
     							onEdit: isDrawerOpen => {
-    								this.setState({ isDrawerOpen });
+    								this.setState({ isDrawerOpen, propertyBoardDataSource: item });
     							},
     						};
 
@@ -153,7 +133,7 @@ export default class Grid extends Component {
 
     						return type == 'iframe' ? iframeChild : (
     							<Shell { ...shellProps }>
-    								<div style={{ height }} ref={ ref => this[i] = ref } />
+    								<div style={{ height }} ref={ ref => this.roots.push({ [i]: ref }) } />
     							</Shell>
     						);
     					})
