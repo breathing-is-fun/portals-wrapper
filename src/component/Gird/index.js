@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 15:13:27
+ * @Last Modified time: 2018-10-11 15:44:48
  */
 import React, { Component } from 'react';
 
@@ -78,6 +78,21 @@ export default class Grid extends Component {
 		this.setState({ layout: reject(layout, { i: key }) });
 	}
 
+	createShellChild = (isEdit, item) => {
+		const { i, type, imgUrl, path } = item;
+		const height = 'calc(100% - 30px)';
+
+		if(type == 'iframe') {
+			if(isEdit) {
+				return <img src={ imgUrl } style={{ width: '100%', height }} />;
+			}
+
+			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>;
+		}
+
+		return <div style={{ height }} ref={ ref => this.roots.push({ [i]: ref }) } />;
+	}
+
     render = () => {
     	const { layout, isDrawerOpen, propertyBoardDataSource } = this.state;
     	const { isEdit = true } = this.props;
@@ -106,34 +121,20 @@ export default class Grid extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i, type, imgUrl, title, path, style: shellStyle = {} } = item;
-
-    						const height = 'calc(100% - 30px)';
+    						const { i: key, title, style: shellStyle = {} } = item;
 
     						const shellProps = {
-    							key: i,
+    							key,
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
     							title,
     							onDelete: this.handleShellOnChange,
-    							onEdit: isDrawerOpen => {
-    								this.setState({ isDrawerOpen, propertyBoardDataSource: item });
-    							},
+    							onEdit: isDrawerOpen => this.setState({ isDrawerOpen, propertyBoardDataSource: item }),
     						};
 
-    						const iframeChild = isEdit ? (
+    						return (
     							<Shell { ...shellProps }>
-    								<img src={ imgUrl } style={{ width: '100%', height }} />
-    							</Shell>
-    						) : (
-    							<Shell { ...shellProps }>
-    								<iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>
-    							</Shell>
-    						);
-
-    						return type == 'iframe' ? iframeChild : (
-    							<Shell { ...shellProps }>
-    								<div style={{ height }} ref={ ref => this.roots.push({ [i]: ref }) } />
+    								{ this.createShellChild(isEdit, item) }
     							</Shell>
     						);
     					})
