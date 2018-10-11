@@ -2,12 +2,12 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-10 16:44:51
+ * @Last Modified time: 2018-10-11 11:06:31
  */
 import React, { Component } from 'react';
 
 import { Icon } from 'antd';
-import PropertyBoard from './PropertyBoard';
+// import PropertyBoard from '../PropertyBoard';
 
 import './css/Shell.css';
 
@@ -27,17 +27,17 @@ export default class Shell extends Component {
 
     }
 
-	handleOnChange = e => {
-		const { onChange } = this.props;
+	handleOnDelete = e => {
+		const { onDelete } = this.props;
 		const dataGrid = this.props['data-grid'] || {};
 
 		this.preventBubble(e);
 
-		onChange && onChange(dataGrid);
+		onDelete && onDelete(dataGrid);
 	}
 
 	handleOnEdit = e => {
-		const { style } = this.props;
+		const { style, onEdit } = this.props;
 		const dataGrid = this.props['data-grid'] || {};
 
 		this.preventBubble(e);
@@ -45,6 +45,8 @@ export default class Shell extends Component {
 		this.setState({
 			propertyBoardVisible: true,
 			propertyBoardDataSource: { title: dataGrid.title || '', style },
+		}, () => {
+			onEdit && onEdit(true);
 		});
 	}
 
@@ -58,11 +60,11 @@ export default class Shell extends Component {
 	}
 
 	handleDrawerOnClose = propertyBoardVisible => {
-		const { onDrawerOpen } = this.props;
+		const { onEdit } = this.props;
 
-		onDrawerOpen && onDrawerOpen(propertyBoardVisible);
-
-		this.setState({ propertyBoardVisible });
+		this.setState({ propertyBoardVisible }, () => {
+			onEdit && onEdit(propertyBoardVisible);
+		});
 	}
 
     render = () => {
@@ -71,7 +73,7 @@ export default class Shell extends Component {
 
     	const operateBoard = (
     		<div style={{ background: '#ccc', height: 30 }}>
-    			<Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnChange } />
+    			<Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete } />
     			<Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />
     			<span>{ title }</span>
     		</div>
@@ -83,13 +85,20 @@ export default class Shell extends Component {
     		dataSource: propertyBoardDataSource,
     	};
 
+    	// 容错，getDrawerStatus为react不识别的handle
+    	let newProps = Object.assign({}, this.props);
+
+    	delete newProps.getDrawerStatus;
+    	delete newProps.onDelete;
+    	delete newProps.onEdit;
+
     	return (
-    		<div { ...this.props } className='Shell'>
+    		<div { ...newProps } className='Shell'>
     			{ operateBoard }
 
     			{ children }
 
-    			<PropertyBoard { ...propertyBoardProps } />
+    			{/* <PropertyBoard { ...propertyBoardProps } /> */}
     		</div>
     	);
     }

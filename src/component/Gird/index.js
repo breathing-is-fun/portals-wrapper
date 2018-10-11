@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-10 16:48:50
+ * @Last Modified time: 2018-10-11 11:08:06
  */
 import React, { Component } from 'react';
 
@@ -12,6 +12,7 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
 import Shell from '../../component/Shell';
+import PropertyBoard from '../PropertyBoard';
 
 export default class Grid extends Component {
 	constructor (props) {
@@ -107,9 +108,17 @@ export default class Grid extends Component {
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
-    		isDraggable: isEdit && !isDrawerOpen,
+    		// isDraggable: isEdit && !isDrawerOpen,
+    		isDraggable: isEdit,
     		isResizable: isEdit,
     		compactType: 'horizontal',
+    	};
+
+    	const propertyBoardProps = {
+    		visible: isDrawerOpen,
+    		onClose: isDrawerOpen => this.setState({ isDrawerOpen }),
+    		// dataSource: propertyBoardDataSource,
+    		dataSource: {},
     	};
 
     	return (
@@ -126,9 +135,8 @@ export default class Grid extends Component {
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
     							title,
-    							onChange: this.handleShellOnChange,
-    							onDrawerOpen: isDrawerOpen => {
-    								console.log(isDrawerOpen);
+    							onDelete: this.handleShellOnChange,
+    							onEdit: isDrawerOpen => {
     								this.setState({ isDrawerOpen });
     							},
     						};
@@ -151,6 +159,8 @@ export default class Grid extends Component {
     					})
     				}
     			</GridLayout>
+
+    			<PropertyBoard { ...propertyBoardProps } />
     		</div>
     	);
     }
