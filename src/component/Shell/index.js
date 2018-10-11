@@ -2,12 +2,11 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 11:06:31
+ * @Last Modified time: 2018-10-11 15:56:48
  */
 import React, { Component } from 'react';
 
 import { Icon } from 'antd';
-// import PropertyBoard from '../PropertyBoard';
 
 import './css/Shell.css';
 
@@ -68,22 +67,22 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children } = this.props;
-    	const { title, propertyBoardVisible, propertyBoardDataSource } = this.state;
+    	const { children, isEdit } = this.props;
+    	const { title } = this.state;
 
-    	const operateBoard = (
-    		<div style={{ background: '#ccc', height: 30 }}>
+    	const operateButton = (
+    		<div className='operate-button-group'>
     			<Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete } />
     			<Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />
-    			<span>{ title }</span>
     		</div>
     	);
 
-    	const propertyBoardProps = {
-    		visible: propertyBoardVisible,
-    		onClose: this.handleDrawerOnClose,
-    		dataSource: propertyBoardDataSource,
-    	};
+    	const operateBoard = (
+    		<div style={{ background: '#ccc', height: 30 }}>
+    			{ isEdit && operateButton }
+    			<span>{ title }</span>
+    		</div>
+    	);
 
     	// 容错，getDrawerStatus为react不识别的handle
     	let newProps = Object.assign({}, this.props);
@@ -91,14 +90,13 @@ export default class Shell extends Component {
     	delete newProps.getDrawerStatus;
     	delete newProps.onDelete;
     	delete newProps.onEdit;
+    	delete newProps.isEdit;
 
     	return (
     		<div { ...newProps } className='Shell'>
     			{ operateBoard }
 
     			{ children }
-
-    			{/* <PropertyBoard { ...propertyBoardProps } /> */}
     		</div>
     	);
     }

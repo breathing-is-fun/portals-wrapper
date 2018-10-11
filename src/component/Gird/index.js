@@ -130,6 +130,7 @@ export default class Grid extends Component {
     							title,
     							onDelete: this.handleShellOnChange,
     							onEdit: isDrawerOpen => this.setState({ isDrawerOpen, propertyBoardDataSource: item }),
+    							isEdit,
     						};
 
     						return (
