@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 15:44:48
+ * @Last Modified time: 2018-10-12 11:09:17
  */
 import React, { Component } from 'react';
 
@@ -23,6 +23,7 @@ export default class Grid extends Component {
 			layout: [],
 			isDrawerOpen: false,
 			propertyBoardDataSource: {},
+			currentShellStyle: {},
 		};
 
 		this.roots = [];
@@ -94,7 +95,7 @@ export default class Grid extends Component {
 	}
 
     render = () => {
-    	const { layout, isDrawerOpen, propertyBoardDataSource } = this.state;
+    	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle } = this.state;
     	const { isEdit = true } = this.props;
 
     	const layoutProps = {
@@ -114,6 +115,9 @@ export default class Grid extends Component {
     		visible: isDrawerOpen,
     		onClose: isDrawerOpen => this.setState({ isDrawerOpen }),
     		dataSource: propertyBoardDataSource,
+    		onChange: currentShellStyle => {
+    			this.setState({ currentShellStyle });
+    		}
     	};
 
     	return (
@@ -126,7 +130,7 @@ export default class Grid extends Component {
     						const shellProps = {
     							key,
     							'data-grid': item,
-    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle),
+    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle, currentShellStyle),
     							title,
     							onDelete: this.handleShellOnChange,
     							onEdit: isDrawerOpen => this.setState({ isDrawerOpen, propertyBoardDataSource: item }),

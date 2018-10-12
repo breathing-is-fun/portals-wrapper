@@ -2,40 +2,43 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 10:54:49
+ * @Last Modified time: 2018-10-12 10:55:39
  */
 import React, { Component } from 'react';
 
-import { Drawer, Icon, Form, Input } from 'antd';
-const FormItem = Form.Item;
+import { Drawer, Icon, Input } from 'antd';
 
-class PropertyBoard extends Component {
+import './css/PropertyBoard.css';
+
+export default class PropertyBoard extends Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-
+			propertyDatas: [],
 		};
 	}
 
     componentDidMount = () => {
-
+    	this.loadPropertyDatas();
     }
 
-	handleSubmit = e => {
-		e.preventDefault();
+	loadPropertyDatas = () => {
+		fetch('../../../mock/propertyDatas.json')
+			.then(result => result.json())
+			.then(result => {
+				this.setState({ propertyDatas: result.data });
+			});
+	}
 
-		this.props.form.validateFieldsAndScroll((err, values) => {
-			if (!err) {
-			  	console.log('Received values of form: ', values);
-			}
-		});
+	handleInput = (value, key) => {
+		console.log(value, key);
 	}
 
     render = () => {
-    	const { visible, onClose, dataSource, form } = this.props;
+    	const { visible, onClose, dataSource } = this.props;
     	const { style, title } = dataSource;
-    	const { getFieldDecorator  } = form;
+    	const { propertyDatas } = this.state;
 
     	const drawerTitle = (
     		<div>
@@ -45,44 +48,34 @@ class PropertyBoard extends Component {
     	);
 
     	const drawerProps = {
-    		visible,
+    		visible: true,
     		className: 'PropertyBoard',
     		onClose: () => onClose && onClose(!visible),
     		title: drawerTitle,
     		width: '20%',
     	};
 
-    	const formItemLayoutProps = {
-    		labelCol: {
-    			xs: { span: 24 },
-    			sm: { span: 4 },
-    		},
-    		wrapperCol: {
-    			xs: { span: 24 },
-    			sm: { span: 18 },
-    		},
-    	};
-
     	return (
     		<div className='PropertyBoard'>
     			<Drawer { ...drawerProps }>
-    				<Form onSubmit={ this.handleSubmit }>
-    					<FormItem { ...formItemLayoutProps } label='标题'>
-    						{
-    							getFieldDecorator('email', {
-    								rules: [{
-    									type: 'email', message: 'The input is not valid E-mail!',
-    								}, {
-    									required: true, message: 'Please input your E-mail!',
-    								}],
-    							})(<Input />)
-    						}
-    					</FormItem>
-    				</Form>
+    				<ul className='property-wrapper'>
+    					{
+    						propertyDatas.map(item => {
+    							const { key, value, text } = item;
+
+    							return (
+    								<li key={ `property-li-${ key }` }>
+    									<div className='property-key'>{ text }：</div>
+    									<div className='property-value'>
+    										<Input onChange={ e => this.handleInput(e.target.value, key) } />
+    									</div>
+    								</li>
+    							);
+    						})
+    					}
+    				</ul>
     			</Drawer>
     		</div>
     	);
     }
 }
-
-export default Form.create()(PropertyBoard);

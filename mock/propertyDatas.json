@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "text": "标题",
+            "key": "title",
+            "value": ""
+        },
+        {
+            "text": "字体",
+            "key": "fontSize",
+            "value": "16px"
+        },
+        {
+            "text": "背景颜色",
+            "key": "background",
+            "value": "#F96"
+        }
+    ]
+}
