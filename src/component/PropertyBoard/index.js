@@ -2,11 +2,12 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-12 10:55:39
+ * @Last Modified time: 2018-10-14 10:42:32
  */
 import React, { Component } from 'react';
 
 import { Drawer, Icon, Input } from 'antd';
+import Loader from './PropertyLoader';
 
 import './css/PropertyBoard.css';
 
@@ -24,11 +25,11 @@ export default class PropertyBoard extends Component {
     }
 
 	loadPropertyDatas = () => {
-		fetch('../../../mock/propertyDatas.json')
-			.then(result => result.json())
-			.then(result => {
-				this.setState({ propertyDatas: result.data });
-			});
+		const { style } = this.props.dataSource;
+
+    	new Loader(style, propertyDatas => {
+    		this.setState({ propertyDatas });
+    	});
 	}
 
 	handleInput = (value, key) => {
@@ -48,7 +49,7 @@ export default class PropertyBoard extends Component {
     	);
 
     	const drawerProps = {
-    		visible: true,
+    		visible,
     		className: 'PropertyBoard',
     		onClose: () => onClose && onClose(!visible),
     		title: drawerTitle,
@@ -67,7 +68,7 @@ export default class PropertyBoard extends Component {
     								<li key={ `property-li-${ key }` }>
     									<div className='property-key'>{ text }：</div>
     									<div className='property-value'>
-    										<Input onChange={ e => this.handleInput(e.target.value, key) } />
+    										<Input onChange={ e => this.handleInput(e.target.value, key) } value={ value } />
     									</div>
     								</li>
     							);
