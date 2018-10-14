@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-12 11:09:17
+ * @Last Modified time: 2018-10-14 10:53:47
  */
 import React, { Component } from 'react';
 
@@ -12,7 +12,7 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
 import Shell from '../../component/Shell';
-import PropertyBoard from '../PropertyBoard';
+import PropertyBoardInstance from '../PropertyBoard';
 import Loader from './ModulesLoader';
 
 export default class Grid extends Component {
@@ -24,6 +24,7 @@ export default class Grid extends Component {
 			isDrawerOpen: false,
 			propertyBoardDataSource: {},
 			currentShellStyle: {},
+			PropertyBoard: null,
 		};
 
 		this.roots = [];
@@ -72,7 +73,7 @@ export default class Grid extends Component {
 		this.setState({ layout });
 	}
 
-	handleShellOnChange = layoutItem => {
+	handleShellOnDelete = layoutItem => {
 		const { i: key } = layoutItem;
 		const { layout } = this.state;
 
@@ -94,8 +95,14 @@ export default class Grid extends Component {
 		return <div style={{ height }} ref={ ref => this.roots.push({ [i]: ref }) } />;
 	}
 
+	handleShellonEdit = (isDrawerOpen, item) => {
+		import('../PropertyBoard').then(PropertyBoard => {
+			this.setState({ isDrawerOpen, propertyBoardDataSource: item, PropertyBoard: PropertyBoard.default });
+		});
+	}
+
     render = () => {
-    	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle } = this.state;
+    	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
     	const { isEdit = true } = this.props;
 
     	const layoutProps = {
@@ -132,8 +139,8 @@ export default class Grid extends Component {
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle, currentShellStyle),
     							title,
-    							onDelete: this.handleShellOnChange,
-    							onEdit: isDrawerOpen => this.setState({ isDrawerOpen, propertyBoardDataSource: item }),
+    							onDelete: this.handleShellOnDelete,
+    							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
     							isEdit,
     						};
 
@@ -146,7 +153,7 @@ export default class Grid extends Component {
     				}
     			</GridLayout>
 
-    			<PropertyBoard { ...propertyBoardProps } />
+    			{ PropertyBoard && <PropertyBoard { ...propertyBoardProps } /> }
     		</div>
     	);
     }
