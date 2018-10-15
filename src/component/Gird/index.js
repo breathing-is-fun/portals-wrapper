@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 10:17:41
+ * @Last Modified time: 2018-10-15 15:34:53
  */
 import React, { Component } from 'react';
 
@@ -12,7 +12,6 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
 import Shell from '../../component/Shell';
-import PropertyBoardInstance from '../PropertyBoard';
 import Loader from './ModulesLoader';
 
 export default class Grid extends Component {
@@ -50,7 +49,7 @@ export default class Grid extends Component {
 	}
 
     handleLayoutChange = layout => {
-    	// console.log(layout);
+    	console.log(layout);
     }
 
 	handleDragDrop = e => {
@@ -61,9 +60,7 @@ export default class Grid extends Component {
 		layout.push({
 			i: '' + key + layout.length,
 			x: (layout.length * 2) % 12,
-			y: Infinity,
-			w: 2,
-			h: 9,
+			y: Infinity, w: 2, h: 9,
 			type: 'iframe',
 			imgUrl: url,
 			title: text,
@@ -95,11 +92,8 @@ export default class Grid extends Component {
 		return <div style={{ height }} ref={ ref => this.roots.push({ [i]: ref }) } />;
 	}
 
-	handleShellonEdit = (isDrawerOpen, item) => {
-		import('../PropertyBoard').then(PropertyBoard => {
-			this.setState({ isDrawerOpen, propertyBoardDataSource: item, PropertyBoard: PropertyBoard.default });
-		});
-	}
+	handleShellonEdit = (isDrawerOpen, item) => import('../PropertyBoard')
+		.then(PropertyBoard => this.setState({ isDrawerOpen, propertyBoardDataSource: item, PropertyBoard: PropertyBoard.default }))
 
     render = () => {
     	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
@@ -107,31 +101,29 @@ export default class Grid extends Component {
 
     	const layoutProps = {
     		className: 'layout',
-    		// draggableHandle: '.layout',
     		cols: 12,
     		rowHeight: 30,
-    		width: (document.documentElement.clientWidth || document.body.clientWidth) - 256,
+    		width: (document.documentElement.clientWidth || document.body.clientWidth) - (isEdit ? 256 : 0),
     		margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
-    		compactType: 'horizontal',
+    		// compactType: 'horizontal',
+    		style: { height: '100%', background: '#f5f6fa' },
     	};
 
     	const propertyBoardProps = {
     		visible: isDrawerOpen,
     		onClose: isDrawerOpen => {
     			this.setState({ isDrawerOpen }, () => {
-    				// 关闭抽屉时销毁抽屉内元素，好在再次点击时执行componentDidMount中的方法
+    				// 关闭抽屉时销毁外壳中的元素，好在再次点击时执行componentDidMount中的方法
     				setTimeout(() => {
     					this.setState({ PropertyBoard: null });
     				}, 301);
     			});
     		},
     		dataSource: propertyBoardDataSource,
-    		onChange: currentShellStyle => {
-    			this.setState({ currentShellStyle });
-    		}
+    		onChange: currentShellStyle => this.setState({ currentShellStyle }),
     	};
 
     	return (
@@ -142,13 +134,11 @@ export default class Grid extends Component {
     						const { i: key, title, style: shellStyle = {} } = item;
 
     						const shellProps = {
-    							key,
+    							key, title, isEdit,
     							'data-grid': item,
-    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, shellStyle, currentShellStyle),
-    							title,
+    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, { boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle, currentShellStyle),
     							onDelete: this.handleShellOnDelete,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
-    							isEdit,
     						};
 
     						return (

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 10:07:14
+ * @Last Modified time: 2018-10-15 10:55:08
  */
 import React, { Component } from 'react';
 
@@ -19,7 +19,8 @@ export default class PropertyBoard extends Component {
 			propertyDatas: [],
 		};
 
-    	this.loader = new Loader();
+		this.loader = new Loader();
+		this.currentShellStyle = {};
 	}
 
     componentDidMount = () => {
@@ -30,14 +31,16 @@ export default class PropertyBoard extends Component {
 		if(visible) {
 			const { style } = this.props.dataSource;
 
-			this.loader.load(style, propertyDatas => {
-				this.setState({ propertyDatas });
-			});
+			this.loader.load(style, propertyDatas => this.setState({ propertyDatas }));
 		}
 	}
 
 	handleInput = (value, key) => {
-		console.log(value, key);
+		const { onChange } = this.props;
+
+		this.currentShellStyle[key] = value;
+
+		onChange && onChange(this.currentShellStyle);
 	}
 
     render = () => {
@@ -67,13 +70,13 @@ export default class PropertyBoard extends Component {
     				<ul className='property-wrapper'>
     					{
     						propertyDatas.map(item => {
-    							const { key, value, text } = item;
+    							const { key, text } = item;
 
     							return (
     								<li key={ `property-li-${ key }` }>
     									<div className='property-key'>{ text }：</div>
     									<div className='property-value'>
-    										<Input onChange={ e => this.handleInput(e.target.value, key) } value={ value } />
+    										<Input onBlur={ e => this.handleInput(e.target.value, key) } />
     									</div>
     								</li>
     							);

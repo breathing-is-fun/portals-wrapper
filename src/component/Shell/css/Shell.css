@@ -3,3 +3,13 @@
     padding: 5px;
     float: right;
 }
+
+.Shell .operation-title {
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 1px;
+    color: #171717;
+    padding-left: 10px;
+}

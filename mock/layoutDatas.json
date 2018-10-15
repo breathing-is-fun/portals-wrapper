@@ -1,48 +1,71 @@
 {
     "layout": [
         {
-            "i": "a",
+            "i": "dbzx",
             "x": 0,
             "y": 0,
-            "w": 1,
-            "h": 2,
-            "static": true,
-            "path": "../../../thirdModules/module_4/index.js",
-            "title": "title1",
-            "style": {
-                "border": "1px solid #F96"
-            }
+            "w": 4,
+            "h": 6,
+            "static": false,
+            "path": "../../../thirdModules/dbzx/index.js",
+            "title": "代办中心",
+            "style": {}
         },
         {
-            "i": "b",
-            "x": 1,
-            "y": 0,
-            "w": 3,
-            "h": 2,
-            "minW": 2,
-            "maxW": 4,
-            "path": "../../../thirdModules/module_5/index.js",
-            "title": "title2"
-        },
-        {
-            "i": "c",
+            "i": "zbzx",
             "x": 4,
             "y": 0,
-            "w": 1,
-            "h": 2,
-            "path": "../../../thirdModules/module_6/index.js",
-            "title": "title3"
+            "w": 4,
+            "h": 6,
+            "minW": 2,
+            "maxW": 4,
+            "path": "../../../thirdModules/zbzx/index.js",
+            "title": "在办中心"
         },
         {
-            "i": "d",
-            "x": 5,
+            "i": "tqyb",
+            "x": 8,
             "y": 0,
-            "w": 3,
-            "h": 13,
-            "path": "http://47.95.1.229:9003/MAIN/Main_NB.aspx",
-            "type": "iframe",
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/8d2d316c3beb795fc588062f347f78ce.jpg",
-            "title": "title4"
+            "w": 4,
+            "h": 5,
+            "path": "../../../thirdModules/tqyb/index.js",
+            "title": "天气预报"
+        },
+        {
+            "i": "bszx",
+            "x": 8,
+            "y": 5,
+            "w": 4,
+            "h": 5,
+            "path": "../../../thirdModules/bszx/index.js",
+            "title": "办事中心"
+        },
+        {
+            "i": "rcap",
+            "x": 8,
+            "y": 10,
+            "w": 4,
+            "h": 10,
+            "path": "../../../thirdModules/rcap/index.js",
+            "title": "日程安排"
+        },
+        {
+            "i": "sjkb",
+            "x": 0,
+            "y": 6,
+            "w": 8,
+            "h": 8,
+            "path": "../../../thirdModules/sjkb/index.js",
+            "title": "数据看板"
+        },
+        {
+            "i": "gxzx",
+            "x": 0,
+            "y": 14,
+            "w": 8,
+            "h": 8,
+            "path": "../../../thirdModules/gxzx/index.js",
+            "title": "共享中心"
         }
     ]
 }

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-11 15:56:48
+ * @Last Modified time: 2018-10-15 14:30:12
  */
 import React, { Component } from 'react';
 
@@ -78,9 +78,9 @@ export default class Shell extends Component {
     	);
 
     	const operateBoard = (
-    		<div style={{ background: '#ccc', height: 30 }}>
+    		<div style={{ height: 30, background: '#f5f6fa' }}>
     			{ isEdit && operateButton }
-    			<span>{ title }</span>
+    			<span className='operation-title'>{ title }</span>
     		</div>
     	);
 
