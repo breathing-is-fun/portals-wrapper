@@ -2,18 +2,19 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-08 14:55:29
+ * @Last Modified time: 2018-10-15 16:05:00
  */
 import React, { Component } from 'react';
 
 import Grid from '../../component/Gird';
+import Navigation from '../../component/Navigation';
 
 export default class Display extends Component {
     render = () => {
     	return (
-    		<div className='Display'>
+    		<Navigation>
     			<Grid isEdit={ false } />
-    		</div>
+    		</Navigation>
     	);
     }
 }

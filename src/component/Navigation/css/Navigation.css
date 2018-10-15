@@ -1,0 +1,50 @@
+.Navigation {
+    background-color: #2e7df3;
+    box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
+}
+
+.Navigation .content {
+    height: 65px;
+    background-color: #2e7df3;
+    box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
+}
+
+.Navigation .content .content-wrapper {
+    font-family: MicrosoftYaHeiLight;
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 1px;
+    color: #ffffff;
+    float: left;
+    height: 100%;
+    line-height: 65px;
+    text-align: center;
+}
+
+.Navigation .content .content-space {
+    width: 1px;
+    height: 100%;
+    background: #2372e7;
+    float: left;
+}
+
+.Navigation .content .content-time {
+    font-family: MicrosoftYaHeiLight;
+    font-size: 34px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0px;
+    color: #ffffff;
+}
+
+.Navigation .content .content-time-detail {
+    height: 24px;
+	font-family: MicrosoftYaHei;
+	font-size: 13px;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 33px;
+	letter-spacing: 0px;
+	color: #ffffff;
+}
