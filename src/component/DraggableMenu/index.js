@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-10 11:00:30
+ * @Last Modified time: 2018-10-15 17:32:17
  */
 import React, { Component } from 'react';
 
@@ -31,7 +31,9 @@ export default class DraggableMenu extends Component {
     }
 
 	loadMenuDatas = () => {
-		fetch('../../../mock/menuDatas.json')
+		const { type = 'component' } = this.props;
+
+		fetch(type == 'component' ? '../../../mock/menuDatas.json' : '../../../mock/departmentDatas.json')
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
@@ -90,6 +92,7 @@ export default class DraggableMenu extends Component {
 
     render = () => {
     	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle } = this.state;
+    	const { type = 'component' } = this.props;
 
     	const menuProps = {
     		// style: { width: 256 },
@@ -105,29 +108,34 @@ export default class DraggableMenu extends Component {
     		</span>
     	);
 
+    	const styleSubMenu = (
+    		<Menu>
+    			<SubMenu title={ styleSubTitle }>
+    				{
+    					shellStyleDatas.map((item, i) => {
+    						const { thumbnailColor, text, style } = item;
+
+    						return (
+    							<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(style) }>
+    								<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
+    								<span style={{ userSelect: 'none' }}>{ text }</span>
+    							</Menu.Item>
+    						);
+    					})
+    				}
+    			</SubMenu>
+    		</Menu>
+    	);
+
     	return (
     		<div className='DraggableMenu'>
-    			<Menu>
-    				<SubMenu title={ styleSubTitle }>
-    					{
-    						shellStyleDatas.map((item, i) => {
-    							const { thumbnailColor, text, style } = item;
-
-    							return (
-    								<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(style) }>
-    									<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
-    									<span style={{ userSelect: 'none' }}>{ text }</span>
-    								</Menu.Item>
-    							);
-    						})
-    					}
-    				</SubMenu>
-    			</Menu>
+    			{ type == 'component' && styleSubMenu }
 
     			<Menu { ...menuProps }>
     				{
     					menuDatas.map(item => {
     						const { groupName, children, group } = item;
+
     						const subMenuTitle = (
     							<span>
     								<Icon type='laptop' theme='outlined' />

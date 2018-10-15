@@ -1,0 +1,81 @@
+{
+    "data": [
+        {
+            "text": "厅长",
+            "group": "tz",
+            "groupName": "厅长",
+            "order": 1,
+            "key": "tz"
+        },
+        {
+            "text": "副厅长",
+            "group": "ftz",
+            "groupName": "副厅长",
+            "order": 2,
+            "key": "ftz"
+        },
+        {
+            "text": "主任",
+            "group": "bgs",
+            "groupName": "办公室",
+            "order": 3,
+            "key": "bgs1"
+        },
+        {
+            "text": "副主任",
+            "group": "bgs",
+            "groupName": "办公室",
+            "order": 4,
+            "key": "bgs2"
+        },
+        {
+            "text": "行政后勤",
+            "group": "bgs",
+            "groupName": "办公室",
+            "order": 5,
+            "key": "bgs3"
+        },
+        {
+            "text": "处长",
+            "group": "zcfgc",
+            "groupName": "政策法规处",
+            "order": 6,
+            "key": "bgs3"
+        },
+        {
+            "text": "副处长",
+            "group": "zcfgc",
+            "groupName": "政策法规处",
+            "order": 7,
+            "key": "bgs3"
+        },
+        {
+            "text": "处长",
+            "group": "ghjhc",
+            "groupName": "规划计划处",
+            "order": 8,
+            "key": "bgs3"
+        },
+        {
+            "text": "调研员",
+            "group": "ghjhc",
+            "groupName": "规划计划处",
+            "order": 9,
+            "key": "bgs3"
+        },
+        {
+            "text": "处长",
+            "group": "jsc",
+            "groupName": "建设处",
+            "order": 10,
+            "key": "bgs3"
+        },
+        {
+            "text": "调研员",
+            "group": "jsc",
+            "groupName": "建设处",
+            "order": 11,
+            "key": "bgs3"
+        }
+    ]
+}

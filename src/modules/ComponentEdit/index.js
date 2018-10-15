@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 16:05:06
+ * @Last Modified time: 2018-10-15 17:21:12
  */
 import React, { Component } from 'react';
 
@@ -14,7 +14,7 @@ import Navigation from '../../component/Navigation';
 import { Layout } from 'antd';
 const { Sider } = Layout;
 
-export default class Wrapper extends Component {
+export default class ComponentEdit extends Component {
 	render = () => {
 		return (
 			<Navigation>
