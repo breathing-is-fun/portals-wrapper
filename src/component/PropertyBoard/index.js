@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-14 10:42:32
+ * @Last Modified time: 2018-10-15 10:07:14
  */
 import React, { Component } from 'react';
 
@@ -18,18 +18,22 @@ export default class PropertyBoard extends Component {
 		this.state = {
 			propertyDatas: [],
 		};
+
+    	this.loader = new Loader();
 	}
 
     componentDidMount = () => {
-    	this.loadPropertyDatas();
+    	this.loadPropertyDatas(this.props.visible);
     }
 
-	loadPropertyDatas = () => {
-		const { style } = this.props.dataSource;
+	loadPropertyDatas = visible => {
+		if(visible) {
+			const { style } = this.props.dataSource;
 
-    	new Loader(style, propertyDatas => {
-    		this.setState({ propertyDatas });
-    	});
+			this.loader.load(style, propertyDatas => {
+				this.setState({ propertyDatas });
+			});
+		}
 	}
 
 	handleInput = (value, key) => {
@@ -38,7 +42,7 @@ export default class PropertyBoard extends Component {
 
     render = () => {
     	const { visible, onClose, dataSource } = this.props;
-    	const { style, title } = dataSource;
+    	const { title } = dataSource;
     	const { propertyDatas } = this.state;
 
     	const drawerTitle = (
@@ -54,6 +58,7 @@ export default class PropertyBoard extends Component {
     		onClose: () => onClose && onClose(!visible),
     		title: drawerTitle,
     		width: '20%',
+    		destroyOnClose: true,
     	};
 
     	return (

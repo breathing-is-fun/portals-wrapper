@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-14 10:53:47
+ * @Last Modified time: 2018-10-15 10:17:41
  */
 import React, { Component } from 'react';
 
@@ -120,7 +120,14 @@ export default class Grid extends Component {
 
     	const propertyBoardProps = {
     		visible: isDrawerOpen,
-    		onClose: isDrawerOpen => this.setState({ isDrawerOpen }),
+    		onClose: isDrawerOpen => {
+    			this.setState({ isDrawerOpen }, () => {
+    				// 关闭抽屉时销毁抽屉内元素，好在再次点击时执行componentDidMount中的方法
+    				setTimeout(() => {
+    					this.setState({ PropertyBoard: null });
+    				}, 301);
+    			});
+    		},
     		dataSource: propertyBoardDataSource,
     		onChange: currentShellStyle => {
     			this.setState({ currentShellStyle });

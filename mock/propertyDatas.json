@@ -3,17 +3,19 @@
         {
             "text": "标题",
             "key": "title",
-            "value": ""
+            "isStyle": false
         },
         {
             "text": "字体",
-            "key": "fontSize",
-            "value": "16px"
+            "key": "fontSize"
         },
         {
             "text": "背景颜色",
-            "key": "background",
-            "value": "#F96"
+            "key": "background"
+        },
+        {
+            "text": "边框",
+            "key": "border"
         }
     ]
 }
