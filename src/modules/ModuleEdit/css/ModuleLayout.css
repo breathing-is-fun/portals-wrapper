@@ -1,6 +1,11 @@
-.ModuleLayout .add-button {
-    width: 270px;
-    height: 175px;
-    background-color: #e0e6ee;
-    border-radius: 2px;
+.ModuleLayout .plus-icon {
+    line-height: 0.4;
+    font-size: 6em;
+    color: #bcc3cb;
+    height: 54px;
+}
+
+.ModuleLayout {
+    background: #f5f6fa;
+    height: 100%;
 }

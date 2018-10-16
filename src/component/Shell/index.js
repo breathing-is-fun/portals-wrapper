@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 14:30:12
+ * @Last Modified time: 2018-10-16 17:32:20
  */
 import React, { Component } from 'react';
 
@@ -67,20 +67,20 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit } = this.props;
+    	const { children, isEdit, isDelete, type, onClick } = this.props;
     	const { title } = this.state;
 
-    	const operateButton = (
-    		<div className='operate-button-group'>
-    			<Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete } />
-    			<Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />
-    		</div>
-    	);
+    	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />;
+    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete } />;
 
     	const operateBoard = (
     		<div style={{ height: 30, background: '#f5f6fa' }}>
-    			{ isEdit && operateButton }
-    			<span className='operation-title'>{ title }</span>
+    			<div className='operate-button-group'>
+    				{ isDelete && deleteButton }
+    				{ isEdit && editButton }
+    			</div>
+
+    			{ type != 'add' && <span className='operation-title'>{ title }</span> }
     		</div>
     	);
 
@@ -88,12 +88,13 @@ export default class Shell extends Component {
     	let newProps = Object.assign({}, this.props);
 
     	delete newProps.getDrawerStatus;
+    	delete newProps.isDelete;
     	delete newProps.onDelete;
     	delete newProps.onEdit;
     	delete newProps.isEdit;
 
     	return (
-    		<div { ...newProps } className='Shell'>
+    		<div { ...newProps } className='Shell' onClick={ e => type == 'add' && onClick && onClick(e) }>
     			{ operateBoard }
 
     			{ children }

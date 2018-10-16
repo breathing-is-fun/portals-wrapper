@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 17:01:34
+ * @Last Modified time: 2018-10-16 16:08:59
  */
 import React, { Component } from 'react';
 
@@ -97,7 +97,7 @@ export default class Grid extends Component {
 
     render = () => {
     	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
-    	const { isEdit = true } = this.props;
+    	const { isEdit = true, isDelete = true } = this.props;
 
     	const layoutProps = {
     		className: 'layout',
@@ -134,7 +134,7 @@ export default class Grid extends Component {
     						const { i: key, title, style: shellStyle = {} } = item;
 
     						const shellProps = {
-    							key, title, isEdit,
+    							key, title, isEdit, isDelete,
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, { boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle, currentShellStyle),
     							onDelete: this.handleShellOnDelete,
