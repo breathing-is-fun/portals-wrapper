@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 17:32:17
+ * @Last Modified time: 2018-10-16 10:10:36
  */
 import React, { Component } from 'react';
 
@@ -33,13 +33,14 @@ export default class DraggableMenu extends Component {
 	loadMenuDatas = () => {
 		const { type = 'component' } = this.props;
 
-		fetch(type == 'component' ? '../../../mock/menuDatas.json' : '../../../mock/departmentDatas.json')
+		fetch(`../../../mock/${ type == 'component' ? 'menuDatas' : 'departmentDatas' }.json`)
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
 				const menuDatas = this.handleMenuGroup(data);
+				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
 
-				this.setState({ menuDatas, openKeys: menuDatas.length != 0 ? [menuDatas[0].group] : [] });
+				this.setState({ menuDatas, openKeys: checkKey, selectedKeys: ['dragMenuItem' + checkKey[0]] });
 			});
 	}
 
@@ -80,10 +81,23 @@ export default class DraggableMenu extends Component {
 					children.push(jtem);
 				}
 			}
+
+			// if(childResult.children && childResult.children.length == 1) {
+			// 	delete childResult.children;
+			// }
+
 			result.push(childResult);
 		}
 
 		return result;
+	}
+
+	handleMenuClick = ({ item, key, keyPath }) => {
+		const { onClick } = this.props;
+
+		onClick && onClick(item, key, keyPath);
+
+		this.setState({ selectedKeys: [key] });
 	}
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
@@ -91,14 +105,15 @@ export default class DraggableMenu extends Component {
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
 
     render = () => {
-    	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle } = this.state;
     	const { type = 'component' } = this.props;
+    	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle, selectedKeys } = this.state;
 
     	const menuProps = {
     		// style: { width: 256 },
-    		openKeys,
+    		openKeys, selectedKeys,
     		mode: 'inline',
-    		onOpenChange: this.handleOnOpenChange
+    		onOpenChange: this.handleOnOpenChange,
+    		onClick: this.handleMenuClick,
     	};
 
     	const styleSubTitle = (
@@ -134,7 +149,7 @@ export default class DraggableMenu extends Component {
     			<Menu { ...menuProps }>
     				{
     					menuDatas.map(item => {
-    						const { groupName, children, group } = item;
+    						const { groupName, children = [], group } = item;
 
     						const subMenuTitle = (
     							<span>

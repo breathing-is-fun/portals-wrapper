@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 14:08:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-09 20:43:42
+ * @Last Modified time: 2018-10-16 10:04:50
  */
 import React, { Component } from 'react';
 
@@ -17,7 +17,7 @@ export default class DragMenuItem extends Component {
     	const { item } = this.props;
     	const { draggable = true, text, key, url } = item;
     	const propsParam = {
-    		key: `menuItem${ key }`,
+    		key,
     		draggable,
     		onDragStart: e => this.handleDragStart(e, item),
     	};

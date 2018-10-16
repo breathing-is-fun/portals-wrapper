@@ -40,42 +40,42 @@
             "group": "zcfgc",
             "groupName": "政策法规处",
             "order": 6,
-            "key": "bgs3"
+            "key": "zcfgc1"
         },
         {
             "text": "副处长",
             "group": "zcfgc",
             "groupName": "政策法规处",
             "order": 7,
-            "key": "bgs3"
+            "key": "zcfgc2"
         },
         {
             "text": "处长",
             "group": "ghjhc",
             "groupName": "规划计划处",
             "order": 8,
-            "key": "bgs3"
+            "key": "ghjhc1"
         },
         {
             "text": "调研员",
             "group": "ghjhc",
             "groupName": "规划计划处",
             "order": 9,
-            "key": "bgs3"
+            "key": "ghjhc2"
         },
         {
             "text": "处长",
             "group": "jsc",
             "groupName": "建设处",
             "order": 10,
-            "key": "bgs3"
+            "key": "jsc1"
         },
         {
             "text": "调研员",
             "group": "jsc",
             "groupName": "建设处",
             "order": 11,
-            "key": "bgs3"
+            "key": "jsc2"
         }
     ]
 }
