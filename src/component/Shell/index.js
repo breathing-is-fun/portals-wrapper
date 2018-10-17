@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-17 10:09:09
+ * @Last Modified time: 2018-10-17 10:18:26
  */
 import React, { Component } from 'react';
 
@@ -92,6 +92,7 @@ export default class Shell extends Component {
     	delete newProps.onDelete;
     	delete newProps.onEdit;
     	delete newProps.isEdit;
+    	delete newProps.title;
 
     	return (
     		<div { ...newProps } className={ `Shell${ type != 'component' ? ' border-transition' : '' }` } onClick={ e => type == 'add' && onClick && onClick(e) }>

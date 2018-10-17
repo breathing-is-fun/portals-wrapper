@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 17:05:51
+ * @Last Modified time: 2018-10-17 11:36:02
  */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -32,7 +32,7 @@ plugins.push(
 	])
 );
 
-plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
+// plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
 
 plugins.push(new TohoLogPlugin({ dev }));
 

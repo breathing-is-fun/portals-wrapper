@@ -54,7 +54,7 @@
             "x": 0,
             "y": 6,
             "w": 8,
-            "h": 8,
+            "h": 7,
             "path": "../../../thirdModules/sjkb/index.js",
             "title": "数据看板"
         },
@@ -63,7 +63,7 @@
             "x": 0,
             "y": 14,
             "w": 8,
-            "h": 8,
+            "h": 7,
             "path": "../../../thirdModules/gxzx/index.js",
             "title": "共享中心"
         }
