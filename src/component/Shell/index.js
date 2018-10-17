@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-16 17:32:20
+ * @Last Modified time: 2018-10-17 10:09:09
  */
 import React, { Component } from 'react';
 
@@ -67,7 +67,7 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit, isDelete, type, onClick } = this.props;
+    	const { children, isEdit, isDelete, type = 'component', onClick, style } = this.props;
     	const { title } = this.state;
 
     	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />;
@@ -94,7 +94,7 @@ export default class Shell extends Component {
     	delete newProps.isEdit;
 
     	return (
-    		<div { ...newProps } className='Shell' onClick={ e => type == 'add' && onClick && onClick(e) }>
+    		<div { ...newProps } className={ `Shell${ type != 'component' ? ' border-transition' : '' }` } onClick={ e => type == 'add' && onClick && onClick(e) }>
     			{ operateBoard }
 
     			{ children }

@@ -6,10 +6,26 @@
 
 .Shell .operation-title {
     font-family: MicrosoftYaHei;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
     letter-spacing: 1px;
     color: #171717;
     padding-left: 10px;
+}
+
+.Shell {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.Shell:hover {
+    transform: scale(1.05);
+}
+
+.border-transition:hover {
+    border: 1px dashed #1890ff;
+}
+
+.border-transition {
+    border: 1px dashed #d9d9d9;
 }
