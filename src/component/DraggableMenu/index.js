@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 14:53:32
+ * @Last Modified time: 2018-10-18 16:48:47
  */
 import React, { Component } from 'react';
 
@@ -128,8 +128,17 @@ export default class DraggableMenu extends Component {
     		</span>
     	);
 
+    	const backMenu = (
+    		<Menu.Item key='back'>
+    			<Icon type='arrow-left' theme='outlined' />
+    			<span>保存并返回</span>
+    		</Menu.Item>
+    	);
+
     	const styleSubMenu = (
     		<Menu>
+    			{ type == 'component' && backMenu }
+
     			<SubMenu title={ styleSubTitle }>
     				{
     					shellStyleDatas.map((item, i) => {

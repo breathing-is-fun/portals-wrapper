@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 12:20:04
+ * @Last Modified time: 2018-10-18 16:46:00
  */
 import React, { Component } from 'react';
 
@@ -18,19 +18,19 @@ const { Sider } = Layout;
 export default class ComponentEdit extends Component {
 	render = () => {
 		return (
-			<Navigation>
-				<Layout style={{ minHeight: '100vh' }}>
-					<Sider theme='light' width='256'>
-						<DraggableMenu />
-					</Sider>
+			// <Navigation type='componentEdit'>
+			<Layout style={{ minHeight: '100vh' }}>
+				<Sider theme='light' width='256'>
+					<DraggableMenu />
+				</Sider>
 
-					<Layout style={{ position: 'relative' }}>
-						<Ruler>
-							<Grid isEdit={ true } />
-						</Ruler>
-					</Layout>
+				<Layout style={{ position: 'relative' }}>
+					<Ruler>
+						<Grid isEdit={ true } />
+					</Ruler>
 				</Layout>
-			</Navigation>
+			</Layout>
+			// </Navigation>
 		);
 	}
 }
