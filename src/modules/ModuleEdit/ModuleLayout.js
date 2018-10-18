@@ -2,13 +2,14 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 15:55:04
+ * @Last Modified time: 2018-10-18 19:35:02
  */
 import React, { Component } from 'react';
 
 import { reject } from 'lodash';
 import { Modal } from 'antd';
 import Shell from '../../component/Shell';
+import PropertyForm from './PropertyForm';
 
 import './css/ModuleLayout.css';
 
@@ -19,6 +20,8 @@ export default class ModuleLayout extends Component {
 		this.state = {
 			modalVisible: false,
 		};
+
+		this.modalFormDatas = {}; // 套餐基础属性数据
 	}
 
 	handleOnAdd = e => {
@@ -32,6 +35,13 @@ export default class ModuleLayout extends Component {
 		onDelete && onDelete(reject(layout, { key }));
 	}
 
+	handleModalOnOk = e => {
+		this.setState({ modalVisible: false }, () => {
+			location.hash = '/edit/component';
+			window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: this.modalFormDatas }, status: 'pending' });
+		});
+	}
+
 	render = () => {
 		const { layout } = this.props;
 		const { modalVisible } = this.state;
@@ -43,7 +53,9 @@ export default class ModuleLayout extends Component {
 			visible: modalVisible,
 			onCancel: () => this.setState({ modalVisible: !modalVisible }),
 			cancelText: '取消',
+			destroyOnClose: true,
 			okText: '确定',
+			onOk: this.handleModalOnOk,
 		};
 
 		return (
@@ -73,7 +85,9 @@ export default class ModuleLayout extends Component {
 					<i className='plus-icon'>+</i>
 				</Shell>
 
-				<Modal { ...modalProps }></Modal>
+				<Modal { ...modalProps }>
+					<PropertyForm onChange={ item => this.modalFormDatas = item } />
+				</Modal>
 			</div>
 		);
 	}

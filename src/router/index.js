@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-06-12 09:43:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 16:14:51
+ * @Last Modified time: 2018-10-18 19:35:10
  */
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from 'react-router-dom';
@@ -12,8 +12,11 @@ import Bundle from '../../util/Bundle';
 // 不同路由间传递参数的对象，为防止不兼容，这里只保存非持久化数据
 window['_acrossDatas'] = {
 	moduleToComponent: { // 模块编辑页跳转到组件编辑页，后者需要的参数
-		title: '',
-		from: '',
+		status: 'init',
+		data: {
+			title: '',
+			thumbnailImgUrl: '',
+		},
 	},
 	isComponentSave: false, // 模块编辑页跳转到组件编辑页后，组件编辑保存后需要跳转模块编辑页，这是组件编辑是否完成的标识
 };
