@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-17 19:57:14
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 10:46:18
+ * @Last Modified time: 2018-10-18 12:21:03
  */
 import React, { Component } from 'react';
 
@@ -30,14 +30,20 @@ export default class Ruler extends Component {
 	}
 
     render = () => {
+    	const { children } = this.props;
+
     	return (
     		<div className='Ruler'>
     			<div className='wrapper'>
     				{ this.handleScale('horizontal') }
     			</div>
 
-    			<div className='wrapper' style={{ height: '100%' }}>
+    			<div className='wrapper'>
     				{ this.handleScale('vertical') }
+    			</div>
+
+    			<div style={{ padding: 20 }}>
+    				{ children }
     			</div>
     		</div>
     	);

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 17:21:12
+ * @Last Modified time: 2018-10-18 12:20:04
  */
 import React, { Component } from 'react';
 
@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import Grid from '../../component/Gird';
 import DraggableMenu from '../../component/DraggableMenu';
 import Navigation from '../../component/Navigation';
+import Ruler from '../../component/Ruler';
 
 import { Layout } from 'antd';
 const { Sider } = Layout;
@@ -23,8 +24,10 @@ export default class ComponentEdit extends Component {
 						<DraggableMenu />
 					</Sider>
 
-					<Layout>
-						<Grid isEdit={ true } />
+					<Layout style={{ position: 'relative' }}>
+						<Ruler>
+							<Grid isEdit={ true } />
+						</Ruler>
 					</Layout>
 				</Layout>
 			</Navigation>
