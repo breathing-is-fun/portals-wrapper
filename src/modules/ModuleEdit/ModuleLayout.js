@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-17 11:09:17
+ * @Last Modified time: 2018-10-18 14:45:23
  */
 import React, { Component } from 'react';
 
@@ -12,37 +12,19 @@ import Shell from '../../component/Shell';
 import './css/ModuleLayout.css';
 
 export default class ModuleLayout extends Component {
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			layout: [],
-		};
-	}
-
-	componentDidMount = () => {
-		this.loadLayoutDatas();
-	}
-
-	loadLayoutDatas = () => {
-		fetch('../../../mock/moduleLayoutDatas.json')
-			.then(result => result.json())
-			.then(result => this.setState({ layout: result.data }));
-	}
-
 	handleOnAdd = e => {
 		console.log(e);
 	}
 
 	handleShellOnDelete = dataGrid => {
 		const { key } = dataGrid;
-		const { layout } = this.state;
+		const { layout, onDelete } = this.props;
 
-		this.setState({ layout: reject(layout, { key }) });
+		onDelete && onDelete(reject(layout, { key }));
 	}
 
 	render = () => {
-		const { layout } = this.state;
+		const { layout } = this.props;
 
 		const shellStyle = { zIndex: 1, userSelect: 'none', width: '20%', height: 200, background: '#e0e6ee', borderRadius: 2, transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)', float: 'left', margin: 30 };
 

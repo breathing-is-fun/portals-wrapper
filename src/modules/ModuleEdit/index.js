@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-16 10:31:24
+ * @Last Modified time: 2018-10-18 14:53:16
  */
 import React, { Component } from 'react';
 
@@ -15,20 +15,41 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 
 export default class ModuleEdit extends Component {
-	handleMenuClick = (item, key, keyPath) => {
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			layout: [],
+		};
+	}
+
+	componentDidMount = () => {
 
 	}
 
+	handleMenuClick = (key) => this.loadLayoutDatas(key)
+
+	loadLayoutDatas = param => {
+		let url = '../../../mock/moduleLayoutDatas.json';
+
+		url += param ? `?depart=${ param }` : '';
+		fetch(url)
+			.then(result => result.json())
+			.then(result => this.setState({ layout: result.data }));
+	}
+
     render = () => {
+    	const { layout } = this.state;
+
     	return (
     		<Navigation>
     			<Layout style={{ minHeight: '100vh' }}>
     				<Sider theme='light' width='256'>
-    					<DraggableMenu type='module' onClick={ this.handleMenuClick } />
+    					<DraggableMenu type='module' onClick={ this.handleMenuClick } onLoad={ param => this.loadLayoutDatas(param) } />
     				</Sider>
 
     				<Layout>
-    					<ModuleLayout />
+    					<ModuleLayout layout={ layout } onDelete={ layout => this.setState({ layout }) } />
     				</Layout>
     			</Layout>
     		</Navigation>

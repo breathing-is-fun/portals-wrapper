@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-17 19:57:14
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 12:21:03
+ * @Last Modified time: 2018-10-18 12:23:35
  */
 import React, { Component } from 'react';
 
@@ -18,7 +18,7 @@ export default class Ruler extends Component {
 		}
 
 		// cm
-		for(let i = 0; i < 10;i ++) {
+		for(let i = 0; i < 10; i++) {
 			cm.push(
 				<div className={ `cm-${ type }` } key={ `cm-${ type }-${ i }` }>
 					{ mm }

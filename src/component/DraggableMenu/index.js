@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-16 10:10:36
+ * @Last Modified time: 2018-10-18 14:53:32
  */
 import React, { Component } from 'react';
 
@@ -22,6 +22,8 @@ export default class DraggableMenu extends Component {
 			shellStyleDatas: [],
 			currentShellStyle: {},
 		};
+
+		this.menuSelectPrefix = 'dragMenuItem';
 	}
 
     componentDidMount = () => {
@@ -37,10 +39,13 @@ export default class DraggableMenu extends Component {
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
+				const { onLoad } = this.props;
 				const menuDatas = this.handleMenuGroup(data);
 				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
 
-				this.setState({ menuDatas, openKeys: checkKey, selectedKeys: ['dragMenuItem' + checkKey[0]] });
+				onLoad && onLoad(checkKey);
+
+				this.setState({ menuDatas, openKeys: checkKey, selectedKeys: [this.menuSelectPrefix + checkKey[0]] });
 			});
 	}
 
@@ -95,7 +100,7 @@ export default class DraggableMenu extends Component {
 	handleMenuClick = ({ item, key, keyPath }) => {
 		const { onClick } = this.props;
 
-		onClick && onClick(item, key, keyPath);
+		onClick && onClick(key.split(this.menuSelectPrefix)[1]);
 
 		this.setState({ selectedKeys: [key] });
 	}
