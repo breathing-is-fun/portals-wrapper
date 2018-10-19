@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-19 09:28:30
+ * @Last Modified time: 2018-10-19 11:06:22
  */
 import React, { Component } from 'react';
 
@@ -141,6 +141,13 @@ export default class DraggableMenu extends Component {
     		</Menu.Item>
     	);
 
+    	const hrefToDisplay = (
+    		<Menu.Item key='back' onClick={ () => location.hash = '/display' }>
+    			<Icon type='arrow-right' theme='outlined' />
+    			<span>首页</span>
+    		</Menu.Item>
+    	);
+
     	const styleSubMenu = (
     		<Menu>
     			{ type == 'component' && backMenu }
@@ -167,6 +174,8 @@ export default class DraggableMenu extends Component {
     			{ type == 'component' && styleSubMenu }
 
     			<Menu { ...menuProps }>
+    				{ type == 'module' && hrefToDisplay }
+
     				{
     					menuDatas.map(item => {
     						const { groupName, children = [], group } = item;
