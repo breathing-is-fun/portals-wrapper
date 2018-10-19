@@ -1,0 +1,18 @@
+{
+    "data": [
+        {
+            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+            "title": "水资源专题",
+            "isDelete": true,
+            "isEdit": true,
+            "key": "fxkh"
+        },
+        {
+            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/thereIsAmap.png",
+            "title": "防汛抗旱专题",
+            "isDelete": false,
+            "isEdit": false,
+            "key": "szy"
+        }
+    ]
+}

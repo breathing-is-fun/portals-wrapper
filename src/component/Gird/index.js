@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-16 16:08:59
+ * @Last Modified time: 2018-10-18 20:10:54
  */
 import React, { Component } from 'react';
 
@@ -117,9 +117,7 @@ export default class Grid extends Component {
     		onClose: isDrawerOpen => {
     			this.setState({ isDrawerOpen }, () => {
     				// 关闭抽屉时销毁外壳中的元素，好在再次点击时执行componentDidMount中的方法
-    				setTimeout(() => {
-    					this.setState({ PropertyBoard: null });
-    				}, 301);
+    				setTimeout(() => this.setState({ PropertyBoard: null }), 301);
     			});
     		},
     		dataSource: propertyBoardDataSource,

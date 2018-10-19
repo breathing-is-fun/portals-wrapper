@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 16:38:28
+ * @Last Modified time: 2018-10-19 09:56:15
  */
 import React, { Component } from 'react';
 
@@ -40,14 +40,14 @@ export default class Navigation extends Component {
     	return (
     		<div className='Navigation'>
     			<div className='content'>
-    				<div className='content-wrapper' style={{ width: '15%' }}>浙江省水利综合门户</div>
+    				<div className='content-wrapper' style={{ width: 300 }}>浙江省水利综合门户</div>
 
     				{/* { space } */}
-    				<div className='content-wrapper' style={{ width: '15%' }}>
+    				<div className='content-wrapper' style={{ width: 300 }}>
     					<div className='content-time'>{ time }</div>
     				</div>
 
-    				<div className='content-wrapper' style={{ marginLeft: '-3.5%' }}>
+    				<div className='content-wrapper'>
     					<div className='content-time-detail'>{ moment().format('YYYY-MM-DD') }</div>
     					<div className='content-time-detail'>{ moment().format('dddd') }</div>
     				</div>

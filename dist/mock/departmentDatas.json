@@ -1,6 +1,13 @@
 {
     "data": [
         {
+            "text": "全部",
+            "group": "all",
+            "groupName": "全部",
+            "order": 0,
+            "key": "all"
+        },
+        {
             "text": "厅长",
             "group": "tz",
             "groupName": "厅长",

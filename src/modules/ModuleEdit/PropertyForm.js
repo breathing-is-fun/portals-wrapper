@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 19:59:46
+ * @Last Modified time: 2018-10-19 10:26:22
  */
 import React, { Component } from 'react';
 
@@ -19,8 +19,25 @@ class PropertyForm extends Component {
 	}
 
     componentDidMount = () => {
-
+    	this.setDefaultValueOfInput();
     }
+
+	setDefaultValueOfInput = () => {
+		const { form, currentModalItem } = this.props;
+    	const { setFields } = form;
+
+		// hack, need to filter the params of currentModalItem
+		setFields({
+			title: {
+				value: currentModalItem['title'],
+				error: null,
+			},
+			imgUrl: {
+				value: currentModalItem['imgUrl'],
+				error: null
+			}
+		});
+	}
 
     handleOnChange = e => {
     	const { onChange, form } = this.props;
@@ -61,7 +78,7 @@ class PropertyForm extends Component {
 
     				<FormItem { ...formItemLayout } label='缩略图地址'>
     					{
-    						getFieldDecorator('thumbnailImgUrl', {
+    						getFieldDecorator('imgUrl', {
     							rules: [{ required: true, message: '请输入像url的地址，比如http://www.github.com', type: 'url' }],
     						})(<Input onBlur={ this.handleOnChange } />)
     					}
