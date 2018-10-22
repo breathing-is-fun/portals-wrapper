@@ -48,3 +48,13 @@
 	letter-spacing: 0px;
 	color: #ffffff;
 }
+
+.Navigation .content .content-wrapper .droplink{
+    color: #FFF;
+    background-color: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-transition: color .3s;
+    transition: color .3s;
+}
