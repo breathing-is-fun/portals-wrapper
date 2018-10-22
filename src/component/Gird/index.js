@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-22 10:52:14
+ * @Last Modified time: 2018-10-22 14:01:53
  */
 import React, { Component } from 'react';
 
@@ -19,6 +19,7 @@ export default class Grid extends Component {
 		super(props);
 
 		this.state = {
+			layout: [],
 			isDrawerOpen: false,
 			propertyBoardDataSource: {},
 			currentShellStyle: {},
@@ -29,15 +30,22 @@ export default class Grid extends Component {
 	}
 
     componentDidMount = () => {
+    	this.loadLayout(() => {
+    		const { layout } = this.state;
+    		const loader = new Loader(layout, this.roots);
 
+    		loader.load();
+    	});
     }
 
-	mountRoots = () => {
-		console.table(this.roots);
-		const { layout } = this.props;
-    	const loader = new Loader(layout, this.roots);
+	loadLayout = callback => {
+		fetch('../../../mock/layoutDatas.json')
+			.then(result => result.json())
+			.then(result => {
+				const { layout } = result;
 
-    	loader.load();
+				this.setState({ layout }, () => callback && callback());
+			});
 	}
 
     handleLayoutChange = layout => {
@@ -88,8 +96,8 @@ export default class Grid extends Component {
 		.then(PropertyBoard => this.setState({ isDrawerOpen, propertyBoardDataSource: item, PropertyBoard: PropertyBoard.default }))
 
     render = () => {
-    	const { isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
-    	const { isEdit = true, isDelete = true, layout } = this.props;
+    	const { layout, isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
+    	const { isEdit = true, isDelete = true } = this.props;
 
     	const layoutProps = {
     		className: 'layout',
@@ -115,8 +123,6 @@ export default class Grid extends Component {
     		dataSource: propertyBoardDataSource,
     		onChange: currentShellStyle => this.setState({ currentShellStyle }),
     	};
-
-    	layout.length != 0 && this.mountRoots();
 
     	return (
     		<div className='Grid' onDrop={ this.handleDragDrop } onDragOver={ e => e.preventDefault() }>

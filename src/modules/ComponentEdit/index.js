@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-22 10:05:19
+ * @Last Modified time: 2018-10-22 14:01:27
  */
 import React, { Component } from 'react';
 
@@ -16,31 +16,7 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 
 export default class ComponentEdit extends Component {
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			layout: [],
-		};
-	}
-
-    componentDidMount = () => {
-    	this.loadLayout();
-    }
-
-	loadLayout = () => {
-		fetch('../../../mock/layoutDatas.json')
-			.then(result => result.json())
-			.then(result => {
-				const { layout } = result;
-
-				this.setState({ layout });
-			});
-	}
-
 	render = () => {
-		const { layout } = this.state;
-
 		return (
 			// <Navigation type='componentEdit'>
 			<Layout style={{ minHeight: '100vh' }}>
@@ -50,7 +26,7 @@ export default class ComponentEdit extends Component {
 
 				<Layout style={{ position: 'relative' }}>
 					<Ruler>
-						<Grid isEdit={ true } isDelete={ true } layout={ layout } />
+						<Grid isEdit={ true } />
 					</Ruler>
 				</Layout>
 			</Layout>

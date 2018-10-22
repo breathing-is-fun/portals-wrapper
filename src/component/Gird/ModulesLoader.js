@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-22 10:48:43
+ * @Last Modified time: 2018-10-22 11:28:04
  */
 export default class ModulesLoader {
 	constructor (layout, roots) {
@@ -30,6 +30,7 @@ export default class ModulesLoader {
     		for (let i = 0; i < modules.length; i++) {
     			const { TestModule } = modules[i];
     			const { i: key } = this.layout[i];
+
     			const testModule = new TestModule(this.roots[i][key]);
     			const { _moduleOnMount } = testModule;
 

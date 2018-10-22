@@ -8,81 +8,74 @@
             "key": "all"
         },
         {
-            "text": "厅长",
+            "text": "马林云",
             "group": "tz",
             "groupName": "厅长",
             "order": 1,
             "key": "tz"
         },
         {
-            "text": "副厅长",
+            "text": "徐国平",
             "group": "ftz",
             "groupName": "副厅长",
             "order": 2,
-            "key": "ftz"
+            "key": "ftz1"
         },
         {
-            "text": "主任",
-            "group": "bgs",
-            "groupName": "办公室",
+            "text": "冯强",
+            "group": "ftz",
+            "groupName": "副厅长",
+            "order": 2,
+            "key": "ftz2"
+        },
+        {
+            "text": "处长",
+            "group": "szyysbc",
+            "groupName": "水资源与水保处",
             "order": 3,
             "key": "bgs1"
         },
         {
-            "text": "副主任",
-            "group": "bgs",
-            "groupName": "办公室",
+            "text": "副处长",
+            "group": "szyysbc",
+            "groupName": "水资源与水保处",
             "order": 4,
             "key": "bgs2"
         },
         {
-            "text": "行政后勤",
-            "group": "bgs",
-            "groupName": "办公室",
+            "text": "处长",
+            "group": "jgc",
+            "groupName": "建管处",
             "order": 5,
             "key": "bgs3"
         },
         {
-            "text": "处长",
-            "group": "zcfgc",
-            "groupName": "政策法规处",
+            "text": "调研员",
+            "group": "jgc",
+            "groupName": "建管处",
             "order": 6,
             "key": "zcfgc1"
         },
         {
             "text": "副处长",
-            "group": "zcfgc",
-            "groupName": "政策法规处",
+            "group": "jgc",
+            "groupName": "建管处",
             "order": 7,
             "key": "zcfgc2"
         },
         {
             "text": "处长",
-            "group": "ghjhc",
-            "groupName": "规划计划处",
+            "group": "szc",
+            "groupName": "水政处",
             "order": 8,
             "key": "ghjhc1"
         },
         {
             "text": "调研员",
-            "group": "ghjhc",
-            "groupName": "规划计划处",
+            "group": "szc",
+            "groupName": "水政处",
             "order": 9,
             "key": "ghjhc2"
-        },
-        {
-            "text": "处长",
-            "group": "jsc",
-            "groupName": "建设处",
-            "order": 10,
-            "key": "jsc1"
-        },
-        {
-            "text": "调研员",
-            "group": "jsc",
-            "groupName": "建设处",
-            "order": 11,
-            "key": "jsc2"
         }
     ]
 }
