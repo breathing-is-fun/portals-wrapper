@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-22 11:28:04
+ * @Last Modified time: 2018-10-23 17:02:30
  */
 export default class ModulesLoader {
 	constructor (layout, roots) {
@@ -11,13 +11,18 @@ export default class ModulesLoader {
 	}
 
 	load = () => {
-		let pathArr = [];
+		let pathArr = [], newLayout = [];
 
 		for (let item of this.layout) {
 			const { path, type } = item;
 
-			type != 'iframe' && pathArr.push(`import('${ path }')`);
+			if(type != 'iframe') {
+				pathArr.push(`import('${ path }')`);
+				newLayout.push(item);
+			}
 		}
+
+		this.layout = newLayout;
 		pathArr = `[${ pathArr.toString() }]`;
 
 		this.loadScripts(pathArr);
@@ -31,7 +36,7 @@ export default class ModulesLoader {
     			const { TestModule } = modules[i];
     			const { i: key } = this.layout[i];
 
-    			const testModule = new TestModule(this.roots[i][key]);
+    			const testModule = new TestModule(this.roots[key]);
     			const { _moduleOnMount } = testModule;
 
     			_moduleOnMount && _moduleOnMount.call(testModule);

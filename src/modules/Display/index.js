@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-23 11:01:38
+ * @Last Modified time: 2018-10-23 15:44:39
  */
 import React, { Component } from 'react';
 
@@ -46,17 +46,11 @@ export default class Display extends Component {
 			});
 	}
 
-	handleMenuItemClick = item => {
-		const { url } = item;
-
-		this.loadLayout(url);
-	}
-
     render = () => {
     	const { layout, menuDatas } = this.state;
 
     	return (
-    		<Navigation mentItemOnClick={ this.handleMenuItemClick } menu={ menuDatas }>
+    		<Navigation mentItemOnClick={ ({ url }) => this.loadLayout(url) } menu={ menuDatas }>
     			<Grid isEdit={ false } isDelete={ false } layout={ layout } />
     		</Navigation>
     	);

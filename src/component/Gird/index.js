@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-23 10:49:47
+ * @Last Modified time: 2018-10-23 17:06:43
  */
 import React, { Component } from 'react';
 
@@ -25,7 +25,7 @@ export default class Grid extends Component {
 			PropertyBoard: null,
 		};
 
-		this.roots = [];
+		this.roots = {};
 	}
 
     componentDidMount = () => {
@@ -81,7 +81,7 @@ export default class Grid extends Component {
 			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>;
 		}
 
-		return <div style={{ height }} ref={ ref => ref && this.roots.push({ [i]: ref }) } />;
+		return <div style={{ height }} ref={ ref => ref && (this.roots[i] = ref) } />;
 	}
 
 	handleShellonEdit = (isDrawerOpen, item) => import('../PropertyBoard')
