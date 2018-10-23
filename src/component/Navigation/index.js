@@ -2,11 +2,13 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-22 10:13:43
+ * @Last Modified time: 2018-10-23 11:02:03
  */
 import React, { Component } from 'react';
 
 import { Menu, Dropdown, Icon } from 'antd';
+
+import CurrentTime from './CurrentTime';
 
 import moment from 'moment';
 moment.locale('zh-cn');
@@ -23,7 +25,7 @@ export default class Navigation extends Component {
 	}
 
     componentDidMount = () => {
-    	this.getCurrentTime();
+    	// this.getCurrentTime();
     }
 
     getCurrentTime = () => {
@@ -43,7 +45,7 @@ export default class Navigation extends Component {
     		<Menu>
     			{
     				menu.map(item => {
-    					const { text, url, key } = item;
+    					const { text, key } = item;
 
     					return (
     						<Menu.Item key={ key }>
@@ -62,7 +64,9 @@ export default class Navigation extends Component {
 
     				{/* { space } */}
     				<div className='content-wrapper' style={{ width: 300 }}>
-    					<div className='content-time'>{ time }</div>
+    					<div className='content-time'>
+    						<CurrentTime />
+    					</div>
     				</div>
 
     				<div className='content-wrapper'>
