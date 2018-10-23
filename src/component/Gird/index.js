@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-23 17:06:43
+ * @Last Modified time: 2018-10-23 18:40:56
  */
 import React, { Component } from 'react';
 
@@ -45,7 +45,7 @@ export default class Grid extends Component {
     }
 
 	handleDragDrop = e => {
-		let { layout } = this.state;
+		let { layout } = this.props;
 		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
 		const { key, url, text, style } = item;
 
@@ -59,7 +59,7 @@ export default class Grid extends Component {
 			style
 		});
 
-		this.setState({ layout });
+		this.setState({});
 	}
 
 	handleShellOnDelete = layoutItem => {
