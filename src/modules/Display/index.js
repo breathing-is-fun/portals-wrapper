@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-23 15:44:39
+ * @Last Modified time: 2018-10-24 16:31:04
  */
 import React, { Component } from 'react';
 
@@ -50,7 +50,7 @@ export default class Display extends Component {
     	const { layout, menuDatas } = this.state;
 
     	return (
-    		<Navigation mentItemOnClick={ ({ url }) => this.loadLayout(url) } menu={ menuDatas }>
+    		<Navigation menuItemOnClick={ ({ url }) => this.loadLayout(url) } menu={ menuDatas } clock>
     			<Grid isEdit={ false } isDelete={ false } layout={ layout } />
     		</Navigation>
     	);
