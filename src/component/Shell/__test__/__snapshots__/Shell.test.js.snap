@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shell button group render correctly 1`] = `
+<div
+  className="Shell"
+  data-grid={
+    Object {
+      "h": 6,
+      "i": "dbzx",
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+      "path": "../../../thirdModules/dbzx/index.js",
+      "static": false,
+      "style": Object {},
+      "title": "testTitle",
+      "w": 4,
+      "x": 0,
+      "y": 0,
+    }
+  }
+  onClick={[Function]}
+  style={
+    Object {
+      "background": "#F96",
+      "zIndex": 1,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "#f5f6fa",
+        "height": 30,
+      }
+    }
+  >
+    <div
+      className="operate-button-group"
+    >
+      <Icon
+        className="operation"
+        onMouseDown={[Function]}
+        theme="outlined"
+        type="delete"
+      />
+      <Icon
+        className="operation"
+        onMouseDown={[Function]}
+        theme="outlined"
+        type="edit"
+      />
+    </div>
+    <span
+      className="operation-title"
+    >
+      testTitle
+    </span>
+  </div>
+  test
+</div>
+`;
+
+exports[`Shell render correctly 1`] = `
+<div
+  className="Shell"
+  data-grid={
+    Object {
+      "h": 6,
+      "i": "dbzx",
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+      "path": "../../../thirdModules/dbzx/index.js",
+      "static": false,
+      "style": Object {},
+      "title": "testTitle",
+      "w": 4,
+      "x": 0,
+      "y": 0,
+    }
+  }
+  onClick={[Function]}
+  style={
+    Object {
+      "background": "#F96",
+      "zIndex": 1,
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "background": "#f5f6fa",
+        "height": 30,
+      }
+    }
+  >
+    <div
+      className="operate-button-group"
+    >
+      <Icon
+        className="operation"
+        onMouseDown={[Function]}
+        theme="outlined"
+        type="delete"
+      />
+      <Icon
+        className="operation"
+        onMouseDown={[Function]}
+        theme="outlined"
+        type="edit"
+      />
+    </div>
+    <span
+      className="operation-title"
+    >
+      testTitle
+    </span>
+  </div>
+  test
+</div>
+`;
