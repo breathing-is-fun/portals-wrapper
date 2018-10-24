@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-23 17:02:30
+ * @Last Modified time: 2018-10-24 10:51:52
  */
 export default class ModulesLoader {
 	constructor (layout, roots) {
@@ -33,13 +33,13 @@ export default class ModulesLoader {
     	/* eslint-disable no-eval */
     	Promise.all(eval(`${ pathArr }`)).then(modules => {
     		for (let i = 0; i < modules.length; i++) {
-    			const { TestModule } = modules[i];
+    			const [moduleName] = Object.keys(modules[i]);
     			const { i: key } = this.layout[i];
 
-    			const testModule = new TestModule(this.roots[key]);
-    			const { _moduleOnMount } = testModule;
+    			const loadedModule = new modules[i][moduleName](this.roots[key]);
+    			const { _moduleOnMount } = loadedModule;
 
-    			_moduleOnMount && _moduleOnMount.call(testModule);
+    			_moduleOnMount && _moduleOnMount.call(loadedModule);
     		}
     	});
     }
