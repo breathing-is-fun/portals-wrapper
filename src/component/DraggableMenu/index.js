@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-19 11:06:22
+ * @Last Modified time: 2018-10-25 14:16:43
  */
 import React, { Component } from 'react';
 
@@ -17,9 +17,10 @@ export default class DraggableMenu extends Component {
 		super(props);
 
 		this.state = {
-			menuDatas: [],
-			openKeys: [],
-			shellStyleDatas: [],
+			// menuDatas: [],
+			// openKeys: [],
+			// selectedKeys: [],
+			// shellStyleDatas: [],
 			currentShellStyle: {},
 		};
 
@@ -27,82 +28,13 @@ export default class DraggableMenu extends Component {
 	}
 
     componentDidMount = () => {
-    	this.loadMenuDatas();
 
-    	this.loadShellStyleDatas();
     }
-
-	loadMenuDatas = () => {
-		const { type = 'component' } = this.props;
-
-		fetch(`../../../mock/${ type == 'component' ? 'menuDatas' : 'departmentDatas' }.json`)
-			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
-				const { onLoad } = this.props;
-				const menuDatas = this.handleMenuGroup(data);
-				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
-
-				onLoad && onLoad(checkKey);
-
-				this.setState({ menuDatas, openKeys: checkKey, selectedKeys: [this.menuSelectPrefix + checkKey[0]] });
-			});
-	}
-
-	loadShellStyleDatas = () => {
-		fetch('../../../mock/shellStyleDatas.json')
-			.then(result => result.json())
-			.then(result => {
-				if(result.data.length != 0)
-					this.setState({ shellStyleDatas: result.data, currentShellStyle: result.data[0].style });
-			});
-	}
-
-	handleMenuGroup = dataSource => {
-		let result = [], groupDatas = [], tempGroupDatas = [];
-
-		// 分出有哪几组及组别名称
-		for(let item of dataSource) {
-			const { group, groupName } = item;
-
-			tempGroupDatas.push(JSON.stringify({ group, groupName }));
-		}
-		tempGroupDatas = Array.from(new Set(tempGroupDatas));
-
-		for(let item of tempGroupDatas) {
-			groupDatas.push(JSON.parse(item));
-		}
-
-		// 凑菜单数据结构，[{ groupName: '', children: [{ text: '', url: '' }] }]
-		for(let item of groupDatas) {
-			const { group, groupName } = item;
-			let childResult = { groupName, group, children: [] };
-
-			for(let jtem of dataSource) {
-				const { group: groupChild } = jtem;
-				const { children } = childResult;
-
-				if(groupChild == group) {
-					children.push(jtem);
-				}
-			}
-
-			// if(childResult.children && childResult.children.length == 1) {
-			// 	delete childResult.children;
-			// }
-
-			result.push(childResult);
-		}
-
-		return result;
-	}
 
 	handleMenuClick = ({ item, key, keyPath }) => {
 		const { onClick } = this.props;
 
-		onClick && onClick(key.split(this.menuSelectPrefix)[1]);
-
-		this.setState({ selectedKeys: [key] });
+		onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
 	}
 
 	handleOnBack = item => {
@@ -111,19 +43,18 @@ export default class DraggableMenu extends Component {
 		window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
 	}
 
-	handleOnOpenChange = openKeys => this.setState({ openKeys });
-
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
 
     render = () => {
-    	const { type = 'component' } = this.props;
-    	const { menuDatas, openKeys, shellStyleDatas, currentShellStyle, selectedKeys } = this.state;
+    	const { type = 'component', shellStyleDatas = [], menuDatas = [], openKeys, selectedKeys, onClick, onOpenChange } = this.props;
+    	const { currentShellStyle } = this.state;
 
     	const menuProps = {
     		// style: { width: 256 },
-    		openKeys, selectedKeys,
+    		openKeys,
+    		selectedKeys: [this.menuSelectPrefix + selectedKeys[0]],
     		mode: 'inline',
-    		onOpenChange: this.handleOnOpenChange,
+    		onOpenChange,
     		onClick: this.handleMenuClick,
     	};
 
@@ -134,23 +65,19 @@ export default class DraggableMenu extends Component {
     		</span>
     	);
 
-    	const backMenu = (
-    		<Menu.Item key='back' onClick={ this.handleOnBack }>
-    			<Icon type='arrow-left' theme='outlined' />
-    			<span>保存并返回</span>
-    		</Menu.Item>
-    	);
-
     	const hrefToDisplay = (
     		<Menu.Item key='back' onClick={ () => location.hash = '/display' }>
-    			<Icon type='arrow-right' theme='outlined' />
+    			<Icon type='arrow-left' theme='outlined' />
     			<span>首页</span>
     		</Menu.Item>
     	);
 
     	const styleSubMenu = (
     		<Menu>
-    			{ type == 'component' && backMenu }
+    			<Menu.Item key='back' onClick={ this.handleOnBack }>
+    				<Icon type='arrow-left' theme='outlined' />
+    				<span>保存并返回</span>
+    			</Menu.Item>
 
     			<SubMenu title={ styleSubTitle }>
     				{
