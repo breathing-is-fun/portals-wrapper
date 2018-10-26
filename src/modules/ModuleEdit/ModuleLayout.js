@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 10:42:36
+ * @Last Modified time: 2018-10-26 09:55:10
  */
 import React, { Component } from 'react';
 
@@ -23,10 +23,6 @@ export default class ModuleLayout extends Component {
 		};
 
 		this.modalFormDatas = {}; // 套餐基础属性数据
-	}
-
-	handleOnAdd = e => {
-		this.setState({ modalVisible: true });
 	}
 
 	handleShellOnDelete = dataGrid => {
@@ -87,7 +83,7 @@ export default class ModuleLayout extends Component {
 					})
 				}
 
-				<Shell key='add' style={ Object.assign({}, shellStyle, { display: 'flex', alignItems: 'center', justifyContent: 'center' }) } type='add' onClick={ this.handleOnAdd }>
+				<Shell key='add' style={ Object.assign({}, shellStyle, { display: 'flex', alignItems: 'center', justifyContent: 'center' }) } type='add' onClick={ () => this.handleShellonEdit(true, {}) }>
 					<i className='plus-icon'>+</i>
 				</Shell>
 
