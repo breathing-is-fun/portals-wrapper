@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-26 09:55:10
+ * @Last Modified time: 2018-10-26 11:46:24
  */
 import React, { Component } from 'react';
 
@@ -21,8 +21,6 @@ export default class ModuleLayout extends Component {
 			modalVisible: false,
 			currentModalItem: {},
 		};
-
-		this.modalFormDatas = {}; // 套餐基础属性数据
 	}
 
 	handleShellOnDelete = dataGrid => {
@@ -30,14 +28,6 @@ export default class ModuleLayout extends Component {
 		const { layout, onDelete } = this.props;
 
 		onDelete && onDelete(reject(layout, { key }));
-	}
-
-	handleModalOnOk = e => {
-		this.setState({ modalVisible: false }, () => {
-			location.hash = '/edit/component';
-
-			window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: this.modalFormDatas }, status: 'pending' });
-		});
 	}
 
 	handleShellonEdit = (modalVisible, currentModalItem) => {
@@ -54,10 +44,8 @@ export default class ModuleLayout extends Component {
 			title: '套餐设置',
 			visible: modalVisible,
 			onCancel: () => this.setState({ modalVisible: !modalVisible }),
-			cancelText: '取消',
 			destroyOnClose: true,
-			okText: '确定',
-			onOk: this.handleModalOnOk,
+			footer: null,
 		};
 
 		return (
@@ -88,7 +76,7 @@ export default class ModuleLayout extends Component {
 				</Shell>
 
 				<Modal { ...modalProps }>
-					<PropertyForm onChange={ item => this.modalFormDatas = item } currentModalItem={ currentModalItem } />
+					<PropertyForm currentModalItem={ currentModalItem } />
 				</Modal>
 			</div>
 		);

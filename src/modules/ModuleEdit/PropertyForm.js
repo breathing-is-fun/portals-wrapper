@@ -2,11 +2,11 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-26 09:54:00
+ * @Last Modified time: 2018-10-26 11:45:21
  */
 import React, { Component } from 'react';
 
-import { Form, Input } from 'antd';
+import { Form, Input, Button, Col, Row } from 'antd';
 const FormItem = Form.Item;
 
 class PropertyForm extends Component {
@@ -39,20 +39,25 @@ class PropertyForm extends Component {
 		});
 	}
 
-    handleOnChange = e => {
-    	const { onChange, form } = this.props;
+	handleSubmit = e => {
+		e.preventDefault();
 
-    	e.preventDefault();
-    	form.validateFieldsAndScroll((err, values) => {
-    		if(!err) {
-    			onChange && onChange(values);
-    		}
-    	});
-    }
+		this.props.form.validateFields((err, values) => {
+			if (!err) {
+				location.hash = '/edit/component';
+
+				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
+			}
+		});
+	}
+
+	hasErrors = fieldsError => {
+		return Object.keys(fieldsError).some(field => fieldsError[field]);
+	}
 
     render = () => {
     	const { form } = this.props;
-    	const { getFieldDecorator } = form;
+    	const { getFieldDecorator, getFieldsError, resetFields } = form;
 
     	const formItemLayout = {
     		labelCol: {
@@ -67,12 +72,12 @@ class PropertyForm extends Component {
 
     	return (
     		<div className='PropertyForm'>
-    			<Form onSubmit={ this.handleSubmit }>
+    			<Form>
     				<FormItem { ...formItemLayout } label='标题'>
     					{
     						getFieldDecorator('title', {
     							rules: [{ required: true, message: '请输入标题' }],
-    						})(<Input onBlur={ this.handleOnChange } />)
+    						})(<Input />)
     					}
     				</FormItem>
 
@@ -80,8 +85,17 @@ class PropertyForm extends Component {
     					{
     						getFieldDecorator('imgUrl', {
     							rules: [{ required: true, message: '请输入像url的地址，比如http://www.github.com', type: 'url' }],
-    						})(<Input onBlur={ this.handleOnChange } />)
+    						})(<Input />)
     					}
+    				</FormItem>
+
+    				<FormItem>
+    					<Row>
+    						<Col span={ 22 } style={{ textAlign: 'right' }}>
+    							<Button onClick={ () => resetFields() }>重置</Button>
+    							<Button type='primary' style={{ marginLeft: 8 }} disabled={ this.hasErrors(getFieldsError()) } onClick={ this.handleSubmit }>确定</Button>
+    						</Col>
+    					</Row>
     				</FormItem>
     			</Form>
     		</div>
