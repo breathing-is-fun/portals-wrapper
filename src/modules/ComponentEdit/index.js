@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 15:20:53
+ * @Last Modified time: 2018-10-29 10:01:01
  */
 import React, { Component } from 'react';
 
@@ -12,6 +12,7 @@ import DraggableMenu from '../../component/DraggableMenu';
 // import Navigation from '../../component/Navigation';
 import Ruler from '../../component/Ruler';
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
+import { reject } from 'lodash';
 
 import { Layout } from 'antd';
 const { Sider } = Layout;
@@ -70,6 +71,20 @@ export default class ComponentEdit extends Component {
 			});
 	}
 
+	handleOnSave = () => {
+		console.log(this.state.layout);
+		location.hash = '/edit/module';
+
+		window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
+	}
+
+	handleOnDelete = layoutItem => {
+		const { i: key } = layoutItem;
+		const { layout } = this.state;
+
+		this.setState({ layout: reject(layout, { i: key }) });
+	}
+
 	render = () => {
 		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas } = this.state;
 
@@ -78,6 +93,7 @@ export default class ComponentEdit extends Component {
     		onClick: this.handleMenuClick,
 			onOpenChange: this.handleOnOpenChange,
 			shellStyleDatas,
+			onSave: this.handleOnSave,
     	};
 
 		return (
@@ -89,7 +105,7 @@ export default class ComponentEdit extends Component {
 
 				<Layout style={{ position: 'relative' }}>
 					<Ruler>
-						<Grid isEdit={ true } isDelete={ true } layout={ layout } />
+						<Grid isEdit={ true } isDelete={ true } layout={ layout } onDelete={ this.handleOnDelete } />
 					</Ruler>
 				</Layout>
 			</Layout>

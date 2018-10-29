@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-17 10:18:26
+ * @Last Modified time: 2018-10-29 09:57:43
  */
 import React, { Component } from 'react';
 
@@ -67,11 +67,11 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit, isDelete, type = 'component', onClick, style } = this.props;
+    	const { children, isEdit, isDelete, type = 'component', onClick } = this.props;
     	const { title } = this.state;
 
     	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />;
-    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete } />;
+    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } />;
 
     	const operateBoard = (
     		<div style={{ height: 30, background: '#f5f6fa' }}>

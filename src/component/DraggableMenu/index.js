@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 14:16:43
+ * @Last Modified time: 2018-10-29 09:32:26
  */
 import React, { Component } from 'react';
 
@@ -37,16 +37,10 @@ export default class DraggableMenu extends Component {
 		onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
 	}
 
-	handleOnBack = item => {
-		location.hash = '/edit/module';
-
-		window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
-	}
-
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
 
     render = () => {
-    	const { type = 'component', shellStyleDatas = [], menuDatas = [], openKeys, selectedKeys, onClick, onOpenChange } = this.props;
+    	const { type = 'component', shellStyleDatas = [], menuDatas = [], openKeys, selectedKeys, onOpenChange, onSave } = this.props;
     	const { currentShellStyle } = this.state;
 
     	const menuProps = {
@@ -74,7 +68,7 @@ export default class DraggableMenu extends Component {
 
     	const styleSubMenu = (
     		<Menu>
-    			<Menu.Item key='back' onClick={ this.handleOnBack }>
+    			<Menu.Item key='back' onClick={ () => onSave && onSave() }>
     				<Icon type='arrow-left' theme='outlined' />
     				<span>保存并返回</span>
     			</Menu.Item>

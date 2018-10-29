@@ -2,11 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 19:45:42
+ * @Last Modified time: 2018-10-29 10:01:12
  */
 import React, { Component } from 'react';
 
-import { reject } from 'lodash';
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
@@ -62,13 +61,6 @@ export default class Grid extends Component {
 		this.setState({});
 	}
 
-	handleShellOnDelete = layoutItem => {
-		const { i: key } = layoutItem;
-		const { layout } = this.state;
-
-		this.setState({ layout: reject(layout, { i: key }) });
-	}
-
 	createShellChild = (isEdit, item) => {
 		const { i, type, imgUrl, path } = item;
 		const height = 'calc(100% - 30px)';
@@ -89,7 +81,7 @@ export default class Grid extends Component {
 
     render = () => {
     	const { isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
-    	const { isEdit = true, isDelete = true, layout } = this.props;
+    	const { isEdit = true, isDelete = true, layout, onDelete } = this.props;
 
     	const layoutProps = {
     		className: 'layout',
@@ -97,7 +89,7 @@ export default class Grid extends Component {
     		rowHeight: 30,
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - (isEdit ? 256 : 0),
     		margin: [10, 10],
-    		onLayoutChange: this.handleLayoutChange,
+    		// onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		// compactType: 'horizontal',
@@ -129,7 +121,7 @@ export default class Grid extends Component {
     							key, title, isEdit, isDelete,
     							'data-grid': item,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, { boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle, currentShellStyle),
-    							onDelete: this.handleShellOnDelete,
+    							onDelete,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
     						};
 
