@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 10:01:01
+ * @Last Modified time: 2018-10-29 11:38:54
  */
 import React, { Component } from 'react';
 
@@ -27,6 +27,7 @@ export default class ComponentEdit extends Component {
 			openKeys: [],
 			selectedKeys: [],
 			shellStyleDatas: [],
+			propertyBoardEnumData: [],
 		};
 	}
 
@@ -34,7 +35,19 @@ export default class ComponentEdit extends Component {
     	this.loadMenuDatas();
 
     	this.loadShellStyleDatas();
+
+    	this.loadPropertyBoardData();
     }
+
+	loadPropertyBoardData = () => {
+		fetch('../../../mock/propertyDatas.json')
+			.then(result => result.json())
+			.then(result => {
+				const { data } = result;
+
+				this.setState({ propertyBoardEnumData: data });
+			});
+	}
 
 	loadMenuDatas = () => {
 		fetch('../../../mock/menuDatas.json')
@@ -86,7 +99,7 @@ export default class ComponentEdit extends Component {
 	}
 
 	render = () => {
-		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas } = this.state;
+		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas, propertyBoardEnumData } = this.state;
 
 		const draggableMenuProps = {
     		selectedKeys, menuDatas, openKeys,
@@ -105,7 +118,7 @@ export default class ComponentEdit extends Component {
 
 				<Layout style={{ position: 'relative' }}>
 					<Ruler>
-						<Grid isEdit={ true } isDelete={ true } layout={ layout } onDelete={ this.handleOnDelete } />
+						<Grid isEdit={ true } isDelete={ true } layout={ layout } onDelete={ this.handleOnDelete } propertyBoardEnumData={ propertyBoardEnumData } />
 					</Ruler>
 				</Layout>
 			</Layout>

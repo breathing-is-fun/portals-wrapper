@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 10:01:12
+ * @Last Modified time: 2018-10-29 14:40:52
  */
 import React, { Component } from 'react';
 
@@ -77,11 +77,17 @@ export default class Grid extends Component {
 	}
 
 	handleShellonEdit = (isDrawerOpen, item) => import('../PropertyBoard')
-		.then(PropertyBoard => this.setState({ isDrawerOpen, propertyBoardDataSource: item, PropertyBoard: PropertyBoard.default }))
+		.then(PropertyBoard => {
+			this.setState({
+				isDrawerOpen,
+				propertyBoardDataSource: item,
+				PropertyBoard: PropertyBoard.default
+			});
+		})
 
     render = () => {
     	const { isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
-    	const { isEdit = true, isDelete = true, layout, onDelete } = this.props;
+    	const { isEdit = true, isDelete = true, layout, onDelete, propertyBoardEnumData } = this.props;
 
     	const layoutProps = {
     		className: 'layout',
@@ -104,7 +110,8 @@ export default class Grid extends Component {
     				setTimeout(() => this.setState({ PropertyBoard: null }), 301);
     			});
     		},
-    		dataSource: propertyBoardDataSource,
+    		shellStyleDatas: propertyBoardDataSource,
+    		enumDatas: propertyBoardEnumData,
     		onChange: currentShellStyle => this.setState({ currentShellStyle }),
     	};
 
@@ -116,11 +123,15 @@ export default class Grid extends Component {
     				{
     					layout.map(item => {
     						const { i: key, title, style: shellStyle = {} } = item;
+    						const { id } = currentShellStyle;
+    						const commonShellStyle = Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2  }, shellStyle);
+    						let style = id == key ? Object.assign({}, commonShellStyle, currentShellStyle) : commonShellStyle;
 
     						const shellProps = {
     							key, title, isEdit, isDelete,
     							'data-grid': item,
-    							style: Object.assign({}, { zIndex: 1, userSelect: 'none' }, { boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle, currentShellStyle),
+    							// style: Object.assign({}, commonShellStyle, shellStyle, currentShellStyle),
+    							style,
     							onDelete,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
     						};

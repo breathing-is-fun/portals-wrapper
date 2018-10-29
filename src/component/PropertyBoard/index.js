@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-15 10:55:08
+ * @Last Modified time: 2018-10-29 14:10:04
  */
 import React, { Component } from 'react';
 
@@ -29,23 +29,25 @@ export default class PropertyBoard extends Component {
 
 	loadPropertyDatas = visible => {
 		if(visible) {
-			const { style } = this.props.dataSource;
+			const { shellStyleDatas, enumDatas } = this.props;
+			const { i: key, style } = shellStyleDatas;
 
-			this.loader.load(style, propertyDatas => this.setState({ propertyDatas }));
+			this.loader.load(enumDatas, style, key, propertyDatas => this.setState({ propertyDatas }));
 		}
 	}
 
-	handleInput = (value, key) => {
+	handleInput = (value, key, id) => {
 		const { onChange } = this.props;
 
 		this.currentShellStyle[key] = value;
+		this.currentShellStyle.id = id;
 
 		onChange && onChange(this.currentShellStyle);
 	}
 
     render = () => {
-    	const { visible, onClose, dataSource } = this.props;
-    	const { title } = dataSource;
+    	const { visible, onClose, shellStyleDatas } = this.props;
+    	const { title } = shellStyleDatas;
     	const { propertyDatas } = this.state;
 
     	const drawerTitle = (
@@ -70,13 +72,13 @@ export default class PropertyBoard extends Component {
     				<ul className='property-wrapper'>
     					{
     						propertyDatas.map(item => {
-    							const { key, text } = item;
+    							const { key, text, value, id } = item;
 
     							return (
     								<li key={ `property-li-${ key }` }>
     									<div className='property-key'>{ text }：</div>
     									<div className='property-value'>
-    										<Input onBlur={ e => this.handleInput(e.target.value, key) } />
+    										<Input onBlur={ e => this.handleInput(e.target.value, key, id) } defaultValue={ value } />
     									</div>
     								</li>
     							);

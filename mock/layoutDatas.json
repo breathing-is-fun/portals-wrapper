@@ -10,7 +10,10 @@
             "path": "../../../thirdModules/dbzx/index.js",
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
             "title": "代办中心",
-            "style": {}
+            "style": {
+                "background": "#F96",
+                "border": "1px solid #ccc"
+            }
         },
         {
             "i": "zbzx",
@@ -22,7 +25,11 @@
             "maxW": 4,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/zbzx.png",
             "path": "../../../thirdModules/zbzx/index.js",
-            "title": "在办中心"
+            "title": "在办中心",
+            "style": {
+                "background": "#F96",
+                "border": "1px solid #ccc"
+            }
         },
         {
             "i": "tqyb",
@@ -32,7 +39,11 @@
             "h": 5,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/tqyb.png",
             "path": "../../../thirdModules/tqyb/index.js",
-            "title": "天气预报"
+            "title": "天气预报",
+            "style": {
+                "background": "#F96",
+                "border": "1px solid #ccc"
+            }
         },
         {
             "i": "bszx",
