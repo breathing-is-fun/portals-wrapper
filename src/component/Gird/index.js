@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 14:40:52
+ * @Last Modified time: 2018-10-29 15:17:59
  */
 import React, { Component } from 'react';
 
@@ -20,7 +20,6 @@ export default class Grid extends Component {
 		this.state = {
 			isDrawerOpen: false,
 			propertyBoardDataSource: {},
-			currentShellStyle: {},
 			PropertyBoard: null,
 		};
 
@@ -85,8 +84,27 @@ export default class Grid extends Component {
 			});
 		})
 
+	handleShellStyleOnChange = currentShellStyle => {
+		const { onLayoutChange, layout } = this.props;
+		let newLayout = [];
+
+		for(let item of layout) {
+			const { i: key, style = {} } = item;
+			const { id } = currentShellStyle;
+			let obj = item;
+
+			if(key == id) {
+				obj.style = Object.assign(style, currentShellStyle);
+			}
+
+			newLayout.push(obj);
+		}
+
+		onLayoutChange && onLayoutChange(newLayout);
+	}
+
     render = () => {
-    	const { isDrawerOpen, propertyBoardDataSource, currentShellStyle, PropertyBoard } = this.state;
+    	const { isDrawerOpen, propertyBoardDataSource, PropertyBoard } = this.state;
     	const { isEdit = true, isDelete = true, layout, onDelete, propertyBoardEnumData } = this.props;
 
     	const layoutProps = {
@@ -112,7 +130,7 @@ export default class Grid extends Component {
     		},
     		shellStyleDatas: propertyBoardDataSource,
     		enumDatas: propertyBoardEnumData,
-    		onChange: currentShellStyle => this.setState({ currentShellStyle }),
+    		onChange: this.handleShellStyleOnChange,
     	};
 
     	layout.length != 0 && this.mountRoots();
@@ -123,16 +141,12 @@ export default class Grid extends Component {
     				{
     					layout.map(item => {
     						const { i: key, title, style: shellStyle = {} } = item;
-    						const { id } = currentShellStyle;
-    						const commonShellStyle = Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2  }, shellStyle);
-    						let style = id == key ? Object.assign({}, commonShellStyle, currentShellStyle) : commonShellStyle;
 
     						const shellProps = {
     							key, title, isEdit, isDelete,
-    							'data-grid': item,
-    							// style: Object.assign({}, commonShellStyle, shellStyle, currentShellStyle),
-    							style,
     							onDelete,
+    							style: Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2  }, shellStyle),
+    							'data-grid': item,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
     						};
 

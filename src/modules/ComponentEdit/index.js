@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 11:38:54
+ * @Last Modified time: 2018-10-29 15:19:04
  */
 import React, { Component } from 'react';
 
@@ -98,6 +98,8 @@ export default class ComponentEdit extends Component {
 		this.setState({ layout: reject(layout, { i: key }) });
 	}
 
+	handleLayoutChange = layout => this.setState({ layout })
+
 	render = () => {
 		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas, propertyBoardEnumData } = this.state;
 
@@ -118,7 +120,7 @@ export default class ComponentEdit extends Component {
 
 				<Layout style={{ position: 'relative' }}>
 					<Ruler>
-						<Grid isEdit={ true } isDelete={ true } layout={ layout } onDelete={ this.handleOnDelete } propertyBoardEnumData={ propertyBoardEnumData } />
+						<Grid isEdit isDelete layout={ layout } onLayoutChange={ this.handleLayoutChange } onDelete={ this.handleOnDelete } propertyBoardEnumData={ propertyBoardEnumData } />
 					</Ruler>
 				</Layout>
 			</Layout>
