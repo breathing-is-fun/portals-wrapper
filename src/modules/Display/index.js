@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 16:31:04
+ * @Last Modified time: 2018-10-30 18:15:21
  */
 import React, { Component } from 'react';
 
@@ -26,11 +26,10 @@ export default class Display extends Component {
     }
 
 	loadLayout = path => {
-		// fetch('../../../mock/layoutDatas.json')
-		fetch(`../../../mock/${ path }.json`)
+		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_layout_data')
 			.then(result => result.json())
 			.then(result => {
-				const { layout } = result;
+				const { data: layout } = result;
 
 				this.setState({ layout });
 			});

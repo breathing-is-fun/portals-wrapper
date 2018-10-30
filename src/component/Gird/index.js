@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 15:17:59
+ * @Last Modified time: 2018-10-30 18:26:05
  */
 import React, { Component } from 'react';
 
@@ -61,7 +61,7 @@ export default class Grid extends Component {
 	}
 
 	createShellChild = (isEdit, item) => {
-		const { i, type, imgUrl, path } = item;
+		const { i, type, imgurl: imgUrl, path } = item;
 		const height = 'calc(100% - 30px)';
 
 		if(type == 'iframe') {

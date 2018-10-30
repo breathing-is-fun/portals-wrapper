@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 15:59:33
+ * @Last Modified time: 2018-10-30 19:13:20
  */
 import React, { Component } from 'react';
 
@@ -30,29 +30,26 @@ export default class ModuleEdit extends Component {
 		this.loadMenuDatas();
 	}
 
-	handleMenuClick = (key, selectedKeys) => {
-		this.loadLayoutDatas(key);
+	handleMenuClick = (group, selectedKeys) => {
+		this.loadLayoutDatas(group);
 
 		this.setState({ selectedKeys });
 	}
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
-	loadLayoutDatas = key => {
-		let url = `../../../mock/department/${ key }.json`;
-
-		url += key ? `?depart=${ key }` : '';
-		fetch(url)
+	loadLayoutDatas = group => {
+		fetch(`http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_switch&group=${ group }`)
 			.then(result => result.json())
-			.then(result => this.setState({ layout: result.data }));
+			.then(({ data }) => this.setState({ layout: data }));
 	}
 
 	loadMenuDatas = () => {
-		// fetch(`../../../mock/${ type == 'component' ? 'menuDatas' : 'departmentDatas' }.json`)
-		fetch('../../../mock/departmentDatas.json')
+		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=1')
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
+
 				const menuDatas = handleMenuGroup(data);
 				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
 
@@ -60,7 +57,7 @@ export default class ModuleEdit extends Component {
 					menuDatas,
 					openKeys: checkKey,
 					selectedKeys: [checkKey[0]]
-				}, () => this.loadLayoutDatas(checkKey));
+				}, () => this.loadLayoutDatas(''));
 			});
 	}
 

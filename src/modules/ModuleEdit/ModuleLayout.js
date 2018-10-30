@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-26 11:46:24
+ * @Last Modified time: 2018-10-30 19:48:19
  */
 import React, { Component } from 'react';
 
@@ -24,10 +24,10 @@ export default class ModuleLayout extends Component {
 	}
 
 	handleShellOnDelete = dataGrid => {
-		const { key } = dataGrid;
+		const { id } = dataGrid;
 		const { layout, onDelete } = this.props;
 
-		onDelete && onDelete(reject(layout, { key }));
+		onDelete && onDelete(reject(layout, { id }));
 	}
 
 	handleShellonEdit = (modalVisible, currentModalItem) => {
@@ -52,10 +52,11 @@ export default class ModuleLayout extends Component {
 			<div className='ModuleLayout'>
 				{
 					layout.map(item => {
-						const { key, title, isEdit, imgUrl, isDelete } = item;
+						const { id, group, title, isedit: isEdit, imgurl: imgUrl, isdelete: isDelete } = item;
 
 						const shellProps = {
-							key, title, isEdit, isDelete,
+							key: group + id,
+							title, isEdit, isDelete,
 							type: 'module',
 							'data-grid': item,
 							style: shellStyle,

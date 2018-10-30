@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-26 11:45:21
+ * @Last Modified time: 2018-10-30 18:30:39
  */
 import React, { Component } from 'react';
 
@@ -32,8 +32,8 @@ class PropertyForm extends Component {
 				value: currentModalItem['title'],
 				error: null,
 			},
-			imgUrl: {
-				value: currentModalItem['imgUrl'],
+			imgurl: {
+				value: currentModalItem['imgurl'],
 				error: null
 			}
 		});
@@ -83,7 +83,7 @@ class PropertyForm extends Component {
 
     				<FormItem { ...formItemLayout } label='缩略图地址'>
     					{
-    						getFieldDecorator('imgUrl', {
+    						getFieldDecorator('imgurl', {
     							rules: [{ required: true, message: '请输入像url的地址，比如http://www.github.com', type: 'url' }],
     						})(<Input />)
     					}

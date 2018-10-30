@@ -2,14 +2,14 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-25 14:29:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 14:29:40
+ * @Last Modified time: 2018-10-30 11:10:23
  */
 const handleMenuGroup = dataSource => {
 	let result = [], groupDatas = [], tempGroupDatas = [];
 
 	// 分出有哪几组及组别名称
 	for(let item of dataSource) {
-		const { group, groupName } = item;
+		const { group, groupname: groupName } = item;
 
 		tempGroupDatas.push(JSON.stringify({ group, groupName }));
 	}

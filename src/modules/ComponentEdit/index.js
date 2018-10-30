@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 15:19:04
+ * @Last Modified time: 2018-10-30 19:27:31
  */
 import React, { Component } from 'react';
 
@@ -34,7 +34,7 @@ export default class ComponentEdit extends Component {
     componentDidMount = () => {
     	this.loadMenuDatas();
 
-    	this.loadShellStyleDatas();
+    	// this.loadShellStyleDatas();
 
     	this.loadPropertyBoardData();
     }
@@ -50,7 +50,7 @@ export default class ComponentEdit extends Component {
 	}
 
 	loadMenuDatas = () => {
-		fetch('../../../mock/menuDatas.json')
+		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=2')
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
@@ -65,14 +65,14 @@ export default class ComponentEdit extends Component {
 			});
 	}
 
-	loadShellStyleDatas = () => {
-		fetch('../../../mock/shellStyleDatas.json')
-			.then(result => result.json())
-			.then(result => {
-				if(result.data.length != 0)
-					this.setState({ shellStyleDatas: result.data, currentShellStyle: result.data[0].style });
-			});
-	}
+	// loadShellStyleDatas = () => {
+	// 	fetch('../../../mock/shellStyleDatas.json')
+	// 		.then(result => result.json())
+	// 		.then(result => {
+	// 			if(result.data.length != 0)
+	// 				this.setState({ shellStyleDatas: result.data, currentShellStyle: result.data[0].style });
+	// 		});
+	// }
 
 	loadLayout = () => {
 		fetch('../../../mock/layoutDatas.json')
