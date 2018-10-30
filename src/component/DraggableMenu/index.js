@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 19:13:05
+ * @Last Modified time: 2018-10-30 20:49:42
  */
 import React, { Component } from 'react';
 
@@ -31,7 +31,7 @@ export default class DraggableMenu extends Component {
 		const { onClick } = this.props;
 
 		// onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
-		onClick && onClick(keyPath[keyPath.length - 1], [key]);
+		onClick && onClick(item.props.item.group, [key]);
 	}
 
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
@@ -63,36 +63,37 @@ export default class DraggableMenu extends Component {
     		</Menu.Item>
     	);
 
-    	// const styleSubMenu = (
-    	// 	<Menu>
-    	// 		<Menu.Item key='back' onClick={ () => onSave && onSave() }>
-    	// 			<Icon type='arrow-left' theme='outlined' />
-    	// 			<span>保存并返回</span>
-    	// 		</Menu.Item>
+    	const styleSubMenu = (
+    		<Menu>
+    			<Menu.Item key='back' onClick={ () => onSave && onSave() }>
+    				<Icon type='arrow-left' theme='outlined' />
+    				<span>保存并返回</span>
+    			</Menu.Item>
 
-    	// 		<SubMenu title={ styleSubTitle }>
-    	// 			{
-    	// 				shellStyleDatas.map((item, i) => {
-    	// 					const { thumbnailColor, text, style } = item;
+    			{/* <SubMenu title={ styleSubTitle }>
+    				{
+    					shellStyleDatas.map((item, i) => {
+    						const { thumbnailColor, text, style } = item;
 
-    	// 					return (
-    	// 						<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(style) }>
-    	// 							<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
-    	// 							<span style={{ userSelect: 'none' }}>{ text }</span>
-    	// 						</Menu.Item>
-    	// 					);
-    	// 				})
-    	// 			}
-    	// 		</SubMenu>
-    	// 	</Menu>
-    	// );
+    						return (
+    							<Menu.Item key={ `shellStyle${ i }` } onClick={ () => this.handleShellStyle(style) }>
+    								<div style={{ width: 10, height: 10, marginRight: 10, background: thumbnailColor, display: 'inline-block' }} />
+    								<span style={{ userSelect: 'none' }}>{ text }</span>
+    							</Menu.Item>
+    						);
+    					})
+    				}
+    			</SubMenu> */}
+    		</Menu>
+    	);
 
     	return (
     		<div className='DraggableMenu'>
-    			{/* { type == 'component' && styleSubMenu } */}
 
     			<Menu { ...menuProps }>
     				{ type == 'module' && hrefToDisplay }
+
+    				{ type == 'component' && styleSubMenu }
 
     				{
     					menuDatas.map(item => {
