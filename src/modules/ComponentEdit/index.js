@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 19:27:31
+ * @Last Modified time: 2018-10-31 19:51:55
  */
 import React, { Component } from 'react';
 
@@ -34,8 +34,6 @@ export default class ComponentEdit extends Component {
     componentDidMount = () => {
     	this.loadMenuDatas();
 
-    	// this.loadShellStyleDatas();
-
     	this.loadPropertyBoardData();
     }
 
@@ -54,27 +52,19 @@ export default class ComponentEdit extends Component {
 			.then(result => result.json())
 			.then(result => {
 				const { data } = result;
+
 				const menuDatas = handleMenuGroup(data);
-				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
+				const { group, id } = data.length != 0 ? data[0] : {};
 
 				this.setState({
 					menuDatas,
-					openKeys: checkKey,
-					selectedKeys: [checkKey[0]]
-				}, () => this.loadLayout(checkKey));
+					openKeys: [group],
+					selectedKeys:  [group + id]
+				}, () => this.loadLayoutDatas(''));
 			});
 	}
 
-	// loadShellStyleDatas = () => {
-	// 	fetch('../../../mock/shellStyleDatas.json')
-	// 		.then(result => result.json())
-	// 		.then(result => {
-	// 			if(result.data.length != 0)
-	// 				this.setState({ shellStyleDatas: result.data, currentShellStyle: result.data[0].style });
-	// 		});
-	// }
-
-	loadLayout = () => {
+	loadLayoutDatas = () => {
 		fetch('../../../mock/layoutDatas.json')
 			.then(result => result.json())
 			.then(result => {
@@ -86,9 +76,9 @@ export default class ComponentEdit extends Component {
 
 	handleOnSave = () => {
 		console.log(this.state.layout);
-		location.hash = '/edit/module';
+		// location.hash = '/edit/module';
 
-		window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
+		// window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
 	}
 
 	handleOnDelete = layoutItem => {
@@ -100,6 +90,14 @@ export default class ComponentEdit extends Component {
 
 	handleLayoutChange = layout => this.setState({ layout })
 
+	handleMenuClick = (group, selectedKeys) => {
+		this.loadLayoutDatas(group == 'all' ? '' : group);
+
+		this.setState({ selectedKeys });
+	}
+
+	handleOnOpenChange = openKeys => this.setState({ openKeys });
+
 	render = () => {
 		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas, propertyBoardEnumData } = this.state;
 
@@ -109,7 +107,16 @@ export default class ComponentEdit extends Component {
 			onOpenChange: this.handleOnOpenChange,
 			shellStyleDatas,
 			onSave: this.handleOnSave,
-    	};
+		};
+
+		const gridProps = {
+			isEdit: true,
+			isDelete: true,
+			layout,
+			onLayoutChange: this.handleLayoutChange,
+			onDelete: this.handleOnDelete,
+			propertyBoardEnumData,
+		};
 
 		return (
 			// <Navigation type='componentEdit'>
@@ -120,7 +127,7 @@ export default class ComponentEdit extends Component {
 
 				<Layout style={{ position: 'relative' }}>
 					<Ruler>
-						<Grid isEdit isDelete layout={ layout } onLayoutChange={ this.handleLayoutChange } onDelete={ this.handleOnDelete } propertyBoardEnumData={ propertyBoardEnumData } />
+						<Grid { ...gridProps } />
 					</Ruler>
 				</Layout>
 			</Layout>
