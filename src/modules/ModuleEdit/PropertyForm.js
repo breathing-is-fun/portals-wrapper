@@ -2,25 +2,51 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 18:30:39
+ * @Last Modified time: 2018-10-31 16:39:02
  */
 import React, { Component } from 'react';
 
-import { Form, Input, Button, Col, Row } from 'antd';
+import { Form, Input, Button, Col, Row, TreeSelect } from 'antd';
 const FormItem = Form.Item;
+const TreeNode = TreeSelect.TreeNode;
+
+import { handleDepartGroup, recurseTreeNode, handleMenuGroup } from '../../component/DraggableMenu/handler';
 
 class PropertyForm extends Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-
+			departmentDatas: [],
 		};
 	}
 
     componentDidMount = () => {
     	this.setDefaultValueOfInput();
+
+    	this.loadDepartDatas();
     }
+
+	loadDepartDatas = () => {
+		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=1')
+			.then(result => result.json())
+			.then(result => {
+				const { data } = result;
+				let departmentDatas = handleMenuGroup(data), newDepart = [];
+
+				// hack. Need to modify function selectGroup in handler.js
+				// 修改参数名， group => value, groupName => title
+				for(let item of departmentDatas) {
+					const { group, groupName, key, children } = item;
+
+					if(group != 'all') {
+						newDepart.push({ title: groupName, value: group, key, children });
+					}
+				}
+
+				this.setState({ departmentDatas: newDepart });
+			});
+	}
 
 	setDefaultValueOfInput = () => {
 		const { form, currentModalItem } = this.props;
@@ -44,9 +70,10 @@ class PropertyForm extends Component {
 
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				location.hash = '/edit/component';
+				console.log(values);
+				// location.hash = '/edit/component';
 
-				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
+				// window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
 			}
 		});
 	}
@@ -56,6 +83,7 @@ class PropertyForm extends Component {
 	}
 
     render = () => {
+    	const { departmentDatas } = this.state;
     	const { form } = this.props;
     	const { getFieldDecorator, getFieldsError, resetFields } = form;
 
@@ -68,6 +96,15 @@ class PropertyForm extends Component {
     			xs: { span: 24 },
     			sm: { span: 16 },
     		},
+    	};
+
+    	const treeSelectProps = {
+    		dropdownStyle: { overflow: 'auto' },
+    		allowClear: true,
+    		multiple: true,
+    		treeCheckable: true,
+    		treeDefaultExpandAll: true,
+    		treeData: departmentDatas,
     	};
 
     	return (
@@ -86,6 +123,14 @@ class PropertyForm extends Component {
     						getFieldDecorator('imgurl', {
     							rules: [{ required: true, message: '请输入像url的地址，比如http://www.github.com', type: 'url' }],
     						})(<Input />)
+    					}
+    				</FormItem>
+
+    				<FormItem { ...formItemLayout } label='人员权限'>
+    					{
+    						getFieldDecorator('deaprtment', {
+    							rules: [{ required: true, message: '请勾上至少一个' }],
+    						})(<TreeSelect { ...treeSelectProps } />)
     					}
     				</FormItem>
 
