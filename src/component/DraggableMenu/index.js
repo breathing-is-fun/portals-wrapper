@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 20:49:42
+ * @Last Modified time: 2018-10-31 10:31:20
  */
 import React, { Component } from 'react';
 
@@ -31,7 +31,7 @@ export default class DraggableMenu extends Component {
 		const { onClick } = this.props;
 
 		// onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
-		onClick && onClick(item.props.item.group, [key]);
+		onClick && onClick(item.props.item.group, [keyPath[keyPath.length - 1] + item.props.item.id]);
 	}
 
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
@@ -49,12 +49,12 @@ export default class DraggableMenu extends Component {
     		onClick: this.handleMenuClick,
     	};
 
-    	const styleSubTitle = (
-    		<span>
-    			<Icon type='retweet' theme='outlined' />
-    			<span>样式选择</span>
-    		</span>
-    	);
+    	// const styleSubTitle = (
+    	// 	<span>
+    	// 		<Icon type='retweet' theme='outlined' />
+    	// 		<span>样式选择</span>
+    	// 	</span>
+    	// );
 
     	const hrefToDisplay = (
     		<Menu.Item key='back' onClick={ () => location.hash = '/display' }>
@@ -110,7 +110,9 @@ export default class DraggableMenu extends Component {
     							<SubMenu key={ group } title={ subMenuTitle }>
     								{
     									children.map((jtem, j) => {
-    										return <DragMenuItem key={ `dragMenuItem${ jtem.group + j }` } item={ Object.assign({}, jtem, { style: currentShellStyle }) } />;
+    										const { group, id } = jtem;
+
+    										return <DragMenuItem key={ `${ this.menuSelectPrefix }${ group }${ id }` } item={ Object.assign({}, jtem, { style: currentShellStyle }) } />;
     									})
     								}
     							</SubMenu>

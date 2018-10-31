@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 20:54:35
+ * @Last Modified time: 2018-10-31 10:30:54
  */
 import React, { Component } from 'react';
 
@@ -31,7 +31,7 @@ export default class ModuleEdit extends Component {
 	}
 
 	handleMenuClick = (group, selectedKeys) => {
-		this.loadLayoutDatas(group);
+		this.loadLayoutDatas(group == 'all' ? '' : group);
 
 		this.setState({ selectedKeys });
 	}
@@ -51,12 +51,12 @@ export default class ModuleEdit extends Component {
 				const { data } = result;
 
 				const menuDatas = handleMenuGroup(data);
-				const checkKey = menuDatas.length != 0 ? [menuDatas[0].group] : [];
+				const { group, id } = data.length != 0 ? data[0] : {};
 
 				this.setState({
 					menuDatas,
-					openKeys: checkKey,
-					selectedKeys: [checkKey[0]]
+					openKeys: [group],
+					selectedKeys:  [group + id]
 				}, () => this.loadLayoutDatas(''));
 			});
 	}
