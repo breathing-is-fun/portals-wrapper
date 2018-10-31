@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 10:31:20
+ * @Last Modified time: 2018-10-31 14:20:14
  */
 import React, { Component } from 'react';
 
@@ -31,7 +31,9 @@ export default class DraggableMenu extends Component {
 		const { onClick } = this.props;
 
 		// onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
-		onClick && onClick(item.props.item.group, [keyPath[keyPath.length - 1] + item.props.item.id]);
+		const { item: propsItem = {} } = item.props;
+
+		onClick && onClick(propsItem ? propsItem.group : null, [keyPath[keyPath.length - 1] + propsItem.id]);
 	}
 
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });

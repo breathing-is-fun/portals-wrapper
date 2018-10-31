@@ -8,4 +8,5 @@
 .ModuleLayout {
     background: #f5f6fa;
     height: 100%;
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }

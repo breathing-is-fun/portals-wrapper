@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 19:48:19
+ * @Last Modified time: 2018-10-31 14:10:59
  */
 import React, { Component } from 'react';
 
@@ -35,7 +35,7 @@ export default class ModuleLayout extends Component {
 	}
 
 	render = () => {
-		const { layout } = this.props;
+		const { layout, isAll } = this.props;
 		const { modalVisible, currentModalItem } = this.state;
 
 		const shellStyle = { zIndex: 1, userSelect: 'none', width: '20%', height: 200, background: '#e0e6ee', borderRadius: 2, transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)', float: 'left', margin: 30 };
@@ -56,7 +56,9 @@ export default class ModuleLayout extends Component {
 
 						const shellProps = {
 							key: group + id,
-							title, isEdit, isDelete,
+							title,
+							isEdit: isAll,
+							isDelete: true,
 							type: 'module',
 							'data-grid': item,
 							style: shellStyle,

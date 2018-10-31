@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 10:30:54
+ * @Last Modified time: 2018-10-31 14:09:42
  */
 import React, { Component } from 'react';
 
@@ -23,6 +23,7 @@ export default class ModuleEdit extends Component {
 			menuDatas: [],
 			openKeys: [],
 			selectedKeys: [],
+			isAll: true, // true时，Shell才会显示编辑和删除
 		};
 	}
 
@@ -33,7 +34,7 @@ export default class ModuleEdit extends Component {
 	handleMenuClick = (group, selectedKeys) => {
 		this.loadLayoutDatas(group == 'all' ? '' : group);
 
-		this.setState({ selectedKeys });
+		this.setState({ selectedKeys, isAll: group == 'all' });
 	}
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
@@ -62,7 +63,7 @@ export default class ModuleEdit extends Component {
 	}
 
     render = () => {
-    	const { layout, menuDatas, openKeys, selectedKeys } = this.state;
+    	const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
 
     	const draggableMenuProps = {
     		selectedKeys, menuDatas, openKeys,
@@ -79,7 +80,7 @@ export default class ModuleEdit extends Component {
     				</Sider>
 
     				<Layout>
-    					<ModuleLayout layout={ layout } onDelete={ layout => this.setState({ layout }) } />
+    					<ModuleLayout layout={ layout } onDelete={ layout => this.setState({ layout }) } isAll={ isAll } />
     				</Layout>
     			</Layout>
     		// </Navigation>
