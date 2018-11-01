@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 15:03:30
+ * @Last Modified time: 2018-11-01 17:25:01
  */
 import React, { Component } from 'react';
 
@@ -27,7 +27,7 @@ export default class ModuleLayout extends Component {
 		const { id } = dataGrid;
 		const { layout, onDelete } = this.props;
 
-		onDelete && onDelete(reject(layout, { id }));
+		onDelete && onDelete(reject(layout, { id }), id);
 	}
 
 	handleShellonEdit = (modalVisible, currentModalItem) => {

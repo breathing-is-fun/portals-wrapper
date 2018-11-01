@@ -2,19 +2,12 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-14 10:31:52
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-29 14:08:56
+ * @Last Modified time: 2018-11-01 18:10:45
  */
 
 // 获得style中文枚举
 export default class PropertyLoader {
 	load = (enumDatas, style = {}, key, callback) => {
-		// fetch('../../../mock/propertyDatas.json')
-		// 	.then(result => result.json())
-		// 	.then(result => {
-		// 		const propertyDatas = this.hanldePropertyEnum(style, result.data);
-
-		// 		callback && callback(propertyDatas);
-		// 	});
 		const propertyDatas = this.hanldePropertyEnum(style, enumDatas, key);
 
 		callback && callback(propertyDatas);

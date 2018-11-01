@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 15:55:41
+ * @Last Modified time: 2018-11-01 18:14:04
  */
 import React, { Component } from 'react';
 
@@ -60,6 +60,22 @@ export default class ModuleEdit extends Component {
 			});
 	}
 
+	handleMealOnDelete = (layout, id) => {
+		const params = {
+			method: 'GET',
+			body: JSON.stringify({ id }),
+			headers: { 'Content-Type': 'application/json' },
+		};
+
+		fetch(`http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_delete&id=${ id }`)
+			.then(result => result.json())
+			.then(result => {
+				console.log(result);
+				// this.setState({ layout });
+				this.loadLayoutDatas(1);
+			});
+	}
+
     render = () => {
     	const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
 
@@ -78,7 +94,7 @@ export default class ModuleEdit extends Component {
     				</Sider>
 
     				<Layout>
-    					<ModuleLayout layout={ layout } onDelete={ layout => this.setState({ layout }) } isAll={ isAll } />
+    					<ModuleLayout layout={ layout } onDelete={ this.handleMealOnDelete } isAll={ isAll } />
     				</Layout>
     			</Layout>
     		// </Navigation>
