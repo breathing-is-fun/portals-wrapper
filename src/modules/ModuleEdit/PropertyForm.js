@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 16:47:30
+ * @Last Modified time: 2018-11-01 17:02:07
  */
 import React, { Component } from 'react';
 
@@ -50,29 +50,33 @@ class PropertyForm extends Component {
 
 	setDefaultValueOfInput = () => {
 		const { form, currentModalItem } = this.props;
+		const { title, imgurl } = currentModalItem;
     	const { setFields } = form;
 
 		// hack, need to filter the params of currentModalItem
 		setFields({
 			title: {
-				value: currentModalItem['title'],
+				value: title,
 				error: null,
 			},
 			imgurl: {
-				value: currentModalItem['imgurl'],
-				error: null
-			}
+				value: imgurl,
+				error: null,
+			},
 		});
 	}
 
 	handleSubmit = e => {
+		const { form, currentModalItem } = this.props;
+		const { id } = currentModalItem;
+
 		e.preventDefault();
 
-		this.props.form.validateFields((err, values) => {
+		form.validateFields((err, values) => {
 			if (!err) {
 				location.hash = '/edit/component';
 
-				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
+				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: Object.assign({}, values, { id }) }, status: 'pending' });
 			}
 		});
 	}
