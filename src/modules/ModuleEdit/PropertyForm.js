@@ -2,15 +2,16 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 17:02:07
+ * @Last Modified time: 2018-11-01 19:54:52
  */
 import React, { Component } from 'react';
 
 import { Form, Input, Button, Col, Row, TreeSelect } from 'antd';
 const FormItem = Form.Item;
-const TreeNode = TreeSelect.TreeNode;
 
-import { handleDepartGroup, recurseTreeNode, handleMenuGroup } from '../../component/DraggableMenu/handler';
+import { ajax } from '../../urlHelper';
+
+import { handleMenuGroup } from '../../component/DraggableMenu/handler';
 
 class PropertyForm extends Component {
 	constructor (props) {
@@ -28,10 +29,10 @@ class PropertyForm extends Component {
     }
 
 	loadDepartDatas = () => {
-		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=1')
-			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
+		ajax({
+			key: 's_slmh_menu_data',
+			data: { type: 1 },
+			success: ({ data }) => {
 				let departmentDatas = handleMenuGroup(data), newDepart = [];
 
 				// hack. Need to modify function selectGroup in handler.js
@@ -45,7 +46,8 @@ class PropertyForm extends Component {
 				}
 
 				this.setState({ departmentDatas: newDepart });
-			});
+			}
+		});
 	}
 
 	setDefaultValueOfInput = () => {

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 16:50:16
+ * @Last Modified time: 2018-11-01 19:52:27
  */
 import React, { Component } from 'react';
 
@@ -13,6 +13,7 @@ import DraggableMenu from '../../component/DraggableMenu';
 import Ruler from '../../component/Ruler';
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
 import { reject } from 'lodash';
+import { ajax } from '../../urlHelper';
 
 import { Layout } from 'antd';
 const { Sider } = Layout;
@@ -47,21 +48,17 @@ export default class ComponentEdit extends Component {
     }
 
 	loadPropertyBoardData = () => {
-		fetch('../../../mock/propertyDatas.json')
-			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
-
-				this.setState({ propertyBoardEnumData: data });
-			});
+		ajax({
+			key: 'propertyDatas',
+			success: ({ data }) => this.setState({ propertyBoardEnumData: data }),
+		});
 	}
 
 	loadMenuDatas = () => {
-		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=2')
-			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
-
+		ajax({
+			key: 's_slmh_menu_data',
+			data: { type: 2 },
+			success: ({ data }) => {
 				const menuDatas = handleMenuGroup(data);
 				const { group, id } = data.length != 0 ? data[0] : {};
 
@@ -70,19 +67,18 @@ export default class ComponentEdit extends Component {
 					openKeys: [group],
 					selectedKeys:  [group + id]
 				}, () => this.loadLayoutDatas());
-			});
+			},
+		});
 	}
 
 	loadLayoutDatas = () => {
 		let id = 1;
 
-		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_layout_data&id=' + id)
-			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
-
-				this.setState({ layout: data });
-			});
+		ajax({
+			key: 's_slmh_meal_layout_data',
+			data: { id },
+			success: ({ data }) => this.setState({ layout: data }),
+		});
 	}
 
 	handleOnSave = () => {
