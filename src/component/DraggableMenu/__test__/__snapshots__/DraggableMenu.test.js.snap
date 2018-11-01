@@ -23,25 +23,18 @@ exports[`DraggableMenu component edit render correctly 1`] = `
     }
     theme="light"
   >
-    <Menu
-      className=""
-      focusable={false}
-      prefixCls="ant-menu"
-      theme="light"
+    <MenuItem
+      key="back"
+      onClick={[Function]}
     >
-      <MenuItem
-        key="back"
-        onClick={[Function]}
-      >
-        <Icon
-          theme="outlined"
-          type="arrow-left"
-        />
-        <span>
-          保存并返回
-        </span>
-      </MenuItem>
-    </Menu>
+      <Icon
+        theme="outlined"
+        type="arrow-left"
+      />
+      <span>
+        保存并返回
+      </span>
+    </MenuItem>
     <SubMenu
       key="all"
       title={
