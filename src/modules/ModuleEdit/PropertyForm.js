@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 16:39:02
+ * @Last Modified time: 2018-11-01 16:47:30
  */
 import React, { Component } from 'react';
 
@@ -70,10 +70,9 @@ class PropertyForm extends Component {
 
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log(values);
-				// location.hash = '/edit/component';
+				location.hash = '/edit/component';
 
-				// window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
+				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: values }, status: 'pending' });
 			}
 		});
 	}

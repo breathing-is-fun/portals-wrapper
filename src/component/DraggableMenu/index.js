@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 19:50:31
+ * @Last Modified time: 2018-11-01 16:32:27
  */
 import React, { Component } from 'react';
 
@@ -33,7 +33,7 @@ export default class DraggableMenu extends Component {
 		// onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
 		const { item: propsItem = {} } = item.props;
 
-		onClick && onClick(propsItem ? propsItem.group : null, [keyPath[keyPath.length - 1] + propsItem.id]);
+		onClick && onClick(propsItem ? propsItem.group : null, [keyPath[keyPath.length - 1] + propsItem.id], propsItem.id);
 	}
 
 	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
@@ -50,13 +50,6 @@ export default class DraggableMenu extends Component {
     		onOpenChange,
     		onClick: this.handleMenuClick,
     	};
-
-    	// const styleSubTitle = (
-    	// 	<span>
-    	// 		<Icon type='retweet' theme='outlined' />
-    	// 		<span>样式选择</span>
-    	// 	</span>
-    	// );
 
     	const hrefToDisplay = (
     		<Menu.Item key='back' onClick={ () => location.hash = '/display' }>

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 18:26:05
+ * @Last Modified time: 2018-11-01 15:49:27
  */
 import React, { Component } from 'react';
 
@@ -25,10 +25,6 @@ export default class Grid extends Component {
 
 		this.roots = {};
 	}
-
-    componentDidMount = () => {
-
-    }
 
 	mountRoots = () => {
 		const { layout } = this.props;

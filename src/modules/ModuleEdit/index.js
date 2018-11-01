@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 14:09:42
+ * @Last Modified time: 2018-11-01 15:55:41
  */
 import React, { Component } from 'react';
 
@@ -31,16 +31,16 @@ export default class ModuleEdit extends Component {
 		this.loadMenuDatas();
 	}
 
-	handleMenuClick = (group, selectedKeys) => {
-		this.loadLayoutDatas(group == 'all' ? '' : group);
+	handleMenuClick = (group, selectedKeys, id) => {
+		this.loadLayoutDatas(group == 'all' ? 1 : id);
 
 		this.setState({ selectedKeys, isAll: group == 'all' });
 	}
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
-	loadLayoutDatas = group => {
-		fetch(`http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_switch&group=${ group }`)
+	loadLayoutDatas = id => {
+		fetch(`http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_switch&id=${ id }`)
 			.then(result => result.json())
 			.then(({ data }) => this.setState({ layout: data }));
 	}
@@ -48,9 +48,7 @@ export default class ModuleEdit extends Component {
 	loadMenuDatas = () => {
 		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_menu_data&type=1')
 			.then(result => result.json())
-			.then(result => {
-				const { data } = result;
-
+			.then(({ data }) => {
 				const menuDatas = handleMenuGroup(data);
 				const { group, id } = data.length != 0 ? data[0] : {};
 
@@ -58,7 +56,7 @@ export default class ModuleEdit extends Component {
 					menuDatas,
 					openKeys: [group],
 					selectedKeys:  [group + id]
-				}, () => this.loadLayoutDatas(''));
+				}, () => this.loadLayoutDatas(1));
 			});
 	}
 

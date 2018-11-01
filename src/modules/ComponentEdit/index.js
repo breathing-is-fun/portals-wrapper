@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 19:51:55
+ * @Last Modified time: 2018-11-01 16:50:16
  */
 import React, { Component } from 'react';
 
@@ -29,6 +29,15 @@ export default class ComponentEdit extends Component {
 			shellStyleDatas: [],
 			propertyBoardEnumData: [],
 		};
+	}
+
+	componentWillMount = () => {
+		const { moduleToComponent } = window['_acrossDatas'];
+		const { data = {} } = moduleToComponent;
+
+		if(Object.keys(data).length == 0) {
+			location.hash = '/edit/module';
+		}
 	}
 
     componentDidMount = () => {
@@ -60,22 +69,30 @@ export default class ComponentEdit extends Component {
 					menuDatas,
 					openKeys: [group],
 					selectedKeys:  [group + id]
-				}, () => this.loadLayoutDatas(''));
+				}, () => this.loadLayoutDatas());
 			});
 	}
 
 	loadLayoutDatas = () => {
-		fetch('../../../mock/layoutDatas.json')
+		let id = 1;
+
+		fetch('http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=slmh_meal_layout_data&id=' + id)
 			.then(result => result.json())
 			.then(result => {
-				const { layout } = result;
+				const { data } = result;
 
-				this.setState({ layout });
+				this.setState({ layout: data });
 			});
 	}
 
 	handleOnSave = () => {
-		console.log(this.state.layout);
+		const { moduleToComponent } = window['_acrossDatas'];
+		const { data = {} } = moduleToComponent;
+		const { layout } = this.state;
+
+		const postData = Object.assign({}, { layout }, data);
+
+		console.log(postData);
 		// location.hash = '/edit/module';
 
 		// window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
@@ -90,8 +107,8 @@ export default class ComponentEdit extends Component {
 
 	handleLayoutChange = layout => this.setState({ layout })
 
-	handleMenuClick = (group, selectedKeys) => {
-		this.loadLayoutDatas(group == 'all' ? '' : group);
+	handleMenuClick = (group, selectedKeys, id) => {
+		// this.loadLayoutDatas(group == 'all' ? 1 : id);
 
 		this.setState({ selectedKeys });
 	}
