@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 10:00:00
+ * @Last Modified time: 2018-11-02 11:22:21
  */
 import React, { Component } from 'react';
 
@@ -66,10 +66,7 @@ export default class ComponentEdit extends Component {
 					menuDatas,
 					openKeys: [group],
 					selectedKeys:  [group + id]
-				}, () => {
-					console.log(0);
-					this.loadLayoutDatas();
-				});
+				}, () => this.loadLayoutDatas());
 			},
 		});
 	}
@@ -108,8 +105,6 @@ export default class ComponentEdit extends Component {
 	handleLayoutChange = layout => this.setState({ layout })
 
 	handleMenuClick = (group, selectedKeys, id) => {
-		// this.loadLayoutDatas(group == 'all' ? 1 : id);
-
 		this.setState({ selectedKeys });
 	}
 
