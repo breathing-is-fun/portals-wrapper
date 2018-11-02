@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-21 09:03:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 16:38:43
+ * @Last Modified time: 2018-11-02 11:15:27
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -23,7 +23,7 @@ describe('Navigation', () => {
 			{
 				'text': 'testText',
 				'url': 'testUrl',
-				'key': 'testKey'
+				'id': 'testKey'
 			}
 		];
 

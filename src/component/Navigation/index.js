@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 16:40:33
+ * @Last Modified time: 2018-11-02 11:01:01
  */
 import React, { Component } from 'react';
 
@@ -42,7 +42,7 @@ export default class Navigation extends Component {
     	const { CurrentTime } = this.state;
 
     	// 分割线
-    	const space = <div className='content-space' />;
+    	// const space = <div className='content-space' />;
 
     	const date = (
     		<div className='content-wrapper'>
@@ -55,11 +55,11 @@ export default class Navigation extends Component {
     		<Menu>
     			{
     				menu.map(item => {
-    					const { text, key } = item;
+    					const { title, id } = item;
 
     					return (
-    						<Menu.Item key={ key } onClick={ e => menuItemOnClick && menuItemOnClick(item, e) }>
-    							<a rel='noopener noreferrer'>{ text }</a>
+    						<Menu.Item key={ id } onClick={ e => menuItemOnClick && menuItemOnClick(item) }>
+    							<a rel='noopener noreferrer'>{ title }</a>
     						</Menu.Item>
     					);
     				})
@@ -72,7 +72,6 @@ export default class Navigation extends Component {
     			<div className='content'>
     				<div className='content-wrapper' style={{ width: 300 }}>浙江省水利综合门户</div>
 
-    				{/* { space } */}
     				<div className='content-wrapper' style={{ width: 300 }}>
     					<div className='content-time'>
     						{ CurrentTime && <CurrentTime /> }

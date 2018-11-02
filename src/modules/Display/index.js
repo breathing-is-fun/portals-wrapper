@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 19:53:32
+ * @Last Modified time: 2018-11-02 11:14:00
  */
 import React, { Component } from 'react';
 
@@ -21,22 +21,26 @@ export default class Display extends Component {
 	}
 
     componentDidMount = () => {
-    	this.loadLayout('layoutDatas');
-
     	this.loadMenu();
     }
 
-	loadLayout = path => {
+	loadLayout = id => {
 		ajax({
 			key: 's_slmh_meal_layout_data',
+			data: { id },
 			success: ({ data: layout }) => this.setState({ layout })
 		});
 	}
 
 	loadMenu = () => {
 		ajax({
-			key: 'switchMealDatas',
-			success: ({ data: menuDatas }) => this.setState({ menuDatas }),
+			key: 's_slmh_meal_switch',
+			data: { id: 1 },
+			success: ({ data: menuDatas }) => {
+				this.setState({ menuDatas }, () => {
+					menuDatas.length != 0 && this.loadLayout(menuDatas[0].id);
+				});
+			},
 		});
 	}
 
@@ -44,7 +48,7 @@ export default class Display extends Component {
     	const { layout, menuDatas } = this.state;
 
     	return (
-    		<Navigation menuItemOnClick={ ({ url }) => this.loadLayout(url) } menu={ menuDatas } clock>
+    		<Navigation menuItemOnClick={ ({ id }) => this.loadLayout(id) } menu={ menuDatas } clock>
     			<Grid isEdit={ false } isDelete={ false } layout={ layout } />
     		</Navigation>
     	);
