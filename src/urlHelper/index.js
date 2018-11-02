@@ -2,9 +2,8 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 19:48:22
+ * @Last Modified time: 2018-11-02 09:53:00
  */
-import serialize from 'daily-util/Serialize';
 import { path } from './path';
 
 // const param = {
@@ -62,6 +61,18 @@ const getRealParams = (url, data) => {
 	fix = url.includes('?') ? '&' : '?';
 
 	return fix + serialize(data);
+};
+
+const serialize = data => {
+	let paramStr = '';
+
+	for(let key in data) {
+		paramStr += `${ key }=${ data[key] }&`;
+	}
+
+	paramStr = paramStr.substr(0, paramStr.length - 1);
+
+	return paramStr;
 };
 
 const getRealUrl = key => {
