@@ -2,8 +2,13 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-28 15:20:13
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-27 17:02:06
+ * @Last Modified time: 2018-11-02 16:27:46
  */
+import 'babel-polyfill';
+import es6 from 'es6-promise';
+es6.polyfill;
+import 'isomorphic-fetch';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { AppContainer } from 'react-hot-loader'
