@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 15:51:46
+ * @Last Modified time: 2018-11-02 16:32:17
  */
 import React, { Component } from 'react';
 
@@ -47,7 +47,6 @@ export default class Display extends Component {
     render = () => {
     	const { layout, menuDatas } = this.state;
 
-    	console.log(layout);
     	return (
     		<Navigation menuItemOnClick={ ({ id }) => this.loadLayout(id) } menu={ menuDatas } clock>
     			<Grid isEdit={ false } isDelete={ false } layout={ layout } />
