@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 15:42:07
+ * @Last Modified time: 2018-11-02 15:50:20
  */
 import React, { Component } from 'react';
 
@@ -34,9 +34,9 @@ export default class Grid extends Component {
     	loader.load();
 	}
 
-    handleLayoutChange = layout => {
-    	console.log(layout);
-    }
+	// handleLayoutChange = layout => {
+	// 	console.log(layout);
+	// }
 
 	handleDragDrop = e => {
 		let { layout } = this.props;

@@ -1,47 +1,480 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Grid render correctly 1`] = `
-<div
-  className="Grid"
-  onDragOver={[Function]}
-  onDrop={[Function]}
->
-  <ReactGridLayout
-    autoSize={true}
-    className="layout"
-    cols={12}
-    compactType="vertical"
-    containerPadding={null}
-    draggableCancel=""
-    draggableHandle=""
-    isDraggable={true}
-    isResizable={true}
-    layout={Array []}
-    margin={
-      Array [
-        10,
-        10,
-      ]
-    }
-    maxRows={Infinity}
-    onDrag={[Function]}
-    onDragStart={[Function]}
-    onDragStop={[Function]}
-    onLayoutChange={[Function]}
-    onResize={[Function]}
-    onResizeStart={[Function]}
-    onResizeStop={[Function]}
-    preventCollision={false}
-    rowHeight={30}
-    style={
+<Grid
+  layout={
+    Array [
       Object {
-        "background": "#f5f6fa",
-        "height": "100%",
+        "h": 6,
+        "i": "dbzx",
+        "id": 1,
+        "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+        "mealid": 1,
+        "path": "../../../thirdModules/dbzx/index.js",
+        "showtitle": false,
+        "style": "{\\"background\\": \\"#F96\\",\\"border\\": \\"1px solid #ccc\\"}",
+        "title": "代办中心",
+        "w": 4,
+        "x": 0,
+        "y": 0,
+      },
+    ]
+  }
+>
+  <div
+    className="Grid"
+    onDragOver={[Function]}
+    onDrop={[Function]}
+  >
+    <ReactGridLayout
+      autoSize={true}
+      className="layout"
+      cols={12}
+      compactType="vertical"
+      containerPadding={null}
+      draggableCancel=""
+      draggableHandle=""
+      isDraggable={true}
+      isResizable={true}
+      layout={Array []}
+      margin={
+        Array [
+          10,
+          10,
+        ]
       }
-    }
-    useCSSTransforms={true}
-    verticalCompact={true}
-    width={-256}
-  />
-</div>
+      maxRows={Infinity}
+      onDrag={[Function]}
+      onDragStart={[Function]}
+      onDragStop={[Function]}
+      onLayoutChange={[Function]}
+      onResize={[Function]}
+      onResizeStart={[Function]}
+      onResizeStop={[Function]}
+      preventCollision={false}
+      rowHeight={30}
+      style={
+        Object {
+          "background": "#f5f6fa",
+          "height": "100%",
+        }
+      }
+      useCSSTransforms={true}
+      verticalCompact={true}
+      width={-256}
+    >
+      <div
+        className="react-grid-layout layout"
+        style={
+          Object {
+            "background": "#f5f6fa",
+            "height": "100%",
+          }
+        }
+      >
+        <GridItem
+          cancel=""
+          className=""
+          cols={12}
+          containerPadding={
+            Array [
+              10,
+              10,
+            ]
+          }
+          containerWidth={-256}
+          h={6}
+          handle=""
+          i="dbzx"
+          isDraggable={true}
+          isResizable={true}
+          key=".$dbzx"
+          margin={
+            Array [
+              10,
+              10,
+            ]
+          }
+          maxH={Infinity}
+          maxRows={Infinity}
+          maxW={Infinity}
+          minH={1}
+          minW={1}
+          onDrag={[Function]}
+          onDragStart={[Function]}
+          onDragStop={[Function]}
+          onResize={[Function]}
+          onResizeStart={[Function]}
+          onResizeStop={[Function]}
+          rowHeight={30}
+          static={false}
+          useCSSTransforms={true}
+          usePercentages={false}
+          w={4}
+          x={0}
+          y={0}
+        >
+          <DraggableCore
+            allowAnyClick={false}
+            cancel=".react-resizable-handle"
+            disabled={false}
+            enableUserSelectHack={true}
+            grid={null}
+            handle=""
+            offsetParent={null}
+            onDrag={[Function]}
+            onMouseDown={[Function]}
+            onStart={[Function]}
+            onStop={[Function]}
+            transform={null}
+          >
+            <Resizable
+              axis="both"
+              handleSize={
+                Array [
+                  20,
+                  20,
+                ]
+              }
+              height={230}
+              lockAspectRatio={false}
+              maxConstraints={
+                Array [
+                  -276,
+                  Infinity,
+                ]
+              }
+              minConstraints={
+                Array [
+                  -32,
+                  30,
+                ]
+              }
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
+              onResize={[Function]}
+              onResizeStart={[Function]}
+              onResizeStop={[Function]}
+              onTouchEnd={[Function]}
+              onTouchStart={[Function]}
+              style={
+                Object {
+                  "touchAction": "none",
+                }
+              }
+              width={-99}
+            >
+              <Shell
+                className="react-grid-item react-draggable cssTransforms react-resizable"
+                data-grid={
+                  Object {
+                    "h": 6,
+                    "i": "dbzx",
+                    "id": 1,
+                    "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+                    "mealid": 1,
+                    "path": "../../../thirdModules/dbzx/index.js",
+                    "showtitle": false,
+                    "style": "{\\"background\\": \\"#F96\\",\\"border\\": \\"1px solid #ccc\\"}",
+                    "title": "代办中心",
+                    "w": 4,
+                    "x": 0,
+                    "y": 0,
+                  }
+                }
+                isDelete={true}
+                isEdit={true}
+                key="dbzx"
+                onEdit={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
+                showTitle={false}
+                style={
+                  Object {
+                    "0": "{",
+                    "1": "\\"",
+                    "10": "n",
+                    "11": "d",
+                    "12": "\\"",
+                    "13": ":",
+                    "14": " ",
+                    "15": "\\"",
+                    "16": "#",
+                    "17": "F",
+                    "18": "9",
+                    "19": "6",
+                    "2": "b",
+                    "20": "\\"",
+                    "21": ",",
+                    "22": "\\"",
+                    "23": "b",
+                    "24": "o",
+                    "25": "r",
+                    "26": "d",
+                    "27": "e",
+                    "28": "r",
+                    "29": "\\"",
+                    "3": "a",
+                    "30": ":",
+                    "31": " ",
+                    "32": "\\"",
+                    "33": "1",
+                    "34": "p",
+                    "35": "x",
+                    "36": " ",
+                    "37": "s",
+                    "38": "o",
+                    "39": "l",
+                    "4": "c",
+                    "40": "i",
+                    "41": "d",
+                    "42": " ",
+                    "43": "#",
+                    "44": "c",
+                    "45": "c",
+                    "46": "c",
+                    "47": "\\"",
+                    "48": "}",
+                    "5": "k",
+                    "6": "g",
+                    "7": "r",
+                    "8": "o",
+                    "9": "u",
+                    "MozTransform": "translate(10px,10px)",
+                    "OTransform": "translate(10px,10px)",
+                    "WebkitTransform": "translate(10px,10px)",
+                    "borderRadius": 2,
+                    "boxShadow": "0px 0px 29px 0px rgba(93, 106, 113, 0.12)",
+                    "height": "230px",
+                    "msTransform": "translate(10px,10px)",
+                    "position": "absolute",
+                    "touchAction": "none",
+                    "transform": "translate(10px,10px)",
+                    "userSelect": "none",
+                    "width": "-99px",
+                    "zIndex": 1,
+                  }
+                }
+                title="代办中心"
+              >
+                <div
+                  className="Shell"
+                  data-grid={
+                    Object {
+                      "h": 6,
+                      "i": "dbzx",
+                      "id": 1,
+                      "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+                      "mealid": 1,
+                      "path": "../../../thirdModules/dbzx/index.js",
+                      "showtitle": false,
+                      "style": "{\\"background\\": \\"#F96\\",\\"border\\": \\"1px solid #ccc\\"}",
+                      "title": "代办中心",
+                      "w": 4,
+                      "x": 0,
+                      "y": 0,
+                    }
+                  }
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "0": "{",
+                      "1": "\\"",
+                      "10": "n",
+                      "11": "d",
+                      "12": "\\"",
+                      "13": ":",
+                      "14": " ",
+                      "15": "\\"",
+                      "16": "#",
+                      "17": "F",
+                      "18": "9",
+                      "19": "6",
+                      "2": "b",
+                      "20": "\\"",
+                      "21": ",",
+                      "22": "\\"",
+                      "23": "b",
+                      "24": "o",
+                      "25": "r",
+                      "26": "d",
+                      "27": "e",
+                      "28": "r",
+                      "29": "\\"",
+                      "3": "a",
+                      "30": ":",
+                      "31": " ",
+                      "32": "\\"",
+                      "33": "1",
+                      "34": "p",
+                      "35": "x",
+                      "36": " ",
+                      "37": "s",
+                      "38": "o",
+                      "39": "l",
+                      "4": "c",
+                      "40": "i",
+                      "41": "d",
+                      "42": " ",
+                      "43": "#",
+                      "44": "c",
+                      "45": "c",
+                      "46": "c",
+                      "47": "\\"",
+                      "48": "}",
+                      "5": "k",
+                      "6": "g",
+                      "7": "r",
+                      "8": "o",
+                      "9": "u",
+                      "MozTransform": "translate(10px,10px)",
+                      "OTransform": "translate(10px,10px)",
+                      "WebkitTransform": "translate(10px,10px)",
+                      "borderRadius": 2,
+                      "boxShadow": "0px 0px 29px 0px rgba(93, 106, 113, 0.12)",
+                      "height": "230px",
+                      "msTransform": "translate(10px,10px)",
+                      "position": "absolute",
+                      "touchAction": "none",
+                      "transform": "translate(10px,10px)",
+                      "userSelect": "none",
+                      "width": "-99px",
+                      "zIndex": 1,
+                    }
+                  }
+                >
+                  <Icon
+                    className="operation"
+                    onMouseDown={[Function]}
+                    style={
+                      Object {
+                        "right": 0,
+                      }
+                    }
+                    theme="outlined"
+                    type="delete"
+                  >
+                    <i
+                      className="anticon anticon-delete operation"
+                      onMouseDown={[Function]}
+                      style={
+                        Object {
+                          "right": 0,
+                        }
+                      }
+                    >
+                      <IconReact
+                        className=""
+                        type="delete-o"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="delete"
+                          fill="currentColor"
+                          height="1em"
+                          key="svg-delete"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M360 184h-8c4.4 0 8-3.6 8-8v8h304v-8c0 4.4 3.6 8 8 8h-8v72h72v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80h72v-72zm504 72H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zM731.3 840H292.7l-24.2-512h487l-24.2 512z"
+                            key="svg-delete-svg-0"
+                          />
+                        </svg>
+                      </IconReact>
+                    </i>
+                  </Icon>
+                  <Icon
+                    className="operation"
+                    onMouseDown={[Function]}
+                    style={
+                      Object {
+                        "right": 22,
+                      }
+                    }
+                    theme="outlined"
+                    type="edit"
+                  >
+                    <i
+                      className="anticon anticon-edit operation"
+                      onMouseDown={[Function]}
+                      style={
+                        Object {
+                          "right": 22,
+                        }
+                      }
+                    >
+                      <IconReact
+                        className=""
+                        type="edit-o"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className=""
+                          data-icon="edit"
+                          fill="currentColor"
+                          height="1em"
+                          key="svg-edit"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+                            key="svg-edit-svg-0"
+                          />
+                        </svg>
+                      </IconReact>
+                    </i>
+                  </Icon>
+                  <div
+                    style={
+                      Object {
+                        "height": "calc(100% - 21px)",
+                      }
+                    }
+                  />
+                  <DraggableCore
+                    allowAnyClick={false}
+                    cancel={null}
+                    disabled={false}
+                    enableUserSelectHack={true}
+                    grid={null}
+                    handle={null}
+                    key="resizableHandle"
+                    offsetParent={null}
+                    onDrag={[Function]}
+                    onMouseDown={[Function]}
+                    onStart={[Function]}
+                    onStop={[Function]}
+                    transform={null}
+                  >
+                    <span
+                      className="react-resizable-handle"
+                      onMouseDown={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "touchAction": "none",
+                        }
+                      }
+                    />
+                  </DraggableCore>
+                </div>
+              </Shell>
+            </Resizable>
+          </DraggableCore>
+        </GridItem>
+      </div>
+    </ReactGridLayout>
+  </div>
+</Grid>
 `;

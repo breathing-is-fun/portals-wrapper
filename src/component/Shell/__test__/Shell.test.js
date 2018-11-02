@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-24 19:17:12
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 20:21:23
+ * @Last Modified time: 2018-11-02 16:12:06
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -29,6 +29,7 @@ describe('Shell', () => {
 		onEdit: jest.fn(),
 		style: { zIndex: 1, background: '#F96' },
 		title: 'testTitle',
+		onClick: jest.fn(),
 	};
 
 	it('render correctly', () => {
@@ -38,12 +39,15 @@ describe('Shell', () => {
 	});
 
 	it('button group render correctly', () => {
-		const wrapper = shallow(<Shell { ...Object.assign({}, { isDelete: false, isEdit: false }, props) }>test</Shell>);
+		const wrapper = shallow(<Shell { ...props }>test</Shell>);
 
+		expect(wrapper).toMatchSnapshot();
+
+		wrapper.setProps({ isDelete: false, isEdit: false });
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	it('when button in group is clicked, onClick should be called', () => {
+	it('when button in group is clicked, theirs click event should be called', () => {
 		const wrapper = mount(<Shell { ...props }>test</Shell>);
 
 		wrapper.find('i').at(0).simulate('mousedown');
@@ -51,5 +55,18 @@ describe('Shell', () => {
 
 		wrapper.find('i').at(1).simulate('mousedown');
 		expect(props.onEdit.mock.calls.length).toBe(1);
+	});
+
+	it('when showTitle is false, title should be hidden', () => {
+		const wrapper = mount(<Shell { ...Object.assign({}, props, { showTitle: false }) }>test</Shell>);
+
+		expect(wrapper.find('.operation-title').length).toBe(0);
+	});
+
+	it('when add button is clicked, its click event should be called', () => {
+		const wrapper = shallow(<Shell { ...Object.assign({}, props, { type: 'add' }) }>test</Shell>);
+
+		wrapper.find('.Shell').simulate('click');
+		expect(props.onClick.mock.calls.length).toBe(1);
 	});
 });
