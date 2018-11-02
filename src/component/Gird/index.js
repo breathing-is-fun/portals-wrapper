@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 15:49:27
+ * @Last Modified time: 2018-11-02 15:42:07
  */
 import React, { Component } from 'react';
 
@@ -58,7 +58,7 @@ export default class Grid extends Component {
 
 	createShellChild = (isEdit, item) => {
 		const { i, type, imgurl: imgUrl, path } = item;
-		const height = 'calc(100% - 30px)';
+		const height = 'calc(100% - 21px)';
 
 		if(type == 'iframe') {
 			if(isEdit) {
@@ -136,11 +136,11 @@ export default class Grid extends Component {
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i: key, title, style: shellStyle = {} } = item;
+    						const { i: key, title, style: shellStyle = {}, showtitle: showTitle } = item;
 
     						const shellProps = {
     							key, title, isEdit, isDelete,
-    							onDelete,
+    							onDelete, showTitle,
     							style: Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2  }, shellStyle),
     							'data-grid': item,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),

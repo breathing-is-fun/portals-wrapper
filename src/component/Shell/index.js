@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-30 18:28:05
+ * @Last Modified time: 2018-11-02 15:30:16
  */
 import React, { Component } from 'react';
 
@@ -67,22 +67,11 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit, isDelete, type = 'component', onClick } = this.props;
+    	const { children, isEdit, isDelete, type = 'component', onClick, showTitle = true } = this.props;
     	const { title } = this.state;
 
-    	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } />;
-    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } />;
-
-    	const operateBoard = (
-    		<div style={{ height: 30, background: '#f5f6fa' }}>
-    			<div className='operate-button-group'>
-    				{ isDelete && deleteButton }
-    				{ isEdit && editButton }
-    			</div>
-
-    			{ type != 'add' && <span className='operation-title'>{ title }</span> }
-    		</div>
-    	);
+    	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } style={{ right: 22 }} />;
+    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } style={{ right: 0 }} />;
 
     	// 容错，getDrawerStatus为react不识别的handle
     	let newProps = Object.assign({}, this.props);
@@ -93,10 +82,14 @@ export default class Shell extends Component {
     	delete newProps.onEdit;
     	delete newProps.isEdit;
     	delete newProps.title;
+    	delete newProps.showTitle;
 
     	return (
     		<div { ...newProps } className={ `Shell${ type != 'component' ? ' border-transition' : '' }` } onClick={ e => type == 'add' && onClick && onClick(e) }>
-    			{ operateBoard }
+    			{ isDelete && deleteButton }
+    			{ isEdit && editButton }
+
+    			{ type != 'add' && showTitle && <span className='operation-title'>{ title }</span> }
 
     			{ children }
     		</div>

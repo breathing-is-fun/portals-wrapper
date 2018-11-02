@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 17:25:01
+ * @Last Modified time: 2018-11-02 15:32:29
  */
 import React, { Component } from 'react';
 
@@ -38,7 +38,7 @@ export default class ModuleLayout extends Component {
 		const { layout, isAll } = this.props;
 		const { modalVisible, currentModalItem } = this.state;
 
-		const shellStyle = { zIndex: 1, userSelect: 'none', width: '20%', height: 200, background: '#e0e6ee', borderRadius: 2, transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)', float: 'left', margin: 30 };
+		const shellStyle = { zIndex: 1, userSelect: 'none', width: '20%', height: 200, background: '#e0e6ee', borderRadius: 2, transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)', float: 'left', margin: 30, position: 'relative' };
 
 		const modalProps = {
 			title: '套餐基础设置',
@@ -53,11 +53,11 @@ export default class ModuleLayout extends Component {
 			<div className='ModuleLayout'>
 				{
 					layout.map(item => {
-						const { id, group, title, isedit: isEdit, imgurl: imgUrl, isdelete: isDelete } = item;
+						const { id, group, title, isedit: isEdit, imgurl: imgUrl, isdelete: isDelete, showtitle: showTitle } = item;
 
 						const shellProps = {
 							key: group + id,
-							title,
+							title, showTitle,
 							isEdit: isAll,
 							isDelete: true,
 							type: 'module',
@@ -69,7 +69,7 @@ export default class ModuleLayout extends Component {
 
 						return (
 							<Shell { ...shellProps }>
-								<img src={ imgUrl } style={{ width: '100%', height: 'calc(100% - 30px)' }} />
+								<img src={ imgUrl } style={{ width: '100%', height: showTitle ? 'calc(100% - 21px)' : '100%' }} />
 							</Shell>
 						);
 					})
