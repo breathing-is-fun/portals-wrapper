@@ -1,0 +1,76 @@
+{
+    "data": [
+        {
+            "text": "代办中心",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+            "group": "type1",
+            "groupName": "防汛类",
+            "order": 1,
+            "key": "sq1"
+        },
+        {
+            "text": "在办中心",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/zbzx.png",
+            "group": "type2",
+            "groupName": "水资源类",
+            "order": 2,
+            "key": "sq2"
+        },
+        {
+            "text": "天气预报",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/tqyb.png",
+            "group": "type2",
+            "groupName": "水资源类",
+            "order": 3,
+            "key": "sq3"
+        },
+        {
+            "text": "地图平台",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/thereIsAMap.png",
+            "group": "type3",
+            "groupName": "水政类",
+            "order": 3,
+            "key": "sq4"
+        },
+        {
+            "text": "台风路径",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/typhoon.png",
+            "group": "type4",
+            "groupName": "水利工程类",
+            "order": 3,
+            "key": "sq5"
+        },
+        {
+            "text": "办事中心",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/bszx.png",
+            "group": "type5",
+            "groupName": "项目建管类",
+            "order": 1,
+            "key": "yq1"
+        },
+        {
+            "text": "日程安排",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/rcap.png",
+            "group": "type5",
+            "groupName": "项目建管类",
+            "order": 2,
+            "key": "yq2"
+        },
+        {
+            "text": "数据看板",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/sjkb.jpg",
+            "group": "type6",
+            "groupName": "农村水利类",
+            "order": 3,
+            "key": "yq3"
+        },
+        {
+            "text": "共享中心",
+            "url": "http://47.95.1.229:9003/UploadFile/201808/gxzx.jpg",
+            "group": "type6",
+            "groupName": "农村水利类",
+            "order": 3,
+            "key": "yq4"
+        }
+    ]
+}
