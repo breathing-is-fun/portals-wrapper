@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 19:54:52
+ * @Last Modified time: 2018-11-02 14:48:45
  */
 import React, { Component } from 'react';
 
@@ -38,10 +38,10 @@ class PropertyForm extends Component {
 				// hack. Need to modify function selectGroup in handler.js
 				// 修改参数名， group => value, groupName => title
 				for(let item of departmentDatas) {
-					const { group, groupName, key, children } = item;
+					const { group, groupName, key, children, id } = item;
 
 					if(group != 'all') {
-						newDepart.push({ title: groupName, value: group, key, children });
+						newDepart.push({ title: groupName, value: id, children });
 					}
 				}
 

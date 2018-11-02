@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-25 14:29:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-31 16:36:29
+ * @Last Modified time: 2018-11-02 14:48:15
  */
 const handleMenuGroup = dataSource => {
 	let result = [], groupDatas = selectGroup(dataSource);
@@ -18,8 +18,9 @@ const handleMenuGroup = dataSource => {
 
 			if(groupChild == group) {
 				childResult.key = groupChild + id;
+				childResult.id = id;
 
-				children.push(Object.assign({}, jtem, { title: text, value: key, key }));
+				children.push(Object.assign({}, jtem, { title: text, value: id, key }));
 			}
 		}
 
