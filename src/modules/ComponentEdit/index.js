@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 09:50:20
+ * @Last Modified time: 2018-11-02 10:00:00
  */
 import React, { Component } from 'react';
 
@@ -75,9 +75,10 @@ export default class ComponentEdit extends Component {
 	}
 
 	loadLayoutDatas = () => {
-		let id = 1;
+		const { moduleToComponent } = window['_acrossDatas'];
+		const { data: { id } } = moduleToComponent;
 
-		ajax({
+		id && ajax({
 			key: 's_slmh_meal_layout_data',
 			data: { id },
 			success: ({ data }) => this.setState({ layout: data }),
