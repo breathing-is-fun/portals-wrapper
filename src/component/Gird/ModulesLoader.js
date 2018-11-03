@@ -2,10 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-03 17:39:22
+ * @Last Modified time: 2018-11-03 17:43:08
  */
-import Promise from 'promise/lib/es6-extensions';
-// var Promise = require('es6-promise').Promise;
+// import Promise from 'promise/lib/es6-extensions';
+import { Promise } from 'es6-promise';
 
 import { fetch } from 'whatwg-fetch';
 
@@ -54,7 +54,6 @@ export default class ModulesLoader {
     	const paths = eval(pathArr);
 
     	Promise.all(paths).then(modules => {
-    		console.log(modules);
     		for (let i = 0; i < modules.length; i++) {
     			// const [moduleName] = Object.keys(modules[i]);
     			const { i: key } = this.layout[i];
