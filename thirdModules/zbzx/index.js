@@ -1,4 +1,4 @@
-export class TestModule {
+class Zbzx {
 	constructor (root) {
 		this['_moduleOnMount'] = this.onMount;
 
@@ -11,3 +11,5 @@ export class TestModule {
 
 	}
 }
+
+module.exports = Zbzx;

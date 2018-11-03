@@ -2,20 +2,19 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-09-28 16:43:38
+ * @Last Modified time: 2018-11-03 10:49:20
  */
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const TohoLogPlugin = require('toho-log-plugin');
-const { logInfo, commonModule, commonPlugin, onCompile } = require('./webpack.common');
+const { commonModule, commonPlugin } = require('./webpack.common');
 
 let plugins = commonPlugin;
 
-plugins.push(new webpack.HotModuleReplacementPlugin());
-plugins.push(new webpack.NamedModulesPlugin());
+// plugins.push(new webpack.HotModuleReplacementPlugin());
+// plugins.push(new webpack.NamedModulesPlugin());
 plugins.push(new TohoLogPlugin({ dev: true }));
 
 plugins.push(
@@ -37,7 +36,7 @@ plugins.push(
 
 const devServerOptions = {
 	port: 9099,
-	hot: true,
+	// hot: true,
 	host: 'localhost',
 	noInfo: true,
 	clientLogLevel: 'error',
@@ -49,8 +48,9 @@ const webpackConfig = {
 	watch: false,
 	devtool: 'source-map',
 	entry: [
+		'babel-polyfill',
 		'webpack-dev-server/client?http://' + devServerOptions.host + ':' + devServerOptions.port,
-		'webpack/hot/only-dev-server',
+		// 'webpack/hot/only-dev-server',
 		__dirname + '/src',
 	],
 	output: {

@@ -2,8 +2,9 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 09:53:00
+ * @Last Modified time: 2018-11-03 16:48:19
  */
+import { fetch } from 'whatwg-fetch';
 import { path } from './path';
 
 // const param = {

@@ -2,8 +2,28 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-24 10:51:52
+ * @Last Modified time: 2018-11-03 17:39:22
  */
+import Promise from 'promise/lib/es6-extensions';
+// var Promise = require('es6-promise').Promise;
+
+import { fetch } from 'whatwg-fetch';
+
+const importPolyfill = url => {
+	const promise = fetch(url)
+		.then(reponse => reponse.text())
+		.then(text => {
+			const generate = new Function('module', text);
+			const module = { exports: {} };
+
+			generate(module);
+
+			return module.exports;
+		});
+
+	return promise;
+};
+
 export default class ModulesLoader {
 	constructor (layout, roots) {
 		this.layout = layout;
@@ -17,7 +37,7 @@ export default class ModulesLoader {
 			const { path, type } = item;
 
 			if(type != 'iframe') {
-				pathArr.push(`import('${ path }')`);
+				pathArr.push(`importPolyfill('${ path }')`);
 				newLayout.push(item);
 			}
 		}
@@ -31,12 +51,15 @@ export default class ModulesLoader {
     loadScripts = pathArr => {
     	// this eval is dangerous beacuse of the source of path
     	/* eslint-disable no-eval */
-    	Promise.all(eval(`${ pathArr }`)).then(modules => {
+    	const paths = eval(pathArr);
+
+    	Promise.all(paths).then(modules => {
+    		console.log(modules);
     		for (let i = 0; i < modules.length; i++) {
-    			const [moduleName] = Object.keys(modules[i]);
+    			// const [moduleName] = Object.keys(modules[i]);
     			const { i: key } = this.layout[i];
 
-    			const loadedModule = new modules[i][moduleName](this.roots[key]);
+    			const loadedModule = new modules[i](this.roots[key]);
     			const { _moduleOnMount } = loadedModule;
 
     			_moduleOnMount && _moduleOnMount.call(loadedModule);
