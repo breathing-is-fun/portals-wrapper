@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-20 13:48:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-03 10:49:20
+ * @Last Modified time: 2018-11-04 12:14:50
  */
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
@@ -48,7 +48,6 @@ const webpackConfig = {
 	watch: false,
 	devtool: 'source-map',
 	entry: [
-		'babel-polyfill',
 		'webpack-dev-server/client?http://' + devServerOptions.host + ':' + devServerOptions.port,
 		// 'webpack/hot/only-dev-server',
 		__dirname + '/src',
