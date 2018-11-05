@@ -13,6 +13,7 @@
     "babel-polyfill": "^6.26.0",
     "moment": "^2.22.2",
     "node-fetch": "^2.2.0",
+    "react-grid-layout": "^0.16.6",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
