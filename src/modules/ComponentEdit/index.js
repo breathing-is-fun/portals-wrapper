@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 09:26:29
+ * @Last Modified time: 2018-11-05 09:34:52
  */
 import React, { Component } from 'react';
 
@@ -43,6 +43,10 @@ export default class ComponentEdit extends Component {
     	this.loadMenuDatas();
 
     	this.loadPropertyBoardData();
+
+    	window.onresize = () => {
+    		this.setState({});
+    	};
     }
 
 	loadPropertyBoardData = () => {
