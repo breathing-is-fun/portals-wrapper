@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 15:50:20
+ * @Last Modified time: 2018-11-05 09:12:26
  */
 import React, { Component } from 'react';
 
@@ -129,7 +129,7 @@ export default class Grid extends Component {
     		onChange: this.handleShellStyleOnChange,
     	};
 
-    	layout.length != 0 && this.mountRoots();
+    	// layout.length != 0 && this.mountRoots();
 
     	return (
     		<div className='Grid' onDrop={ this.handleDragDrop } onDragOver={ e => e.preventDefault() }>

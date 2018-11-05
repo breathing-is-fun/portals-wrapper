@@ -2,14 +2,12 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 11:22:21
+ * @Last Modified time: 2018-11-05 09:26:29
  */
 import React, { Component } from 'react';
 
-// import Grid from './Grid';
 import Grid from '../../component/Gird';
 import DraggableMenu from '../../component/DraggableMenu';
-// import Navigation from '../../component/Navigation';
 import Ruler from '../../component/Ruler';
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
 import { reject } from 'lodash';
@@ -78,7 +76,13 @@ export default class ComponentEdit extends Component {
 		id && ajax({
 			key: 's_slmh_meal_layout_data',
 			data: { id },
-			success: ({ data }) => this.setState({ layout: data }),
+			success: ({ data }) => {
+				this.setState({ layout: data }, () => {
+					setTimeout(() => {
+						this.grid.mountRoots();
+					}, 0);
+				});
+			},
 		});
 	}
 
@@ -128,11 +132,12 @@ export default class ComponentEdit extends Component {
 			onLayoutChange: this.handleLayoutChange,
 			onDelete: this.handleOnDelete,
 			propertyBoardEnumData,
+			ref: ref => ref && (this.grid = ref),
 		};
 
 		return (
 			// <Navigation type='componentEdit'>
-			<Layout style={{ minHeight: '100vh' }}>
+			<Layout style={{ minHeight: '100vh', height: document.documentElement.clientHeight || document.body.clientHeight }}>
 				<Sider theme='light' width='256'>
 					<DraggableMenu { ...draggableMenuProps } />
 				</Sider>
