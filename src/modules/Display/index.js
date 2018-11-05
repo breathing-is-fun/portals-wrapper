@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 09:33:31
+ * @Last Modified time: 2018-11-05 11:16:56
  */
 import React, { Component } from 'react';
 
@@ -32,7 +32,18 @@ export default class Display extends Component {
 		ajax({
 			key: 's_slmh_meal_layout_data',
 			data: { id },
-			success: ({ data: layout }) => {
+			success: ({ data: result }) => {
+				let layout = [];
+
+				for(let item of result) {
+					let { style } = item;
+
+					if(typeof style == 'string') {
+						item.style = JSON.parse(style);
+					}
+
+					layout.push(item);
+				}
 				this.setState({ layout }, () => {
 					this.grid.mountRoots();
 				});

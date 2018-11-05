@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 09:34:52
+ * @Last Modified time: 2018-11-05 11:17:43
  */
 import React, { Component } from 'react';
 
@@ -80,8 +80,20 @@ export default class ComponentEdit extends Component {
 		id && ajax({
 			key: 's_slmh_meal_layout_data',
 			data: { id },
-			success: ({ data }) => {
-				this.setState({ layout: data }, () => {
+			success: ({ data: result }) => {
+				let layout = [];
+
+				for(let item of result) {
+					let { style } = item;
+
+					if(typeof style == 'string') {
+						item.style = JSON.parse(style);
+					}
+
+					layout.push(item);
+				}
+
+				this.setState({ layout }, () => {
 					setTimeout(() => {
 						this.grid.mountRoots();
 					}, 0);

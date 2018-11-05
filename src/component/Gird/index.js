@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 09:12:26
+ * @Last Modified time: 2018-11-05 11:29:33
  */
 import React, { Component } from 'react';
 
@@ -91,6 +91,7 @@ export default class Grid extends Component {
 
 			if(key == id) {
 				obj.style = Object.assign(style, currentShellStyle);
+				delete obj.style.id;
 			}
 
 			newLayout.push(obj);
