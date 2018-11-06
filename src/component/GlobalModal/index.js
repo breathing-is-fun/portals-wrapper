@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-06 12:31:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-06 12:42:26
+ * @Last Modified time: 2018-11-06 13:40:34
  */
 import React, { Component } from 'react';
 import { Modal } from 'antd';
@@ -14,6 +14,7 @@ export default class GlobalModal extends Component {
 		this.state = {
 			title: '',
 			visible: false,
+			renderType: '',
 		};
 
 		// 全局弹框
@@ -24,8 +25,13 @@ export default class GlobalModal extends Component {
 			configurable: true,
 			set: value => {
 				const { title, visible, content } = value;
+				let renderType = 'html';
 
-				this.setState({ title, visible, content });
+				if(typeof content == 'object') {
+					renderType = 'object';
+				}
+
+				this.setState({ title, visible, content, renderType });
 
 				return value;
 			}
@@ -33,20 +39,20 @@ export default class GlobalModal extends Component {
 	}
 
     componentDidMount = () => {
-    	window.SCTool.modal = {
-    		title: <div>test</div>,
-    		visible: true,
-    		content: '<div>content</div>',
-    	};
+    	// window.SCTool.modal = {
+    	// 	title: <div>test</div>,
+    	// 	visible: true,
+    	// 	content: <div>content</div>,
+    	// };
     }
 
     render = () => {
-    	const { visible, title, content } = this.state;
+    	const { visible, title, content, renderType } = this.state;
 
     	return (
     		<div className='GlobalModal'>
     			<Modal title={ title } visible={ visible }>
-    				<div dangerouslySetInnerHTML={{ __html: content }} />
+    				{ renderType == 'html' ? <div dangerouslySetInnerHTML={{ __html: content }} /> : content }
     			</Modal>
     		</div>
     	);
