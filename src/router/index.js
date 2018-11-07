@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-06-12 09:43:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 13:46:35
+ * @Last Modified time: 2018-11-07 15:47:54
  */
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from 'react-router-dom';
@@ -47,9 +47,8 @@ export default class Router extends Component {
     				<Route path='/edit/component' component={ ComponentEdit } />
     				<Route path='/edit/module' component={ ModuleEdit } />
     				<Route path='/display' component={ Display } />
+    				<Route path='/style' component={ StyleDescription } />
     				<Route path='/test' component={ Test } />
-
-    				<Route path='/style/index' component={ StyleDescription } />
     			</div>
     		</HashRouter>
     	);

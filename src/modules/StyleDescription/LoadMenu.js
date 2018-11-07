@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 14:45:00
+ * @Last Modified time: 2018-11-07 16:25:56
  */
 import React, { Component } from 'react';
 
@@ -53,7 +53,7 @@ export default class LoadMenu extends Component {
     				</Sider>
 
     				<Layout>
-    					<Content style={{ margin: '0 16px' }}>
+    					<Content style={{ margin: 16 }}>
     						{ children }
     					</Content>
 

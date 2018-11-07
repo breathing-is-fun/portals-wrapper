@@ -1,0 +1,15 @@
+.RenderHtml iframe {
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    height: 300px;
+}
+
+.RenderHtml {
+    background: #fff;
+}
+
+.RenderHtml pre {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 15px;
+}
