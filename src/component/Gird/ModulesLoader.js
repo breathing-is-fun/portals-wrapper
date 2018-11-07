@@ -2,11 +2,16 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-04 12:05:42
+ * @Last Modified time: 2018-11-07 18:49:23
  */
 import { fetch } from 'whatwg-fetch';
 
 const importPolyfill = url => {
+	if(!url) {
+		console.error('importPolyfill error: url is undefined.');
+		return;
+	}
+
 	const promise = fetch(url)
 		.then(reponse => reponse.text())
 		.then(text => {
@@ -31,7 +36,7 @@ export default class ModulesLoader {
 		let pathArr = [], newLayout = [];
 
 		for (let item of this.layout) {
-			const { path, type } = item;
+			const { path, moduletype: type } = item;
 
 			if(type != 'iframe') {
 				pathArr.push(importPolyfill(path));

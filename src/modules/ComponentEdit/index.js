@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 08:37:59
+ * @Last Modified time: 2018-11-07 20:28:11
  */
 import React, { Component } from 'react';
 
@@ -132,7 +132,9 @@ export default class ComponentEdit extends Component {
 		this.setState({ layout: reject(layout, { i: key }) });
 	}
 
-	handleLayoutChange = layout => this.setState({ layout })
+	handleLayoutChange = layout => {
+		this.setState({ layout });
+	}
 
 	handleMenuClick = (group, selectedKeys, id) => {
 		this.setState({ selectedKeys });

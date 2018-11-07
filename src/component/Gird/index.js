@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 08:42:24
+ * @Last Modified time: 2018-11-07 20:40:09
  */
 import React, { Component } from 'react';
 
@@ -35,13 +35,22 @@ export default class Grid extends Component {
 	}
 
 	handleLayoutChange = layout => {
-		const { onLayoutChange } = this.props;
+		const { onLayoutChange, layout: propsLayout } = this.props;
 
-		onLayoutChange && onLayoutChange(layout);
+		let newLayout = [];
+
+		for(let i = 0; i < layout.length; i++) {
+			const item = layout[i];
+			const jtem = propsLayout[i];
+
+			newLayout.push(Object.assign({}, jtem, item));
+		}
+
+		onLayoutChange && onLayoutChange(newLayout);
 	}
 
 	handleDragDrop = e => {
-		let { layout } = this.props;
+		let { layout, onLayoutChange } = this.props;
 		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
 		const { key, imgurl: imgUrl, text, style, url } = item;
 
@@ -56,11 +65,11 @@ export default class Grid extends Component {
 			style: JSON.stringify(style),
 		});
 
-		this.setState({});
+		onLayoutChange && onLayoutChange(layout);
 	}
 
 	createShellChild = (isEdit, item) => {
-		const { i, type, imgurl, imgUrl, path } = item;
+		const { i, moduletype: type, imgurl, imgUrl, path } = item;
 		const height = 'calc(100% - 21px)';
 
 		if(isEdit) {
@@ -134,8 +143,6 @@ export default class Grid extends Component {
     		enumDatas: propertyBoardEnumData,
     		onChange: this.handleShellStyleOnChange,
     	};
-
-    	// layout.length != 0 && this.mountRoots();
 
     	return (
     		<div className='Grid' onDrop={ this.handleDragDrop } onDragOver={ e => e.preventDefault() }>
