@@ -2,40 +2,35 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 13:34:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 14:44:29
+ * @Last Modified time: 2018-11-07 15:36:15
  */
 import React, { Component } from 'react';
 
 import LoadMenu from './LoadMenu';
+import RenderHtml from './RenderHtml';
 
 export default class StyleDescription extends Component {
 	constructor (props) {
 		super(props);
 
 		this.state = {
-			CurrentComponent: null,
+			path: 'HomePage',
 		};
 	}
 
     componentDidMount = () => {
-    	this.generateChild('HomePage');
+
     }
 
-	handleMenuClick = loadKey => {
-		this.generateChild(loadKey);
-	}
-
-	generateChild = loadKey => {
-		import(`./${ loadKey }.js`).then(module => this.setState({ CurrentComponent: module.default || module }));
-	}
+	handleMenuClick = path => this.setState({ path })
 
 	render = () => {
-		const { CurrentComponent } = this.state;
+		const { path } = this.state;
 
 		return (
 			<div className='StyleDescription'>
 				<LoadMenu onClick={ this.handleMenuClick }>
-					{ CurrentComponent && <CurrentComponent /> }
+					<RenderHtml path={ path } />
 				</LoadMenu>
 			</div>
 		);

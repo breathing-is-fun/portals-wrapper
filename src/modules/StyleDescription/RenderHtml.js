@@ -1,12 +1,12 @@
 /*
  * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-07 14:42:19
+ * @Date: 2018-11-07 15:32:22
  * @Last Modified by:   zy9
- * @Last Modified time: 2018-11-07 14:42:19
+ * @Last Modified time: 2018-11-07 15:32:22
  */
 import React, { Component } from 'react';
 
-export default class HomePage extends Component {
+export default class RenderHtml extends Component {
 	constructor (props) {
 		super(props);
 
@@ -21,7 +21,7 @@ export default class HomePage extends Component {
 
     render = () => {
     	return (
-    		<div className='HomePage'>HomePage</div>
+    		<div className='RenderHtml'>RenderHtml</div>
     	);
     }
 }
