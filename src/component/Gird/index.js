@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 11:29:33
+ * @Last Modified time: 2018-11-07 08:42:24
  */
 import React, { Component } from 'react';
 
@@ -34,51 +34,56 @@ export default class Grid extends Component {
     	loader.load();
 	}
 
-	// handleLayoutChange = layout => {
-	// 	console.log(layout);
-	// }
+	handleLayoutChange = layout => {
+		const { onLayoutChange } = this.props;
+
+		onLayoutChange && onLayoutChange(layout);
+	}
 
 	handleDragDrop = e => {
 		let { layout } = this.props;
 		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
-		const { key, url, text, style } = item;
+		const { key, imgurl: imgUrl, text, style, url } = item;
 
 		layout.push({
 			i: '' + key + layout.length,
 			x: (layout.length * 2) % 12,
-			y: Infinity, w: 2, h: 9,
-			type: 'iframe',
-			imgUrl: url,
+			w: 2, h: 9, y: 0,
+			url,
+			path: url,
+			imgUrl,
 			title: text,
-			style
+			style: JSON.stringify(style),
 		});
 
 		this.setState({});
 	}
 
 	createShellChild = (isEdit, item) => {
-		const { i, type, imgurl: imgUrl, path } = item;
+		const { i, type, imgurl, imgUrl, path } = item;
 		const height = 'calc(100% - 21px)';
 
-		if(type == 'iframe') {
-			if(isEdit) {
-				return <img src={ imgUrl } style={{ width: '100%', height }} />;
-			}
+		if(isEdit) {
+			return <img src={ imgurl || imgUrl } style={{ width: '100%', height }} />;
+		}
 
+		if(type == 'iframe') {
 			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>;
 		}
 
 		return <div style={{ height }} ref={ ref => ref && (this.roots[i] = ref) } />;
 	}
 
-	handleShellonEdit = (isDrawerOpen, item) => import('../PropertyBoard')
-		.then(PropertyBoard => {
-			this.setState({
-				isDrawerOpen,
-				propertyBoardDataSource: item,
-				PropertyBoard: PropertyBoard.default
+	handleShellonEdit = (isDrawerOpen, item) => {
+		import('../PropertyBoard')
+			.then(PropertyBoard => {
+				this.setState({
+					isDrawerOpen,
+					propertyBoardDataSource: item,
+					PropertyBoard: PropertyBoard.default || PropertyBoard,
+				});
 			});
-		})
+	}
 
 	handleShellStyleOnChange = currentShellStyle => {
 		const { onLayoutChange, layout } = this.props;
@@ -110,11 +115,11 @@ export default class Grid extends Component {
     		rowHeight: 30,
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - (isEdit ? 256 : 0),
     		margin: [10, 10],
-    		// onLayoutChange: this.handleLayoutChange,
+    		onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		// compactType: 'horizontal',
-    		style: { height: '100%', background: '#f5f6fa' },
+    		style: { height: 500, background: '#f5f6fa' },
     	};
 
     	const propertyBoardProps = {

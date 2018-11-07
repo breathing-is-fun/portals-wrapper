@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 14:48:45
+ * @Last Modified time: 2018-11-06 20:04:20
  */
 import React, { Component } from 'react';
 
@@ -70,7 +70,7 @@ class PropertyForm extends Component {
 
 	handleSubmit = e => {
 		const { form, currentModalItem } = this.props;
-		const { id } = currentModalItem;
+		const { id = -1 } = currentModalItem;
 
 		e.preventDefault();
 
@@ -133,7 +133,7 @@ class PropertyForm extends Component {
 
     				<FormItem { ...formItemLayout } label='人员权限'>
     					{
-    						getFieldDecorator('deaprtment', {
+    						getFieldDecorator('department', {
     							rules: [{ required: true, message: '请勾上至少一个' }],
     						})(<TreeSelect { ...treeSelectProps } />)
     					}

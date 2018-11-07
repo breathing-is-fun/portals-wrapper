@@ -2,16 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-03 16:48:19
+ * @Last Modified time: 2018-11-06 19:18:30
  */
 import { fetch } from 'whatwg-fetch';
 import { path } from './path';
-
-// const param = {
-// 	method: 'GET',
-// 	body: serialize({ id }),
-// 	headers: { 'Content-Type': 'application/json' },
-// };
 
 const types = ['json', 'html', 'text'];
 
@@ -40,7 +34,17 @@ const ajax = ({
 
 	realParams = getRealParams(realUrl, data);
 
-	fetch(url ? url : (realUrl + realParams))
+	let postParam = {};
+
+	if(method != 'GET') {
+		postParam = {
+			body: JSON.stringify(data),
+			method,
+			headers: { 'Content-Type': 'application/json' },
+		};
+	}
+
+	fetch(url ? url : (realUrl + realParams), postParam)
 		.then(result => result[type]())
 		.then(result => success && success(result))
 		.catch(error => console.error(error));

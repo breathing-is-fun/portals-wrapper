@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 11:17:43
+ * @Last Modified time: 2018-11-07 08:37:59
  */
 import React, { Component } from 'react';
 
@@ -109,10 +109,20 @@ export default class ComponentEdit extends Component {
 
 		const postData = Object.assign({}, { layout }, data);
 
-		console.log(postData);
-		// location.hash = '/edit/module';
+		ajax({
+			key: 'add_meal',
+			method: 'POST',
+			data: postData,
+			success: result => {
+				if(result) {
+					location.hash = '/edit/module';
 
-		// window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
+					window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
+				} else {
+					console.error(result);
+				}
+			}
+		});
 	}
 
 	handleOnDelete = layoutItem => {

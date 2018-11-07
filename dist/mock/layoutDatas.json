@@ -7,7 +7,7 @@
             "w": 4,
             "h": 6,
             "static": false,
-            "path": "../../../thirdModules/dbzx/index.js",
+            "path": "../../thirdModules/dbzx/index.js",
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
             "title": "代办中心",
             "style": {
@@ -24,7 +24,7 @@
             "minW": 2,
             "maxW": 4,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/zbzx.png",
-            "path": "../../../thirdModules/zbzx/index.js",
+            "path": "../../thirdModules/zbzx/index.js",
             "title": "在办中心",
             "style": {
                 "background": "#F96",
@@ -38,7 +38,7 @@
             "w": 4,
             "h": 5,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/tqyb.png",
-            "path": "../../../thirdModules/tqyb/index.js",
+            "path": "../../thirdModules/tqyb/index.js",
             "title": "天气预报",
             "style": {
                 "background": "#F96",
@@ -52,7 +52,7 @@
             "w": 4,
             "h": 5,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/bszx.png",
-            "path": "../../../thirdModules/bszx/index.js",
+            "path": "../../thirdModules/bszx/index.js",
             "title": "办事中心"
         },
         {
@@ -62,7 +62,7 @@
             "w": 4,
             "h": 10,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/rcap.png",
-            "path": "../../../thirdModules/rcap/index.js",
+            "path": "../../thirdModules/rcap/index.js",
             "title": "日程安排"
         },
         {
@@ -72,7 +72,7 @@
             "w": 8,
             "h": 7,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/sjkb.png",
-            "path": "../../../thirdModules/sjkb/index.js",
+            "path": "../../thirdModules/sjkb/index.js",
             "title": "数据看板"
         },
         {
@@ -82,7 +82,7 @@
             "w": 8,
             "h": 7,
             "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/gxzx.png",
-            "path": "../../../thirdModules/gxzx/index.js",
+            "path": "../../thirdModules/gxzx/index.js",
             "title": "共享中心"
         }
     ]
