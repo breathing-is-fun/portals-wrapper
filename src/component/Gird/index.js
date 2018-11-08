@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 20:40:09
+ * @Last Modified time: 2018-11-08 10:20:40
  */
 import React, { Component } from 'react';
 
@@ -53,8 +53,7 @@ export default class Grid extends Component {
 		let { layout, onLayoutChange } = this.props;
 		const item = JSON.parse(e.dataTransfer.getData('menuItemToGrid'));
 		const { key, imgurl: imgUrl, text, style, url } = item;
-
-		layout.push({
+		const defaultProps = {
 			i: '' + key + layout.length,
 			x: (layout.length * 2) % 12,
 			w: 2, h: 9, y: 0,
@@ -63,7 +62,9 @@ export default class Grid extends Component {
 			imgUrl,
 			title: text,
 			style: JSON.stringify(style),
-		});
+		};
+
+		layout.push(Object.assign({}, item, defaultProps));
 
 		onLayoutChange && onLayoutChange(layout);
 	}
