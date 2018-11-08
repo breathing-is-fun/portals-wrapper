@@ -3,7 +3,7 @@ var Dbzx = function (root) {
 };
 
 Dbzx.prototype['_moduleOnMount'] = function () {
-	console.log('dbzx on mount');
+	// console.log('dbzx on mount');
 };
 
 module.exports = Dbzx;
