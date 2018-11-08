@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-06 12:31:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-08 09:50:05
+ * @Last Modified time: 2018-11-08 09:57:09
  */
 import React, { Component } from 'react';
 import { Modal } from 'antd';
@@ -25,9 +25,9 @@ export default class GlobalModal extends Component {
 			enumerable: true,
 			configurable: true,
 			set: value => {
-				const { title, visible, content, style } = value;
+				const { title, visible, content, style, footer } = value;
 
-				this.setState({ title, visible, content, style });
+				this.setState({ title, visible, content, style, footer });
 
 				return value;
 			}
