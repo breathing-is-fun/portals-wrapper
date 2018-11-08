@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-06-12 09:43:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-06 11:48:22
+ * @Last Modified time: 2018-11-08 19:19:07
  */
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from 'react-router-dom';
@@ -27,6 +27,12 @@ const Display = props => (
 	</Bundle>
 );
 
+const Login = props => (
+	<Bundle load={ () => import('../modules/Login') }>
+		{ Login => <Login { ...props }/> }
+	</Bundle>
+);
+
 const Test = props => (
 	<Bundle load={ () => import('../modules/Test') }>
 		{ Test => <Test { ...props }/> }
@@ -41,6 +47,7 @@ export default class Router extends Component {
     				<Route path='/edit/component' component={ ComponentEdit } />
     				<Route path='/edit/module' component={ ModuleEdit } />
     				<Route path='/display' component={ Display } />
+    				<Route path='/login' component={ Login } />
     				<Route path='/test' component={ Test } />
     			</div>
     		</HashRouter>
