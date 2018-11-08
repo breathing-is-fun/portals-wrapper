@@ -4,5 +4,13 @@
     align-items: center;
     justify-content: center;
     font-size: 35px;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.Login ul {
+    will-change: transform;
+    height: 70px;
+    line-height: 70px;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
 }
