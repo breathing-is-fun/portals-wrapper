@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-06 12:31:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-06 13:40:34
+ * @Last Modified time: 2018-11-08 09:50:05
  */
 import React, { Component } from 'react';
 import { Modal } from 'antd';
@@ -14,7 +14,8 @@ export default class GlobalModal extends Component {
 		this.state = {
 			title: '',
 			visible: false,
-			renderType: '',
+			content: null,
+			style: {},
 		};
 
 		// 全局弹框
@@ -24,14 +25,9 @@ export default class GlobalModal extends Component {
 			enumerable: true,
 			configurable: true,
 			set: value => {
-				const { title, visible, content } = value;
-				let renderType = 'html';
+				const { title, visible, content, style } = value;
 
-				if(typeof content == 'object') {
-					renderType = 'object';
-				}
-
-				this.setState({ title, visible, content, renderType });
+				this.setState({ title, visible, content, style });
 
 				return value;
 			}
@@ -39,20 +35,22 @@ export default class GlobalModal extends Component {
 	}
 
     componentDidMount = () => {
-    	// window.SCTool.modal = {
-    	// 	title: <div>test</div>,
-    	// 	visible: true,
-    	// 	content: <div>content</div>,
-    	// };
+
     }
 
     render = () => {
-    	const { visible, title, content, renderType } = this.state;
+    	const { visible, title, content, style } = this.state;
+
+    	const modalProps = {
+    		title, visible, style, content,
+    		onCancel: () => this.setState({ visible: !visible }),
+    		footer: null,
+    	};
 
     	return (
     		<div className='GlobalModal'>
-    			<Modal title={ title } visible={ visible }>
-    				{ renderType == 'html' ? <div dangerouslySetInnerHTML={{ __html: content }} /> : content }
+    			<Modal { ...modalProps }>
+    				{ typeof content == 'string' ? <div dangerouslySetInnerHTML={{ __html: content }} /> : content }
     			</Modal>
     		</div>
     	);
