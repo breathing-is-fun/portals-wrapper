@@ -19947,7 +19947,6 @@ function legacyCreateRootFromDOMContainer(container, forceHydrate) {
 
 function legacyRenderSubtreeIntoContainer(parentComponent, children, container, forceHydrate, callback) {
   // TODO: Ensure all entry points contain this check
-  debugger
   !isValidContainer(container) ? invariant(false, 'Target container is not a DOM element.') : void 0;
 
   {
@@ -23783,7 +23782,7 @@ var Dbzx = function (_Component) {
                 { className: 'Dbzx', style: { padding: 15 } },
                 _react2.default.createElement(
                     'div',
-                    { className: 'sc-title-wrapper', style: { width: '4.5%' } },
+                    { className: 'sc-title-wrapper', style: { width: 75 } },
                     _react2.default.createElement(
                         'span',
                         null,
