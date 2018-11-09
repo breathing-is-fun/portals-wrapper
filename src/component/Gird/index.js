@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-08 10:20:40
+ * @Last Modified time: 2018-11-09 14:04:00
  */
 import React, { Component } from 'react';
 
@@ -70,7 +70,7 @@ export default class Grid extends Component {
 	}
 
 	createShellChild = (isEdit, item) => {
-		const { i, moduletype: type, imgurl, imgUrl, path } = item;
+		const { i, moduletype: type, imgurl, imgUrl, path, mountid } = item;
 		const height = 'calc(100% - 21px)';
 
 		if(isEdit) {
@@ -81,7 +81,7 @@ export default class Grid extends Component {
 			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>;
 		}
 
-		return <div style={{ height }} ref={ ref => ref && (this.roots[i] = ref) } />;
+		return <div style={{ height }} ref={ ref => ref && (this.roots[i] = ref) } id={ mountid } />;
 	}
 
 	handleShellonEdit = (isDrawerOpen, item) => {
