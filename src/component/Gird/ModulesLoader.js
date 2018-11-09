@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 18:49:23
+ * @Last Modified time: 2018-11-09 14:40:12
  */
 import { fetch } from 'whatwg-fetch';
 
@@ -47,16 +47,26 @@ export default class ModulesLoader {
 		this.layout = newLayout;
 		this.loadScripts(pathArr, 0, [], modules => {
 			for (let i = 0; i < modules.length; i++) {
-				if(!modules[i]) {
+				let targetModule = modules[i];
+
+				if(!targetModule) {
 					continue;
 				}
 
-    			const { i: key } = this.layout[i];
+    			try {
+					const { i: key } = this.layout[i];
 
-    			const loadedModule = new modules[i](this.roots[key]);
-    			const { _moduleOnMount } = loadedModule;
+					if('default' in targetModule) {
+						targetModule = targetModule.default;
+					}
 
-    			_moduleOnMount && _moduleOnMount.call(loadedModule);
+					const loadedModule = new targetModule(this.roots[key]);
+					const { _moduleOnMount } = loadedModule;
+
+					_moduleOnMount && _moduleOnMount.call(loadedModule);
+				} catch (error) {
+					console.error(error);
+				}
     		}
 		});
 	}
