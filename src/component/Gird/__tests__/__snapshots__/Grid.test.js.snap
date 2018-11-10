@@ -56,7 +56,7 @@ exports[`Grid render correctly 1`] = `
       style={
         Object {
           "background": "#f5f6fa",
-          "height": "100%",
+          "height": 500,
         }
       }
       useCSSTransforms={true}
@@ -68,7 +68,7 @@ exports[`Grid render correctly 1`] = `
         style={
           Object {
             "background": "#f5f6fa",
-            "height": "100%",
+            "height": 500,
           }
         }
       >
@@ -433,10 +433,12 @@ exports[`Grid render correctly 1`] = `
                       </IconReact>
                     </i>
                   </Icon>
-                  <div
+                  <img
+                    src="http://47.95.1.229:9003/UploadFile/201808/dbzx.png"
                     style={
                       Object {
                         "height": "calc(100% - 21px)",
+                        "width": "100%",
                       }
                     }
                   />
