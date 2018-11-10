@@ -2,9 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-09 14:04:00
+ * @Last Modified time: 2018-11-10 18:20:48
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import GridLayout from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
@@ -174,3 +175,13 @@ export default class Grid extends Component {
     	);
     }
 }
+
+Grid.propTypes = {
+	isEdit: PropTypes.bool,
+	isDelete: PropTypes.bool,
+	layout: PropTypes.array,
+	onLayoutChange: PropTypes.func,
+	onDelete: PropTypes.func,
+	propertyBoardEnumData: PropTypes.array,
+	ref: PropTypes.func,
+};

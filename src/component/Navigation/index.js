@@ -2,9 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 11:01:01
+ * @Last Modified time: 2018-11-10 18:25:20
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Menu, Dropdown, Icon } from 'antd';
 
@@ -95,3 +96,10 @@ export default class Navigation extends Component {
     	);
     }
 }
+
+Navigation.propTypes = {
+	children: PropTypes.any,
+	menu: PropTypes.array,
+	menuItemOnClick: PropTypes.func,
+	clock: PropTypes.bool,
+};
