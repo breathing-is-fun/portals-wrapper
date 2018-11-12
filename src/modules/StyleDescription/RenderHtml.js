@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 15:32:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 10:03:30
+ * @Last Modified time: 2018-11-12 11:08:41
  */
 import React, { Component } from 'react';
 
@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown/with-html';
 
 import { ajax } from '../../urlHelper';
 
-import '../../assets/global.css';
+import '../../../assets/global.css';
 import './css/RenderHtml.css';
 
 export default class RenderHtml extends Component {
