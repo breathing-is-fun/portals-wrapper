@@ -23691,6 +23691,10 @@ if(false) {}
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _react = __webpack_require__(/*! react */ "./node_modules/_react@16.6.1@react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -23699,41 +23703,42 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/_react-dom@
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _zbsx = __webpack_require__(/*! ./modules/zbsx */ "./src/modules/zbsx/index.js");
+var _dbzx = __webpack_require__(/*! ./modules/dbzx */ "./src/modules/dbzx/index.js");
 
-var _zbsx2 = _interopRequireDefault(_zbsx);
+var _dbzx2 = _interopRequireDefault(_dbzx);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// const MOUNT_NODE = document.getElementById('dbzx');
-var MOUNT_NODE = document.getElementById('zbsx');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /*
+                                                                                                                                                           * @Author: zy9@github.com/zy410419243
+                                                                                                                                                           * @Date: 2018-05-28 15:20:13
+                                                                                                                                                           * @Last Modified by: zy9
+                                                                                                                                                           * @Last Modified time: 2018-11-11 20:54:30
+                                                                                                                                                           */
 
-// const render = Component => ReactDOM.render(
-//     <AppContainer>
-//         <Component />
-//     </AppContainer>, MOUNT_NODE
-// )
 
-// import { AppContainer } from 'react-hot-loader'
+// import Test from './modules/zbsx';
 
-// import Router from './router';
-// import Test from './modules/dbzx';
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-05-28 15:20:13
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-09 14:35:01
- */
-_reactDom2.default.render(_react2.default.createElement(_zbsx2.default, null), MOUNT_NODE);
 // render(Router);
 
 if (false) {}
 
+var Wrapper = function Wrapper(root) {
+	_classCallCheck(this, Wrapper);
+
+	// const MOUNT_NODE = document.getElementById('dbzx');
+	// const MOUNT_NODE = document.getElementById('zbsx');
+
+	_reactDom2.default.render(_react2.default.createElement(_dbzx2.default, null), root);
+};
+
+exports.default = Wrapper;
+
 /***/ }),
 
-/***/ "./src/modules/zbsx/index.js":
+/***/ "./src/modules/dbzx/index.js":
 /*!***********************************!*\
-  !*** ./src/modules/zbsx/index.js ***!
+  !*** ./src/modules/dbzx/index.js ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -23759,33 +23764,38 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Author: zy9@github.com/zy410419243
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Date: 2018-11-09 10:10:44
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Date: 2018-11-09 10:10:17
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * @Last Modified by: zy9
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Last Modified time: 2018-11-09 10:27:29
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @Last Modified time: 2018-11-09 10:26:21
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 
-var Zbsx = function (_Component) {
-    _inherits(Zbsx, _Component);
+var Dbzx = function (_Component) {
+    _inherits(Dbzx, _Component);
 
-    function Zbsx(props) {
-        _classCallCheck(this, Zbsx);
+    function Dbzx(props) {
+        _classCallCheck(this, Dbzx);
 
-        var _this = _possibleConstructorReturn(this, (Zbsx.__proto__ || Object.getPrototypeOf(Zbsx)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Dbzx.__proto__ || Object.getPrototypeOf(Dbzx)).call(this, props));
 
         _this.componentDidMount = function () {};
 
         _this.render = function () {
             return _react2.default.createElement(
                 'div',
-                { className: 'Zbsx', style: { padding: 15 } },
+                { className: 'Dbzx', style: { padding: 15 } },
                 _react2.default.createElement(
                     'div',
-                    { className: 'sc-title-wrapper' },
+                    { className: 'sc-title-wrapper', style: { width: '4.5%' } },
                     _react2.default.createElement(
                         'span',
                         null,
-                        '\u5728\u529E\u4E8B\u9879'
+                        '\u4EE3\u529E\u4E2D\u5FC3'
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'sc-badge', style: { background: 'red' } },
+                        '5'
                     )
                 ),
                 _react2.default.createElement(
@@ -23800,7 +23810,7 @@ var Zbsx = function (_Component) {
                             _react2.default.createElement(
                                 'span',
                                 null,
-                                '\u4F1A\u8BAE'
+                                '\u90AE\u4EF6'
                             )
                         ),
                         _react2.default.createElement(
@@ -23813,8 +23823,8 @@ var Zbsx = function (_Component) {
                             ),
                             _react2.default.createElement(
                                 'span',
-                                { className: 'sc-float-r sc-text-gray' },
-                                '2018.10.24'
+                                { className: 'sc-float-r sc-text-green' },
+                                '\u5269\u4F59\u65F6\u95F4\uFF1A4\u592921\u5C0F\u65F6'
                             )
                         )
                     ),
@@ -23827,7 +23837,7 @@ var Zbsx = function (_Component) {
                             _react2.default.createElement(
                                 'span',
                                 null,
-                                '\u4F1A\u8BAE'
+                                '\u90AE\u4EF6'
                             )
                         ),
                         _react2.default.createElement(
@@ -23840,46 +23850,8 @@ var Zbsx = function (_Component) {
                             ),
                             _react2.default.createElement(
                                 'span',
-                                { className: 'sc-float-r sc-text-gray' },
-                                '2018.10.24'
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement('div', { className: 'sc-space-15' }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'sc-tabs' },
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'sc-tabs-item active' },
-                        '\u672C\u5468\u53D1\u6587'
-                    ),
-                    _react2.default.createElement(
-                        'span',
-                        { className: 'sc-tabs-item' },
-                        '\u672C\u6708\u53D1\u6587'
-                    )
-                ),
-                _react2.default.createElement('div', { className: 'sc-space-10' }),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'sc-content' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'sc-content-wrapper' },
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'sc-content-text' },
-                            _react2.default.createElement(
-                                'span',
-                                null,
-                                '\u6D59\u6C5F\u7701\u6C34\u5229\u5385\u5173\u4E8E\u5370\u53D1\u300A\u5168\u7701\u6C34\u5229\u7CFB\u7EDF\u5F00\u5C55\u96C6\u4E2D\u5B66\u4E60\u89C2\u6D4B\u4E60\u8FD1\u5E73\u603B\u6570\u8BB0\u5BF9\u6C34\u5229\u8981\u6C42\u300B'
-                            ),
-                            _react2.default.createElement(
-                                'span',
-                                { className: 'sc-float-r sc-text-gray' },
-                                '2018.10.24'
+                                { className: 'sc-float-r sc-text-green' },
+                                '\u5269\u4F59\u65F6\u95F4\uFF1A4\u592921\u5C0F\u65F6'
                             )
                         )
                     )
@@ -23891,10 +23863,10 @@ var Zbsx = function (_Component) {
         return _this;
     }
 
-    return Zbsx;
+    return Dbzx;
 }(_react.Component);
 
-exports.default = Zbsx;
+exports.default = Dbzx;
 
 /***/ })
 

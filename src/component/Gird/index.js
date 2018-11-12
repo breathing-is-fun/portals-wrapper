@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-10 18:20:48
+ * @Last Modified time: 2018-11-11 20:46:47
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -183,5 +183,4 @@ Grid.propTypes = {
 	onLayoutChange: PropTypes.func,
 	onDelete: PropTypes.func,
 	propertyBoardEnumData: PropTypes.array,
-	ref: PropTypes.func,
 };
