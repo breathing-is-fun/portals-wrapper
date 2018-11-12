@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 15:32:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 16:48:06
+ * @Last Modified time: 2018-11-12 10:03:30
  */
 import React, { Component } from 'react';
 
@@ -25,20 +25,20 @@ export default class RenderHtml extends Component {
 	}
 
 	componentDidMount = () => {
-		const { path } = this.props;
+		const { paths } = this.props;
 
-		this.loadTemplate(path);
+		this.loadTemplate(paths);
 	}
 
 	componentWillReceiveProps = nextProps => {
-		const { path } = nextProps;
+		const { paths } = nextProps;
 
-		this.loadTemplate(path);
+		this.loadTemplate(paths);
 	}
 
-	loadTemplate = path => {
+	loadTemplate = paths => {
 		ajax({
-			url: `${ this.prefix }${ path }.html`,
+			url: `${ this.prefix }${ paths }.html`,
 			type: 'text',
 			success: markdown => this.setState({ markdown }),
 		});

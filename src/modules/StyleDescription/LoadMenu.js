@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 16:25:56
+ * @Last Modified time: 2018-11-12 09:53:50
  */
 import React, { Component } from 'react';
 
@@ -75,9 +75,9 @@ const menuDatas = [
 		text: '主页'
 	},
 	{
-		key: 'Button',
+		key: 'Badge',
 		type: 'team',
-		text: '按钮'
+		text: '角标'
 	},
 	{
 		key: 'Border',

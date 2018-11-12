@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 13:34:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 15:36:15
+ * @Last Modified time: 2018-11-12 09:47:38
  */
 import React, { Component } from 'react';
 
@@ -30,7 +30,7 @@ export default class StyleDescription extends Component {
 		return (
 			<div className='StyleDescription'>
 				<LoadMenu onClick={ this.handleMenuClick }>
-					<RenderHtml path={ path } />
+					<RenderHtml paths={ path } />
 				</LoadMenu>
 			</div>
 		);
