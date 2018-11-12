@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 13:34:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 14:23:23
+ * @Last Modified time: 2018-11-12 15:18:48
  */
 import React, { Component } from 'react';
 
@@ -16,8 +16,9 @@ export default class StyleDescription extends Component {
 		super(props);
 
 		this.state = {
-			paths: ['HomePage'],
+			paths: [],
 			menuDatas: [],
+			selectedKey: '',
 		};
 	}
 
@@ -28,18 +29,26 @@ export default class StyleDescription extends Component {
 	loadMenuDatas = () => {
 		ajax({
 			key: 'style_menu_data',
-			success: ({ data: menuDatas }) => this.setState({ menuDatas }),
+			success: ({ data: menuDatas }) => {
+				const { paths, key: selectedKey } = menuDatas.length != 0 ? menuDatas[0] : {};
+
+				this.setState({ menuDatas, paths, selectedKey });
+			},
 		});
 	}
 
-	handleMenuClick = paths => this.setState({ paths })
+	handleMenuClick = (item, selectedKey) => {
+		const { paths } = item;
+
+		this.setState({ paths, selectedKey });
+	}
 
 	render = () => {
-		const { paths, menuDatas } = this.state;
+		const { paths, menuDatas, selectedKey } = this.state;
 
 		return (
 			<div className='StyleDescription'>
-				<LoadMenu onClick={ this.handleMenuClick } menuDatas={ menuDatas }>
+				<LoadMenu onClick={ this.handleMenuClick } menuDatas={ menuDatas } selectedKey={ selectedKey }>
 					<RenderHtml paths={ paths } />
 				</LoadMenu>
 			</div>

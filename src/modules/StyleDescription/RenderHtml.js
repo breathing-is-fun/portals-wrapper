@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 15:32:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 14:39:15
+ * @Last Modified time: 2018-11-12 15:06:41
  */
 import React, { Component } from 'react';
 
@@ -24,12 +24,6 @@ export default class RenderHtml extends Component {
 		this.prefix = '../../guide/';
 	}
 
-	componentDidMount = () => {
-		const { paths } = this.props;
-
-		this.loadTemplate(paths, 0, [], markdowns => this.setState({ markdowns }));
-	}
-
 	componentWillReceiveProps = nextProps => {
 		const { paths } = nextProps;
 
@@ -41,11 +35,10 @@ export default class RenderHtml extends Component {
 			url: `${ this.prefix }${ paths[index] }.html`,
 			type: 'text',
 			success: markdown => {
+				markdowns.push(markdown);
+
 				if(index < paths.length - 1) {
-					markdowns.push(markdown);
 					this.loadTemplate(paths, ++index, markdowns, callback);
-				} else if(paths.length == 1) {
-					callback && callback([markdown]);
 				} else {
 					callback && callback(markdowns);
 				}
@@ -58,11 +51,7 @@ export default class RenderHtml extends Component {
 
 		return (
 			<div className='RenderHtml'>
-				{
-					markdowns.map((item, i) => {
-						return <ReactMarkdown source={ item } escapeHtml={ false } key={ `mark-item-${ i }` } />;
-					})
-				}
+				{ markdowns.map((item, i) => <ReactMarkdown source={ item } escapeHtml={ false } key={ `mark-item-${ i }` } />) }
 			</div>
 		);
 	}

@@ -3,17 +3,20 @@
         {
             "key": "HomePage",
             "type": "desktop",
-            "text": "主页"
+            "text": "简介",
+            "paths": ["HomePage"]
         },
         {
             "key": "Badge",
             "type": "team",
-            "text": "角标"
+            "text": "角标",
+            "paths": ["Badge"]
         },
         {
             "key": "Border",
             "type": "upload",
-            "text": "边框"
+            "text": "边框",
+            "paths": ["Border"]
         }
     ]
 }
