@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 15:32:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 11:48:53
+ * @Last Modified time: 2018-11-12 14:39:15
  */
 import React, { Component } from 'react';
 
@@ -18,7 +18,7 @@ export default class RenderHtml extends Component {
 		super(props);
 
 		this.state = {
-			markdown: ''
+			markdowns: [],
 		};
 
 		this.prefix = '../../guide/';
@@ -27,29 +27,42 @@ export default class RenderHtml extends Component {
 	componentDidMount = () => {
 		const { paths } = this.props;
 
-		this.loadTemplate(paths);
+		this.loadTemplate(paths, 0, [], markdowns => this.setState({ markdowns }));
 	}
 
 	componentWillReceiveProps = nextProps => {
 		const { paths } = nextProps;
 
-		this.loadTemplate(paths);
+		this.loadTemplate(paths, 0, [], markdowns => this.setState({ markdowns }));
 	}
 
-	loadTemplate = paths => {
+	loadTemplate = (paths, index, markdowns, callback) => {
 		ajax({
-			url: `${ this.prefix }${ paths }.html`,
+			url: `${ this.prefix }${ paths[index] }.html`,
 			type: 'text',
-			success: markdown => this.setState({ markdown }),
+			success: markdown => {
+				if(index < paths.length - 1) {
+					markdowns.push(markdown);
+					this.loadTemplate(paths, ++index, markdowns, callback);
+				} else if(paths.length == 1) {
+					callback && callback([markdown]);
+				} else {
+					callback && callback(markdowns);
+				}
+			},
 		});
 	}
 
 	render = () => {
-		const { markdown } = this.state;
+		const { markdowns } = this.state;
 
 		return (
 			<div className='RenderHtml'>
-				<ReactMarkdown source={ markdown } escapeHtml={ false } />
+				{
+					markdowns.map((item, i) => {
+						return <ReactMarkdown source={ item } escapeHtml={ false } key={ `mark-item-${ i }` } />;
+					})
+				}
 			</div>
 		);
 	}

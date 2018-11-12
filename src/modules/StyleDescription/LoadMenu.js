@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 11:52:27
+ * @Last Modified time: 2018-11-12 14:40:12
  */
 import React, { Component } from 'react';
 
@@ -27,18 +27,18 @@ export default class LoadMenu extends Component {
 	handleMenuClick = ({ item, key, keyPath }) => {
 		const { onClick } = this.props;
 
-		onClick && onClick(key);
+		onClick && onClick([key]);
 	}
 
     render = () => {
-    	const { children } = this.props;
+    	const { children, menuDatas } = this.props;
     	const { key } = this.state;
 
     	return (
     		<div className='LoadMenu'>
     			<Layout style={{ minHeight: '100vh' }}>
     				<Sider collapsible style={{ background: '#FFF' }}>
-    					<Menu defaultSelectedKeys={ [key] } mode='inline' onClick={ this.handleMenuClick }>
+    					<Menu defaultSelectedKeys={ [key] } mode='inline' onClick={ this.handleMenuClick } forceSubMenuRender>
     						{
     							menuDatas.map(item => {
     								const { key, type, text } = item;
@@ -69,21 +69,3 @@ export default class LoadMenu extends Component {
     	);
     }
 }
-
-const menuDatas = [
-	{
-		key: 'HomePage',
-		type: 'desktop',
-		text: '主页'
-	},
-	{
-		key: 'Badge',
-		type: 'team',
-		text: '角标'
-	},
-	{
-		key: 'Border',
-		type: 'upload',
-		text: '边框'
-	},
-];
