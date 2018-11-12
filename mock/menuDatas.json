@@ -2,21 +2,27 @@
     "data": [
         {
             "key": "HomePage",
-            "type": "desktop",
+            "type": "item",
             "text": "简介",
             "paths": ["HomePage"]
         },
         {
-            "key": "Badge",
-            "type": "team",
-            "text": "角标",
-            "paths": ["Badge"]
-        },
-        {
-            "key": "Border",
-            "type": "upload",
-            "text": "边框",
-            "paths": ["Border"]
+            "key": "components",
+            "text": "组件",
+            "children": [
+                {
+                    "key": "Badge",
+                    "title": "角标",
+                    "paths": ["Badge"],
+                    "text": "通用角标"
+                },
+                {
+                    "key": "Border",
+                    "title": "边框",
+                    "paths": ["Border"],
+                    "text": "通用边框"
+                }
+            ]
         }
     ]
 }
