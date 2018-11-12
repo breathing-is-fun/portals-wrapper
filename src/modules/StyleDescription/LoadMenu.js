@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 16:55:04
+ * @Last Modified time: 2018-11-12 17:12:00
  */
 import React, { Component } from 'react';
 
@@ -22,29 +22,36 @@ export default class LoadMenu extends Component {
     render = () => {
     	const { children, menuDatas, selectedKey } = this.props;
 
+    	// 日了，这里看上去真是爆炸，得写递归
     	const menu = (
     		<Menu selectedKeys={ [selectedKey] } mode='inline' forceSubMenuRender>
     			{
     				menuDatas.map(item => {
-    					const { key, type, text, children = [] } = item;
+    					const { key: itemKey, type, text: itemText, children: itemChildren = [] } = item;
 
     					if(type == 'item') {
     						return (
-    							<Menu.Item key={ key } onClick={ () => this.handleMenuClick(item, key) }>
-    								<span>{ text }</span>
+    							<Menu.Item key={ itemKey } onClick={ () => this.handleMenuClick(item, itemKey) }>
+    								<span>{ itemText }</span>
     							</Menu.Item>
     						);
     					}
 
     					return (
-    						<SubMenu key={ key } title={ <span>{ text }</span> }>
+    						<SubMenu key={ itemKey } title={ <span>{ itemText }</span> }>
     							{
-    								children.map((jtem, j) => {
-    									const { key: jtemKey, title: childTitle, text: childText } = jtem;
+    								itemChildren.map(jtem => {
+    									const { key: jtemKey, text: jtemTitle, children: jtemChildren } = jtem;
 
     									return (
-    										<ItemGroup key={ jtemKey } title={ childTitle }>
-    											<Menu.Item key={ jtemKey + j } onClick={ () => this.handleMenuClick(jtem, jtemKey) }>{ childText }</Menu.Item>
+    										<ItemGroup key={ jtemKey } title={ jtemTitle }>
+    											{
+    												jtemChildren.map(ktem => {
+    													const { key: ktemKey, text: ketmText } = ktem;
+
+    													return <Menu.Item key={ ktemKey } onClick={ () => this.handleMenuClick(ktem, ktemKey) }>{ ketmText }</Menu.Item>;
+    												})
+    											}
     										</ItemGroup>
     									);
     								})

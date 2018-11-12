@@ -4,7 +4,9 @@
             "key": "HomePage",
             "type": "item",
             "text": "简介",
-            "paths": ["HomePage"]
+            "paths": [
+                "HomePage"
+            ]
         },
         {
             "key": "components",
@@ -12,15 +14,43 @@
             "children": [
                 {
                     "key": "Badge",
-                    "title": "角标",
-                    "paths": ["Badge"],
-                    "text": "通用角标"
+                    "text": "角标",
+                    "children": [
+                        {
+                            "key": "badge1",
+                            "text": "第一种角标",
+                            "paths": [
+                                "Badge"
+                            ]
+                        },
+                        {
+                            "key": "badge2",
+                            "text": "第二种角标",
+                            "paths": [
+                                "Badge"
+                            ]
+                        }
+                    ]
                 },
                 {
                     "key": "Border",
-                    "title": "边框",
-                    "paths": ["Border"],
-                    "text": "通用边框"
+                    "text": "边框",
+                    "children": [
+                        {
+                            "key": "border1",
+                            "text": "第一种边框",
+                            "paths": [
+                                "Border"
+                            ]
+                        },
+                        {
+                            "key": "border2",
+                            "text": "第一种边框",
+                            "paths": [
+                                "Border"
+                            ]
+                        }
+                    ]
                 }
             ]
         }
