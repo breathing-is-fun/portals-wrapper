@@ -2,12 +2,14 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 09:53:50
+ * @Last Modified time: 2018-11-12 11:52:27
  */
 import React, { Component } from 'react';
 
 import { Layout, Menu, Icon } from 'antd';
 const { Content, Footer, Sider } = Layout;
+
+import './css/LoadMenu.css';
 
 export default class LoadMenu extends Component {
 	constructor (props) {
@@ -35,8 +37,8 @@ export default class LoadMenu extends Component {
     	return (
     		<div className='LoadMenu'>
     			<Layout style={{ minHeight: '100vh' }}>
-    				<Sider collapsible>
-    					<Menu theme='dark' defaultSelectedKeys={ [key] } mode='inline' onClick={ this.handleMenuClick }>
+    				<Sider collapsible style={{ background: '#FFF' }}>
+    					<Menu defaultSelectedKeys={ [key] } mode='inline' onClick={ this.handleMenuClick }>
     						{
     							menuDatas.map(item => {
     								const { key, type, text } = item;
