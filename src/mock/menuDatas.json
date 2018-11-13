@@ -13,39 +13,29 @@
             "text": "组件",
             "children": [
                 {
-                    "key": "Badge",
-                    "text": "角标",
+                    "key": "common",
+                    "text": "通用",
                     "children": [
                         {
-                            "key": "badge1",
-                            "text": "第一种角标",
+                            "key": "badge",
+                            "text": "角标",
                             "paths": [
-                                "Badge"
+                                "Badge-red",
+                                "Badge-green"
                             ]
                         },
                         {
-                            "key": "badge2",
-                            "text": "第二种角标",
+                            "key": "tabs",
+                            "text": "页签",
                             "paths": [
-                                "Badge"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "key": "Border",
-                    "text": "边框",
-                    "children": [
-                        {
-                            "key": "border1",
-                            "text": "第一种边框",
-                            "paths": [
-                                "Border"
+                                "Tabs-orange",
+                                "Tabs-blue",
+                                "Tabs-switch"
                             ]
                         },
                         {
-                            "key": "border2",
-                            "text": "第一种边框",
+                            "key": "border",
+                            "text": "边框",
                             "paths": [
                                 "Border"
                             ]

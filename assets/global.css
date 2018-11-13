@@ -86,17 +86,9 @@
     margin: 10px 0px;
 }
 
-.sc-bg-blue {
-    background-color: #2e7df3;
-}
-
-.sc-bg-yellow {
-    background-color: #f3ab2e;
-}
-
 .sc-badge {
     font-family: MicrosoftYaHei;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: normal;
     font-stretch: normal;
     letter-spacing: 0px;
@@ -107,4 +99,20 @@
     position: absolute;
     right: 5px;
     top: -10px;
+}
+
+.sc-bg-blue {
+    background-color: #2e7df3;
+}
+
+.sc-bg-yellow {
+    background-color: #f3ab2e;
+}
+
+.sc-bg-red {
+    background-color: #ff2d2d;
+}
+
+.sc-bg-green {
+    background-color: #0bd481;
 }
