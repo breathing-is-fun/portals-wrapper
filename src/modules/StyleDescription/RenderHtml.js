@@ -10,7 +10,7 @@ import ReactMarkdown from 'react-markdown/with-html';
 
 import { ajax } from '../../urlHelper';
 
-import '../../../assets/global.css';
+import '../../assets/global.css';
 import './css/RenderHtml.css';
 
 export default class RenderHtml extends Component {

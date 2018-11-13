@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-06-17 17:23:54
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-13 09:29:10
+ * @Last Modified time: 2018-11-13 10:50:10
  */
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
@@ -48,8 +48,8 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{
-				from: __dirname + '/assets',
-				to: __dirname + '/dist/assets'
+				from: __dirname + '/src/assets',
+				to: __dirname + '/dist/lib/assets'
 			},
 			{
 				from: __dirname + '/src/mock',
