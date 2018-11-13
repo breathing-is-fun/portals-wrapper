@@ -1,0 +1,219 @@
+{
+    "success": true,
+    "serviceStatus": "成功",
+    "information": "获取公文列表成功",
+    "total": 79,
+    "count": 10,
+    "content": [
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-0000-0000-06BB-BE0100019057}",
+            "person_name": {},
+            "title": "浙江省文化和旅游厅关于启用浙江省文化和旅游厅和浙江省文化和旅游厅办公室印章的通知",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-13 09:03:38",
+            "taskExpireDate": {
+                "date": 26,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1543194000000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-0000-0000-06BE-5F7D00019069}",
+            "person_name": {},
+            "title": "浙江省人民政府办公厅关于印发浙江省共享经济发展行动计划（2018—2022年）的通知 ",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-13 09:04:38",
+            "taskExpireDate": {
+                "date": 26,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1543194000000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "处室人员:姜小俊(信息中心)、骆小龙(信息中心)",
+            "workflowinstance_guid": "{7F000001-0000-0000-0B21-D3420001B1D6}",
+            "person_name": {},
+            "title": "关于进一步规范水利数据交换平台节点运行管理的通知",
+            "subAppName": "收文-部门",
+            "docnumber": "",
+            "updatedate": "2018-11-13 16:31:04",
+            "taskExpireDate": {
+                "date": 26,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1543194000000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "处室人员:邱雁(信息中心)",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-F11E-34140000FEA1}",
+            "person_name": {},
+            "title": "中共浙江省水利厅党组关于进一步加强党组织联系服务专家人才工作的通知\r\n",
+            "subAppName": "收文-部门",
+            "docnumber": "",
+            "updatedate": "2018-11-12 16:51:17",
+            "taskExpireDate": {
+                "date": 22,
+                "day": 4,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542848400000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "处室人员:金宣辰(信息中心)",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-EBE7-9E570000CA1B}",
+            "person_name": {},
+            "title": "关于定海区部分水利工程标准化管理巡查存在问题的说明",
+            "subAppName": "收文-部门",
+            "docnumber": "",
+            "updatedate": "2018-11-08 14:04:28",
+            "taskExpireDate": {
+                "date": 21,
+                "day": 3,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542762000000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-E805-75D70000941B}",
+            "person_name": {},
+            "title": "袁家军同志在深化“最多跑一次”改革推进政府数字化转型第三次专题例会上的讲话要点 ",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-07 09:33:05",
+            "taskExpireDate": {
+                "date": 20,
+                "day": 2,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542675600000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-ED47-83470000CDED}",
+            "person_name": {},
+            "title": "浙江省生态环境厅关于启用浙江省生态环境厅和浙江省生态环境厅办公室印章的通知",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-07 17:17:50",
+            "taskExpireDate": {
+                "date": 21,
+                "day": 3,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542762000000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-E0B5-C7A500014B05}",
+            "person_name": {},
+            "title": "关于对全省各地各部门督查检查考核事项开展专项清理的通知",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-07 14:03:14",
+            "taskExpireDate": {
+                "date": 19,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542589200000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-E30F-EC2E00015F95}",
+            "person_name": {},
+            "title": "关于启用浙江省农业农村厅和浙江省农业农村厅办公室印章的通知",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-06 09:20:47",
+            "taskExpireDate": {
+                "date": 19,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542589200000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        },
+        {
+            "task_name": "领导、部门办理",
+            "workflowinstance_guid": "{7F000001-FFFF-FFFF-E1E8-BD0C00015E75}",
+            "person_name": {},
+            "title": "浙江省公安厅关于调整“河道警长”的通知",
+            "subAppName": "收文",
+            "docnumber": "",
+            "updatedate": "2018-11-06 09:25:04",
+            "taskExpireDate": {
+                "date": 19,
+                "day": 1,
+                "hours": 9,
+                "minutes": 0,
+                "month": 10,
+                "nanos": 0,
+                "seconds": 0,
+                "time": 1542589200000,
+                "timezoneOffset": -480,
+                "year": 118
+            }
+        }
+    ]
+}
