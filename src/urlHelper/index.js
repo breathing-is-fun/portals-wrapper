@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 13:42:07
+ * @Last Modified time: 2018-11-14 14:29:41
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -18,6 +18,7 @@ const types = ['json', 'html', 'text'];
  * @param { type } 解析方式，枚举['json', 'html', 'text']，默认为json
  * @param { params } 当需要设置header时可以用这个
  * @param { success } 请求结束时的回调
+ * @param { fix } 使用代理时，被代理地址参数分隔符
  */
 const ajax = ({
 	url,
@@ -27,6 +28,7 @@ const ajax = ({
 	type = 'json',
 	success,
 	params,
+	fix = '&',
 }) => {
 	let realUrl, realParams, postParam = {};
 
@@ -34,7 +36,7 @@ const ajax = ({
 
 	realUrl = getRealUrl(key, proxy);
 
-	realParams = getRealParams(realUrl, data);
+	realParams = getRealParams(realUrl, data, fix);
 
 	if(method != 'GET') {
 		postParam = {
@@ -62,7 +64,7 @@ const checkType = type => {
 	return type;
 };
 
-const getRealParams = (url, data) => {
+const getRealParams = (url, data, fixStr) => {
 	if(!url) {
 		return;
 	}
@@ -73,19 +75,19 @@ const getRealParams = (url, data) => {
 
 	let fix = '';
 
-	fix = url.includes('?') ? '&' : '?';
+	fix = url.includes('?') ? fixStr : '?';
 
-	return fix + serialize(data);
+	return fix + serialize(data, fixStr);
 };
 
-const serialize = data => {
+const serialize = (data, fixStr) => {
 	let paramStr = '';
 
 	for(let key in data) {
-		paramStr += `${ key }=${ data[key] }&`;
+		paramStr += `${ key }=${ data[key] }${ fixStr }`;
 	}
 
-	paramStr = paramStr.substr(0, paramStr.length - 1);
+	paramStr = paramStr.substr(0, paramStr.length - 3);
 
 	return paramStr;
 };
