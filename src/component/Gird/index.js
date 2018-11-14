@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-13 17:50:12
+ * @Last Modified time: 2018-11-14 19:18:25
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -130,7 +130,7 @@ export default class Grid extends Component {
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		// compactType: 'horizontal',
-    		style: { height: 500, background: '#f5f6fa' },
+    		style: { background: '#f5f6fa', height: '100%' },
     	};
 
     	const propertyBoardProps = {
@@ -156,7 +156,7 @@ export default class Grid extends Component {
     						const shellProps = {
     							key, title, isEdit, isDelete,
     							onDelete, showTitle,
-    							style: Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2  }, shellStyle),
+    							style: Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle),
     							'data-grid': item,
     							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
     						};
