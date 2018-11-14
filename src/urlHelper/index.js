@@ -2,10 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-13 17:43:12
+ * @Last Modified time: 2018-11-14 13:42:07
  */
 import { fetch } from 'whatwg-fetch';
-import { path } from './path';
+import { path, proxy } from './path';
 
 const types = ['json', 'html', 'text'];
 
@@ -28,15 +28,13 @@ const ajax = ({
 	success,
 	params,
 }) => {
-	let realUrl, realParams;
+	let realUrl, realParams, postParam = {};
 
 	checkType(type);
 
-	realUrl = getRealUrl(key);
+	realUrl = getRealUrl(key, proxy);
 
 	realParams = getRealParams(realUrl, data);
-
-	let postParam = {};
 
 	if(method != 'GET') {
 		postParam = {
@@ -92,7 +90,7 @@ const serialize = data => {
 	return paramStr;
 };
 
-const getRealUrl = key => {
+const getRealUrl = (key, proxy) => {
 	let realUrl;
 
 	for (let realKey in path) {
@@ -105,6 +103,10 @@ const getRealUrl = key => {
 
 	if (!realUrl) {
 		return;
+	}
+
+	if(proxy) {
+		realUrl += proxy;
 	}
 
 	return realUrl;
