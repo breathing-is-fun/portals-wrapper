@@ -2,9 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 19:21:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 14:30:01
+ * @Last Modified time: 2018-11-14 18:27:12
  */
-const proxy = 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/proxy?url=';
+// const proxy = 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/proxy?url=';
+const proxy = null;
 
 const prod = {
 	propertyDatas: '../../mock/propertyDatas.json',

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 14:29:41
+ * @Last Modified time: 2018-11-14 18:30:09
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -87,7 +87,7 @@ const serialize = (data, fixStr) => {
 		paramStr += `${ key }=${ data[key] }${ fixStr }`;
 	}
 
-	paramStr = paramStr.substr(0, paramStr.length - 3);
+	paramStr = paramStr.substr(0, paramStr.length - (fixStr == '&' ? 1 : 3));
 
 	return paramStr;
 };
