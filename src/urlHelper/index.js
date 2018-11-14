@@ -106,7 +106,7 @@ const getRealUrl = (key, proxy) => {
 	}
 
 	if(proxy) {
-		realUrl += proxy;
+		realUrl = proxy + realUrl;
 	}
 
 	return realUrl;
