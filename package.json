@@ -5,7 +5,8 @@
     "start": "node webpack.dev.js",
     "test": "jest --config .jest.js --verbose=false",
     "build": "node webpack.prod.js",
-    "dev": "node webpack.prod.js --development"
+    "dev": "node webpack.prod.js --development",
+    "lint": "npx eslint ."
   },
   "license": "MIT",
   "dependencies": {
@@ -58,7 +59,7 @@
     }
   },
   "pre-commit": [
-    "npx eslint .",
+    "lint",
     "test"
   ]
 }
