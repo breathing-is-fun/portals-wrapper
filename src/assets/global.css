@@ -2,7 +2,6 @@
     background-color: #ffffff;
     box-shadow: 0px 0px 29px 0px rgba(93, 106, 113, 0.12);
     border-radius: 2px;
-    width: 100%;
     margin-top: 5px;
     padding: 15px;
 }
@@ -10,6 +9,7 @@
 .sc-content .sc-content-wrapper {
     display: flex;
     align-items: center;
+    min-height: 39px;
 }
 
 .sc-content .sc-content-wrapper .sc-content-text {
