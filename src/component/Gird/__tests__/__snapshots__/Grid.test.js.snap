@@ -56,7 +56,7 @@ exports[`Grid render correctly 1`] = `
       style={
         Object {
           "background": "#f5f6fa",
-          "height": 500,
+          "height": "100%",
         }
       }
       useCSSTransforms={true}
@@ -68,7 +68,7 @@ exports[`Grid render correctly 1`] = `
         style={
           Object {
             "background": "#f5f6fa",
-            "height": 500,
+            "height": "100%",
           }
         }
       >
@@ -338,7 +338,7 @@ exports[`Grid render correctly 1`] = `
                       "WebkitTransform": "translate(10px,10px)",
                       "borderRadius": 2,
                       "boxShadow": "0px 0px 29px 0px rgba(93, 106, 113, 0.12)",
-                      "height": "230px",
+                      "height": "auto",
                       "msTransform": "translate(10px,10px)",
                       "position": "absolute",
                       "touchAction": "none",

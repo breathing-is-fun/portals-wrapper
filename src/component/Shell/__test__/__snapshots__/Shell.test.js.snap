@@ -21,6 +21,7 @@ exports[`Shell button group render correctly 1`] = `
   style={
     Object {
       "background": "#F96",
+      "height": "auto",
       "zIndex": 1,
     }
   }
@@ -77,6 +78,7 @@ exports[`Shell button group render correctly 2`] = `
   style={
     Object {
       "background": "#F96",
+      "height": "auto",
       "zIndex": 1,
     }
   }
@@ -111,6 +113,7 @@ exports[`Shell render correctly 1`] = `
   style={
     Object {
       "background": "#F96",
+      "height": "auto",
       "zIndex": 1,
     }
   }
