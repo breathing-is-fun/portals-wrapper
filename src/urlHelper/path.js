@@ -15,6 +15,7 @@ const prod = {
 	'd_slmh_meal': 'http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=d_slmh_meal',
 	'add_meal': 'http://47.95.1.229:9007/webapi1/api/basic/meal',
 	'style_menu_data': '../../mock/menuDatas.json',
+	'login-ticket': 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/login-ticket',
 };
 
 const dev = {};

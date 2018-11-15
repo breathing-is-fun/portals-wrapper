@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 18:30:09
+ * @Last Modified time: 2018-11-15 15:07:16
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -34,7 +34,7 @@ const ajax = ({
 
 	checkType(type);
 
-	realUrl = getRealUrl(key, proxy);
+	realUrl = getRealUrl(key, proxy) || url;
 
 	realParams = getRealParams(realUrl, data, fix);
 
@@ -48,7 +48,7 @@ const ajax = ({
 
 	postParam = Object.assign({}, postParam, params);
 
-	fetch(url ? url : (realUrl + realParams), postParam)
+	fetch(realUrl + realParams, postParam)
 		.then(result => result[type]())
 		.then(result => success && success(result))
 		.catch(error => console.error(error));
