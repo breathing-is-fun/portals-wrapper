@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 11:16:56
+ * @Last Modified time: 2018-11-15 14:28:26
  */
 import React, { Component } from 'react';
 
@@ -21,12 +21,41 @@ export default class Display extends Component {
 	}
 
     componentDidMount = () => {
-    	this.loadMenu();
+    	this.validateTicket(() => this.loadMenu());
 
     	window.onresize = () => {
     		this.setState({});
     	};
     }
+
+	validateTicket = callback => {
+		const ticket = this.getParams('ticket');
+
+		if(!ticket) {
+			return;
+		}
+
+		ajax({
+			key: 'login-ticket',
+			data: { ticket },
+			success: ({ data }) => {
+				window.SCTool.ticket = data;
+
+				callback && callback();
+			},
+		});
+	}
+
+	getParams = name => {
+    	let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    	let result = window.location.href.split('?').length > 1 ? window.location.href.split('?')[1].match(reg) : 0;
+
+    	if (result != null) {
+    		return result[2] === 'undefined' ? undefined : result[2];
+    	}
+
+    	return null;
+	}
 
 	loadLayout = id => {
 		ajax({
