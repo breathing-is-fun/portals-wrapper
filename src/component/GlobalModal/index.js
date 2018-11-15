@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-06 12:31:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-08 19:22:40
+ * @Last Modified time: 2018-11-15 10:03:25
  */
 import React, { Component } from 'react';
 import { Modal } from 'antd';
@@ -17,11 +17,6 @@ export default class GlobalModal extends Component {
 			content: null,
 			style: {},
 		};
-
-		// 全局弹框
-		if(!window.SCTool) {
-			window.SCTool = {};
-		}
 
 		Object.defineProperty(window.SCTool, 'modal', {
 			enumerable: true,

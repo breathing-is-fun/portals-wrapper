@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-28 15:20:13
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-06 12:32:48
+ * @Last Modified time: 2018-11-15 10:03:37
  */
 import 'babel-polyfill';
 import React from 'react';
@@ -23,6 +23,10 @@ window['_acrossDatas'] = {
 		data: {},
 	}
 };
+
+if(!window.SCTool) {
+	window.SCTool = {};
+}
 
 ReactDOM.render((
 	<div>
