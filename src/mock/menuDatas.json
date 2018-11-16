@@ -9,6 +9,14 @@
             ]
         },
         {
+            "key": "LayoutGuide",
+            "type": "item",
+            "text": "布局规范",
+            "paths": [
+                "LayoutGuide"
+            ]
+        },
+        {
             "key": "components",
             "text": "组件",
             "children": [
