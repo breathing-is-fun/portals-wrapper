@@ -2,12 +2,13 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 15:07:16
+ * @Last Modified time: 2018-11-15 20:57:40
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
 
 const types = ['json', 'html', 'text'];
+const methods = ['GET', 'POST', 'PUT', 'DELETE'];
 
 /**
  * 封装的fetch请求
@@ -20,7 +21,7 @@ const types = ['json', 'html', 'text'];
  * @param { success } 请求结束时的回调
  * @param { fix } 使用代理时，被代理地址参数分隔符
  */
-const ajax = ({
+export const ajax = ({
 	url,
 	key,
 	method = 'GET',
@@ -33,6 +34,8 @@ const ajax = ({
 	let realUrl, realParams, postParam = {};
 
 	checkType(type);
+
+	checkMethod(method);
 
 	realUrl = getRealUrl(key, proxy) || url;
 
@@ -54,7 +57,33 @@ const ajax = ({
 		.catch(error => console.error(error));
 };
 
-const checkType = type => {
+export const checkMethod = method => {
+	if(!method) {
+		console.error('fetch method is undefined.');
+
+		return;
+	}
+
+	method = method.toUpperCase();
+
+	if (!methods.includes(method)) {
+		console.error('fetch method error.');
+
+		return;
+	}
+
+	return method;
+};
+
+export const checkType = type => {
+	if(!type) {
+		console.error('fetch type is undefined.');
+
+		return;
+	}
+
+	type = type.toLowerCase();
+
 	if (!types.includes(type)) {
 		console.error('fetch type error.');
 
@@ -64,7 +93,7 @@ const checkType = type => {
 	return type;
 };
 
-const getRealParams = (url, data, fixStr) => {
+export const getRealParams = (url, data, fixStr) => {
 	if(!url) {
 		return;
 	}
@@ -80,7 +109,11 @@ const getRealParams = (url, data, fixStr) => {
 	return fix + serialize(data, fixStr);
 };
 
-const serialize = (data, fixStr) => {
+export const serialize = (data, fixStr) => {
+	if(typeof data == 'string') {
+		return data;
+	}
+
 	let paramStr = '';
 
 	for(let key in data) {
@@ -92,7 +125,7 @@ const serialize = (data, fixStr) => {
 	return paramStr;
 };
 
-const getRealUrl = (key, proxy) => {
+export const getRealUrl = (key, proxy) => {
 	let realUrl;
 
 	for (let realKey in path) {
@@ -113,5 +146,3 @@ const getRealUrl = (key, proxy) => {
 
 	return realUrl;
 };
-
-export { ajax };
