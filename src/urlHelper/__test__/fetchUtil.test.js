@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-15 15:23:20
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-18 11:22:03
+ * @Last Modified time: 2018-11-18 11:27:14
  */
 import { checkType, getRealParams, serialize, getRealUrl, checkMethod } from '..';
 
@@ -61,6 +61,7 @@ describe('fetchUtil', () => {
 
 	it('getRealParams should work', () => {
 		expect(getRealParams(url, data, '&')).toBe('?' + dataStr);
+		expect(getRealParams(url, undefined, '&')).toBe('');
 		expect(getRealParams(url, {}, '&')).toBe(undefined);
 		expect(getRealParams(url, [], '&')).toBe(undefined);
 	});

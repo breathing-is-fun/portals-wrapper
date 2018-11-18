@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-18 11:20:42
+ * @Last Modified time: 2018-11-18 11:26:13
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -95,7 +95,7 @@ export const checkType = type => {
 
 export const getRealParams = (url, data, fixStr) => {
 	if(!url || !data) {
-		return;
+		return '';
 	}
 
 	let fix = url.includes('?') ? fixStr : '?';
