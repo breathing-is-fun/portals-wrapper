@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 20:57:40
+ * @Last Modified time: 2018-11-18 11:20:42
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -37,7 +37,7 @@ export const ajax = ({
 
 	checkMethod(method);
 
-	realUrl = getRealUrl(key, proxy) || url;
+	realUrl = getRealUrl(key, path, proxy) || url;
 
 	realParams = getRealParams(realUrl, data, fix);
 
@@ -94,22 +94,25 @@ export const checkType = type => {
 };
 
 export const getRealParams = (url, data, fixStr) => {
-	if(!url) {
+	if(!url || !data) {
 		return;
 	}
 
-	if(!data) {
-		return '';
+	let fix = url.includes('?') ? fixStr : '?';
+	let result = serialize(data, fixStr);
+
+	if(result) {
+		return fix + result;
 	}
 
-	let fix = '';
-
-	fix = url.includes('?') ? fixStr : '?';
-
-	return fix + serialize(data, fixStr);
+	return result;
 };
 
 export const serialize = (data, fixStr) => {
+	if(!data || JSON.stringify(data) === '{}' || data instanceof Array) {
+		return;
+	}
+
 	if(typeof data == 'string') {
 		return data;
 	}
@@ -125,7 +128,7 @@ export const serialize = (data, fixStr) => {
 	return paramStr;
 };
 
-export const getRealUrl = (key, proxy) => {
+export const getRealUrl = (key, path, proxy) => {
 	let realUrl;
 
 	for (let realKey in path) {

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-15 15:23:20
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 20:59:36
+ * @Last Modified time: 2018-11-18 11:22:03
  */
 import { checkType, getRealParams, serialize, getRealUrl, checkMethod } from '..';
 
@@ -13,6 +13,10 @@ afterEach(() => {
 });
 
 describe('fetchUtil', () => {
+	let data = { apple: 1, orange: 2 };
+	const dataStr = 'apple=1&orange=2';
+	const url = 'http://localhost:9099';
+
 	it('checkType should work', () => {
 		const types = [
 			{ type: 'test', result: undefined },
@@ -46,12 +50,28 @@ describe('fetchUtil', () => {
 	});
 
 	it('serialize should work', () => {
-		let data = { apple: 1, orange: 2 };
-
-		expect(serialize(data, '&')).toBe('apple=1&orange=2');
+		expect(serialize(data, '&')).toBe(dataStr);
 		expect(serialize(data, '%26')).toBe('apple=1%26orange=2');
 
-		data = 'apple=1&orange=2';
-		expect(serialize(data, '&')).toBe('apple=1&orange=2');
+		data = dataStr;
+		expect(serialize(data, '&')).toBe(data);
+		expect(serialize([])).toBe(undefined);
+		expect(serialize({})).toBe(undefined);
+	});
+
+	it('getRealParams should work', () => {
+		expect(getRealParams(url, data, '&')).toBe('?' + dataStr);
+		expect(getRealParams(url, {}, '&')).toBe(undefined);
+		expect(getRealParams(url, [], '&')).toBe(undefined);
+	});
+
+	it('getRealUrl should work without proxy', () => {
+		expect(getRealUrl('test', { test: url })).toBe(url);
+	});
+
+	it('getRealUrl should work with proxy', () => {
+		const proxy = 'http://localhost:9098?url=';
+
+		expect(getRealUrl('test', { test: url }, proxy)).toBe(proxy + url);
 	});
 });
