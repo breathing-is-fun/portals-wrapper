@@ -88,10 +88,20 @@ h6 {
 }
 
 .RenderHtml .layout-bottom {
-    height: 200px;
+    height: 330px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.RenderHtml .layout-bottom .layout-bottom-block {
+    width: 33%;
+    height: 100%;
+    margin-right: 1%;
+}
+
+.RenderHtml .layout-bottom .layout-bottom-block:last-child {
+    margin: 0px;
 }
 
 .RenderHtml .layout-bottom .layout-modal {
@@ -102,7 +112,7 @@ h6 {
 
 .RenderHtml .layout-left {
     width: 130px;
-    height: 200px;
+    height: 330px;
     margin-right: 20px;
     float: left;
 }
