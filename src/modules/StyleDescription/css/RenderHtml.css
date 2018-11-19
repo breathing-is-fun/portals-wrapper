@@ -94,13 +94,13 @@ h6 {
     justify-content: center;
 }
 
-.RenderHtml .layout-bottom .layout-bottom-block {
+.RenderHtml .layout-bottom .layout-block {
     width: 33%;
     height: 100%;
     margin-right: 1%;
 }
 
-.RenderHtml .layout-bottom .layout-bottom-block:last-child {
+.RenderHtml .layout-bottom .layout-block:last-child {
     margin: 0px;
 }
 
@@ -115,4 +115,8 @@ h6 {
     height: 330px;
     margin-right: 20px;
     float: left;
+}
+
+.RenderHtml .layout-right{
+    
 }
