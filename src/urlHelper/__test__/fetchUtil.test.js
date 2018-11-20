@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-15 15:23:20
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-18 11:27:14
+ * @Last Modified time: 2018-11-20 09:41:12
  */
 import { checkType, getRealParams, serialize, getRealUrl, checkMethod } from '..';
 
@@ -16,6 +16,7 @@ describe('fetchUtil', () => {
 	let data = { apple: 1, orange: 2 };
 	const dataStr = 'apple=1&orange=2';
 	const url = 'http://localhost:9099';
+	const proxy = 'http://localhost:9098?url=';
 
 	it('checkType should work', () => {
 		const types = [
@@ -71,8 +72,7 @@ describe('fetchUtil', () => {
 	});
 
 	it('getRealUrl should work with proxy', () => {
-		const proxy = 'http://localhost:9098?url=';
-
-		expect(getRealUrl('test', { test: url }, proxy)).toBe(proxy + url);
+		expect(getRealUrl('test', { test: url }, proxy, true)).toBe(proxy + url);
+		expect(getRealUrl('test', { test: url }, proxy, false)).toBe(url);
 	});
 });

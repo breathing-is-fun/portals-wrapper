@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-18 11:26:13
+ * @Last Modified time: 2018-11-20 09:35:15
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -20,6 +20,7 @@ const methods = ['GET', 'POST', 'PUT', 'DELETE'];
  * @param { params } 当需要设置header时可以用这个
  * @param { success } 请求结束时的回调
  * @param { fix } 使用代理时，被代理地址参数分隔符
+ * @param { isProxy } 是否启用代理
  */
 export const ajax = ({
 	url,
@@ -30,6 +31,7 @@ export const ajax = ({
 	success,
 	params,
 	fix = '&',
+	isProxy = true,
 }) => {
 	let realUrl, realParams, postParam = {};
 
@@ -37,7 +39,7 @@ export const ajax = ({
 
 	checkMethod(method);
 
-	realUrl = getRealUrl(key, path, proxy) || url;
+	realUrl = getRealUrl(key, path, proxy, isProxy) || url;
 
 	realParams = getRealParams(realUrl, data, fix);
 
@@ -128,7 +130,7 @@ export const serialize = (data, fixStr) => {
 	return paramStr;
 };
 
-export const getRealUrl = (key, path, proxy) => {
+export const getRealUrl = (key, path, proxy, isProxy) => {
 	let realUrl;
 
 	for (let realKey in path) {
@@ -143,7 +145,7 @@ export const getRealUrl = (key, path, proxy) => {
 		return;
 	}
 
-	if(proxy) {
+	if(proxy && isProxy) {
 		realUrl = proxy + realUrl;
 	}
 
