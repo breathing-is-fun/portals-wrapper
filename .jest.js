@@ -1,3 +1,9 @@
+/*
+ * @Author: zy9@github.com/zy410419243 
+ * @Date: 2018-11-20 16:48:48 
+ * @Last Modified by:   zy9 
+ * @Last Modified time: 2018-11-20 16:48:48 
+ */
 const libDir = process.env.LIB_DIR;
 
 module.exports = {
