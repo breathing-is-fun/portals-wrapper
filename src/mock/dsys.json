@@ -1,0 +1,114 @@
+{
+    "data": [
+        {
+            "name": "控制目标",
+            "place": "杭州",
+            "value": 44
+        },
+        {
+            "name": "考核指标",
+            "place": "杭州",
+            "value": 42
+        },
+        {
+            "name": "控制目标",
+            "place": "宁波",
+            "value": 40
+        },
+        {
+            "name": "考核指标",
+            "place": "宁波",
+            "value": 39
+        },
+        {
+            "name": "控制目标",
+            "place": "温州",
+            "value": 38
+        },
+        {
+            "name": "考核指标",
+            "place": "温州",
+            "value": 37
+        },
+        {
+            "name": "控制目标",
+            "place": "湖州",
+            "value": 36
+        },
+        {
+            "name": "考核指标",
+            "place": "湖州",
+            "value": 35
+        },
+        {
+            "name": "控制目标",
+            "place": "嘉兴",
+            "value": 34
+        },
+        {
+            "name": "考核指标",
+            "place": "嘉兴",
+            "value": 33
+        },
+        {
+            "name": "控制目标",
+            "place": "绍兴",
+            "value": 32
+        },
+        {
+            "name": "考核指标",
+            "place": "绍兴",
+            "value": 31
+        },
+        {
+            "name": "控制目标",
+            "place": "金华",
+            "value": 30
+        },
+        {
+            "name": "考核指标",
+            "place": "金华",
+            "value": 29
+        },
+        {
+            "name": "控制目标",
+            "place": "衢州",
+            "value": 28
+        },
+        {
+            "name": "考核指标",
+            "place": "衢州",
+            "value": 27
+        },
+        {
+            "name": "控制目标",
+            "place": "舟山",
+            "value": 26
+        },
+        {
+            "name": "考核指标",
+            "place": "舟山",
+            "value": 25
+        },
+        {
+            "name": "控制目标",
+            "place": "台州",
+            "value": 24
+        },
+        {
+            "name": "考核指标",
+            "place": "台州",
+            "value": 23
+        },
+        {
+            "name": "控制目标",
+            "place": "丽水",
+            "value": 22
+        },
+        {
+            "name": "考核指标",
+            "place": "丽水",
+            "value": 21
+        }
+    ]
+}
