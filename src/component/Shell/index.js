@@ -2,11 +2,12 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 19:24:00
+ * @Last Modified time: 2018-11-20 16:08:45
  */
 import React, { Component } from 'react';
 
 import { Icon } from 'antd';
+import omit from 'omit.js';
 
 import './css/Shell.css';
 
@@ -73,16 +74,15 @@ export default class Shell extends Component {
     	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } style={{ right: 22 }} />;
     	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } style={{ right: 0 }} />;
 
-    	// 容错，getDrawerStatus为react不识别的handle
-    	let newProps = Object.assign({}, this.props);
-
-    	delete newProps.getDrawerStatus;
-    	delete newProps.isDelete;
-    	delete newProps.onDelete;
-    	delete newProps.onEdit;
-    	delete newProps.isEdit;
-    	delete newProps.title;
-    	delete newProps.showTitle;
+    	const newProps = omit(this.props, [
+    		'getDrawerStatus',
+    		'isDelete',
+    		'onDelete',
+    		'onEdit',
+    		'isEdit',
+    		'title',
+    		'showTitle',
+    	]);
 
     	return (
     		<div { ...newProps } style={ Object.assign({}, style, { height: 'auto' }) } className={ `Shell${ type != 'component' ? ' border-transition' : '' }` } onClick={ e => type == 'add' && onClick && onClick(e) }>
