@@ -2,13 +2,18 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-17 19:57:14
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-18 12:23:35
+ * @Last Modified time: 2018-11-20 16:34:12
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './css/Ruler.css';
 
 export default class Ruler extends Component {
+	static defaultProps = {
+		padding: 35,
+	}
+
 	handleScale = type => {
 		let cm = [], mm = [];
 
@@ -30,7 +35,7 @@ export default class Ruler extends Component {
 	}
 
     render = () => {
-    	const { children } = this.props;
+    	const { children, padding } = this.props;
 
     	return (
     		<div className='Ruler'>
@@ -42,10 +47,17 @@ export default class Ruler extends Component {
     				{ this.handleScale('vertical') }
     			</div>
 
-    			<div style={{ padding: 20 }}>
+    			<div style={{ padding }}>
     				{ children }
     			</div>
     		</div>
     	);
     }
 }
+
+Ruler.propTypes = {
+	padding: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.number,
+	]),
+};
