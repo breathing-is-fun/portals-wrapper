@@ -1,8 +1,10 @@
 .ModuleLayout .plus-icon {
-    line-height: 0.4;
     font-size: 6em;
     color: #bcc3cb;
-    height: 54px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .ModuleLayout {
