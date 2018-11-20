@@ -1,3 +1,9 @@
+/*
+ * @Author: zy9@github.com/zy410419243
+ * @Date: 2018-11-20 16:47:04
+ * @Last Modified by:   zy9
+ * @Last Modified time: 2018-11-20 16:47:04
+ */
 if (typeof window !== 'undefined') {
 	global.window.resizeTo = (width, height) => {
 		global.window.innerWidth = width || global.window.innerWidth;
