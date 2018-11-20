@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 19:18:25
+ * @Last Modified time: 2018-11-20 16:22:22
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -130,7 +130,7 @@ export default class Grid extends Component {
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		// compactType: 'horizontal',
-    		style: { background: '#f5f6fa', height: '100%' },
+    		style: { background: '#f5f6fa', height: layout.length != 0 ? '100%' : 500 },
     	};
 
     	const propertyBoardProps = {
