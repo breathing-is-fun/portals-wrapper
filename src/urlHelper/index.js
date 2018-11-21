@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 18:48:56
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-20 09:35:15
+ * @Last Modified time: 2018-11-21 10:40:27
  */
 import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
@@ -111,8 +111,8 @@ export const getRealParams = (url, data, fixStr) => {
 };
 
 export const serialize = (data, fixStr) => {
-	if(!data || JSON.stringify(data) === '{}' || data instanceof Array) {
-		return;
+	if(!data || Object.keys(data).lenght == 0 || data instanceof Array) {
+		return '';
 	}
 
 	if(typeof data == 'string') {

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-15 15:23:20
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-20 09:41:12
+ * @Last Modified time: 2018-11-21 10:40:53
  */
 import { checkType, getRealParams, serialize, getRealUrl, checkMethod } from '..';
 
@@ -56,15 +56,15 @@ describe('fetchUtil', () => {
 
 		data = dataStr;
 		expect(serialize(data, '&')).toBe(data);
-		expect(serialize([])).toBe(undefined);
-		expect(serialize({})).toBe(undefined);
+		expect(serialize([])).toBe('');
+		expect(serialize({})).toBe('');
 	});
 
 	it('getRealParams should work', () => {
 		expect(getRealParams(url, data, '&')).toBe('?' + dataStr);
 		expect(getRealParams(url, undefined, '&')).toBe('');
-		expect(getRealParams(url, {}, '&')).toBe(undefined);
-		expect(getRealParams(url, [], '&')).toBe(undefined);
+		expect(getRealParams(url, {}, '&')).toBe('');
+		expect(getRealParams(url, [], '&')).toBe('');
 	});
 
 	it('getRealUrl should work without proxy', () => {
