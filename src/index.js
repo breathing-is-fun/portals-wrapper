@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-05-28 15:20:13
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 10:03:37
+ * @Last Modified time: 2018-11-21 17:41:55
  */
 import 'babel-polyfill';
 import React from 'react';
@@ -30,7 +30,7 @@ if(!window.SCTool) {
 
 ReactDOM.render((
 	<div>
-		<GlobalModal />
+		<GlobalModal on={ window.SCTool } />
 		<Router />
 	</div>
 ), MOUNT_NODE);

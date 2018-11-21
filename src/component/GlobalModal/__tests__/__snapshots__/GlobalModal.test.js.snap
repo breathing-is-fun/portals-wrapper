@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      content={null}
+      footer={null}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      prefixCls="ant-modal"
+      style={Object {}}
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={520}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        content={null}
+        footer={null}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={Object {}}
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={520}
+        wrapClassName=""
+      />
+    </Modal>
+  </div>
+</GlobalModal>
+`;
+
+exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      content={null}
+      footer={null}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      prefixCls="ant-modal"
+      style={Object {}}
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={520}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        content={null}
+        footer={null}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={Object {}}
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={520}
+        wrapClassName=""
+      />
+    </Modal>
+  </div>
+</GlobalModal>
+`;
+
+exports[`GlobalModal when visible is true, Modal should work 1`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      content={null}
+      footer={null}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      prefixCls="ant-modal"
+      style={Object {}}
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={520}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        content={null}
+        footer={null}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={Object {}}
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={520}
+        wrapClassName=""
+      />
+    </Modal>
+  </div>
+</GlobalModal>
+`;
