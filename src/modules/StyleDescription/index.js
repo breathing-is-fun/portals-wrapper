@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 13:34:43
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 15:18:48
+ * @Last Modified time: 2018-11-21 16:08:53
  */
 import React, { Component } from 'react';
 
@@ -30,7 +30,8 @@ export default class StyleDescription extends Component {
 		ajax({
 			key: 'style_menu_data',
 			success: ({ data: menuDatas }) => {
-				const { paths, key: selectedKey } = menuDatas.length != 0 ? menuDatas[0] : {};
+				const firstMenuItem = menuDatas.length != 0 ? menuDatas[0] : {};
+				const { paths, key: selectedKey } = firstMenuItem;
 
 				this.setState({ menuDatas, paths, selectedKey });
 			},
@@ -48,7 +49,11 @@ export default class StyleDescription extends Component {
 
 		return (
 			<div className='StyleDescription'>
-				<LoadMenu onClick={ this.handleMenuClick } menuDatas={ menuDatas } selectedKey={ selectedKey }>
+				<LoadMenu
+					onClick={ this.handleMenuClick }
+					menuDatas={ menuDatas }
+					selectedKey={ selectedKey }
+				>
 					<RenderHtml paths={ paths } />
 				</LoadMenu>
 			</div>

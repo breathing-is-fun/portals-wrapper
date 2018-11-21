@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-24 20:40:30
  * @Last Modified by: zy9
- * @Last Modified time: 2018-10-25 16:00:44
+ * @Last Modified time: 2018-11-21 17:07:57
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -30,7 +30,11 @@ describe('DraggableMenu', () => {
 	};
 
 	it('module edit render correctly', () => {
-		const wrapper = shallow(<DraggableMenu { ...Object.assign({}, props, { type: 'module' }) } />);
+		const demoProps = Object.assign({}, props, { type: 'module' });
+		const demo = (
+			<DraggableMenu { ...demoProps } />
+		);
+		const wrapper = shallow(demo);
 
 		expect(wrapper).toMatchSnapshot();
 	});
@@ -45,14 +49,20 @@ describe('DraggableMenu', () => {
 				'text': '蓝色'
 			},
 		];
+		const demoProps = Object.assign({}, props, { shellStyleDatas });
+		const demo = <DraggableMenu { ...demoProps } />;
 
-		const wrapper = shallow(<DraggableMenu { ...Object.assign({}, props, { shellStyleDatas }) } />);
+		const wrapper = shallow(demo);
 
 		expect(wrapper).toMatchSnapshot();
 	});
 
 	it('when clicked, click event should be called', () => {
-		const wrapper = mount(<DraggableMenu { ...Object.assign({}, props, { type: 'module' }) } />);
+		const demoProps = Object.assign({}, props, { type: 'module' });
+		const demo = (
+			<DraggableMenu { ...demoProps } />
+		);
+		const wrapper = mount(demo);
 
 		wrapper.find('.ant-menu-submenu-title').at(0).simulate('click');
 		expect(props.onOpenChange.mock.calls.length).toBe(1);

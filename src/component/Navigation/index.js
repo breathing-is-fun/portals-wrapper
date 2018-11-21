@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 11:32:00
+ * @Last Modified time: 2018-11-21 16:51:06
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -34,7 +34,9 @@ export default class Navigation extends Component {
 
 	loadCurrentTime = () => {
 		import('./CurrentTime')
-			.then(CurrentTime => this.setState({ CurrentTime: CurrentTime.default }));
+			.then(CurrentTime => {
+				this.setState({ CurrentTime: CurrentTime.default });
+			});
 	}
 
     render = () => {
@@ -46,8 +48,12 @@ export default class Navigation extends Component {
 
     	const date = (
     		<div className='content-wrapper'>
-    			<div className='content-time-detail'>{ moment().format('YYYY-MM-DD') }</div>
-    			<div className='content-time-detail'>{ moment().format('dddd') }</div>
+    			<div className='content-time-detail'>
+    				{ moment().format('YYYY-MM-DD') }
+    			</div>
+    			<div className='content-time-detail'>
+    				{ moment().format('dddd') }
+    			</div>
     		</div>
     	);
 
@@ -58,7 +64,10 @@ export default class Navigation extends Component {
     					const { title, id } = item;
 
     					return (
-    						<Menu.Item key={ id } onClick={ e => menuItemOnClick && menuItemOnClick(item) }>
+    						<Menu.Item
+    							key={ id }
+    							onClick={ e => menuItemOnClick(item) }
+    						>
     							<a rel='noopener noreferrer'>{ title }</a>
     						</Menu.Item>
     					);
@@ -70,7 +79,12 @@ export default class Navigation extends Component {
     	return (
     		<div className='Navigation'>
     			<div className='content'>
-    				<div className='content-wrapper' style={{ width: 300 }}>浙江省水利综合门户</div>
+    				<div
+    					className='content-wrapper'
+    					style={{ width: 300 }}
+    				>
+						浙江省水利综合门户
+    				</div>
 
     				<div className='content-wrapper' style={{ width: 300 }}>
     					<div className='content-time'>
@@ -80,8 +94,13 @@ export default class Navigation extends Component {
 
     				{ clock && date }
 
-    				<div className='content-wrapper' style={{ float: 'right', marginRight: 20, color: '#FFF' }}>
-    					<Dropdown overlay={ switchMeal } trigger={ ['hover', 'click'] }>
+    				<div
+    					className='content-wrapper content-switch'
+    				>
+    					<Dropdown
+    						overlay={ switchMeal }
+    						trigger={ ['hover', 'click'] }
+    					>
     						<span className='droplink'>
 								套餐切换
     							<Icon type='down' />
@@ -90,7 +109,12 @@ export default class Navigation extends Component {
     				</div>
     			</div>
 
-    			<div className='children-wrapper' style={{ height: (document.body.clientHeight - 65) }}>{ children }</div>
+    			<div
+    				className='children-wrapper'
+    				style={{ height: (document.body.clientHeight - 65) }}
+    			>
+    				{ children }
+    			</div>
     		</div>
     	);
     }

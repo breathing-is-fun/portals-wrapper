@@ -1,0 +1,10 @@
+.Grid iframe {
+    border: none;
+    width: 100%;
+    overflow: hidden;
+}
+
+.Grid .render-div {
+    overflow: hidden;
+    padding: 15;
+}

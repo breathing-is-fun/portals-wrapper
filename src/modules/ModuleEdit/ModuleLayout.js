@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-16 10:30:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 15:32:29
+ * @Last Modified time: 2018-11-21 16:33:10
  */
 import React, { Component } from 'react';
 
@@ -34,11 +34,71 @@ export default class ModuleLayout extends Component {
 		this.setState({ modalVisible, currentModalItem });
 	}
 
+	generateEditShell = (layout, shellStyle, isAll) => (
+		layout.map(item => {
+			const {
+				id,
+				group,
+				title,
+				isedit: isEdit,
+				imgurl: imgUrl,
+				isdelete: isDelete,
+				showtitle: showTitle
+			} = item;
+
+			const shellProps = {
+				key: group + id,
+				title, showTitle,
+				isEdit: isAll,
+				isDelete: true,
+				type: 'module',
+				'data-grid': item,
+				style: shellStyle,
+				onDelete: this.handleShellOnDelete,
+				onEdit: modalVisible => {
+					this.handleShellonEdit(modalVisible, item);
+				},
+			};
+
+			const height = showTitle ? 'calc(100% - 21px)' : '100%';
+
+			return (
+				<Shell { ...shellProps }>
+					<img src={ imgUrl } style={{
+						width: '100%',
+						height,
+					}} />
+				</Shell>
+			);
+		})
+	)
+
+	generateAddShell = shellStyle => (
+		<Shell
+			key='add'
+			style={ Object.assign({}, shellStyle, {
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center'
+			}) } type='add'
+			onClick={ () => this.handleShellonEdit(true, {}) }
+		>
+			<i className='plus-icon'>+</i>
+		</Shell>
+	)
+
 	render = () => {
 		const { layout, isAll } = this.props;
 		const { modalVisible, currentModalItem } = this.state;
 
-		const shellStyle = { zIndex: 1, userSelect: 'none', width: '20%', height: 200, background: '#e0e6ee', borderRadius: 2, transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)', float: 'left', margin: 30, position: 'relative' };
+		const shellStyle = {
+			width: '20%',
+			height: 200,
+			background: '#e0e6ee',
+			float: 'left',
+			margin: 30,
+			position: 'relative',
+		};
 
 		const modalProps = {
 			title: '套餐基础设置',
@@ -51,33 +111,9 @@ export default class ModuleLayout extends Component {
 
 		return (
 			<div className='ModuleLayout'>
-				{
-					layout.map(item => {
-						const { id, group, title, isedit: isEdit, imgurl: imgUrl, isdelete: isDelete, showtitle: showTitle } = item;
+				{ this.generateEditShell(layout, shellStyle, isAll) }
 
-						const shellProps = {
-							key: group + id,
-							title, showTitle,
-							isEdit: isAll,
-							isDelete: true,
-							type: 'module',
-							'data-grid': item,
-							style: shellStyle,
-							onDelete: this.handleShellOnDelete,
-							onEdit: modalVisible => this.handleShellonEdit(modalVisible, item),
-						};
-
-						return (
-							<Shell { ...shellProps }>
-								<img src={ imgUrl } style={{ width: '100%', height: showTitle ? 'calc(100% - 21px)' : '100%' }} />
-							</Shell>
-						);
-					})
-				}
-
-				<Shell key='add' style={ Object.assign({}, shellStyle, { display: 'flex', alignItems: 'center', justifyContent: 'center' }) } type='add' onClick={ () => this.handleShellonEdit(true, {}) }>
-					<i className='plus-icon'>+</i>
-				</Shell>
+				{ this.generateAddShell(shellStyle) }
 
 				<Modal { ...modalProps }>
 					<PropertyForm currentModalItem={ currentModalItem } />

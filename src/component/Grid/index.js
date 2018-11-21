@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 14:35:38
+ * @Last Modified time: 2018-11-21 16:58:02
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -13,6 +13,8 @@ import 'react-resizable/css/styles.css';
 
 import Shell from '../../component/Shell';
 import Loader from './ModulesLoader';
+
+import './css/Grid.css';
 
 export default class Grid extends Component {
 	constructor (props) {
@@ -82,14 +84,31 @@ export default class Grid extends Component {
 		const height = 'calc(100% - 21px)';
 
 		if(isEdit) {
-			return <img src={ imgurl || imgUrl } style={{ width: '100%', height }} />;
+			return (
+				<img
+					src={ imgurl || imgUrl }
+					style={{ width: '100%', height }}
+				/>
+			);
 		}
 
 		if(type == 'iframe') {
-			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'hidden' }}></iframe>;
+			return (
+				<iframe
+					src={ path }
+					style={{ height }}
+				></iframe>
+			);
 		}
 
-		return <div style={{ height, overflow: 'hidden', padding: 15 }} ref={ ref => ref && (this.roots[i] = ref) } id={ i } />;
+		return (
+			<div
+				className='render-div'
+				style={{ height }}
+				ref={ ref => ref && (this.roots[i] = ref) }
+				id={ i }
+			/>
+		);
 	}
 
 	handleShellonEdit = (isDrawerOpen, item) => {
@@ -124,20 +143,33 @@ export default class Grid extends Component {
 	}
 
     render = () => {
-    	const { isDrawerOpen, propertyBoardDataSource, PropertyBoard } = this.state;
-    	const { isEdit = true, isDelete = true, layout, onDelete, propertyBoardEnumData } = this.props;
+    	const {
+    		isDrawerOpen,
+    		propertyBoardDataSource,
+    		PropertyBoard
+    	} = this.state;
+    	const {
+    		isEdit = true,
+    		isDelete = true,
+    		layout,
+    		onDelete,
+    		propertyBoardEnumData
+    	} = this.props;
 
     	const layoutProps = {
     		className: 'layout',
     		cols: 12,
     		rowHeight: 30,
-    		width: (document.documentElement.clientWidth || document.body.clientWidth) - (isEdit ? 256 : 0),
+    		width: document.body.clientWidth - (isEdit ? 256 : 0),
     		// margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
     		// compactType: 'horizontal',
-    		style: { background: '#f5f6fa', height: layout.length != 0 ? '100%' : 500 },
+    		style: {
+    			background: '#f5f6fa',
+    			height: layout.length != 0 ? '100%' : 500
+    		},
     	};
 
     	const propertyBoardProps = {
@@ -145,7 +177,9 @@ export default class Grid extends Component {
     		onClose: isDrawerOpen => {
     			this.setState({ isDrawerOpen }, () => {
     				// 关闭抽屉时销毁外壳中的元素，好在再次点击时执行componentDidMount中的方法
-    				setTimeout(() => this.setState({ PropertyBoard: null }), 301);
+    				setTimeout(() => {
+    					this.setState({ PropertyBoard: null });
+    				}, 300);
     			});
     		},
     		shellStyleDatas: propertyBoardDataSource,
@@ -154,18 +188,33 @@ export default class Grid extends Component {
     	};
 
     	return (
-    		<div className='Grid' onDrop={ this.handleDragDrop } onDragOver={ e => e.preventDefault() }>
+    		<div
+    			className='Grid'
+    			onDrop={ this.handleDragDrop }
+    			onDragOver={ e => e.preventDefault() }
+    		>
     			<GridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
-    						const { i: key, title, style: shellStyle = {}, showtitle: showTitle } = item;
+    						const {
+    							i: key,
+    							title,
+    							style = {},
+    							showtitle: showTitle
+    						} = item;
 
     						const shellProps = {
-    							key, title, isEdit, isDelete,
-    							onDelete, showTitle,
-    							style: Object.assign({}, { zIndex: 1, userSelect: 'none', boxShadow: '0px 0px 29px 0px rgba(93, 106, 113, 0.12)', borderRadius: 2 }, shellStyle),
+    							key,
+    							title,
+    							isEdit,
+    							isDelete,
+    							onDelete,
+    							showTitle,
+    							style,
     							'data-grid': item,
-    							onEdit: isDrawerOpen => this.handleShellonEdit(isDrawerOpen, item),
+    							onEdit: isDrawerOpen => {
+    								this.handleShellonEdit(isDrawerOpen, item);
+    							},
     						};
 
     						return (

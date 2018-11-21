@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-06-12 09:43:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 10:13:42
+ * @Last Modified time: 2018-11-21 17:20:56
  */
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from 'react-router-dom';
@@ -33,31 +33,17 @@ const StyleDescription = props => (
 	</Bundle>
 );
 
-// const Login = props => (
-// 	<Bundle load={ () => import('../modules/Login') }>
-// 		{ Login => <Login { ...props }/> }
-// 	</Bundle>
-// );
-
-const Test = props => (
-	<Bundle load={ () => import('../modules/Test') }>
-		{ Test => <Test { ...props }/> }
-	</Bundle>
-);
-
 export default class Router extends Component {
-    render = () => {
-    	return (
-    		<HashRouter>
-    			<div>
-    				<Route path='/edit/component' component={ ComponentEdit } />
-    				<Route path='/edit/module' component={ ModuleEdit } />
-    				<Route path='/display' component={ Display } />
-    				<Route path='/style' component={ StyleDescription } />
-    				{/* <Route path='/login' component={ Login } /> */}
-    				<Route path='/test' component={ Test } />
-    			</div>
-    		</HashRouter>
-    	);
-    }
+	render = () => {
+		return (
+			<HashRouter>
+				<div>
+					<Route path='/edit/component' component={ ComponentEdit } />
+					<Route path='/edit/module' component={ ModuleEdit } />
+					<Route path='/display' component={ Display } />
+					<Route path='/style' component={ StyleDescription } />
+				</div>
+			</HashRouter>
+		);
+	}
 }

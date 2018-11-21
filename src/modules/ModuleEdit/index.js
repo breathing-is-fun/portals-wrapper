@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 17:20:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 09:35:21
+ * @Last Modified time: 2018-11-21 16:34:21
  */
 import React, { Component } from 'react';
 
@@ -94,7 +94,11 @@ export default class ModuleEdit extends Component {
     				</Sider>
 
     				<Layout>
-    					<ModuleLayout layout={ layout } onDelete={ this.handleMealOnDelete } isAll={ isAll } />
+    					<ModuleLayout
+    					layout={ layout }
+    					onDelete={ this.handleMealOnDelete }
+    					isAll={ isAll }
+    				/>
     				</Layout>
     			</Layout>
     		// </Navigation>

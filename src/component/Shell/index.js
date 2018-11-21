@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 14:46:34
+ * @Last Modified time: 2018-11-21 17:25:36
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -27,7 +27,7 @@ export default class Shell extends Component {
 	static defaultProps = {
 		isEdit: false,
 		isDelete: false,
-		type: 'module',
+		type: 'component',
 		showTitle: true,
 		style: {},
 		title: null,
@@ -75,11 +75,35 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit, isDelete, type, onClick, showTitle, style } = this.props;
+    	const {
+    		children,
+    		isEdit,
+    		isDelete,
+    		type,
+    		onClick,
+    		showTitle,
+    		style
+    	} = this.props;
     	const { title } = this.state;
 
-    	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } style={{ right: 22 }} />;
-    	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } style={{ right: 0 }} />;
+    	const editButton = (
+    		<Icon
+    			type='edit'
+    			theme='outlined'
+    			className='operation'
+    			onMouseDown={ this.handleOnEdit }
+    			style={{ right: 22 }}
+    		/>
+    	);
+    	const deleteButton = (
+    		<Icon
+    			type='delete'
+    			theme='outlined'
+    			className='operation'
+    			onMouseDown={ this.handleOnDelete.bind(this) }
+    			style={{ right: 0 }}
+    		/>
+    	);
 
     	const newProps = omit(this.props, [
     		'isDelete',
@@ -91,11 +115,24 @@ export default class Shell extends Component {
     	]);
 
     	return (
-    		<div { ...newProps } style={ Object.assign({}, style, { height: 'auto' }) } className={ `Shell${ type != 'component' ? ' border-transition' : '' }` } onClick={ e => type == 'add' && onClick && onClick(e) }>
+    		<div
+    			{ ...newProps }
+    			style={ Object.assign({}, style, { height: 'auto' }) }
+    			className={ `Shell${ type != 'component' ?
+    				' border-transition' :
+    				'' }`
+    			}
+    			onClick={ e => type == 'add' && onClick && onClick(e) }
+    		>
     			{ isDelete && deleteButton }
+
     			{ isEdit && editButton }
 
-    			{ type != 'add' && showTitle && <span className='operation-title'>{ title }</span> }
+    			{
+    				type != 'add' &&
+					showTitle &&
+					<span className='operation-title'>{ title }</span>
+    			}
 
     			{ children }
     		</div>
@@ -106,7 +143,7 @@ export default class Shell extends Component {
 Shell.propTypes = {
 	isEdit: PropTypes.bool,
 	isDelete: PropTypes.bool,
-	type: PropTypes.oneOf(['add', 'module']),
+	type: PropTypes.oneOf(['add', 'module', 'component']),
 	onClick: PropTypes.func,
 	showTitle: PropTypes.bool,
 	style: PropTypes.object,

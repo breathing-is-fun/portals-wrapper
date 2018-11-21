@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-11 11:59:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-15 10:30:56
+ * @Last Modified time: 2018-11-21 16:52:18
  */
 import { fetch } from 'whatwg-fetch';
 
@@ -60,7 +60,10 @@ export default class ModulesLoader {
 						targetModule = targetModule.default;
 					}
 
-					const loadedModule = new targetModule(this.roots[key], window.SCTool.ticket);
+					const loadedModule = new targetModule(
+						this.roots[key],
+						window.SCTool.ticket
+					);
 					const { _moduleOnMount } = loadedModule;
 
 					_moduleOnMount && _moduleOnMount.call(loadedModule);

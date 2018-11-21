@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-14 10:31:52
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-01 18:10:45
+ * @Last Modified time: 2018-11-21 16:45:03
  */
 
 // 获得style中文枚举
@@ -22,7 +22,13 @@ export default class PropertyLoader {
 				const { text, key, isStyle = true } = item;
 
 				if(key == styleKey) {
-					result.push({ text, key, isStyle, value: style[styleKey], id });
+					result.push({
+						text,
+						key,
+						isStyle,
+						value: style[styleKey],
+						id,
+					});
 				}
 			}
 		}

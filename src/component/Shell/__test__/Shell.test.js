@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-24 19:17:12
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 16:12:06
+ * @Last Modified time: 2018-11-21 16:43:42
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -47,7 +47,7 @@ describe('Shell', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	it('when button in group is clicked, theirs click event should be called', () => {
+	it('when button is clicked, theirs click event should be called', () => {
 		const wrapper = mount(<Shell { ...props }>test</Shell>);
 
 		wrapper.find('i').at(0).simulate('mousedown');
@@ -58,13 +58,23 @@ describe('Shell', () => {
 	});
 
 	it('when showTitle is false, title should be hidden', () => {
-		const wrapper = mount(<Shell { ...Object.assign({}, props, { showTitle: false }) }>test</Shell>);
+		const demo = (
+			<Shell
+				{ ...Object.assign({}, props, { showTitle: false }) }
+			>test</Shell>
+		);
+		const wrapper = mount(demo);
 
 		expect(wrapper.find('.operation-title').length).toBe(0);
 	});
 
 	it('when add button is clicked, its click event should be called', () => {
-		const wrapper = shallow(<Shell { ...Object.assign({}, props, { type: 'add' }) }>test</Shell>);
+		const demo = (
+			<Shell
+				{ ...Object.assign({}, props, { type: 'add' }) }
+			>test</Shell>
+		);
+		const wrapper = shallow(demo);
 
 		wrapper.find('.Shell').simulate('click');
 		expect(props.onClick.mock.calls.length).toBe(1);

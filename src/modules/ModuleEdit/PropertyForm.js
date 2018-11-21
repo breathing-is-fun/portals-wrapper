@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-06 20:04:20
+ * @Last Modified time: 2018-11-21 16:21:17
  */
 import React, { Component } from 'react';
 
@@ -12,6 +12,9 @@ const FormItem = Form.Item;
 import { ajax } from '../../urlHelper';
 
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
+
+const egUrl = '请输入像url的地址，' +
+'比如http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg';
 
 class PropertyForm extends Component {
 	constructor (props) {
@@ -35,13 +38,18 @@ class PropertyForm extends Component {
 			success: ({ data }) => {
 				let departmentDatas = handleMenuGroup(data), newDepart = [];
 
-				// hack. Need to modify function selectGroup in handler.js
+				// hack. Need to modify
+				// function selectGroup in /DraggableMenu/handler.js
 				// 修改参数名， group => value, groupName => title
 				for(let item of departmentDatas) {
 					const { group, groupName, key, children, id } = item;
 
 					if(group != 'all') {
-						newDepart.push({ title: groupName, value: id, children });
+						newDepart.push({
+							title: groupName,
+							value: id,
+							children
+						});
 					}
 				}
 
@@ -78,7 +86,17 @@ class PropertyForm extends Component {
 			if (!err) {
 				location.hash = '/edit/component';
 
-				window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { moduleToComponent: { data: Object.assign({}, values, { id }) }, status: 'pending' });
+				values.id = id;
+				const moduleToComponent = {
+					moduleToComponent: values,
+					status: 'pending',
+				};
+
+				window['_acrossDatas'] = Object.assign(
+					{},
+					window['_acrossDatas'],
+					moduleToComponent
+				);
 			}
 		});
 	}
@@ -112,6 +130,20 @@ class PropertyForm extends Component {
     		treeData: departmentDatas,
     	};
 
+    	const buttonGroup = (
+    		<Row>
+    			<Col span={ 22 } style={{ textAlign: 'right' }}>
+    				<Button onClick={ () => resetFields() }>重置</Button>
+    				<Button
+    					type='primary'
+    					style={{ marginLeft: 8 }}
+    					disabled={ this.hasErrors(getFieldsError()) }
+    					onClick={ this.handleSubmit }
+    				>确定</Button>
+    			</Col>
+    		</Row>
+    	);
+
     	return (
     		<div className='PropertyForm'>
     			<Form>
@@ -126,7 +158,10 @@ class PropertyForm extends Component {
     				<FormItem { ...formItemLayout } label='缩略图地址'>
     					{
     						getFieldDecorator('imgurl', {
-    							rules: [{ required: true, message: '请输入像url的地址，比如http://www.github.com', type: 'url' }],
+    							rules: [{
+    								required: true,
+    								message: egUrl,
+    								type: 'url' }],
     						})(<Input />)
     					}
     				</FormItem>
@@ -140,12 +175,7 @@ class PropertyForm extends Component {
     				</FormItem>
 
     				<FormItem>
-    					<Row>
-    						<Col span={ 22 } style={{ textAlign: 'right' }}>
-    							<Button onClick={ () => resetFields() }>重置</Button>
-    							<Button type='primary' style={{ marginLeft: 8 }} disabled={ this.hasErrors(getFieldsError()) } onClick={ this.handleSubmit }>确定</Button>
-    						</Col>
-    					</Row>
+    					{ buttonGroup }
     				</FormItem>
     			</Form>
     		</div>

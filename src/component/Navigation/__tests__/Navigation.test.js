@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-21 09:03:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:27:36
+ * @Last Modified time: 2018-11-21 16:51:52
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -27,7 +27,13 @@ describe('Navigation', () => {
 			}
 		];
 
-		const wrapper = mount(<Navigation menu={ menu } menuItemOnClick={ menuItemOnClick }>test</Navigation>);
+		const demo = (
+			<Navigation
+				menu={ menu }
+				menuItemOnClick={ menuItemOnClick }
+			>test</Navigation>
+		);
+		const wrapper = mount(demo);
 
 		wrapper.find('.ant-dropdown-trigger').simulate('click');
 		expect(wrapper.find('.ant-dropdown-menu-item').exists());

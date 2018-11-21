@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-25 14:29:08
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 14:48:15
+ * @Last Modified time: 2018-11-21 17:05:00
  */
 const handleMenuGroup = dataSource => {
 	let result = [], groupDatas = selectGroup(dataSource);
@@ -20,7 +20,11 @@ const handleMenuGroup = dataSource => {
 				childResult.key = groupChild + id;
 				childResult.id = id;
 
-				children.push(Object.assign({}, jtem, { title: text, value: id, key }));
+				children.push(Object.assign({}, jtem, {
+					title: text,
+					value: id,
+					key
+				}));
 			}
 		}
 
@@ -44,12 +48,6 @@ const selectGroup = dataSource => {
 	for(let item of tempGroupDatas) {
 		result.push(JSON.parse(item));
 	}
-
-	return result;
-};
-
-const recurseTreeNode = dataSource => {
-	let result = [];
 
 	return result;
 };

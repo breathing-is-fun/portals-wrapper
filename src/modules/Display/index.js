@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 14:08:11
+ * @Last Modified time: 2018-11-21 17:18:39
  */
 import React, { Component } from 'react';
 
@@ -51,7 +51,9 @@ export default class Display extends Component {
 
 	getParams = name => {
     	let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-    	let result = window.location.href.split('?').length > 1 ? window.location.href.split('?')[1].match(reg) : 0;
+		let result = window.location.href.split('?').length > 1 ?
+			window.location.href.split('?')[1].match(reg) :
+			0;
 
     	if (result != null) {
     		return result[2] === 'undefined' ? undefined : result[2];
@@ -101,8 +103,20 @@ export default class Display extends Component {
     	const { layout, menuDatas, loading } = this.state;
 
     	return (
-    		<Navigation menuItemOnClick={ ({ id }) => this.loadLayout(id) } menu={ menuDatas } clock>
-    			{ !loading && <Grid isEdit={ false } isDelete={ false } layout={ layout } ref={ ref => ref && (this.grid = ref) } /> }
+    		<Navigation
+    			menuItemOnClick={ ({ id }) => this.loadLayout(id) }
+    			menu={ menuDatas }
+    			clock
+    		>
+    			{
+    				!loading &&
+					<Grid
+    					isEdit={ false }
+    					isDelete={ false }
+    					layout={ layout }
+    					ref={ ref => ref && (this.grid = ref) }
+    				/>
+    			}
     		</Navigation>
     	);
     }

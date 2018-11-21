@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:34:26
+ * @Last Modified time: 2018-11-21 17:26:13
  */
 import React, { Component } from 'react';
 
@@ -52,7 +52,9 @@ export default class ComponentEdit extends Component {
 	loadPropertyBoardData = () => {
 		ajax({
 			key: 'propertyDatas',
-			success: ({ data }) => this.setState({ propertyBoardEnumData: data }),
+			success: ({ data }) => {
+				this.setState({ propertyBoardEnumData: data });
+			},
 		});
 	}
 
@@ -117,7 +119,20 @@ export default class ComponentEdit extends Component {
 				if(result) {
 					location.hash = '/edit/module';
 
-					window['_acrossDatas'] = Object.assign({}, window['_acrossDatas'], { componentToModule: { isComponentSave: true, data: {} }, moduleToComponent: { data: {} } });
+					const componentToModule = {
+						componentToModule: {
+							isComponentSave: true,
+							data: {}
+						},
+						moduleToComponent: {
+							data: {}
+						}
+					};
+
+					window['_acrossDatas'] = Object.assign(
+						{},
+						window['_acrossDatas'],
+						componentToModule);
 				} else {
 					console.error(result);
 				}
@@ -143,7 +158,14 @@ export default class ComponentEdit extends Component {
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
 	render = () => {
-		const { layout, selectedKeys, menuDatas, openKeys, shellStyleDatas, propertyBoardEnumData } = this.state;
+		const {
+			layout,
+			selectedKeys,
+			menuDatas,
+			openKeys,
+			shellStyleDatas,
+			propertyBoardEnumData
+		} = this.state;
 
 		const draggableMenuProps = {
     		selectedKeys, menuDatas, openKeys,
@@ -165,7 +187,12 @@ export default class ComponentEdit extends Component {
 
 		return (
 			// <Navigation type='componentEdit'>
-			<Layout style={{ minHeight: '100vh', height: document.documentElement.clientHeight || document.body.clientHeight }}>
+			<Layout
+				style={{
+					minHeight: '100vh',
+					height: document.body.clientHeight
+				}}
+			>
 				<Sider theme='light' width='256'>
 					<DraggableMenu { ...draggableMenuProps } />
 				</Sider>

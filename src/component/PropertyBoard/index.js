@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 14:27:37
+ * @Last Modified time: 2018-11-21 17:12:45
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -39,7 +39,12 @@ export default class PropertyBoard extends Component {
 			const { shellStyleDatas, enumDatas } = this.props;
 			const { i: key, style } = shellStyleDatas;
 
-			this.loader.load(enumDatas, style, key, propertyDatas => this.setState({ propertyDatas }));
+			this.loader.load(
+				enumDatas,
+				style,
+				key,
+				propertyDatas => this.setState({ propertyDatas })
+			);
 		}
 	}
 
@@ -51,6 +56,26 @@ export default class PropertyBoard extends Component {
 
 		onChange && onChange(this.currentShellStyle);
 	}
+
+	generateProperties = propertyDatas => (
+		propertyDatas.map(item => {
+			const { key, text, value, id } = item;
+
+			return (
+				<li key={ `property-li-${ key }` }>
+					<div className='property-key'>{ text }：</div>
+					<div className='property-value'>
+						<Input
+							onBlur={ e => {
+								this.handleInput(e.target.value, key, id);
+							} }
+							defaultValue={ value }
+						/>
+					</div>
+				</li>
+			);
+		})
+	)
 
     render = () => {
     	const { visible, onClose, shellStyleDatas } = this.props;
@@ -64,33 +89,18 @@ export default class PropertyBoard extends Component {
     		</div>
     	);
 
-    	const drawerProps = {
-    		visible,
-    		className: 'PropertyBoard',
-    		onClose: () => onClose && onClose(!visible),
-    		title: drawerTitle,
-    		width: '20%',
-    		destroyOnClose: true,
-    	};
-
     	return (
     		<div className='PropertyBoard'>
-    			<Drawer { ...drawerProps }>
+    			<Drawer
+    				visible={ visible }
+    				className='PropertyBoard'
+    				onClose={ () => onClose && onClose(!visible) }
+    				title={ drawerTitle }
+    				width='20%'
+    				destroyOnClose
+    			>
     				<ul className='property-wrapper'>
-    					{
-    						propertyDatas.map(item => {
-    							const { key, text, value, id } = item;
-
-    							return (
-    								<li key={ `property-li-${ key }` }>
-    									<div className='property-key'>{ text }：</div>
-    									<div className='property-value'>
-    										<Input onBlur={ e => this.handleInput(e.target.value, key, id) } defaultValue={ value } />
-    									</div>
-    								</li>
-    							);
-    						})
-    					}
+    					{ this.generateProperties(propertyDatas) }
     				</ul>
     			</Drawer>
     		</div>

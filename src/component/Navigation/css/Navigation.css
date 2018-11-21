@@ -1,7 +1,10 @@
 .Navigation .content {
     height: 65px;
     background: #2e7df3;
-    box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
+    box-shadow: 0px 0px 9px 0px rgba(39;
+    93;
+    214;
+    0.39);
 }
 
 .Navigation .children-wrapper {
@@ -20,6 +23,12 @@
     height: 100%;
     line-height: 65px;
     text-align: center;
+}
+
+.Navigation .content .content-switch {
+    float: right;
+    margin-right: 20;
+    color: #FFF;
 }
 
 .Navigation .content .content-space {

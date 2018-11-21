@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 14:21:33
+ * @Last Modified time: 2018-11-21 17:04:32
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -32,80 +32,101 @@ export default class DraggableMenu extends Component {
 		type: 'component',
 	}
 
-	handleMenuClick = ({ item, key, keyPath }) => {
+	handleMenuClick = ({ item, keyPath }) => {
 		const { onClick } = this.props;
 
-		// onClick && onClick(key.split(this.menuSelectPrefix)[1], [key]);
 		const { item: propsItem = {} } = item.props;
 
-		onClick && onClick(propsItem ? propsItem.group : null, [keyPath[keyPath.length - 1] + propsItem.id], propsItem.id);
+		onClick && onClick(
+			propsItem ? propsItem.group : null,
+			[keyPath[keyPath.length - 1] + propsItem.id],
+			propsItem.id
+		);
 	}
 
-	handleShellStyle = currentShellStyle => this.setState({ currentShellStyle });
+	handleShellStyle = currentShellStyle => {
+		this.setState({ currentShellStyle });
+	};
 
-    render = () => {
-    	const { type = 'component', shellStyleDatas = [], menuDatas = [], openKeys, selectedKeys, onOpenChange, onSave } = this.props;
-    	const { currentShellStyle } = this.state;
+	generateSubMenu = (children, currentShellStyle) => (
+		children.map((item, j) => {
+			const { group, id } = item;
+			const style = Object.assign({}, item, { style: currentShellStyle });
 
-    	const menuProps = {
-    		// style: { width: 256 },
-    		openKeys,
-    		selectedKeys: [this.menuSelectPrefix + selectedKeys[0]],
-    		mode: 'inline',
-    		onOpenChange,
-    		onClick: this.handleMenuClick,
-    	};
+			return (
+				<DragMenuItem
+					key={ `${ this.menuSelectPrefix }${ group }${ id }` }
+					item={ style }
+				/>
+			);
+		})
+	)
 
-    	const hrefToDisplay = (
-    		<Menu.Item key='back' onClick={ () => location.hash = '/display' }>
-    			<Icon type='arrow-left' theme='outlined' />
-    			<span>首页</span>
-    		</Menu.Item>
-    	);
+	render = () => {
+		const {
+			type,
+			shellStyleDatas,
+			menuDatas,
+			openKeys,
+			selectedKeys,
+			onOpenChange,
+			onSave
+		} = this.props;
+		const { currentShellStyle } = this.state;
 
-    	const styleSubMenu = (
-    		<Menu.Item key='back' onClick={ () => onSave && onSave() }>
-    			<Icon type='arrow-left' theme='outlined' />
-    			<span>保存并返回</span>
-    		</Menu.Item>
-    	);
+		const hrefToDisplay = (
+			<Menu.Item key='back' onClick={() => location.hash = '/display'}>
+				<Icon type='arrow-left' theme='outlined' />
+				<span>首页</span>
+			</Menu.Item>
+		);
 
-    	return (
-    		<div className='DraggableMenu'>
+		const styleSubMenu = (
+			<Menu.Item key='back' onClick={() => onSave && onSave()}>
+				<Icon type='arrow-left' theme='outlined' />
+				<span>保存并返回</span>
+			</Menu.Item>
+		);
 
-    			<Menu { ...menuProps }>
-    				{ type == 'module' && hrefToDisplay }
+		return (
+			<div className='DraggableMenu'>
 
-    				{ type == 'component' && styleSubMenu }
+				<Menu
+					openKeys={ openKeys }
+					selectedKeys={ [this.menuSelectPrefix + selectedKeys[0]] }
+					mode='inline'
+					onOpenChange={ onOpenChange }
+					onClick={ this.handleMenuClick }
+				>
+					{type == 'module' && hrefToDisplay}
 
-    				{
-    					menuDatas.map(item => {
-    						const { groupName, children = [], group } = item;
+					{type == 'component' && styleSubMenu}
 
-    						const subMenuTitle = (
-    							<span>
-    								<Icon type='laptop' theme='outlined' />
-    								<span>{ groupName }</span>
-    							</span>
-    						);
+					{
+						menuDatas.map(item => {
+							const { groupName, children = [], group } = item;
 
-    						return (
-    							<SubMenu key={ group } title={ subMenuTitle }>
-    								{
-    									children.map((jtem, j) => {
-    										const { group, id } = jtem;
+							const subMenuTitle = (
+								<span>
+									<Icon type='laptop' theme='outlined' />
+									<span>{ groupName }</span>
+								</span>
+							);
 
-    										return <DragMenuItem key={ `${ this.menuSelectPrefix }${ group }${ id }` } item={ Object.assign({}, jtem, { style: currentShellStyle }) } />;
-    									})
-    								}
-    							</SubMenu>
-    						);
-    					})
-    				}
-    			</Menu>
-    		</div>
-    	);
-    }
+							return (
+								<SubMenu key={ group } title={ subMenuTitle }>
+									{ this.generateSubMenu(
+										children,
+										currentShellStyle
+									) }
+								</SubMenu>
+							);
+						})
+					}
+				</Menu>
+			</div>
+		);
+	}
 }
 
 DraggableMenu.propTypes = {

@@ -2,11 +2,11 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-01 19:21:49
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-14 18:27:12
+ * @Last Modified time: 2018-11-21 15:39:28
  */
-// const proxy = 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/proxy?url=';
 const proxy = null;
 
+/*eslint-disable */
 const prod = {
 	propertyDatas: '../../mock/propertyDatas.json',
 	's_slmh_menu_data': 'http://47.95.1.229:9003/webapi/api/v1.1/basic/data?key=s_slmh_menu_data',
@@ -18,6 +18,7 @@ const prod = {
 	'login-ticket': 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/login-ticket',
 };
 
+/*eslint-disable */
 const dev = {};
 
 // const path = process.argv.toString().includes('development') ? dev : prod;

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-11-07 14:31:39
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-12 17:12:00
+ * @Last Modified time: 2018-11-21 16:07:26
  */
 import React, { Component } from 'react';
 
@@ -19,49 +19,83 @@ export default class LoadMenu extends Component {
 		onClick && onClick(item, selectedKey);
 	}
 
+	generateItemGroups = children => (
+		children.map(ktem => {
+			const { key: ktemKey, text: ketmText } = ktem;
+
+			return (
+				<Menu.Item
+					key={ ktemKey }
+					onClick={ () => this.handleMenuClick(ktem, ktemKey) }
+				>
+					{ ketmText }
+				</Menu.Item>
+			);
+		})
+	)
+
+	generateSubMenu = children => (
+		children.map(jtem => {
+			const {
+				key,
+				text,
+				children
+			} = jtem;
+
+			return (
+				<ItemGroup key={ key } title={ text }>
+					{ this.generateItemGroups(children) }
+				</ItemGroup>
+			);
+		})
+	)
+
+	generateMenuItems = menuDatas => (
+		menuDatas.map(item => {
+			const {
+				key,
+				type,
+				text,
+				children = [],
+			} = item;
+
+			if(type == 'item') {
+				const menuItem = (
+					<Menu.Item
+						key={ key }
+						onClick={ () => this.handleMenuClick(item, key) }
+					>
+						<span>{ text }</span>
+					</Menu.Item>
+				);
+
+				return menuItem;
+			}
+
+			return (
+				<SubMenu key={ key } title={ <span>{ text }</span> }>
+					{ this.generateSubMenu(children) }
+				</SubMenu>
+			);
+		})
+	)
+
     render = () => {
     	const { children, menuDatas, selectedKey } = this.props;
 
-    	// 日了，这里看上去真是爆炸，得写递归
     	const menu = (
-    		<Menu selectedKeys={ [selectedKey] } mode='inline' forceSubMenuRender>
-    			{
-    				menuDatas.map(item => {
-    					const { key: itemKey, type, text: itemText, children: itemChildren = [] } = item;
-
-    					if(type == 'item') {
-    						return (
-    							<Menu.Item key={ itemKey } onClick={ () => this.handleMenuClick(item, itemKey) }>
-    								<span>{ itemText }</span>
-    							</Menu.Item>
-    						);
-    					}
-
-    					return (
-    						<SubMenu key={ itemKey } title={ <span>{ itemText }</span> }>
-    							{
-    								itemChildren.map(jtem => {
-    									const { key: jtemKey, text: jtemTitle, children: jtemChildren } = jtem;
-
-    									return (
-    										<ItemGroup key={ jtemKey } title={ jtemTitle }>
-    											{
-    												jtemChildren.map(ktem => {
-    													const { key: ktemKey, text: ketmText } = ktem;
-
-    													return <Menu.Item key={ ktemKey } onClick={ () => this.handleMenuClick(ktem, ktemKey) }>{ ketmText }</Menu.Item>;
-    												})
-    											}
-    										</ItemGroup>
-    									);
-    								})
-    							}
-						  	</SubMenu>
-    					);
-    				})
-    			}
+    		<Menu
+    			selectedKeys={ [selectedKey] }
+    			mode='inline'
+    			forceSubMenuRender
+    		>
+    			{ this.generateMenuItems(menuDatas) }
     		</Menu>
     	);
+
+    	const footerText =
+			'Poverty makes us meet,' +
+			'but later, only you come out of the closet...';
 
     	return (
     		<div className='LoadMenu'>
@@ -77,7 +111,7 @@ export default class LoadMenu extends Component {
 
     					<Footer style={{ textAlign: 'center' }}>
     						<div>贫穷使我们相遇</div>
-    						<div>Poverty makes us meet, but later, only you come out of the closet...</div>
+    						<div>{ footerText }</div>
     					</Footer>
     				</Layout>
     			</Layout>
