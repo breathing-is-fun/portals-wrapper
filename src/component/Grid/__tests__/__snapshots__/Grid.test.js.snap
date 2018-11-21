@@ -202,10 +202,10 @@ exports[`Grid render correctly 1`] = `
               }
             }
             title="代办中心"
-            type="module"
+            type="component"
           >
             <div
-              className="Shell border-transition"
+              className="Shell"
               data-grid={
                 Object {
                   "h": 6,
@@ -284,7 +284,7 @@ exports[`Grid render correctly 1`] = `
                   "width": "-13px",
                 }
               }
-              type="module"
+              type="component"
             >
               <div
                 className="render-div"
