@@ -2,13 +2,15 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:34:08
+ * @Last Modified time: 2018-11-21 10:49:18
  */
 import React, { Component } from 'react';
 
 import Grid from '../../component/Grid';
 import Navigation from '../../component/Navigation';
 import { ajax } from '../../urlHelper';
+
+import './css/Display.css';
 
 export default class Display extends Component {
 	constructor (props) {

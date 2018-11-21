@@ -4,6 +4,11 @@
     box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
 }
 
+.Navigation .children-wrapper {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 .Navigation .content .content-wrapper {
     font-family: MicrosoftYaHeiLight;
     font-size: 28px;
@@ -35,16 +40,16 @@
 
 .Navigation .content .content-time-detail {
     height: 24px;
-	font-family: MicrosoftYaHei;
-	font-size: 13px;
-	font-weight: normal;
-	font-stretch: normal;
-	line-height: 33px;
-	letter-spacing: 0px;
-	color: #ffffff;
+    font-family: MicrosoftYaHei;
+    font-size: 13px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 33px;
+    letter-spacing: 0px;
+    color: #ffffff;
 }
 
-.Navigation .content .content-wrapper .droplink{
+.Navigation .content .content-wrapper .droplink {
     color: #FFF;
     background-color: transparent;
     text-decoration: none;

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:28:05
+ * @Last Modified time: 2018-11-21 10:54:59
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -96,7 +96,7 @@ export default class Navigation extends Component {
     				</div>
     			</div>
 
-    			<div style={{ overflow: 'auto', height: (document.body.clientHeight - 65) }}>{ children }</div>
+    			<div className='children-wrapper' style={{ height: (document.body.clientHeight - 65) }}>{ children }</div>
     		</div>
     	);
     }

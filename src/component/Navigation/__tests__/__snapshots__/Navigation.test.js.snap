@@ -331,10 +331,10 @@ exports[`Navigation render correctly 1`] = `
       </div>
     </div>
     <div
+      className="children-wrapper"
       style={
         Object {
           "height": -65,
-          "overflow": "auto",
         }
       }
     >
