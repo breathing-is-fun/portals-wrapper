@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-21 09:03:47
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 11:15:27
+ * @Last Modified time: 2018-11-21 10:27:36
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -10,7 +10,7 @@ import Navigation from '..';
 
 describe('Navigation', () => {
 	it('render correctly', () => {
-		const wrapper = shallow(
+		const wrapper = mount(
 			<Navigation menu={ [] }>test</Navigation>
 		);
 
