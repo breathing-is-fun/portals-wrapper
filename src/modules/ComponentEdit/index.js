@@ -2,11 +2,11 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-29 10:26:03
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-07 20:28:11
+ * @Last Modified time: 2018-11-21 10:34:26
  */
 import React, { Component } from 'react';
 
-import Grid from '../../component/Gird';
+import Grid from '../../component/Grid';
 import DraggableMenu from '../../component/DraggableMenu';
 import Ruler from '../../component/Ruler';
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
