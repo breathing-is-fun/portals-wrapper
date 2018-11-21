@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 09:01:44
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:49:18
+ * @Last Modified time: 2018-11-21 14:08:11
  */
 import React, { Component } from 'react';
 
@@ -19,6 +19,7 @@ export default class Display extends Component {
 		this.state = {
 			layout: [],
 			menuDatas: [],
+			loading: true,
 		};
 	}
 
@@ -60,6 +61,8 @@ export default class Display extends Component {
 	}
 
 	loadLayout = id => {
+		this.setState({ loading: true });
+
 		ajax({
 			key: 's_slmh_meal_layout_data',
 			data: { id },
@@ -75,7 +78,7 @@ export default class Display extends Component {
 
 					layout.push(item);
 				}
-				this.setState({ layout }, () => {
+				this.setState({ layout, loading: false }, () => {
 					this.grid.mountRoots();
 				});
 			}
@@ -95,11 +98,11 @@ export default class Display extends Component {
 	}
 
     render = () => {
-    	const { layout, menuDatas } = this.state;
+    	const { layout, menuDatas, loading } = this.state;
 
     	return (
     		<Navigation menuItemOnClick={ ({ id }) => this.loadLayout(id) } menu={ menuDatas } clock>
-    			<Grid isEdit={ false } isDelete={ false } layout={ layout } ref={ ref => ref && (this.grid = ref) } />
+    			{ !loading && <Grid isEdit={ false } isDelete={ false } layout={ layout } ref={ ref => ref && (this.grid = ref) } /> }
     		</Navigation>
     	);
     }
