@@ -2,9 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-08 10:39:22
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 08:52:13
+ * @Last Modified time: 2018-11-21 14:46:34
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Icon } from 'antd';
 import omit from 'omit.js';
@@ -23,9 +24,15 @@ export default class Shell extends Component {
 		};
 	}
 
-    componentDidMount = () => {
-
-    }
+	static defaultProps = {
+		isEdit: false,
+		isDelete: false,
+		type: 'module',
+		showTitle: true,
+		style: {},
+		title: null,
+		'data-grid': {},
+	}
 
 	handleOnDelete = e => {
 		const { onDelete } = this.props;
@@ -68,14 +75,13 @@ export default class Shell extends Component {
 	}
 
     render = () => {
-    	const { children, isEdit, isDelete, type = 'component', onClick, showTitle = true, style } = this.props;
+    	const { children, isEdit, isDelete, type, onClick, showTitle, style } = this.props;
     	const { title } = this.state;
 
     	const editButton = <Icon type='edit' theme='outlined' className='operation' onMouseDown={ this.handleOnEdit } style={{ right: 22 }} />;
     	const deleteButton = <Icon type='delete' theme='outlined' className='operation' onMouseDown={ this.handleOnDelete.bind(this) } style={{ right: 0 }} />;
 
     	const newProps = omit(this.props, [
-    		'getDrawerStatus',
     		'isDelete',
     		'onDelete',
     		'onEdit',
@@ -96,3 +102,19 @@ export default class Shell extends Component {
     	);
     }
 }
+
+Shell.propTypes = {
+	isEdit: PropTypes.bool,
+	isDelete: PropTypes.bool,
+	type: PropTypes.oneOf(['add', 'module']),
+	onClick: PropTypes.func,
+	showTitle: PropTypes.bool,
+	style: PropTypes.object,
+	title: PropTypes.oneOfType([
+		PropTypes.element,
+		PropTypes.string,
+	]),
+	onDelete: PropTypes.func,
+	'data-grid': PropTypes.object,
+	onEdit: PropTypes.func,
+};

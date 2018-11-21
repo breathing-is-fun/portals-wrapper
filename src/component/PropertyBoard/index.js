@@ -2,9 +2,10 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-10 10:12:51
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-05 11:29:06
+ * @Last Modified time: 2018-11-21 14:27:37
  */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Drawer, Icon, Input } from 'antd';
 import Loader from './PropertyLoader';
@@ -21,6 +22,12 @@ export default class PropertyBoard extends Component {
 
 		this.loader = new Loader();
 		this.currentShellStyle = {};
+	}
+
+	static defaultProps = {
+		visible: false,
+		shellStyleDatas: [],
+		enumDatas: [],
 	}
 
     componentDidMount = () => {
@@ -90,3 +97,11 @@ export default class PropertyBoard extends Component {
     	);
     }
 }
+
+PropertyBoard.propTypes = {
+	visible: PropTypes.bool,
+	onClose: PropTypes.func,
+	shellStyleDatas: PropTypes.array,
+	enumDatas: PropTypes.array,
+	onChange: PropTypes.func,
+};

@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-28 17:29:59
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-10 18:17:49
+ * @Last Modified time: 2018-11-21 14:21:33
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -24,9 +24,13 @@ export default class DraggableMenu extends Component {
 		this.menuSelectPrefix = 'dragMenuItem';
 	}
 
-    componentDidMount = () => {
-
-    }
+	static defaultProps = {
+		selectedKeys: [],
+		menuDatas: [],
+		openKeys: [],
+		shellStyleDatas: [],
+		type: 'component',
+	}
 
 	handleMenuClick = ({ item, key, keyPath }) => {
 		const { onClick } = this.props;
@@ -112,5 +116,5 @@ DraggableMenu.propTypes = {
 	onOpenChange: PropTypes.func,
 	shellStyleDatas: PropTypes.array,
 	onSave: PropTypes.func,
-	type: PropTypes.string,
+	type: PropTypes.oneOf(['component', 'module']),
 };

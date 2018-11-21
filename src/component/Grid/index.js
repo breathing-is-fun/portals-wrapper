@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:25:52
+ * @Last Modified time: 2018-11-21 14:35:38
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -25,6 +25,13 @@ export default class Grid extends Component {
 		};
 
 		this.roots = {};
+	}
+
+	static defaultProps = {
+		isEdit: false,
+		isDelete: false,
+		layout: [],
+		propertyBoardEnumData: [],
 	}
 
 	mountRoots = () => {
