@@ -2,7 +2,7 @@
 
 exports[`Shell button group render correctly 1`] = `
 <div
-  className="Shell"
+  className="Shell border-transition"
   data-grid={
     Object {
       "h": 6,
@@ -25,6 +25,7 @@ exports[`Shell button group render correctly 1`] = `
       "zIndex": 1,
     }
   }
+  type="module"
 >
   <Icon
     className="operation"
@@ -59,7 +60,7 @@ exports[`Shell button group render correctly 1`] = `
 
 exports[`Shell button group render correctly 2`] = `
 <div
-  className="Shell"
+  className="Shell border-transition"
   data-grid={
     Object {
       "h": 6,
@@ -82,6 +83,7 @@ exports[`Shell button group render correctly 2`] = `
       "zIndex": 1,
     }
   }
+  type="module"
 >
   <span
     className="operation-title"
@@ -94,7 +96,7 @@ exports[`Shell button group render correctly 2`] = `
 
 exports[`Shell render correctly 1`] = `
 <div
-  className="Shell"
+  className="Shell border-transition"
   data-grid={
     Object {
       "h": 6,
@@ -117,6 +119,7 @@ exports[`Shell render correctly 1`] = `
       "zIndex": 1,
     }
   }
+  type="module"
 >
   <Icon
     className="operation"
