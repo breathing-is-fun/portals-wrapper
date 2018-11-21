@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-24 17:14:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-02 15:57:36
+ * @Last Modified time: 2018-11-21 18:16:21
  */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
@@ -17,7 +17,7 @@ describe('Grid', () => {
 		mealid: 1,
 		path: '../../../thirdModules/dbzx/index.js',
 		showtitle: false,
-		style: '{"background": "#F96","border": "1px solid #ccc"}',
+		style: { 'background': '#F96', 'border': '1px solid #ccc' },
 		title: '代办中心',
 		w: 4,
 		x: 0,
