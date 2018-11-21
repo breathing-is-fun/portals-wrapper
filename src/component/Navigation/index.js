@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-10 18:25:20
+ * @Last Modified time: 2018-11-21 10:28:05
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -15,6 +15,11 @@ moment.locale('zh-cn');
 import './css/Navigation.css';
 
 export default class Navigation extends Component {
+	static defaultProps = {
+		menu: [],
+		clock: false,
+	}
+
 	constructor (props) {
 		super(props);
 
@@ -66,7 +71,7 @@ export default class Navigation extends Component {
     				})
     			}
     		</Menu>
-		  );
+    	);
 
     	return (
     		<div className='Navigation'>
@@ -91,7 +96,7 @@ export default class Navigation extends Component {
     				</div>
     			</div>
 
-    			{ children }
+    			<div style={{ overflow: 'auto', height: (document.body.clientHeight - 65) }}>{ children }</div>
     		</div>
     	);
     }

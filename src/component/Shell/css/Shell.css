@@ -18,6 +18,10 @@
 
 .Shell {
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 1;
+    user-select: none;
+    box-shadow: 0px 0px 29px 0px rgba(93, 106, 113, 0.12);
+    border-radius: 2;
 }
 
 .Shell:hover {

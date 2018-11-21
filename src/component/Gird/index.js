@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-09-26 11:25:50
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-20 16:22:22
+ * @Last Modified time: 2018-11-21 10:25:52
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -71,7 +71,7 @@ export default class Grid extends Component {
 	}
 
 	createShellChild = (isEdit, item) => {
-		const { i, moduletype: type, imgurl, imgUrl, path, mountid } = item;
+		const { i, moduletype: type, imgurl, imgUrl, path } = item;
 		const height = 'calc(100% - 21px)';
 
 		if(isEdit) {
@@ -79,10 +79,10 @@ export default class Grid extends Component {
 		}
 
 		if(type == 'iframe') {
-			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'auto' }}></iframe>;
+			return <iframe src={ path } style={{ border: 'none', width: '100%', height, overflow: 'hidden' }}></iframe>;
 		}
 
-		return <div style={{ height, overflow: 'auto' }} ref={ ref => ref && (this.roots[i] = ref) } id={ mountid } />;
+		return <div style={{ height, overflow: 'hidden', padding: 15 }} ref={ ref => ref && (this.roots[i] = ref) } id={ i } />;
 	}
 
 	handleShellonEdit = (isDrawerOpen, item) => {
@@ -125,7 +125,7 @@ export default class Grid extends Component {
     		cols: 12,
     		rowHeight: 30,
     		width: (document.documentElement.clientWidth || document.body.clientWidth) - (isEdit ? 256 : 0),
-    		margin: [10, 10],
+    		// margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
     		isDraggable: isEdit,
     		isResizable: isEdit,
