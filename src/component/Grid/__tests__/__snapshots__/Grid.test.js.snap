@@ -194,15 +194,11 @@ exports[`Grid render correctly 1`] = `
                 "MozTransform": "translate(10px,10px)",
                 "OTransform": "translate(10px,10px)",
                 "WebkitTransform": "translate(10px,10px)",
-                "borderRadius": 2,
-                "boxShadow": "0px 0px 29px 0px rgba(93, 106, 113, 0.12)",
                 "height": "230px",
                 "msTransform": "translate(10px,10px)",
                 "position": "absolute",
                 "transform": "translate(10px,10px)",
-                "userSelect": "none",
                 "width": "-13px",
-                "zIndex": 1,
               }
             }
             title="代办中心"
@@ -281,26 +277,21 @@ exports[`Grid render correctly 1`] = `
                   "MozTransform": "translate(10px,10px)",
                   "OTransform": "translate(10px,10px)",
                   "WebkitTransform": "translate(10px,10px)",
-                  "borderRadius": 2,
-                  "boxShadow": "0px 0px 29px 0px rgba(93, 106, 113, 0.12)",
                   "height": "auto",
                   "msTransform": "translate(10px,10px)",
                   "position": "absolute",
                   "transform": "translate(10px,10px)",
-                  "userSelect": "none",
                   "width": "-13px",
-                  "zIndex": 1,
                 }
               }
               type="module"
             >
               <div
+                className="render-div"
                 id="dbzx"
                 style={
                   Object {
                     "height": "calc(100% - 21px)",
-                    "overflow": "hidden",
-                    "padding": 15,
                   }
                 }
               />

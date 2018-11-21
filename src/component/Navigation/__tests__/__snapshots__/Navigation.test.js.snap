@@ -34,14 +34,7 @@ exports[`Navigation render correctly 1`] = `
         />
       </div>
       <div
-        className="content-wrapper"
-        style={
-          Object {
-            "color": "#FFF",
-            "float": "right",
-            "marginRight": 20,
-          }
-        }
+        className="content-wrapper content-switch"
       >
         <Dropdown
           mouseEnterDelay={0.15}
