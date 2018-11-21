@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-15 15:47:19
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 10:54:59
+ * @Last Modified time: 2018-11-21 11:32:00
  */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -36,12 +36,6 @@ export default class Navigation extends Component {
 		import('./CurrentTime')
 			.then(CurrentTime => this.setState({ CurrentTime: CurrentTime.default }));
 	}
-
-    getCurrentTime = () => {
-    	setInterval(() => {
-    		this.setState({ time: moment().format('HH:mm:ss') });
-    	}, 1000);
-    }
 
     render = () => {
     	const { children, menu, menuItemOnClick, clock } = this.props;
