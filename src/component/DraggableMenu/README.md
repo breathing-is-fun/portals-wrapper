@@ -1,6 +1,6 @@
 English | [简体中文](./README-zh_CN.md)
 
-# Introduction
+# introduction
 
 - Just like its name, this is a draggbale menu.
 
@@ -17,21 +17,21 @@ English | [简体中文](./README-zh_CN.md)
 | openKeys | array with the keys of currently opened sub menus | [] | - |
 | onClick | click event of menu item，[there for detail](../../modules/ModuleEdit/index.js) about `handleMenuClick` | function (group: string, selectedKeys: string[], id: string) | - |
 | onOpenChange | called when open/close sub menu | function(openKeys: string[]) | - |
-| shellStyleDatas | 用于控制拖拽结束时 [`Shell`](../Shell/index.js) 的样式，尚未实装 | [] | - |
-| onSave | [点击左上保存时的事件](../../modules/ComponentEdit/index.js)，多用于保存右侧布局数据 | function () | - |
-| type | 控制左上显示保存或跳转到 [`Display`](../../modules/Display/index.js) | string: oneOf(['component', 'module']) | - |
+| shellStyleDatas | for controling style when drag event is over, not completed yet. | [] | - |
+| onSave | [when click save button at top left corner](../../modules/ComponentEdit/index.js), to save layout datas | function () | - |
+| type | when `component` to `save` layout datas or `module` to href to [`Display`](../../modules/Display/index.js) | string: oneOf(['component', 'module']) | - |
   
 ## menuItemData
 
-| 名称 | 说明 | 类型 | 默认值 |
+| name | description | type | default value |
 | --- | --- | --- | --- |
-| group | 组别，用于分组 | string | - |
-| groupname | 组别中文，分组后菜单项显示名称 | string | - |
-| id | 菜单项唯一标识 | string or number | - |
-| key | 用途暂时同id，必需 | - | - |
-| order | 菜单项顺序，尚未实装 | string or number | - |
-| text | 用途暂时同group，必需 | - | - |
+| group | as its name, for grouping | string | - |
+| groupname | as its name, it would show as `menuItem`'s text | string | - |
+| id | key of menuItem | string or number | - |
+| key | same as id, required | - | - |
+| order | the order of menuItem, not completed yet | string or number | - |
+| text | same as groupname, required | - | - |
 
-# 示例
+# example
 
 ![img](../../../docs/img/DraggableMenu.gif)

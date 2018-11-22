@@ -19,7 +19,7 @@
 | onOpenChange | SubMenu 展开/关闭的回调 | function(openKeys: string[]) | - |
 | shellStyleDatas | 用于控制拖拽结束时 [`Shell`](../Shell/index.js) 的样式，尚未实装 | [] | - |
 | onSave | [点击左上保存时的事件](../../modules/ComponentEdit/index.js)，多用于保存右侧布局数据 | function () | - |
-| type | 控制左上显示保存或跳转到 [`Display`](../../modules/Display/index.js) | string: oneOf(['component', 'module']) | - |
+| type | 值为 `component` 时左上显示保存，否则跳转到 [`Display`](../../modules/Display/index.js) | string: oneOf(['component', 'module']) | - |
   
 ## menuDatas中的对象
 
@@ -30,7 +30,7 @@
 | id | 菜单项唯一标识 | string or number | - |
 | key | 用途暂时同id，必需 | - | - |
 | order | 菜单项顺序，尚未实装 | string or number | - |
-| text | 用途暂时同group，必需 | - | - |
+| text | 用途暂时同groupname，必需 | - | - |
 
 # 示例
 
