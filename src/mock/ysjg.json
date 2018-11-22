@@ -1,19 +1,28 @@
 {
     "data": [
         {
-            "item": "工业用水",
-            "count": 40,
-            "percent": 0.4
-        },
-        {
-            "item": "农业用水",
+            "name": "其他取水",
             "count": 21,
-            "percent": 0.21
+            "value": 2312,
+            "percent": 0.25
         },
         {
-            "item": "生活用水",
-            "count": 17,
-            "percent": 0.17
+            "name": "工业用水",
+            "count": 21,
+            "value": 2312,
+            "percent": 0.25
+        },
+        {
+            "name": "农业用水",
+            "count": 21,
+            "value": 2312,
+            "percent": 0.25
+        },
+        {
+            "name": "公共供水",
+            "count": 21,
+            "value": 2312,
+            "percent": 0.25
         }
     ]
 }
