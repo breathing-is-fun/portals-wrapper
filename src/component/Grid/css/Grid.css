@@ -5,6 +5,6 @@
 }
 
 .Grid .render-div {
-    overflow: hidden;
-    padding: 15;
+    overflow: auto;
+    padding: 15px;
 }
