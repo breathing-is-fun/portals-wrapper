@@ -192,7 +192,7 @@ exports[`Grid render correctly 1`] = `
                   "WebkitTransform": "translate(10px,10px)",
                   "background": "#F96",
                   "border": "1px solid #ccc",
-                  "height": "auto",
+                  "height": "230px",
                   "msTransform": "translate(10px,10px)",
                   "position": "absolute",
                   "transform": "translate(10px,10px)",
