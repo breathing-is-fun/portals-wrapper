@@ -2,7 +2,7 @@
  * @Author: zy9@github.com/zy410419243
  * @Date: 2018-10-18 17:23:07
  * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 16:21:17
+ * @Last Modified time: 2018-11-23 08:46:08
  */
 import React, { Component } from 'react';
 
@@ -88,7 +88,7 @@ class PropertyForm extends Component {
 
 				values.id = id;
 				const moduleToComponent = {
-					moduleToComponent: values,
+					moduleToComponent: { data: values },
 					status: 'pending',
 				};
 
