@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-07 14:31:39
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 16:07:26
- */
 import React, { Component } from 'react';
 
 import { Layout, Menu } from 'antd';

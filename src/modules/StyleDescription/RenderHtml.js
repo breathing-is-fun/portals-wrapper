@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-07 15:32:22
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 15:41:13
- */
 import React, { Component } from 'react';
 
 import ReactMarkdown from 'react-markdown/with-html';

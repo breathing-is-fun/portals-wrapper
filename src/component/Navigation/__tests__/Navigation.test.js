@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-09-21 09:03:47
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 16:51:52
- */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import Navigation from '..';

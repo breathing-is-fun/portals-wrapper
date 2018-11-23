@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-01 19:21:49
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 15:39:28
- */
 const proxy = null;
 
 /*eslint-disable */

@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-06-25 22:28:14
- * @Last Modified by: zy9
- * @Last Modified time: 2018-07-18 11:47:28
- */
 export default class Store {
 	constructor (name, defaults) {
 		this.name = name;

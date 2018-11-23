@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-10-11 11:59:51
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 16:52:18
- */
 import { fetch } from 'whatwg-fetch';
 
 const importPolyfill = url => {

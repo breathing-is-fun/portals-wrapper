@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-21 17:44:32
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 17:59:39
- */
 import React from 'react';
 import { render, mount, shallow } from 'enzyme';
 import GlobalModal from '..';

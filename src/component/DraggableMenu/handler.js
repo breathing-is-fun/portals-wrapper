@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-10-25 14:29:08
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 17:05:00
- */
 const handleMenuGroup = dataSource => {
 	let result = [], groupDatas = selectGroup(dataSource);
 

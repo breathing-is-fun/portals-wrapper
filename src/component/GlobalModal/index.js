@@ -1,9 +1,3 @@
-/*
- * @Author: zy9@github.com/zy410419243
- * @Date: 2018-11-06 12:31:43
- * @Last Modified by: zy9
- * @Last Modified time: 2018-11-21 17:58:12
- */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
