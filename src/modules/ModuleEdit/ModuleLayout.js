@@ -87,7 +87,6 @@ export default class ModuleLayout extends Component {
 
 		const shellStyle = {
 			width: '20%',
-			height: 200,
 			background: '#e0e6ee',
 			float: 'left',
 			margin: 30,

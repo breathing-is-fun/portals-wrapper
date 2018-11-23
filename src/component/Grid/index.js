@@ -65,7 +65,7 @@ export default class Grid extends Component {
 			path: url,
 			imgUrl,
 			title: text,
-			style: JSON.stringify(style),
+			style,
 		};
 
 		layout.push(Object.assign({}, item, defaultProps));
