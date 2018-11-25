@@ -20,7 +20,11 @@ export default class GlobalModal extends Component {
 			enumerable: true,
 			configurable: true,
 			set: value => {
-				const { title, visible, content, style, footer } = value;
+				let { title, visible = false, content, style, footer } = value;
+
+				if(!visible) {
+					content = null;
+				}
 
 				this.setState({ title, visible, content, style, footer });
 
