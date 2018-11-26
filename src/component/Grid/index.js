@@ -147,6 +147,7 @@ export default class Grid extends Component {
     		isDelete = true,
     		layout,
     		onDelete,
+    		onDetail,
     		propertyBoardEnumData
     	} = this.props;
 
@@ -194,7 +195,9 @@ export default class Grid extends Component {
     							i: key,
     							title,
     							style = {},
-    							showtitle: showTitle
+    							showtitle: showTitle,
+    							showdetail: showDetail,
+    							detailpath: detailPath,
     						} = item;
 
     						const shellProps = {
@@ -204,6 +207,9 @@ export default class Grid extends Component {
     							isDelete,
     							onDelete,
     							showTitle,
+    							onDetail,
+    							detailPath,
+    							showDetail,
     							style,
     							'data-grid': item,
     							onEdit: isDrawerOpen => {
@@ -227,10 +233,7 @@ export default class Grid extends Component {
 }
 
 Grid.propTypes = {
-	isEdit: PropTypes.bool,
-	isDelete: PropTypes.bool,
 	layout: PropTypes.array,
 	onLayoutChange: PropTypes.func,
-	onDelete: PropTypes.func,
 	propertyBoardEnumData: PropTypes.array,
 };

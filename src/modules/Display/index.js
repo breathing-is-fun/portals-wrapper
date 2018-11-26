@@ -93,6 +93,26 @@ export default class Display extends Component {
 		});
 	}
 
+	handleOnDetail = item => {
+		const { title, detailpath: detailPath } = item;
+
+		window.SCTool.modal = {
+			visible: true,
+			title,
+			width: '100%',
+			style: { top: 0 },
+			content: (
+				<iframe
+					src={ detailPath }
+					style={{
+						border: 'none',
+						width: '100%',
+						height: document.body.clientHeight - 55 - 24,
+					}}></iframe>
+			)
+		};
+	}
+
     render = () => {
     	const { layout, menuDatas, loading } = this.state;
 
@@ -107,7 +127,8 @@ export default class Display extends Component {
 					<Grid
     					isEdit={ false }
     					isDelete={ false }
-    					layout={ layout }
+						layout={ layout }
+						onDetail={ this.handleOnDetail }
     					ref={ ref => ref && (this.grid = ref) }
     				/>
     			}

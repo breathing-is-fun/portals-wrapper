@@ -20,13 +20,17 @@ export default class GlobalModal extends Component {
 			enumerable: true,
 			configurable: true,
 			set: value => {
-				let { title, visible = false, content, style, footer } = value;
+				let {
+					visible = false,
+					content,
+					...restProps
+				} = value;
 
 				if(!visible) {
 					content = null;
 				}
 
-				this.setState({ title, visible, content, style, footer });
+				this.setState({ visible, content, ...restProps });
 
 				return value;
 			}
@@ -38,12 +42,15 @@ export default class GlobalModal extends Component {
 	}
 
     render = () => {
-    	const { visible, title, content, style } = this.state;
+    	const { visible, title, content, style, ...restProps } = this.state;
     	let renderHtml = content;
 
     	if(typeof content == 'string') {
     		renderHtml = (
-    			<div dangerouslySetInnerHTML={{ __html: content }} />
+    			<div
+    				dangerouslySetInnerHTML={{ __html: content }}
+    				style={{ width: '100%', height: '100%' }}
+    			/>
     		);
     	}
 
@@ -53,9 +60,11 @@ export default class GlobalModal extends Component {
     				title={ title }
     				visible={ visible }
     				style={ style }
+    				destroyOnClose
     				content={ content }
     				onCancel={ () => this.setState({ visible: !visible }) }
     				footer={ null }
+    				{ ...restProps }
     			>
     				{ renderHtml }
     			</Modal>

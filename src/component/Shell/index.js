@@ -21,6 +21,8 @@ export default class Shell extends Component {
 	static defaultProps = {
 		isEdit: false,
 		isDelete: false,
+		showDetail: false,
+		detailPath: '',
 		type: 'component',
 		showTitle: true,
 		style: {},
@@ -51,6 +53,15 @@ export default class Shell extends Component {
 		});
 	}
 
+	handleOnDetail = e => {
+		const { onDetail } = this.props;
+		const dataGrid = this.props['data-grid'] || {};
+
+		this.preventBubble(e);
+
+		onDetail && onDetail(dataGrid);
+	}
+
 	// 阻止react-grid-layout的拖拽事件在点击时生效
 	preventBubble = e => {
 		if(e.stopPropagation) {
@@ -76,7 +87,8 @@ export default class Shell extends Component {
     		type,
     		onClick,
     		showTitle,
-    		style
+    		style,
+    		showDetail,
     	} = this.props;
     	const { title } = this.state;
 
@@ -86,7 +98,7 @@ export default class Shell extends Component {
     			theme='outlined'
     			className='operation'
     			onMouseDown={ this.handleOnEdit }
-    			style={{ right: 22 }}
+    			style={{ right: 40 }}
     		/>
     	);
     	const deleteButton = (
@@ -94,18 +106,30 @@ export default class Shell extends Component {
     			type='delete'
     			theme='outlined'
     			className='operation'
-    			onMouseDown={ this.handleOnDelete.bind(this) }
-    			style={{ right: 0 }}
+    			onMouseDown={ this.handleOnDelete }
+    			style={{ right: 10 }}
+    		/>
+    	);
+    	const detailButton = (
+    		<Icon
+    			type='small-dash'
+    			theme='outlined'
+    			className='operation'
+    			onMouseDown={ this.handleOnDetail }
+    			style={{ right: 10, fontSize: '2vw' }}
     		/>
     	);
 
     	const newProps = omit(this.props, [
     		'isDelete',
     		'onDelete',
+    		'showDetail',
     		'onEdit',
     		'isEdit',
     		'title',
     		'showTitle',
+    		'onDetail',
+    		'detailPath',
     	]);
 
     	return (
@@ -122,6 +146,8 @@ export default class Shell extends Component {
 
     			{ isEdit && editButton }
 
+    			{ showDetail && detailButton }
+
     			{
     				type != 'add' &&
 					showTitle &&
@@ -135,6 +161,9 @@ export default class Shell extends Component {
 }
 
 Shell.propTypes = {
+	showDetail: PropTypes.bool,
+	detailPath: PropTypes.string,
+	onDetail: PropTypes.func,
 	isEdit: PropTypes.bool,
 	isDelete: PropTypes.bool,
 	type: PropTypes.oneOf(['add', 'module', 'component']),
