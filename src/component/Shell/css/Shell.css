@@ -24,6 +24,7 @@
     user-select: none;
     box-shadow: 0px 0px 29px 0px rgba(93, 106, 113, 0.12);
     border-radius: 2px;
+    overflow: auto;
 }
 
 .Shell:hover {

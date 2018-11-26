@@ -2,6 +2,8 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './assets/global.css';
+
 import GlobalModal from './component/GlobalModal';
 import Router from './router';
 
