@@ -39,6 +39,7 @@ exports[`Navigation render correctly 1`] = `
         <Dropdown
           mouseEnterDelay={0.15}
           mouseLeaveDelay={0.1}
+          onVisibleChange={[Function]}
           overlay={
             <Menu
               className=""
@@ -55,6 +56,7 @@ exports[`Navigation render correctly 1`] = `
               "click",
             ]
           }
+          visible={false}
         >
           <Dropdown
             defaultVisible={false}
@@ -93,6 +95,7 @@ exports[`Navigation render correctly 1`] = `
                 "click",
               ]
             }
+            visible={false}
           >
             <Trigger
               action={
@@ -278,6 +281,7 @@ exports[`Navigation render correctly 1`] = `
               popupVisible={false}
               prefixCls="ant-dropdown"
               showAction={Array []}
+              visible={false}
             >
               <span
                 className="droplink ant-dropdown-trigger"
@@ -290,10 +294,21 @@ exports[`Navigation render correctly 1`] = `
               >
                 套餐切换
                 <Icon
+                  className="droplink-icon"
+                  style={
+                    Object {
+                      "transform": "rotate(0deg)",
+                    }
+                  }
                   type="down"
                 >
                   <i
-                    className="anticon anticon-down"
+                    className="anticon anticon-down droplink-icon"
+                    style={
+                      Object {
+                        "transform": "rotate(0deg)",
+                      }
+                    }
                   >
                     <IconReact
                       className=""
