@@ -19,6 +19,8 @@ export default class Navigation extends Component {
 
 		this.state = {
 			CurrentTime: null,
+			iconRotate: 0,
+			dropDownVisible: false,
 		};
 	}
 
@@ -33,9 +35,17 @@ export default class Navigation extends Component {
 			});
 	}
 
+	handleIconType = dropDownVisible => {
+		let { iconRotate } = this.state;
+
+		iconRotate = dropDownVisible ? '180' : '0';
+
+		this.setState({ iconRotate, dropDownVisible });
+	}
+
     render = () => {
     	const { children, menu, menuItemOnClick, clock } = this.props;
-    	const { CurrentTime } = this.state;
+    	const { CurrentTime, dropDownVisible, iconRotate } = this.state;
 
     	// 分割线
     	// const space = <div className='content-space' />;
@@ -94,10 +104,18 @@ export default class Navigation extends Component {
     					<Dropdown
     						overlay={ switchMeal }
     						trigger={ ['hover', 'click'] }
+    						onVisibleChange={ this.handleIconType }
+    						visible={ dropDownVisible }
     					>
     						<span className='droplink'>
 								套餐切换
-    							<Icon type='down' />
+    							<Icon
+    								type='down'
+    								style={{
+    									transform: `rotate(${ iconRotate }deg)`,
+    								}}
+    								className='droplink-icon'
+    							/>
     						</span>
     					</Dropdown>
     				</div>
