@@ -31,7 +31,7 @@ exports[`Shell button group render correctly 1`] = `
     onMouseDown={[Function]}
     style={
       Object {
-        "right": 0,
+        "right": 10,
       }
     }
     theme="outlined"
@@ -42,7 +42,7 @@ exports[`Shell button group render correctly 1`] = `
     onMouseDown={[Function]}
     style={
       Object {
-        "right": 22,
+        "right": 40,
       }
     }
     theme="outlined"
@@ -123,7 +123,7 @@ exports[`Shell render correctly 1`] = `
     onMouseDown={[Function]}
     style={
       Object {
-        "right": 0,
+        "right": 10,
       }
     }
     theme="outlined"
@@ -134,7 +134,7 @@ exports[`Shell render correctly 1`] = `
     onMouseDown={[Function]}
     style={
       Object {
-        "right": 22,
+        "right": 40,
       }
     }
     theme="outlined"

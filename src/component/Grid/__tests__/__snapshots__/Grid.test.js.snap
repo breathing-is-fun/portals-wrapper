@@ -141,10 +141,12 @@ exports[`Grid render correctly 1`] = `
                 "y": 0,
               }
             }
+            detailPath=""
             isDelete={false}
             isEdit={false}
             key="dbzx"
             onEdit={[Function]}
+            showDetail={false}
             showTitle={false}
             style={
               Object {
