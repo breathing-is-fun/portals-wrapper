@@ -7,7 +7,7 @@ describe('PropertyBoard', () => {
 		const demo = (
 			<PropertyBoard
 				visible={ true }
-				shellStyleDatas={ [] }
+				shellStyleDatas={{}}
 				enumDatas={ [] }
 			/>
 		);

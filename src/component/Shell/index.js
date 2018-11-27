@@ -73,8 +73,9 @@ export default class Shell extends Component {
     		showTitle,
     		style,
     		showDetail,
+    		title,
     	} = this.props;
-    	const { title } = this.state;
+    	// const { title } = this.state;
 
     	const editButton = (
     		<Icon

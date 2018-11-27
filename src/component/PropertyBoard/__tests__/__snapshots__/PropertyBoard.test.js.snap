@@ -3,7 +3,7 @@
 exports[`PropertyBoard render correctly 1`] = `
 <PropertyBoard
   enumDatas={Array []}
-  shellStyleDatas={Array []}
+  shellStyleDatas={Object {}}
   visible={true}
 >
   <div

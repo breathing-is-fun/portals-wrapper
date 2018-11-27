@@ -23,7 +23,7 @@ describe('Shell', () => {
 		onEdit: jest.fn(),
 		style: { zIndex: 1, background: '#F96' },
 		title: 'testTitle',
-		onClick: jest.fn(),
+		onAdd: jest.fn(),
 	};
 
 	it('render correctly', () => {
@@ -71,6 +71,6 @@ describe('Shell', () => {
 		const wrapper = shallow(demo);
 
 		wrapper.find('.Shell').simulate('click');
-		expect(props.onClick.mock.calls.length).toBe(1);
+		expect(props.onAdd.mock.calls.length).toBe(1);
 	});
 });
