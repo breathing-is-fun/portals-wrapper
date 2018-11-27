@@ -20,7 +20,7 @@ export default class PropertyBoard extends Component {
 
 	static defaultProps = {
 		visible: false,
-		shellStyleDatas: [],
+		shellStyleDatas: {},
 		enumDatas: [],
 	}
 
@@ -105,7 +105,7 @@ export default class PropertyBoard extends Component {
 PropertyBoard.propTypes = {
 	visible: PropTypes.bool,
 	onClose: PropTypes.func,
-	shellStyleDatas: PropTypes.array,
+	shellStyleDatas: PropTypes.object,
 	enumDatas: PropTypes.array,
 	onChange: PropTypes.func,
 };
