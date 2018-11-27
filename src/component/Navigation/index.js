@@ -10,7 +10,8 @@ import './css/Navigation.css';
 
 export default class Navigation extends Component {
 	static defaultProps = {
-		menu: [],
+		title: '',
+		datas: [],
 		clock: false,
 	}
 
@@ -44,7 +45,7 @@ export default class Navigation extends Component {
 	}
 
     render = () => {
-    	const { children, menu, menuItemOnClick, clock } = this.props;
+    	const { children, datas, onClick, clock, title } = this.props;
     	const { CurrentTime, dropDownVisible, iconRotate } = this.state;
 
     	// 分割线
@@ -64,13 +65,13 @@ export default class Navigation extends Component {
     	const switchMeal = (
     		<Menu>
     			{
-    				menu.map(item => {
+    				datas.map(item => {
     					const { title, id } = item;
 
     					return (
     						<Menu.Item
     							key={ id }
-    							onClick={ e => menuItemOnClick(item) }
+    							onClick={ e => onClick(item) }
     						>
     							<a rel='noopener noreferrer'>{ title }</a>
     						</Menu.Item>
@@ -87,7 +88,7 @@ export default class Navigation extends Component {
     					className='content-wrapper'
     					style={{ width: 300 }}
     				>
-						浙江省水利综合门户
+    					{ title }
     				</div>
 
     				<div className='content-wrapper' style={{ width: 300 }}>
@@ -133,8 +134,8 @@ export default class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-	children: PropTypes.any,
-	menu: PropTypes.array,
-	menuItemOnClick: PropTypes.func,
+	title: PropTypes.string,
+	datas: PropTypes.array,
+	onClick: PropTypes.func,
 	clock: PropTypes.bool,
 };

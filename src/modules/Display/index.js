@@ -118,9 +118,10 @@ export default class Display extends Component {
 
     	return (
     		<Navigation
-    			menuItemOnClick={ ({ id }) => this.loadLayout(id) }
-    			menu={ menuDatas }
+    			onClick={ ({ id }) => this.loadLayout(id) }
+    			datas={ menuDatas }
     			clock
+    			title='浙江省水利综合门户'
     		>
     			{
     				!loading &&

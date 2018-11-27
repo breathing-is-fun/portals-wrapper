@@ -3,7 +3,8 @@
 exports[`Navigation render correctly 1`] = `
 <Navigation
   clock={false}
-  menu={Array []}
+  datas={Array []}
+  title=""
 >
   <div
     className="Navigation"
@@ -18,9 +19,7 @@ exports[`Navigation render correctly 1`] = `
             "width": 300,
           }
         }
-      >
-        浙江省水利综合门户
-      </div>
+      />
       <div
         className="content-wrapper"
         style={
