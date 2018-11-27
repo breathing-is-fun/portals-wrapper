@@ -21,6 +21,7 @@ exports[`Shell button group render correctly 1`] = `
   style={
     Object {
       "background": "#F96",
+      "overflow": "hidden",
       "zIndex": 1,
     }
   }
@@ -74,15 +75,40 @@ exports[`Shell button group render correctly 2`] = `
       "y": 0,
     }
   }
+  isDelete={false}
+  isEdit={false}
   onClick={[Function]}
   style={
     Object {
       "background": "#F96",
+      "overflow": "hidden",
       "zIndex": 1,
     }
   }
   type="component"
 >
+  <Icon
+    className="operation"
+    onMouseDown={[Function]}
+    style={
+      Object {
+        "right": 10,
+      }
+    }
+    theme="outlined"
+    type="delete"
+  />
+  <Icon
+    className="operation"
+    onMouseDown={[Function]}
+    style={
+      Object {
+        "right": 40,
+      }
+    }
+    theme="outlined"
+    type="edit"
+  />
   <span
     className="operation-title"
   >
@@ -113,6 +139,7 @@ exports[`Shell render correctly 1`] = `
   style={
     Object {
       "background": "#F96",
+      "overflow": "hidden",
       "zIndex": 1,
     }
   }

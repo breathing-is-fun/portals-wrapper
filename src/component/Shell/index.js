@@ -7,26 +7,15 @@ import omit from 'omit.js';
 import './css/Shell.css';
 
 export default class Shell extends Component {
-	constructor (props) {
-		super(props);
-		const { title } = props;
-
-		this.state = {
-			title,
-			propertyBoardVisible: false,
-			propertyBoardDataSource: {}
-		};
-	}
-
 	static defaultProps = {
-		isEdit: false,
-		isDelete: false,
+		showEdit: false,
+		showDelete: false,
 		showDetail: false,
 		detailPath: '',
 		type: 'component',
 		showTitle: true,
 		style: {},
-		title: null,
+		title: '',
 		'data-grid': {},
 	}
 
@@ -40,17 +29,12 @@ export default class Shell extends Component {
 	}
 
 	handleOnEdit = e => {
-		const { style, onEdit } = this.props;
+		const { onEdit } = this.props;
 		const dataGrid = this.props['data-grid'] || {};
 
 		this.preventBubble(e);
 
-		this.setState({
-			propertyBoardVisible: true,
-			propertyBoardDataSource: { title: dataGrid.title || '', style },
-		}, () => {
-			onEdit && onEdit(true);
-		});
+		onEdit && onEdit(dataGrid);
 	}
 
 	handleOnDetail = e => {
@@ -71,21 +55,21 @@ export default class Shell extends Component {
 		}
 	}
 
-	handleDrawerOnClose = propertyBoardVisible => {
-		const { onEdit } = this.props;
+	// handleDrawerOnClose = propertyBoardVisible => {
+	// 	const { onEdit } = this.props;
 
-		this.setState({ propertyBoardVisible }, () => {
-			onEdit && onEdit(propertyBoardVisible);
-		});
-	}
+	// 	this.setState({ propertyBoardVisible }, () => {
+	// 		onEdit && onEdit(this.props['data-grid']);
+	// 	});
+	// }
 
     render = () => {
     	const {
     		children,
-    		isEdit,
-    		isDelete,
+    		showEdit,
+    		showDelete,
     		type,
-    		onClick,
+    		onAdd,
     		showTitle,
     		style,
     		showDetail,
@@ -121,30 +105,33 @@ export default class Shell extends Component {
     	);
 
     	const newProps = omit(this.props, [
-    		'isDelete',
+    		'showDelete',
     		'onDelete',
     		'showDetail',
     		'onEdit',
-    		'isEdit',
+    		'showEdit',
     		'title',
     		'showTitle',
     		'onDetail',
     		'detailPath',
+    		'onAdd',
     	]);
 
     	return (
     		<div
     			{ ...newProps }
-    			style={ style }
+    			style={ Object.assign({}, {
+    				overflow: showEdit ? 'hidden' : 'auto'
+    			}, style) }
     			className={ `Shell${ type != 'component' ?
     				' border-transition' :
     				'' }`
     			}
-    			onClick={ e => type == 'add' && onClick && onClick(e) }
+    			onClick={ e => type == 'add' && onAdd && onAdd(e) }
     		>
-    			{ isDelete && deleteButton }
+    			{ showDelete && deleteButton }
 
-    			{ isEdit && editButton }
+    			{ showEdit && editButton }
 
     			{ showDetail && detailButton }
 
@@ -164,10 +151,10 @@ Shell.propTypes = {
 	showDetail: PropTypes.bool,
 	detailPath: PropTypes.string,
 	onDetail: PropTypes.func,
-	isEdit: PropTypes.bool,
-	isDelete: PropTypes.bool,
+	showEdit: PropTypes.bool,
+	showDelete: PropTypes.bool,
 	type: PropTypes.oneOf(['add', 'module', 'component']),
-	onClick: PropTypes.func,
+	onAdd: PropTypes.func,
 	showTitle: PropTypes.bool,
 	style: PropTypes.object,
 	title: PropTypes.oneOfType([

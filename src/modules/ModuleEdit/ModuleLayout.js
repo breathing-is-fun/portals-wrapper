@@ -24,8 +24,11 @@ export default class ModuleLayout extends Component {
 		onDelete && onDelete(reject(layout, { id }), id);
 	}
 
-	handleShellonEdit = (modalVisible, currentModalItem) => {
-		this.setState({ modalVisible, currentModalItem });
+	handleShellonEdit = (currentModalItem) => {
+		this.setState({
+			modalVisible: true,
+			currentModalItem,
+		});
 	}
 
 	generateEditShell = (layout, shellStyle, isAll) => (
@@ -34,23 +37,21 @@ export default class ModuleLayout extends Component {
 				id,
 				group,
 				title,
-				isedit: isEdit,
 				imgurl: imgUrl,
-				isdelete: isDelete,
 				showtitle: showTitle
 			} = item;
 
 			const shellProps = {
 				key: group + id,
 				title, showTitle,
-				isEdit: isAll,
-				isDelete: true,
+				showEdit: isAll,
+				showDelete: true,
 				type: 'module',
 				'data-grid': item,
 				style: shellStyle,
 				onDelete: this.handleShellOnDelete,
-				onEdit: modalVisible => {
-					this.handleShellonEdit(modalVisible, item);
+				onEdit: dataGrid => {
+					this.handleShellonEdit(dataGrid);
 				},
 			};
 
@@ -75,7 +76,7 @@ export default class ModuleLayout extends Component {
 				alignItems: 'center',
 				justifyContent: 'center'
 			}) } type='add'
-			onClick={ () => this.handleShellonEdit(true, {}) }
+			onAdd={ () => this.handleShellonEdit(true, {}) }
 		>
 			<i className='plus-icon'>+</i>
 		</Shell>

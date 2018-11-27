@@ -24,8 +24,8 @@ export default class Grid extends Component {
 	}
 
 	static defaultProps = {
-		isEdit: false,
-		isDelete: false,
+		showEdit: false,
+		showDelete: false,
 		layout: [],
 		enumDatas: [],
 	}
@@ -73,11 +73,11 @@ export default class Grid extends Component {
 		onLayoutChange && onLayoutChange(layout);
 	}
 
-	createShellChild = (isEdit, item) => {
+	createShellChild = (showEdit, item) => {
 		const { i, moduletype: type, imgurl, imgUrl, path } = item;
 		const height = 'calc(100% - 21px)';
 
-		if(isEdit) {
+		if(showEdit) {
 			return (
 				<img
 					src={ imgurl || imgUrl }
@@ -105,11 +105,11 @@ export default class Grid extends Component {
 		);
 	}
 
-	handleShellonEdit = (isDrawerOpen, item) => {
+	handleShellonEdit = item => {
 		import('../PropertyBoard')
 			.then(PropertyBoard => {
 				this.setState({
-					isDrawerOpen,
+					isDrawerOpen: true,
 					propertyBoardDataSource: item,
 					PropertyBoard: PropertyBoard.default || PropertyBoard,
 				});
@@ -143,8 +143,8 @@ export default class Grid extends Component {
     		PropertyBoard
     	} = this.state;
     	const {
-    		isEdit,
-    		isDelete,
+    		showEdit,
+    		showDelete,
     		layout,
     		onDelete,
     		onDetail,
@@ -155,11 +155,11 @@ export default class Grid extends Component {
     		className: 'layout',
     		cols: 12,
     		rowHeight: 30,
-    		width: document.body.clientWidth - (isEdit ? 256 : 0),
+    		width: document.body.clientWidth - (showEdit ? 256 : 0),
     		// margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
-    		isDraggable: isEdit,
-    		isResizable: isEdit,
+    		isDraggable: showEdit,
+    		isResizable: showEdit,
     		// compactType: 'horizontal',
     		style: {
     			background: '#f5f6fa',
@@ -203,8 +203,8 @@ export default class Grid extends Component {
     						const shellProps = {
     							key,
     							title,
-    							isEdit,
-    							isDelete,
+    							showEdit,
+    							showDelete,
     							onDelete,
     							showTitle,
     							onDetail,
@@ -212,14 +212,14 @@ export default class Grid extends Component {
     							showDetail,
     							style,
     							'data-grid': item,
-    							onEdit: isDrawerOpen => {
-    								this.handleShellonEdit(isDrawerOpen, item);
+    							onEdit: dataGrid => {
+    								this.handleShellonEdit(dataGrid);
     							},
     						};
 
     						return (
     							<Shell { ...shellProps }>
-    								{ this.createShellChild(isEdit, item) }
+    								{ this.createShellChild(showEdit, item) }
     							</Shell>
     						);
     					})
@@ -236,8 +236,8 @@ Grid.propTypes = {
 	layout: PropTypes.array,
 	onLayoutChange: PropTypes.func,
 	enumDatas: PropTypes.array,
-	isEdit: PropTypes.bool,
-	isDelete: PropTypes.bool,
+	showEdit: PropTypes.bool,
+	showDelete: PropTypes.bool,
 	onDelete: PropTypes.func,
 	onDetail: PropTypes.func,
 };

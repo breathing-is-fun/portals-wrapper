@@ -170,8 +170,8 @@ export default class ComponentEdit extends Component {
 		};
 
 		const gridProps = {
-			isEdit: true,
-			isDelete: true,
+			showEdit: true,
+			showDelete: true,
 			layout,
 			onLayoutChange: this.handleLayoutChange,
 			onDelete: this.handleOnDelete,

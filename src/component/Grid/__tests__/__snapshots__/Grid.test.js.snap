@@ -3,8 +3,6 @@
 exports[`Grid render correctly 1`] = `
 <Grid
   enumDatas={Array []}
-  isDelete={false}
-  isEdit={false}
   layout={
     Array [
       Object {
@@ -26,6 +24,8 @@ exports[`Grid render correctly 1`] = `
       },
     ]
   }
+  showDelete={false}
+  showEdit={false}
 >
   <div
     className="Grid"
@@ -142,11 +142,11 @@ exports[`Grid render correctly 1`] = `
               }
             }
             detailPath=""
-            isDelete={false}
-            isEdit={false}
             key="dbzx"
             onEdit={[Function]}
+            showDelete={false}
             showDetail={false}
+            showEdit={false}
             showTitle={false}
             style={
               Object {
@@ -196,6 +196,7 @@ exports[`Grid render correctly 1`] = `
                   "border": "1px solid #ccc",
                   "height": "230px",
                   "msTransform": "translate(10px,10px)",
+                  "overflow": "auto",
                   "position": "absolute",
                   "transform": "translate(10px,10px)",
                   "width": "-13px",
