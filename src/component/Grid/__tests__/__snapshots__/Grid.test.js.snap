@@ -2,6 +2,7 @@
 
 exports[`Grid render correctly 1`] = `
 <Grid
+  enumDatas={Array []}
   isDelete={false}
   isEdit={false}
   layout={
@@ -25,7 +26,6 @@ exports[`Grid render correctly 1`] = `
       },
     ]
   }
-  propertyBoardEnumData={Array []}
 >
   <div
     className="Grid"

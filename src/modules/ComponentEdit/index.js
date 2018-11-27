@@ -20,7 +20,7 @@ export default class ComponentEdit extends Component {
 			openKeys: [],
 			selectedKeys: [],
 			shellStyleDatas: [],
-			propertyBoardEnumData: [],
+			enumDatas: [],
 		};
 	}
 
@@ -47,7 +47,7 @@ export default class ComponentEdit extends Component {
 		ajax({
 			key: 'propertyDatas',
 			success: ({ data }) => {
-				this.setState({ propertyBoardEnumData: data });
+				this.setState({ enumDatas: data });
 			},
 		});
 	}
@@ -158,7 +158,7 @@ export default class ComponentEdit extends Component {
 			menuDatas,
 			openKeys,
 			shellStyleDatas,
-			propertyBoardEnumData
+			enumDatas
 		} = this.state;
 
 		const draggableMenuProps = {
@@ -175,7 +175,7 @@ export default class ComponentEdit extends Component {
 			layout,
 			onLayoutChange: this.handleLayoutChange,
 			onDelete: this.handleOnDelete,
-			propertyBoardEnumData,
+			enumDatas,
 			ref: ref => ref && (this.grid = ref),
 		};
 

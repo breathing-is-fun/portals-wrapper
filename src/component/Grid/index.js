@@ -27,7 +27,7 @@ export default class Grid extends Component {
 		isEdit: false,
 		isDelete: false,
 		layout: [],
-		propertyBoardEnumData: [],
+		enumDatas: [],
 	}
 
 	mountRoots = () => {
@@ -143,12 +143,12 @@ export default class Grid extends Component {
     		PropertyBoard
     	} = this.state;
     	const {
-    		isEdit = true,
-    		isDelete = true,
+    		isEdit,
+    		isDelete,
     		layout,
     		onDelete,
     		onDetail,
-    		propertyBoardEnumData
+    		enumDatas
     	} = this.props;
 
     	const layoutProps = {
@@ -178,7 +178,7 @@ export default class Grid extends Component {
     			});
     		},
     		shellStyleDatas: propertyBoardDataSource,
-    		enumDatas: propertyBoardEnumData,
+    		enumDatas,
     		onChange: this.handleShellStyleOnChange,
     	};
 
@@ -235,5 +235,9 @@ export default class Grid extends Component {
 Grid.propTypes = {
 	layout: PropTypes.array,
 	onLayoutChange: PropTypes.func,
-	propertyBoardEnumData: PropTypes.array,
+	enumDatas: PropTypes.array,
+	isEdit: PropTypes.bool,
+	isDelete: PropTypes.bool,
+	onDelete: PropTypes.func,
+	onDetail: PropTypes.func,
 };
