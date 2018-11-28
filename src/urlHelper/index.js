@@ -15,6 +15,7 @@ const methods = ['GET', 'POST', 'PUT', 'DELETE'];
  * @param { success } 请求结束时的回调
  * @param { fix } 使用代理时，被代理地址参数分隔符
  * @param { isProxy } 是否启用代理
+ * @param { error } 异常抛出
  */
 export const ajax = ({
 	url,
@@ -26,6 +27,7 @@ export const ajax = ({
 	params,
 	fix = '&',
 	isProxy = true,
+	error,
 }) => {
 	let realUrl, realParams, postParam = {};
 
@@ -50,7 +52,7 @@ export const ajax = ({
 	fetch(realUrl + realParams, postParam)
 		.then(result => result[type]())
 		.then(result => success && success(result))
-		.catch(error => console.error(error));
+		.catch(err => error(err));
 };
 
 export const checkMethod = method => {
