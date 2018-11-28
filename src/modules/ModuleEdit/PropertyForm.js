@@ -78,19 +78,21 @@ class PropertyForm extends Component {
 
 		form.validateFields((err, values) => {
 			if (!err) {
-				location.hash = '/edit/component';
-
 				values.id = id;
-				const moduleToComponent = {
-					moduleToComponent: { data: values },
-					status: 'pending',
-				};
+				// const moduleToComponent = {
+				// 	moduleToComponent: { data: values },
+				// 	status: 'pending',
+				// };
 
-				window['_acrossDatas'] = Object.assign(
-					{},
-					window['_acrossDatas'],
-					moduleToComponent
-				);
+				// window['_acrossDatas'] = Object.assign(
+				// 	{},
+				// 	window['_acrossDatas'],
+				// 	moduleToComponent
+				// );
+
+				SCTool.listener.set('formData', values);
+
+				location.hash = '/edit/component';
 			}
 		});
 	}

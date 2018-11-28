@@ -7,6 +7,7 @@ import './assets/global.css';
 import GlobalModal from './component/GlobalModal';
 import Router from './router';
 import Store from './localStorage';
+import GlobalListener from './localStorage/GlobalListener';
 
 const MOUNT_NODE = document.getElementById('root');
 
@@ -37,4 +38,5 @@ new Store(null, store => {
 	window.SCTool = {};
 	window.SCTool.modal = {};
 	window.SCTool.store = store;
+	window.SCTool.listener = new GlobalListener(MOUNT_NODE);
 });

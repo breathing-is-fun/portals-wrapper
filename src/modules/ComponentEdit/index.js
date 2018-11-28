@@ -28,7 +28,7 @@ export default class ComponentEdit extends Component {
 		const { moduleToComponent } = window['_acrossDatas'];
 		const { data = {} } = moduleToComponent;
 
-		if(Object.keys(data).length == 0) {
+		if(SCTool.listener.get('formData').length == 0) {
 			location.hash = '/edit/module';
 		}
 	}
@@ -70,8 +70,7 @@ export default class ComponentEdit extends Component {
 	}
 
 	loadLayoutDatas = () => {
-		const { moduleToComponent } = window['_acrossDatas'];
-		const { data: { id } } = moduleToComponent;
+		const { id } = SCTool.listener.get('formData');
 
 		id && ajax({
 			key: 's_slmh_meal_layout_data',
@@ -99,11 +98,15 @@ export default class ComponentEdit extends Component {
 	}
 
 	handleOnSave = () => {
-		const { moduleToComponent } = window['_acrossDatas'];
-		const { data = {} } = moduleToComponent;
 		const { layout } = this.state;
 
-		const postData = Object.assign({}, { layout }, data);
+		const postData = Object.assign(
+			{},
+			{ layout },
+			SCTool.listener.get('formData')
+		);
+
+		location.hash = '/edit/module';
 
 		ajax({
 			key: 'add_meal',
@@ -111,25 +114,13 @@ export default class ComponentEdit extends Component {
 			data: postData,
 			success: result => {
 				if(result) {
-					location.hash = '/edit/module';
 
-					const componentToModule = {
-						componentToModule: {
-							isComponentSave: true,
-							data: {}
-						},
-						moduleToComponent: {
-							data: {}
-						}
-					};
-
-					window['_acrossDatas'] = Object.assign(
-						{},
-						window['_acrossDatas'],
-						componentToModule);
 				} else {
 					console.error(result);
 				}
+			},
+			error: error => {
+				console.error(error);
 			}
 		});
 	}
