@@ -1,27 +1,27 @@
 {
     "data": [
         {
-            "name": "其他取水",
-            "count": 282,
-            "value": 30952.23,
-            "percent": 0.0263
-        },
-        {
             "name": "工业用水",
             "count": 3144,
-            "value": 209849.59,
+            "value": "21.0万m³",
             "percent": 0.1786
         },
         {
             "name": "农业用水",
             "count": 390,
-            "value": 190222.42,
+            "value": "19.0万m³",
             "percent": 0.1618
+        },
+        {
+            "name": "其他取水",
+            "count": 282,
+            "value": "3.1万m³",
+            "percent": 0.0263
         },
         {
             "name": "公共供水",
             "count": 721,
-            "value": 743781.32,
+            "value": "74.4万m³",
             "percent": 0.6331
         }
     ]
