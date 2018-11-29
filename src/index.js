@@ -12,6 +12,11 @@ import GlobalListener from './localStorage/GlobalListener';
 const MOUNT_NODE = document.getElementById('root');
 
 new Store(null, store => {
+	window.SCTool = {};
+	window.SCTool.modal = {};
+	window.SCTool.store = store;
+	window.SCTool.listener = new GlobalListener(MOUNT_NODE);
+
 	ReactDOM.render((
 		<div>
 			<GlobalModal on={ window.SCTool } />
@@ -22,9 +27,4 @@ new Store(null, store => {
 	if (module.hot) {
 		module.hot.accept();
 	}
-
-	window.SCTool = {};
-	window.SCTool.modal = {};
-	window.SCTool.store = store;
-	window.SCTool.listener = new GlobalListener(MOUNT_NODE);
 });
