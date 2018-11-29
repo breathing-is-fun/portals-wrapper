@@ -116,12 +116,14 @@ export default class Display extends Component {
     render = () => {
     	const { layout, menuDatas, loading } = this.state;
 
+    	const title = SCTool.listener.get('systemTitle');
+
     	return (
     		<Navigation
     			onClick={ ({ id }) => this.loadLayout(id) }
     			datas={ menuDatas }
     			clock
-    			title='浙江省水利综合门户'
+    			title={ title }
     		>
     			{
     				!loading &&
