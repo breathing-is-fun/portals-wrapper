@@ -99,15 +99,16 @@ export default class Display extends Component {
 		window.SCTool.modal = {
 			visible: true,
 			title,
+			mask: false,
 			width: '100%',
-			style: { top: 0 },
+			style: { top: 65 },
 			content: (
 				<iframe
 					src={ detailPath }
 					style={{
 						border: 'none',
 						width: '100%',
-						height: document.body.clientHeight - 55 - 24,
+						height: document.body.clientHeight - 55 - 24 - 65,
 					}}></iframe>
 			)
 		};
