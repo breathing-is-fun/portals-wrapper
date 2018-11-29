@@ -2,19 +2,19 @@
     "data": [
         {
             "text": "实时库容",
-            "value": 76.5,
+            "value": 367.56,
             "unit": "亿m³",
             "id": 1
         },
         {
             "text": "蓄水率",
-            "value": 71,
+            "value": 87.65,
             "unit": "%",
             "id": 2
         },
         {
             "text": "超汛线数量",
-            "value": 14,
+            "value": 1,
             "unit": "座",
             "id": 3
         }
