@@ -11,13 +11,13 @@ const egUrl = '请输入像url的地址，' +
 '比如http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg';
 
 class PropertyForm extends Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		this.state = {
-			departmentDatas: [],
-		};
-	}
+    this.state = {
+      departmentDatas: [],
+    };
+  }
 
     componentDidMount = () => {
     	this.setDefaultValueOfInput();
@@ -26,79 +26,79 @@ class PropertyForm extends Component {
     }
 
 	loadDepartDatas = () => {
-		ajax({
-			key: 's_slmh_menu_data',
-			data: { type: 1 },
-			success: ({ data }) => {
-				let departmentDatas = handleMenuGroup(data), newDepart = [];
+	  ajax({
+	    key: 's_slmh_menu_data',
+	    data: { type: 1 },
+	    success: ({ data }) => {
+	      let departmentDatas = handleMenuGroup(data), newDepart = [];
 
-				// hack. Need to modify
-				// function selectGroup in /DraggableMenu/handler.js
-				// 修改参数名， group => value, groupName => title
-				for(let item of departmentDatas) {
-					const { group, groupName, key, children, id } = item;
+	      // hack. Need to modify
+	      // function selectGroup in /DraggableMenu/handler.js
+	      // 修改参数名， group => value, groupName => title
+	      for(let item of departmentDatas) {
+	        const { group, groupName, key, children, id } = item;
 
-					if(group != 'all') {
-						newDepart.push({
-							title: groupName,
-							value: id,
-							children
-						});
-					}
-				}
+	        if(group != 'all') {
+	          newDepart.push({
+	            title: groupName,
+	            value: id,
+	            children
+	          });
+	        }
+	      }
 
-				this.setState({ departmentDatas: newDepart });
-			}
-		});
+	      this.setState({ departmentDatas: newDepart });
+	    }
+	  });
 	}
 
 	setDefaultValueOfInput = () => {
-		const { form, currentModalItem } = this.props;
-		const { title, imgurl } = currentModalItem;
+	  const { form, currentModalItem } = this.props;
+	  const { title, imgurl } = currentModalItem;
     	const { setFields } = form;
 
-		// hack, need to filter the params of currentModalItem
-		setFields({
-			title: {
-				value: title,
-				error: null,
-			},
-			imgurl: {
-				value: imgurl,
-				error: null,
-			},
-		});
+	  // hack, need to filter the params of currentModalItem
+	  setFields({
+	    title: {
+	      value: title,
+	      error: null,
+	    },
+	    imgurl: {
+	      value: imgurl,
+	      error: null,
+	    },
+	  });
 	}
 
 	handleSubmit = e => {
-		const { form, currentModalItem } = this.props;
-		const { id = -1 } = currentModalItem;
+	  const { form, currentModalItem } = this.props;
+	  const { id = -1 } = currentModalItem;
 
-		e.preventDefault();
+	  e.preventDefault();
 
-		form.validateFields((err, values) => {
-			if (!err) {
-				values.id = id;
-				// const moduleToComponent = {
-				// 	moduleToComponent: { data: values },
-				// 	status: 'pending',
-				// };
+	  form.validateFields((err, values) => {
+	    if (!err) {
+	      values.id = id;
+	      // const moduleToComponent = {
+	      // 	moduleToComponent: { data: values },
+	      // 	status: 'pending',
+	      // };
 
-				// window['_acrossDatas'] = Object.assign(
-				// 	{},
-				// 	window['_acrossDatas'],
-				// 	moduleToComponent
-				// );
+	      // window['_acrossDatas'] = Object.assign(
+	      // 	{},
+	      // 	window['_acrossDatas'],
+	      // 	moduleToComponent
+	      // );
 
-				SCTool.listener.set('formData', values);
+	      SCTool.listener.set('formData', values);
 
-				location.hash = '/edit/component';
-			}
-		});
+	      location.hash = '/edit/component';
+	    }
+	  });
 	}
 
 	hasErrors = fieldsError => {
-		return Object.keys(fieldsError).some(field => fieldsError[field]);
+	  return Object.keys(fieldsError).some(field => fieldsError[field]);
 	}
 
     render = () => {

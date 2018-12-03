@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 export default class CurrentTime extends Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		this.state = {
-			time: moment().format('HH:mm:ss')
-		};
-	}
+    this.state = {
+      time: moment().format('HH:mm:ss')
+    };
+  }
 
     componentDidMount = () => {
     	this.getCurrentTime();

@@ -10,19 +10,19 @@ import './css/Navigation.css';
 
 export default class Navigation extends Component {
 	static defaultProps = {
-		title: '',
-		datas: [],
-		clock: false,
+	  title: '',
+	  datas: [],
+	  clock: false,
 	}
 
 	constructor (props) {
-		super(props);
+	  super(props);
 
-		this.state = {
-			CurrentTime: null,
-			iconRotate: 0,
-			dropDownVisible: false,
-		};
+	  this.state = {
+	    CurrentTime: null,
+	    iconRotate: 0,
+	    dropDownVisible: false,
+	  };
 	}
 
     componentDidMount = () => {
@@ -31,17 +31,17 @@ export default class Navigation extends Component {
 
 	loadCurrentTime = () => {
 		import('./CurrentTime')
-			.then(CurrentTime => {
-				this.setState({ CurrentTime: CurrentTime.default });
-			});
+		  .then(CurrentTime => {
+		    this.setState({ CurrentTime: CurrentTime.default });
+		  });
 	}
 
 	handleIconType = dropDownVisible => {
-		let { iconRotate } = this.state;
+	  let { iconRotate } = this.state;
 
-		iconRotate = dropDownVisible ? '180' : '0';
+	  iconRotate = dropDownVisible ? '180' : '0';
 
-		this.setState({ iconRotate, dropDownVisible });
+	  this.setState({ iconRotate, dropDownVisible });
 	}
 
     render = () => {
@@ -134,8 +134,8 @@ export default class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-	title: PropTypes.string,
-	datas: PropTypes.array,
-	onClick: PropTypes.func,
-	clock: PropTypes.bool,
+  title: PropTypes.string,
+  datas: PropTypes.array,
+  onClick: PropTypes.func,
+  clock: PropTypes.bool,
 };

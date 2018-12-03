@@ -10,9 +10,7 @@ module.exports = {
     },
     'parser': 'babel-eslint',
     'rules': {
-        'indent': ['error', 'tab', {
-            'SwitchCase': 1,
-        }],
+        'indent': ['error', 2],
         'linebreak-style': [
             'error',
             'windows'

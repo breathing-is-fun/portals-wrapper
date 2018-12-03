@@ -14,31 +14,31 @@ let plugins = commonPlugin;
 plugins.push(new TohoLogPlugin({ dev }));
 
 !dev && plugins.push(new CleanWebpackPlugin(['dist'], {
-	verbose: false
+  verbose: false
 }));
 
 const options = {
-	mode: dev ? 'development' : 'production',
-	// watch: dev,
-	devServer: {
-		port: 9099
-	},
-	resolve: {
-		extensions: ['.js', '.jsx'],
-	},
-	devtool: dev ? 'source-map' : '',
-	entry: {
-		main: __dirname + '/src',
-	},
-	output: {
-		path: __dirname + '/dist/lib/main',
-		filename: '[name].js',
-		chunkFilename: dev ?
-			'vendor/[name].[chunkHash:8].js' :
-			'vendor/[name].js',
-	},
-	plugins,
-	module: commonModule
+  mode: dev ? 'development' : 'production',
+  // watch: dev,
+  devServer: {
+    port: 9099
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  devtool: dev ? 'source-map' : '',
+  entry: {
+    main: __dirname + '/src',
+  },
+  output: {
+    path: __dirname + '/dist/lib/main',
+    filename: '[name].js',
+    chunkFilename: dev ?
+      'vendor/[name].[chunkHash:8].js' :
+      'vendor/[name].js',
+  },
+  plugins,
+  module: commonModule
 };
 
 dev && webpack(options).watch({}, () => {});

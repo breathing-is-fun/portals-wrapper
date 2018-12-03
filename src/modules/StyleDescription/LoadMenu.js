@@ -8,70 +8,70 @@ import './css/LoadMenu.css';
 
 export default class LoadMenu extends Component {
 	handleMenuClick = (item, selectedKey) => {
-		const { onClick } = this.props;
+	  const { onClick } = this.props;
 
-		onClick && onClick(item, selectedKey);
+	  onClick && onClick(item, selectedKey);
 	}
 
 	generateItemGroups = children => (
-		children.map(ktem => {
-			const { key: ktemKey, text: ketmText } = ktem;
+	  children.map(ktem => {
+	    const { key: ktemKey, text: ketmText } = ktem;
 
-			return (
-				<Menu.Item
-					key={ ktemKey }
-					onClick={ () => this.handleMenuClick(ktem, ktemKey) }
-				>
-					{ ketmText }
-				</Menu.Item>
-			);
-		})
+	    return (
+	      <Menu.Item
+	        key={ ktemKey }
+	        onClick={ () => this.handleMenuClick(ktem, ktemKey) }
+	      >
+	        { ketmText }
+	      </Menu.Item>
+	    );
+	  })
 	)
 
 	generateSubMenu = children => (
-		children.map(jtem => {
-			const {
-				key,
-				text,
-				children
-			} = jtem;
+	  children.map(jtem => {
+	    const {
+	      key,
+	      text,
+	      children
+	    } = jtem;
 
-			return (
-				<ItemGroup key={ key } title={ text }>
-					{ this.generateItemGroups(children) }
-				</ItemGroup>
-			);
-		})
+	    return (
+	      <ItemGroup key={ key } title={ text }>
+	        { this.generateItemGroups(children) }
+	      </ItemGroup>
+	    );
+	  })
 	)
 
 	generateMenuItems = menuDatas => (
-		menuDatas.map(item => {
-			const {
-				key,
-				type,
-				text,
-				children = [],
-			} = item;
+	  menuDatas.map(item => {
+	    const {
+	      key,
+	      type,
+	      text,
+	      children = [],
+	    } = item;
 
-			if(type == 'item') {
-				const menuItem = (
-					<Menu.Item
-						key={ key }
-						onClick={ () => this.handleMenuClick(item, key) }
-					>
-						<span>{ text }</span>
-					</Menu.Item>
-				);
+	    if(type == 'item') {
+	      const menuItem = (
+	        <Menu.Item
+	          key={ key }
+	          onClick={ () => this.handleMenuClick(item, key) }
+	        >
+	          <span>{ text }</span>
+	        </Menu.Item>
+	      );
 
-				return menuItem;
-			}
+	      return menuItem;
+	    }
 
-			return (
-				<SubMenu key={ key } title={ <span>{ text }</span> }>
-					{ this.generateSubMenu(children) }
-				</SubMenu>
-			);
-		})
+	    return (
+	      <SubMenu key={ key } title={ <span>{ text }</span> }>
+	        { this.generateSubMenu(children) }
+	      </SubMenu>
+	    );
+	  })
 	)
 
     render = () => {

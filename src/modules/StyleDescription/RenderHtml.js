@@ -8,58 +8,58 @@ import '../../assets/global.css';
 import './css/RenderHtml.css';
 
 export default class RenderHtml extends Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		this.state = {
-			markdowns: [],
-		};
+    this.state = {
+      markdowns: [],
+    };
 
-		this.prefix = '../../guide/';
-	}
+    this.prefix = '../../guide/';
+  }
 
 	componentWillReceiveProps = nextProps => {
-		const { paths } = nextProps;
+	  const { paths } = nextProps;
 
-		this.loadTemplate(
-			paths,
-			0,
-			[],
-			markdowns => this.setState({ markdowns })
-		);
+	  this.loadTemplate(
+	    paths,
+	    0,
+	    [],
+	    markdowns => this.setState({ markdowns })
+	  );
 	}
 
 	loadTemplate = (paths, index, markdowns, callback) => {
-		ajax({
-			url: `${ this.prefix }${ paths[index] }.html`,
-			type: 'text',
-			success: markdown => {
-				markdowns.push(markdown);
+	  ajax({
+	    url: `${ this.prefix }${ paths[index] }.html`,
+	    type: 'text',
+	    success: markdown => {
+	      markdowns.push(markdown);
 
-				if(index < paths.length - 1) {
-					this.loadTemplate(paths, ++index, markdowns, callback);
-				} else {
-					callback && callback(markdowns);
-				}
-			},
-		});
+	      if(index < paths.length - 1) {
+	        this.loadTemplate(paths, ++index, markdowns, callback);
+	      } else {
+	        callback && callback(markdowns);
+	      }
+	    },
+	  });
 	}
 
 	render = () => {
-		const { markdowns } = this.state;
+	  const { markdowns } = this.state;
 
-		return (
-			<div className='RenderHtml'>
-				{
-					markdowns.map((item, i) => (
-						<ReactMarkdown
-							source={ item }
-							escapeHtml={ false }
-							key={ `mark-item-${ i }` }
-						/>
-					))
-				}
-			</div>
-		);
+	  return (
+	    <div className='RenderHtml'>
+	      {
+	        markdowns.map((item, i) => (
+	          <ReactMarkdown
+	            source={ item }
+	            escapeHtml={ false }
+	            key={ `mark-item-${ i }` }
+	          />
+	        ))
+	      }
+	    </div>
+	  );
 	}
 }

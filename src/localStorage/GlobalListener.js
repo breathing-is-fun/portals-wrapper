@@ -1,9 +1,9 @@
 export default class GlobalListener {
-	constructor (root) {
-		this.listeners = {};
-		this.root = root;
-		this.meta = {};
-	}
+  constructor (root) {
+    this.listeners = {};
+    this.root = root;
+    this.meta = {};
+  }
 
     on = (key, callback) => {
     	let targetListener = this.listeners[key];
@@ -29,16 +29,16 @@ export default class GlobalListener {
     }
 
 	set = (key, data) => {
-		this.meta[key] = data;
+	  this.meta[key] = data;
 
-		return this;
+	  return this;
 	}
 
 	getAll = () => {
-		return this.meta;
+	  return this.meta;
 	}
 
 	get = key => {
-		return this.meta[key];
+	  return this.meta[key];
 	}
 }

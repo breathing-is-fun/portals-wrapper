@@ -8,51 +8,51 @@ import './css/Shell.css';
 
 export default class Shell extends Component {
 	static defaultProps = {
-		showEdit: false,
-		showDelete: false,
-		showDetail: false,
-		detailPath: '',
-		type: 'component',
-		showTitle: true,
-		style: {},
-		title: '',
-		'data-grid': {},
+	  showEdit: false,
+	  showDelete: false,
+	  showDetail: false,
+	  detailPath: '',
+	  type: 'component',
+	  showTitle: true,
+	  style: {},
+	  title: '',
+	  'data-grid': {},
 	}
 
 	handleOnDelete = e => {
-		const { onDelete } = this.props;
-		const dataGrid = this.props['data-grid'] || {};
+	  const { onDelete } = this.props;
+	  const dataGrid = this.props['data-grid'] || {};
 
-		this.preventBubble(e);
+	  this.preventBubble(e);
 
-		onDelete && onDelete(dataGrid);
+	  onDelete && onDelete(dataGrid);
 	}
 
 	handleOnEdit = e => {
-		const { onEdit } = this.props;
-		const dataGrid = this.props['data-grid'] || {};
+	  const { onEdit } = this.props;
+	  const dataGrid = this.props['data-grid'] || {};
 
-		this.preventBubble(e);
+	  this.preventBubble(e);
 
-		onEdit && onEdit(dataGrid);
+	  onEdit && onEdit(dataGrid);
 	}
 
 	handleOnDetail = e => {
-		const { onDetail } = this.props;
-		const dataGrid = this.props['data-grid'] || {};
+	  const { onDetail } = this.props;
+	  const dataGrid = this.props['data-grid'] || {};
 
-		this.preventBubble(e);
+	  this.preventBubble(e);
 
-		onDetail && onDetail(dataGrid);
+	  onDetail && onDetail(dataGrid);
 	}
 
 	// 阻止react-grid-layout的拖拽事件在点击时生效
 	preventBubble = e => {
-		if(e.stopPropagation) {
-			e.stopPropagation();
-		} else {
-			e.cancelBubble = true;
-		}
+	  if(e.stopPropagation) {
+	    e.stopPropagation();
+	  } else {
+	    e.cancelBubble = true;
+	  }
 	}
 
 	// handleDrawerOnClose = propertyBoardVisible => {
@@ -149,20 +149,20 @@ export default class Shell extends Component {
 }
 
 Shell.propTypes = {
-	showDetail: PropTypes.bool,
-	detailPath: PropTypes.string,
-	onDetail: PropTypes.func,
-	showEdit: PropTypes.bool,
-	showDelete: PropTypes.bool,
-	type: PropTypes.oneOf(['add', 'module', 'component']),
-	onAdd: PropTypes.func,
-	showTitle: PropTypes.bool,
-	style: PropTypes.object,
-	title: PropTypes.oneOfType([
-		PropTypes.element,
-		PropTypes.string,
-	]),
-	onDelete: PropTypes.func,
-	'data-grid': PropTypes.object,
-	onEdit: PropTypes.func,
+  showDetail: PropTypes.bool,
+  detailPath: PropTypes.string,
+  onDetail: PropTypes.func,
+  showEdit: PropTypes.bool,
+  showDelete: PropTypes.bool,
+  type: PropTypes.oneOf(['add', 'module', 'component']),
+  onAdd: PropTypes.func,
+  showTitle: PropTypes.bool,
+  style: PropTypes.object,
+  title: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
+  ]),
+  onDelete: PropTypes.func,
+  'data-grid': PropTypes.object,
+  onEdit: PropTypes.func,
 };

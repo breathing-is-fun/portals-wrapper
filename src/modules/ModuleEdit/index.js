@@ -10,64 +10,64 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 
 export default class ModuleEdit extends Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		this.state = {
-			layout: [],
-			menuDatas: [],
-			openKeys: [],
-			selectedKeys: [],
-			isAll: true, // true时，Shell才会显示编辑和删除
-		};
-	}
+    this.state = {
+      layout: [],
+      menuDatas: [],
+      openKeys: [],
+      selectedKeys: [],
+      isAll: true, // true时，Shell才会显示编辑和删除
+    };
+  }
 
 	componentDidMount = () => {
-		this.loadMenuDatas();
+	  this.loadMenuDatas();
 	}
 
 	handleMenuClick = (group, selectedKeys, id) => {
-		this.loadLayoutDatas(group == 'all' ? 1 : id);
+	  this.loadLayoutDatas(group == 'all' ? 1 : id);
 
-		this.setState({ selectedKeys, isAll: group == 'all' });
+	  this.setState({ selectedKeys, isAll: group == 'all' });
 	}
 
 	handleOnOpenChange = openKeys => this.setState({ openKeys });
 
 	loadLayoutDatas = id => {
-		ajax({
-			key: 's_slmh_meal_switch',
-			data: { id },
-			success: ({ data }) => this.setState({ layout: data }),
-		});
+	  ajax({
+	    key: 's_slmh_meal_switch',
+	    data: { id },
+	    success: ({ data }) => this.setState({ layout: data }),
+	  });
 	}
 
 	loadMenuDatas = () => {
-		ajax({
-			key: 's_slmh_menu_data',
-			data: { type: 1 },
-			success: ({ data }) => {
-				const menuDatas = handleMenuGroup(data);
-				const { group, id } = data.length != 0 ? data[0] : {};
+	  ajax({
+	    key: 's_slmh_menu_data',
+	    data: { type: 1 },
+	    success: ({ data }) => {
+	      const menuDatas = handleMenuGroup(data);
+	      const { group, id } = data.length != 0 ? data[0] : {};
 
-				this.setState({
-					menuDatas,
-					openKeys: [group],
-					selectedKeys:  [group + id]
-				}, () => this.loadLayoutDatas(1));
-			},
-		});
+	      this.setState({
+	        menuDatas,
+	        openKeys: [group],
+	        selectedKeys:  [group + id]
+	      }, () => this.loadLayoutDatas(1));
+	    },
+	  });
 	}
 
 	handleMealOnDelete = (layout, id) => {
-		ajax({
-			key: 'd_slmh_meal',
-			data: { id },
-			success: ({ data }) => {
-				// this.setState({ layout });
-				this.loadLayoutDatas(1);
-			},
-		});
+	  ajax({
+	    key: 'd_slmh_meal',
+	    data: { id },
+	    success: ({ data }) => {
+	      // this.setState({ layout });
+	      this.loadLayoutDatas(1);
+	    },
+	  });
 	}
 
     render = () => {

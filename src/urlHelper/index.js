@@ -18,132 +18,132 @@ const methods = ['GET', 'POST', 'PUT', 'DELETE'];
  * @param { error } 异常抛出
  */
 export const ajax = ({
-	url,
-	key,
-	method = 'GET',
-	data,
-	type = 'json',
-	success,
-	params,
-	fix = '&',
-	isProxy = true,
-	error,
+  url,
+  key,
+  method = 'GET',
+  data,
+  type = 'json',
+  success,
+  params,
+  fix = '&',
+  isProxy = true,
+  error,
 }) => {
-	let realUrl, realParams, postParam = {};
+  let realUrl, realParams, postParam = {};
 
-	checkType(type);
+  checkType(type);
 
-	checkMethod(method);
+  checkMethod(method);
 
-	realUrl = getRealUrl(key, path, proxy, isProxy) || url;
+  realUrl = getRealUrl(key, path, proxy, isProxy) || url;
 
-	realParams = getRealParams(realUrl, data, fix);
+  realParams = getRealParams(realUrl, data, fix);
 
-	if(method != 'GET') {
-		postParam = {
-			body: JSON.stringify(data),
-			method,
-			headers: { 'Content-Type': 'application/json' },
-		};
-	}
+  if(method != 'GET') {
+    postParam = {
+      body: JSON.stringify(data),
+      method,
+      headers: { 'Content-Type': 'application/json' },
+    };
+  }
 
-	postParam = Object.assign({}, postParam, params);
+  postParam = Object.assign({}, postParam, params);
 
-	fetch(realUrl + realParams, postParam)
-		.then(result => result[type]())
-		.then(result => success && success(result))
-		.catch(err => error(err));
+  fetch(realUrl + realParams, postParam)
+    .then(result => result[type]())
+    .then(result => success && success(result))
+    .catch(err => error(err));
 };
 
 export const checkMethod = method => {
-	if(!method) {
-		console.error('fetch method is undefined.');
+  if(!method) {
+    console.error('fetch method is undefined.');
 
-		return;
-	}
+    return;
+  }
 
-	method = method.toUpperCase();
+  method = method.toUpperCase();
 
-	if (!methods.includes(method)) {
-		console.error('fetch method error.');
+  if (!methods.includes(method)) {
+    console.error('fetch method error.');
 
-		return;
-	}
+    return;
+  }
 
-	return method;
+  return method;
 };
 
 export const checkType = type => {
-	if(!type) {
-		console.error('fetch type is undefined.');
+  if(!type) {
+    console.error('fetch type is undefined.');
 
-		return;
-	}
+    return;
+  }
 
-	type = type.toLowerCase();
+  type = type.toLowerCase();
 
-	if (!types.includes(type)) {
-		console.error('fetch type error.');
+  if (!types.includes(type)) {
+    console.error('fetch type error.');
 
-		return;
-	}
+    return;
+  }
 
-	return type;
+  return type;
 };
 
 export const getRealParams = (url, data, fixStr) => {
-	if(!url || !data) {
-		return '';
-	}
+  if(!url || !data) {
+    return '';
+  }
 
-	let fix = url.includes('?') ? fixStr : '?';
-	let result = serialize(data, fixStr);
+  let fix = url.includes('?') ? fixStr : '?';
+  let result = serialize(data, fixStr);
 
-	if(result) {
-		return fix + result;
-	}
+  if(result) {
+    return fix + result;
+  }
 
-	return result;
+  return result;
 };
 
 export const serialize = (data, fixStr) => {
-	if(!data || Object.keys(data).lenght == 0 || data instanceof Array) {
-		return '';
-	}
+  if(!data || Object.keys(data).lenght == 0 || data instanceof Array) {
+    return '';
+  }
 
-	if(typeof data == 'string') {
-		return data;
-	}
+  if(typeof data == 'string') {
+    return data;
+  }
 
-	let paramStr = '';
+  let paramStr = '';
 
-	for(let key in data) {
-		paramStr += `${ key }=${ data[key] }${ fixStr }`;
-	}
+  for(let key in data) {
+    paramStr += `${ key }=${ data[key] }${ fixStr }`;
+  }
 
-	paramStr = paramStr.substr(0, paramStr.length - (fixStr == '&' ? 1 : 3));
+  paramStr = paramStr.substr(0, paramStr.length - (fixStr == '&' ? 1 : 3));
 
-	return paramStr;
+  return paramStr;
 };
 
 export const getRealUrl = (key, path, proxy, isProxy) => {
-	let realUrl;
+  let realUrl;
 
-	for (let realKey in path) {
-		if (key == realKey) {
-			realUrl = path[realKey];
+  for (let realKey in path) {
+    if (key == realKey) {
+      realUrl = path[realKey];
 
-			break;
-		}
-	}
+      break;
+    }
+  }
 
-	if (!realUrl) {
-		return;
-	}
+  if (!realUrl) {
+    return;
+  }
 
-	if(proxy && isProxy) {
-		realUrl = proxy + realUrl;
-	}
+  if(proxy && isProxy) {
+    realUrl = proxy + realUrl;
+  }
 
-	return realUrl;
+  return realUrl;
 };

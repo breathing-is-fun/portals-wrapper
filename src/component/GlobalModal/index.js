@@ -4,41 +4,41 @@ import PropTypes from 'prop-types';
 import { Modal } from 'antd';
 
 export default class GlobalModal extends Component {
-	constructor (props) {
-		super(props);
+  constructor (props) {
+    super(props);
 
-		const { on } = props;
+    const { on } = props;
 
-		this.state = {
-			title: '',
-			visible: false,
-			content: null,
-			style: {},
-		};
+    this.state = {
+      title: '',
+      visible: false,
+      content: null,
+      style: {},
+    };
 
-		Object.defineProperty(on, 'modal', {
-			enumerable: true,
-			configurable: true,
-			set: value => {
-				let {
-					visible = false,
-					content,
-					...restProps
-				} = value;
+    Object.defineProperty(on, 'modal', {
+      enumerable: true,
+      configurable: true,
+      set: value => {
+        let {
+          visible = false,
+          content,
+          ...restProps
+        } = value;
 
-				if(!visible) {
-					content = null;
-				}
+        if(!visible) {
+          content = null;
+        }
 
-				this.setState({ visible, content, ...restProps });
+        this.setState({ visible, content, ...restProps });
 
-				return value;
-			}
-		});
-	}
+        return value;
+      }
+    });
+  }
 
 	static defaultProps = {
-		on: {},
+	  on: {},
 	}
 
     render = () => {
@@ -74,5 +74,5 @@ export default class GlobalModal extends Component {
 }
 
 GlobalModal.propTypes = {
-	on: PropTypes.object,
+  on: PropTypes.object,
 };

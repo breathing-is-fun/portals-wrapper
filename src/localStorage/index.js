@@ -2,13 +2,13 @@ import Store from '../../util/Store';
 import { ajax } from '../urlHelper';
 
 export default class LocalStorageHandle {
-	constructor (options, callback) {
-		this.options = options;
-		this.local = {};
-		this.callback = callback;
+  constructor (options, callback) {
+    this.options = options;
+    this.local = {};
+    this.callback = callback;
 
-		this.getOptions();
-	}
+    this.getOptions();
+  }
 
     getOptions = () => {
     	ajax({

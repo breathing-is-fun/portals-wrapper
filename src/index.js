@@ -12,23 +12,23 @@ import GlobalListener from './localStorage/GlobalListener';
 const MOUNT_NODE = document.getElementById('root');
 
 new Store(null, store => {
-	window.SCTool = {};
-	window.SCTool.modal = {};
-	window.SCTool.store = store;
-	window.SCTool.listener = new GlobalListener(MOUNT_NODE);
+  window.SCTool = {};
+  window.SCTool.modal = {};
+  window.SCTool.store = store;
+  window.SCTool.listener = new GlobalListener(MOUNT_NODE);
 
-	for(let key in store.get('meta')) {
-		window.SCTool.listener.set(key, store.get('meta')[key]);
-	}
+  for(let key in store.get('meta')) {
+    window.SCTool.listener.set(key, store.get('meta')[key]);
+  }
 
-	ReactDOM.render((
-		<div>
-			<GlobalModal on={ window.SCTool } />
-			<Router />
-		</div>
-	), MOUNT_NODE);
+  ReactDOM.render((
+    <div>
+      <GlobalModal on={ window.SCTool } />
+      <Router />
+    </div>
+  ), MOUNT_NODE);
 
-	if (module.hot) {
-		module.hot.accept();
-	}
+  if (module.hot) {
+    module.hot.accept();
+  }
 });
