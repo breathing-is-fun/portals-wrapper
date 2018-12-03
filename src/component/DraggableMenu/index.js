@@ -49,8 +49,8 @@ export default class DraggableMenu extends Component {
 
 	    return (
 	      <DragMenuItem
-	        key={ `${ this.menuSelectPrefix }${ group }${ id }` }
-	        item={ style }
+	        key={`${this.menuSelectPrefix}${group}${id}`}
+	        item={style}
 	      />
 	    );
 	  })
@@ -86,11 +86,11 @@ export default class DraggableMenu extends Component {
 	    <div className='DraggableMenu'>
 
 	      <Menu
-	        openKeys={ openKeys }
-	        selectedKeys={ [this.menuSelectPrefix + selectedKeys[0]] }
+	        openKeys={openKeys}
+	        selectedKeys={[this.menuSelectPrefix + selectedKeys[0]]}
 	        mode='inline'
-	        onOpenChange={ onOpenChange }
-	        onClick={ this.handleMenuClick }
+	        onOpenChange={onOpenChange}
+	        onClick={this.handleMenuClick}
 	      >
 	        {type == 'module' && hrefToDisplay}
 
@@ -103,16 +103,16 @@ export default class DraggableMenu extends Component {
 	            const subMenuTitle = (
 	              <span>
 	                <Icon type='laptop' theme='outlined' />
-	                <span>{ groupName }</span>
+	                <span>{groupName}</span>
 	              </span>
 	            );
 
 	            return (
-	              <SubMenu key={ group } title={ subMenuTitle }>
-	                { this.generateSubMenu(
+	              <SubMenu key={group} title={subMenuTitle}>
+	                {this.generateSubMenu(
 	                  children,
 	                  currentShellStyle
-	                ) }
+	                )}
 	              </SubMenu>
 	            );
 	          })

@@ -26,7 +26,7 @@ export default class GlobalModal extends Component {
           ...restProps
         } = value;
 
-        if(!visible) {
+        if (!visible) {
           content = null;
         }
 
@@ -37,40 +37,40 @@ export default class GlobalModal extends Component {
     });
   }
 
-	static defaultProps = {
-	  on: {},
-	}
+  static defaultProps = {
+    on: {},
+  }
 
-    render = () => {
-    	const { visible, title, content, style, ...restProps } = this.state;
-    	let renderHtml = content;
+  render = () => {
+    const { visible, title, content, style, ...restProps } = this.state;
+    let renderHtml = content;
 
-    	if(typeof content == 'string') {
-    		renderHtml = (
-    			<div
-    				dangerouslySetInnerHTML={{ __html: content }}
-    				style={{ width: '100%', height: '100%' }}
-    			/>
-    		);
-    	}
-
-    	return (
-    		<div className='GlobalModal'>
-    			<Modal
-    				title={ title }
-    				visible={ visible }
-    				style={ style }
-    				destroyOnClose
-    				content={ content }
-    				onCancel={ () => this.setState({ visible: !visible }) }
-    				footer={ null }
-    				{ ...restProps }
-    			>
-    				{ renderHtml }
-    			</Modal>
-    		</div>
-    	);
+    if (typeof content == 'string') {
+      renderHtml = (
+        <div
+          dangerouslySetInnerHTML={{ __html: content }}
+          style={{ width: '100%', height: '100%' }}
+        />
+      );
     }
+
+    return (
+      <div className='GlobalModal'>
+        <Modal
+          title={title}
+          visible={visible}
+          style={style}
+          destroyOnClose
+          content={content}
+          onCancel={() => this.setState({ visible: !visible })}
+          footer={null}
+          {...restProps}
+        >
+          {renderHtml}
+        </Modal>
+      </div>
+    );
+  }
 }
 
 GlobalModal.propTypes = {

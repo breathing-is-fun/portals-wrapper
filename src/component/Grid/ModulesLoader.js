@@ -1,7 +1,7 @@
 import { fetch } from 'whatwg-fetch';
 
 const importPolyfill = url => {
-  if(!url) {
+  if (!url) {
     console.error('importPolyfill error: url is undefined.');
     return;
   }
@@ -32,7 +32,7 @@ export default class ModulesLoader {
 	  for (let item of this.layout) {
 	    const { path, moduletype: type } = item;
 
-	    if(type != 'iframe') {
+	    if (type != 'iframe') {
 	      pathArr.push(importPolyfill(path));
 	      newLayout.push(item);
 	    }
@@ -43,14 +43,14 @@ export default class ModulesLoader {
 	    for (let i = 0; i < modules.length; i++) {
 	      let targetModule = modules[i];
 
-	      if(!targetModule) {
+	      if (!targetModule) {
 	        continue;
 	      }
 
-    			try {
+	      try {
 	        const { i: key } = this.layout[i];
 
-	        if('default' in targetModule) {
+	        if ('default' in targetModule) {
 	          targetModule = targetModule.default;
 	        }
 
@@ -64,18 +64,18 @@ export default class ModulesLoader {
 	      } catch (error) {
 	        console.warn('Ignored error => ' + error);
 	      }
-    		}
+	    }
 	  });
 	}
 
-    loadScripts = (pathArr, index = 0, importedModules = [], callback) => {
-    	if(index != pathArr.length) {
-    		pathArr[index].then(importModule => {
-    			importedModules.push(importModule);
-    			this.loadScripts(pathArr, ++index, importedModules, callback);
-    		}).catch(error => console.error('loadScripts error: ' + error));
-    	} else {
-    		callback && callback(importedModules);
-    	}
-    }
+	loadScripts = (pathArr, index = 0, importedModules = [], callback) => {
+	  if (index != pathArr.length) {
+	    pathArr[index].then(importModule => {
+	      importedModules.push(importModule);
+	      this.loadScripts(pathArr, ++index, importedModules, callback);
+	    }).catch(error => console.error('loadScripts error: ' + error));
+	  } else {
+	    callback && callback(importedModules);
+	  }
+	}
 }

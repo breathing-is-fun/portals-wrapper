@@ -20,7 +20,7 @@ describe('Grid', () => {
 
 
   it('render correctly', () => {
-    const wrapper = mount(<Grid layout={ [layoutItem] } />);
+    const wrapper = mount(<Grid layout={[layoutItem]} />);
 
     expect(wrapper).toMatchSnapshot();
   });

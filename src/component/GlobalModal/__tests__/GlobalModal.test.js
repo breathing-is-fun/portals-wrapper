@@ -4,7 +4,7 @@ import GlobalModal from '..';
 
 describe('GlobalModal', () => {
   let tool = {};
-  const demo = <GlobalModal on={ tool } />;
+  const demo = <GlobalModal on={tool} />;
   const wrapper = mount(demo);
 
   it('when visible is true, Modal should work', () => {

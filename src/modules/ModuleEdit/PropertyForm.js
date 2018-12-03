@@ -79,16 +79,6 @@ class PropertyForm extends Component {
 	  form.validateFields((err, values) => {
 	    if (!err) {
 	      values.id = id;
-	      // const moduleToComponent = {
-	      // 	moduleToComponent: { data: values },
-	      // 	status: 'pending',
-	      // };
-
-	      // window['_acrossDatas'] = Object.assign(
-	      // 	{},
-	      // 	window['_acrossDatas'],
-	      // 	moduleToComponent
-	      // );
 
 	      SCTool.listener.set('formData', values);
 

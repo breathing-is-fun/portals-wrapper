@@ -26,7 +26,7 @@ describe('DraggableMenu', () => {
   it('module edit render correctly', () => {
     const demoProps = Object.assign({}, props, { type: 'module' });
     const demo = (
-      <DraggableMenu { ...demoProps } />
+      <DraggableMenu {...demoProps} />
     );
     const wrapper = shallow(demo);
 
@@ -44,7 +44,7 @@ describe('DraggableMenu', () => {
       },
     ];
     const demoProps = Object.assign({}, props, { shellStyleDatas });
-    const demo = <DraggableMenu { ...demoProps } />;
+    const demo = <DraggableMenu {...demoProps} />;
 
     const wrapper = shallow(demo);
 
@@ -54,7 +54,7 @@ describe('DraggableMenu', () => {
   it('when clicked, click event should be called', () => {
     const demoProps = Object.assign({}, props, { type: 'module' });
     const demo = (
-      <DraggableMenu { ...demoProps } />
+      <DraggableMenu {...demoProps} />
     );
     const wrapper = mount(demo);
 
