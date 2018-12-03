@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import GridLayout from 'react-grid-layout';
+import { Responsive, WidthProvider } from 'react-grid-layout';
+const ResponsiveGridLayout = WidthProvider(Responsive);
+
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 
@@ -18,6 +20,7 @@ export default class Grid extends Component {
 			isDrawerOpen: false,
 			propertyBoardDataSource: {},
 			PropertyBoard: null,
+			rowHeight: 30,
 		};
 
 		this.roots = {};
@@ -136,11 +139,16 @@ export default class Grid extends Component {
 		onLayoutChange && onLayoutChange(newLayout);
 	}
 
+	handleBreakpointChange = (breakpoints, cols) => {
+		this.setState({ rowHeight: cols * 2.5 });
+	}
+
     render = () => {
     	const {
     		isDrawerOpen,
     		propertyBoardDataSource,
-    		PropertyBoard
+    		PropertyBoard,
+    		rowHeight,
     	} = this.state;
     	const {
     		showEdit,
@@ -153,8 +161,9 @@ export default class Grid extends Component {
 
     	const layoutProps = {
     		className: 'layout',
-    		cols: 12,
-    		rowHeight: 30,
+    		cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
+    		breakpoints: { lg: 1300, md: 996, sm: 768, xs: 480, xxs: 0 },
+    		rowHeight,
     		width: document.body.clientWidth - (showEdit ? 256 : 0),
     		// margin: [10, 10],
     		onLayoutChange: this.handleLayoutChange,
@@ -165,6 +174,7 @@ export default class Grid extends Component {
     			background: '#f5f6fa',
     			height: layout.length != 0 ? '100%' : 500
     		},
+    		onBreakpointChange: this.handleBreakpointChange,
     	};
 
     	const propertyBoardProps = {
@@ -188,7 +198,7 @@ export default class Grid extends Component {
     			onDrop={ this.handleDragDrop }
     			onDragOver={ e => e.preventDefault() }
     		>
-    			<GridLayout { ...layoutProps }>
+    			<ResponsiveGridLayout { ...layoutProps }>
     				{
     					layout.map(item => {
     						const {
@@ -224,7 +234,7 @@ export default class Grid extends Component {
     						);
     					})
     				}
-    			</GridLayout>
+    			</ResponsiveGridLayout>
 
     			{ PropertyBoard && <PropertyBoard { ...propertyBoardProps } /> }
     		</div>
