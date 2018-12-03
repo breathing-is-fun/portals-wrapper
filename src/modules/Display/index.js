@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import Grid from '../../component/Grid';
 import Navigation from '../../component/Navigation';
 import { ajax } from '../../urlHelper';
+import { message } from 'antd';
+message.config({
+	top: 100,
+	maxCount: 3,
+});
 
 import './css/Display.css';
 
@@ -29,6 +34,7 @@ export default class Display extends Component {
 		const ticket = this.getParams('ticket');
 
 		if(!ticket) {
+			message.error('ticket is null.');
 			return;
 		}
 
