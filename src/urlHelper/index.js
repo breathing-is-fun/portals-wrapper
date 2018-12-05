@@ -52,7 +52,7 @@ export const ajax = ({
   fetch(realUrl + realParams, postParam)
     .then(result => result[type]())
     .then(result => success && success(result))
-    .catch(err => error(err));
+    .catch(err => error && error(err));
 };
 
 export const checkMethod = method => {

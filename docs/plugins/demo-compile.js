@@ -1,5 +1,5 @@
-var Demo = function (root) {
-  root.innerHTML = '<p>Hello World</p>';
+var Demo = function (root, ticket) {
+  root.innerHTML = '<p>Hello World, ' + ticket + '</p>';
 };
 
 module.exports = Demo;

@@ -41,20 +41,20 @@ export default class ModulesLoader {
 	  this.layout = newLayout;
 	  this.loadScripts(pathArr, 0, [], modules => {
 	    for (let i = 0; i < modules.length; i++) {
-	      let targetModule = modules[i];
+	      let TargetModule = modules[i];
 
-	      if (!targetModule) {
+	      if (!TargetModule) {
 	        continue;
 	      }
 
 	      try {
 	        const { i: key } = this.layout[i];
 
-	        if ('default' in targetModule) {
-	          targetModule = targetModule.default;
+	        if ('default' in TargetModule) {
+	          TargetModule = TargetModule.default;
 	        }
 
-	        const loadedModule = new targetModule(
+	        const loadedModule = new TargetModule(
 	          this.roots[key],
 	          window.SCTool.ticket
 	        );
