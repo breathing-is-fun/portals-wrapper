@@ -26,6 +26,7 @@
             window.SCTool.modal = {
                 visible: true,
                 content: '<div>test</div>',
+                // path: '../../../thirdModules/dbzx/index.js', // 当二级页面需要动态加载时，可以试试这个
             }
         }
     }

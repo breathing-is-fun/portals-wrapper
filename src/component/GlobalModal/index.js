@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Content from './Content';
 import { Modal } from 'antd';
 
 export default class GlobalModal extends Component {
   constructor (props) {
     super(props);
-
-    const { on } = props;
 
     this.state = {
       title: '',
@@ -15,44 +14,29 @@ export default class GlobalModal extends Component {
       content: null,
       style: {},
     };
+  }
 
-    Object.defineProperty(on, 'modal', {
+  static defaultProps = {
+    on: {},
+    type: 'modal',
+  }
+
+  componentDidMount = () => {
+    const { on, type } = this.props;
+
+    Object.defineProperty(on, type, {
       enumerable: true,
       configurable: true,
       set: value => {
-        let {
-          visible = false,
-          content,
-          ...restProps
-        } = value;
-
-        if (!visible) {
-          content = null;
-        }
-
-        this.setState({ visible, content, ...restProps });
+        this.setState({ ...value });
 
         return value;
       }
     });
   }
 
-  static defaultProps = {
-    on: {},
-  }
-
   render = () => {
-    const { visible, title, content, style, ...restProps } = this.state;
-    let renderHtml = content;
-
-    if (typeof content == 'string') {
-      renderHtml = (
-        <div
-          dangerouslySetInnerHTML={{ __html: content }}
-          style={{ width: '100%', height: '100%' }}
-        />
-      );
-    }
+    const { visible, title, style, ...restStates } = this.state;
 
     return (
       <div className='GlobalModal'>
@@ -61,12 +45,10 @@ export default class GlobalModal extends Component {
           visible={visible}
           style={style}
           destroyOnClose
-          content={content}
-          onCancel={() => this.setState({ visible: !visible })}
+          onCancel={() => this.setState({ visible: false })}
           footer={null}
-          {...restProps}
         >
-          {renderHtml}
+          <Content {...restStates} />
         </Modal>
       </div>
     );
@@ -75,4 +57,5 @@ export default class GlobalModal extends Component {
 
 GlobalModal.propTypes = {
   on: PropTypes.object,
+  type: PropTypes.string,
 };
