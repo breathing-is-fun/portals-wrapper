@@ -35,7 +35,6 @@ exports[`Shell button group render correctly 1`] = `
         "right": 10,
       }
     }
-    theme="outlined"
     type="delete"
   />
   <Icon
@@ -46,7 +45,6 @@ exports[`Shell button group render correctly 1`] = `
         "right": 40,
       }
     }
-    theme="outlined"
     type="edit"
   />
   <span
@@ -95,7 +93,6 @@ exports[`Shell button group render correctly 2`] = `
         "right": 10,
       }
     }
-    theme="outlined"
     type="delete"
   />
   <Icon
@@ -106,7 +103,6 @@ exports[`Shell button group render correctly 2`] = `
         "right": 40,
       }
     }
-    theme="outlined"
     type="edit"
   />
   <span
@@ -153,7 +149,6 @@ exports[`Shell render correctly 1`] = `
         "right": 10,
       }
     }
-    theme="outlined"
     type="delete"
   />
   <Icon
@@ -164,7 +159,6 @@ exports[`Shell render correctly 1`] = `
         "right": 40,
       }
     }
-    theme="outlined"
     type="edit"
   />
   <span

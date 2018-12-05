@@ -22,7 +22,11 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`
       okType="primary"
       onCancel={[Function]}
       prefixCls="ant-modal"
-      style={Object {}}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
       title=""
       transitionName="zoom"
       visible={false}
@@ -49,7 +53,11 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`
         onCancel={[Function]}
         onClose={[Function]}
         prefixCls="ant-modal"
-        style={Object {}}
+        style={
+          Object {
+            "top": 65,
+          }
+        }
         title=""
         transitionName="zoom"
         visible={false}
@@ -83,7 +91,11 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`
       okType="primary"
       onCancel={[Function]}
       prefixCls="ant-modal"
-      style={Object {}}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
       title=""
       transitionName="zoom"
       visible={false}
@@ -110,7 +122,11 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`
         onCancel={[Function]}
         onClose={[Function]}
         prefixCls="ant-modal"
-        style={Object {}}
+        style={
+          Object {
+            "top": 65,
+          }
+        }
         title=""
         transitionName="zoom"
         visible={false}
@@ -144,7 +160,11 @@ exports[`GlobalModal when visible is true, Modal should work 1`] = `
       okType="primary"
       onCancel={[Function]}
       prefixCls="ant-modal"
-      style={Object {}}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
       title=""
       transitionName="zoom"
       visible={false}
@@ -171,7 +191,11 @@ exports[`GlobalModal when visible is true, Modal should work 1`] = `
         onCancel={[Function]}
         onClose={[Function]}
         prefixCls="ant-modal"
-        style={Object {}}
+        style={
+          Object {
+            "top": 65,
+          }
+        }
         title=""
         transitionName="zoom"
         visible={false}
