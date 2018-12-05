@@ -6,7 +6,7 @@ English | [简体中文](./README-zh_CN.md)
 
 - when edited, you can drag `Plugin` over anywhere you want
 
-- no matter `React`、`Vue` or any other, as long as it is a `Plugin`, it will be loaded if you want
+- no matter `React`, `Vue` or any other, as long as it is a `Plugin`, it will be loaded if you want
 
 # usage
 
@@ -19,14 +19,14 @@ npm run build
 
 drop [`Plugins`](#Plugin) that you need to load to `dist/thirdModules` and deploy it, assume the port is 9099
   
-open your browser and visit http://localhost:9000/#/edit/module
+open your browser and visit http://localhost:9099/#/edit/module
 
 # development
 
 ``` bash
 npm start
 ```
-  
+
 open your browser and visit http://localhost:9099/#/display?ticket=test
 
 # Plugin
