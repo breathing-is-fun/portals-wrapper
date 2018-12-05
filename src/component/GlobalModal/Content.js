@@ -32,6 +32,10 @@ export default class Content extends Component {
     const { content, path } = this.props;
     let renderHtml = content;
 
+    if (path) {
+      renderHtml = null;
+    }
+
     if (!path && typeof content == 'string') {
       renderHtml = (
         <div

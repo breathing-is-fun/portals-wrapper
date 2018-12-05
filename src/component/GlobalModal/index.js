@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Content from './Content';
+import omit from 'omit.js';
 import { Modal } from 'antd';
 
 export default class GlobalModal extends Component {
@@ -28,6 +29,10 @@ export default class GlobalModal extends Component {
       enumerable: true,
       configurable: true,
       set: value => {
+        if(!value.visible) {
+          return value;
+        }
+
         this.setState({ ...value });
 
         return value;
@@ -35,18 +40,36 @@ export default class GlobalModal extends Component {
     });
   }
 
+  handleOnCancel = () => {
+    this.setState({
+      visible: false,
+      path: null,
+      content: null,
+    });
+  }
+
   render = () => {
-    const { visible, title, style, ...restStates } = this.state;
+    const {
+      visible,
+      title,
+      style,
+      width,
+      ...restStates
+    } = this.state;
+    const newStates = omit(this.state, [
+      'content',
+      'path',
+      'style',
+    ]);
 
     return (
       <div className='GlobalModal'>
         <Modal
-          title={title}
-          visible={visible}
-          style={style}
           destroyOnClose
-          onCancel={() => this.setState({ visible: false })}
+          onCancel={this.handleOnCancel}
           footer={null}
+          style={Object.assign({}, { top: 65 }, style)}
+          {...newStates}
         >
           <Content {...restStates} />
         </Modal>
