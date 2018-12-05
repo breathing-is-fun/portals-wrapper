@@ -55,97 +55,85 @@ export default class Shell extends Component {
 	  }
 	}
 
-	// handleDrawerOnClose = propertyBoardVisible => {
-	// 	const { onEdit } = this.props;
+	render = () => {
+	  const {
+	    children,
+	    showEdit,
+	    showDelete,
+	    type,
+	    onAdd,
+	    showTitle,
+	    style,
+	    showDetail,
+	    title,
+	  } = this.props;
 
-	// 	this.setState({ propertyBoardVisible }, () => {
-	// 		onEdit && onEdit(this.props['data-grid']);
-	// 	});
-	// }
+	  const editButton = (
+	    <Icon
+	      type='edit'
+	      className='operation'
+	      onMouseDown={ this.handleOnEdit }
+	      style={{ right: 40 }}
+	    />
+	  );
+	  const deleteButton = (
+	    <Icon
+	      type='delete'
+	      className='operation'
+	      onMouseDown={ this.handleOnDelete }
+	      style={{ right: 10 }}
+	    />
+	  );
+	  const detailButton = (
+	    <Icon
+	      type='small-dash'
+	      className='operation'
+	      onMouseDown={ this.handleOnDetail }
+	      style={{ right: 10, fontSize: '2vw' }}
+	    />
+	  );
 
-    render = () => {
-    	const {
-    		children,
-    		showEdit,
-    		showDelete,
-    		type,
-    		onAdd,
-    		showTitle,
-    		style,
-    		showDetail,
-    		title,
-    	} = this.props;
-    	// const { title } = this.state;
+	  const newProps = omit(this.props, [
+	    'showDelete',
+	    'onDelete',
+	    'showDetail',
+	    'onEdit',
+	    'showEdit',
+	    'title',
+	    'showTitle',
+	    'onDetail',
+	    'detailPath',
+	    'onAdd',
+	  ]);
 
-    	const editButton = (
-    		<Icon
-    			type='edit'
-    			theme='outlined'
-    			className='operation'
-    			onMouseDown={ this.handleOnEdit }
-    			style={{ right: 40 }}
-    		/>
-    	);
-    	const deleteButton = (
-    		<Icon
-    			type='delete'
-    			theme='outlined'
-    			className='operation'
-    			onMouseDown={ this.handleOnDelete }
-    			style={{ right: 10 }}
-    		/>
-    	);
-    	const detailButton = (
-    		<Icon
-    			type='small-dash'
-    			theme='outlined'
-    			className='operation'
-    			onMouseDown={ this.handleOnDetail }
-    			style={{ right: 10, fontSize: '2vw' }}
-    		/>
-    	);
+	  return (
+	    <div
+	      { ...newProps }
+	      style={ Object.assign({}, {
+	        overflow: showEdit ? 'hidden' : 'auto'
+	      }, style) }
+	      className={ `Shell${ type != 'component' ?
+	        ' border-transition' :
+	        '' }`
+	      }
+	      onClick={ e => type == 'add' && onAdd && onAdd(e) }
+	    >
+	      { showDelete && deleteButton }
 
-    	const newProps = omit(this.props, [
-    		'showDelete',
-    		'onDelete',
-    		'showDetail',
-    		'onEdit',
-    		'showEdit',
-    		'title',
-    		'showTitle',
-    		'onDetail',
-    		'detailPath',
-    		'onAdd',
-    	]);
+	      { showEdit && editButton }
 
-    	return (
-    		<div
-    			{ ...newProps }
-    			style={ Object.assign({}, {
-    				overflow: showEdit ? 'hidden' : 'auto'
-    			}, style) }
-    			className={ `Shell${ type != 'component' ?
-    				' border-transition' :
-    				'' }`
-    			}
-    			onClick={ e => type == 'add' && onAdd && onAdd(e) }
-    		>
-    			{ showDelete && deleteButton }
+	      { showDetail && detailButton }
 
-    			{ showEdit && editButton }
-
-    			{ showDetail && detailButton }
-
-    			{
-    				type != 'add' &&
+	      {
+	        type != 'add' &&
 					showTitle &&
 					<span className='operation-title'>{ title }</span>
-    			}
+	      }
 
-    			{ children }
-    		</div>
-    	);
-    }
+	      { children }
+	    </div>
+	  );
+	}
 }
 
 Shell.propTypes = {
