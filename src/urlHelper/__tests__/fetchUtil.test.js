@@ -28,7 +28,7 @@ describe('fetchUtil', () => {
 
     console.error = jest.fn();
 
-    for(let item of types) {
+    for (let item of types) {
       const { type, result } = item;
 
       expect(checkType(type)).toBe(result);
@@ -43,7 +43,7 @@ describe('fetchUtil', () => {
 
     console.error = jest.fn();
 
-    for(let item of methods) {
+    for (let item of methods) {
       const { type, result } = item;
 
       expect(checkMethod(type)).toBe(result);

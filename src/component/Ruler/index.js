@@ -12,11 +12,11 @@ export default class Ruler extends Component {
 	  let cm = [], mm = [];
 
 	  // mm
-	  for(let i = 0; i < 9; i++) {
+	  for (let i = 0; i < 9; i++) {
 	    const wrapper = (
 	      <div
-	        className={ `mm-${ type }` }
-	        key={ `mm-${ type }-${ i }` }
+	        className={`mm-${type}`}
+	        key={`mm-${type}-${i}`}
 	      />
 	    );
 
@@ -24,10 +24,10 @@ export default class Ruler extends Component {
 	  }
 
 	  // cm
-	  for(let i = 0; i < 10; i++) {
+	  for (let i = 0; i < 10; i++) {
 	    cm.push(
-	      <div className={ `cm-${ type }` } key={ `cm-${ type }-${ i }` }>
-	        { mm }
+	      <div className={`cm-${type}`} key={`cm-${type}-${i}`}>
+	        {mm}
 	      </div>
 	    );
 	  }
@@ -35,25 +35,25 @@ export default class Ruler extends Component {
 	  return cm;
 	}
 
-    render = () => {
-    	const { children, padding } = this.props;
+	render = () => {
+	  const { children, padding } = this.props;
 
-    	return (
-    		<div className='Ruler'>
-    			<div className='wrapper'>
-    				{ this.handleScale('horizontal') }
-    			</div>
+	  return (
+	    <div className='Ruler'>
+	      <div className='wrapper'>
+	        {this.handleScale('horizontal')}
+	      </div>
 
-    			<div className='wrapper'>
-    				{ this.handleScale('vertical') }
-    			</div>
+	      <div className='wrapper'>
+	        {this.handleScale('vertical')}
+	      </div>
 
-    			<div style={{ padding }}>
-    				{ children }
-    			</div>
-    		</div>
-    	);
-    }
+	      <div style={{ padding }}>
+	        {children}
+	      </div>
+	    </div>
+	  );
+	}
 }
 
 Ruler.propTypes = {

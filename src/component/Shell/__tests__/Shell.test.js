@@ -27,13 +27,13 @@ describe('Shell', () => {
   };
 
   it('render correctly', () => {
-    const wrapper = shallow(<Shell { ...props }>test</Shell>);
+    const wrapper = shallow(<Shell {...props}>test</Shell>);
 
     expect(wrapper).toMatchSnapshot();
   });
 
   it('button group render correctly', () => {
-    const wrapper = shallow(<Shell { ...props }>test</Shell>);
+    const wrapper = shallow(<Shell {...props}>test</Shell>);
 
     expect(wrapper).toMatchSnapshot();
 
@@ -42,7 +42,7 @@ describe('Shell', () => {
   });
 
   it('when button is clicked, theirs click event should be called', () => {
-    const wrapper = mount(<Shell { ...props }>test</Shell>);
+    const wrapper = mount(<Shell {...props}>test</Shell>);
 
     wrapper.find('i').at(0).simulate('mousedown');
     expect(props.onDelete.mock.calls.length).toBe(1);
@@ -54,7 +54,7 @@ describe('Shell', () => {
   it('when showTitle is false, title should be hidden', () => {
     const demo = (
       <Shell
-        { ...Object.assign({}, props, { showTitle: false }) }
+        {...Object.assign({}, props, { showTitle: false })}
       >test</Shell>
     );
     const wrapper = mount(demo);
@@ -65,7 +65,7 @@ describe('Shell', () => {
   it('when add button is clicked, its click event should be called', () => {
     const demo = (
       <Shell
-        { ...Object.assign({}, props, { type: 'add' }) }
+        {...Object.assign({}, props, { type: 'add' })}
       >test</Shell>
     );
     const wrapper = shallow(demo);

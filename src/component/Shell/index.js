@@ -48,7 +48,7 @@ export default class Shell extends Component {
 
 	// 阻止react-grid-layout的拖拽事件在点击时生效
 	preventBubble = e => {
-	  if(e.stopPropagation) {
+	  if (e.stopPropagation) {
 	    e.stopPropagation();
 	  } else {
 	    e.cancelBubble = true;
@@ -72,7 +72,7 @@ export default class Shell extends Component {
 	    <Icon
 	      type='edit'
 	      className='operation'
-	      onMouseDown={ this.handleOnEdit }
+	      onMouseDown={this.handleOnEdit}
 	      style={{ right: 40 }}
 	    />
 	  );
@@ -80,7 +80,7 @@ export default class Shell extends Component {
 	    <Icon
 	      type='delete'
 	      className='operation'
-	      onMouseDown={ this.handleOnDelete }
+	      onMouseDown={this.handleOnDelete}
 	      style={{ right: 10 }}
 	    />
 	  );
@@ -88,7 +88,7 @@ export default class Shell extends Component {
 	    <Icon
 	      type='small-dash'
 	      className='operation'
-	      onMouseDown={ this.handleOnDetail }
+	      onMouseDown={this.handleOnDetail}
 	      style={{ right: 10, fontSize: '2vw' }}
 	    />
 	  );
@@ -108,29 +108,29 @@ export default class Shell extends Component {
 
 	  return (
 	    <div
-	      { ...newProps }
-	      style={ Object.assign({}, {
+	      {...newProps}
+	      style={Object.assign({}, {
 	        overflow: showEdit ? 'hidden' : 'auto'
-	      }, style) }
-	      className={ `Shell${ type != 'component' ?
+	      }, style)}
+	      className={`Shell${type != 'component' ?
 	        ' border-transition' :
-	        '' }`
+	        ''}`
 	      }
-	      onClick={ e => type == 'add' && onAdd && onAdd(e) }
+	      onClick={e => type == 'add' && onAdd && onAdd(e)}
 	    >
-	      { showDelete && deleteButton }
+	      {showDelete && deleteButton}
 
-	      { showEdit && editButton }
+	      {showEdit && editButton}
 
-	      { showDetail && detailButton }
+	      {showDetail && detailButton}
 
 	      {
 	        type != 'add' &&
 					showTitle &&
-					<span className='operation-title'>{ title }</span>
+					<span className='operation-title'>{title}</span>
 	      }
 
-	      { children }
+	      {children}
 	    </div>
 	  );
 	}

@@ -5,7 +5,7 @@ import Navigation from '..';
 describe('Navigation', () => {
   it('render correctly', () => {
     const wrapper = mount(
-      <Navigation datas={ [] }>test</Navigation>
+      <Navigation datas={[]}>test</Navigation>
     );
 
     expect(wrapper).toMatchSnapshot();
@@ -23,8 +23,8 @@ describe('Navigation', () => {
 
     const demo = (
       <Navigation
-        datas={ datas }
-        onClick={ onClick }
+        datas={datas}
+        onClick={onClick}
       >test</Navigation>
     );
     const wrapper = mount(demo);

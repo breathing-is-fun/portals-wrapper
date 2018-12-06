@@ -1,96 +1,96 @@
 export default class Store {
-	constructor (name, defaults) {
-		this.name = name;
+  constructor (name, defaults) {
+    this.name = name;
 
-		if (defaults !== undefined) {
-			for (let key in defaults) {
-				if (defaults.hasOwnProperty(key) && this.get(key) === undefined) {
-					this.set(key, defaults[key]);
-				}
-			}
-		}
+    if (defaults !== undefined) {
+      for (let key in defaults) {
+        if (defaults.hasOwnProperty(key) && this.get(key) === undefined) {
+          this.set(key, defaults[key]);
+        }
+      }
+    }
+  }
+
+	get = (propsName) => {
+	  let name = 'store.' + this.name + '.' + propsName;
+
+	  if (localStorage.getItem(name) === null) {
+	    return undefined;
+	  }
+
+	  try {
+	    return JSON.parse(localStorage.getItem(name));
+	  } catch (e) {
+	    return null;
+	  }
 	}
 
-    get = (propsName) => {
-    	let name = 'store.' + this.name + '.' + propsName;
+	set = (name, value) => {
+	  if (value === undefined) {
+	    this.remove(name);
+	  } else {
+	    if (typeof value === 'function') {
+	      value = null;
+	    } else {
+	      try {
+	        value = JSON.stringify(value);
+	      } catch (e) {
+	        value = null;
+	      }
+	    }
 
-    	if (localStorage.getItem(name) === null) {
-    		return undefined;
-    	}
+	    localStorage.setItem('store.' + this.name + '.' + name, value);
+	  }
 
-    	try {
-    		return JSON.parse(localStorage.getItem(name));
-    	} catch (e) {
-    		return null;
-    	}
-    }
+	  return this;
+	}
 
-    set = (name, value) => {
-    	if (value === undefined) {
-    		this.remove(name);
-    	} else {
-    		if (typeof value === 'function') {
-    			value = null;
-    		} else {
-    			try {
-    				value = JSON.stringify(value);
-    			} catch (e) {
-    				value = null;
-    			}
-    		}
+	remove = name => {
+	  localStorage.removeItem('store.' + this.name + '.' + name);
 
-    		localStorage.setItem('store.' + this.name + '.' + name, value);
-    	}
+	  return this;
+	}
 
-    	return this;
-    }
+	removeAll = () => {
+	  let name = 'store.' + this.name + '.';
 
-    remove = name => {
-    	localStorage.removeItem('store.' + this.name + '.' + name);
+	  for (let i = (localStorage.length - 1); i >= 0; i--) {
+	    if (localStorage.key(i).substring(0, name.length) === name) {
+	      localStorage.removeItem(localStorage.key(i));
+	    }
+	  }
 
-    	return this;
-    }
+	  return this;
+	}
 
-    removeAll = () => {
-    	let name = 'store.' + this.name + '.';
+	toObject = () => {
+	  let values = {}, key, value;
 
-    	for (let i = (localStorage.length - 1); i >= 0; i--) {
-    		if (localStorage.key(i).substring(0, name.length) === name) {
-    			localStorage.removeItem(localStorage.key(i));
-    		}
-    	}
+	  let name = 'store.' + this.name + '.';
 
-    	return this;
-    }
+	  for (let i = (localStorage.length - 1); i >= 0; i--) {
+	    if (localStorage.key(i).substring(0, name.length) === name) {
+	      key = localStorage.key(i).substring(name.length);
+	      value = this.get(key);
+	      if (value !== undefined) {
+	        values[key] = value;
+	      }
+	    }
+	  }
 
-    toObject = () => {
-    	let values = {}, key, value;
+	  return values;
+	}
 
-    	let name = 'store.' + this.name + '.';
+	fromObject = (values, merge) => {
+	  if (merge !== true) {
+	    this.removeAll();
+	  }
+	  for (let key in values) {
+	    if (values.hasOwnProperty(key)) {
+	      this.set(key, values[key]);
+	    }
+	  }
 
-    	for (let i = (localStorage.length - 1); i >= 0; i--) {
-    		if (localStorage.key(i).substring(0, name.length) === name) {
-    			key = localStorage.key(i).substring(name.length);
-    			value = this.get(key);
-    			if (value !== undefined) {
-    				values[key] = value;
-    			}
-    		}
-    	}
-
-    	return values;
-    }
-
-    fromObject = (values, merge) => {
-    	if (merge !== true) {
-    		this.removeAll();
-    	}
-    	for (let key in values) {
-    		if (values.hasOwnProperty(key)) {
-    			this.set(key, values[key]);
-    		}
-    	}
-
-    	return this;
-    }
+	  return this;
+	}
 }

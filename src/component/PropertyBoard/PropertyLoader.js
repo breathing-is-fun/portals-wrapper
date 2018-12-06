@@ -10,11 +10,11 @@ export default class PropertyLoader {
 	  let result = [];
 	  const styleKeys = Object.keys(style);
 
-	  for(let styleKey of styleKeys) {
-	    for(let item of enumDatas) {
+	  for (let styleKey of styleKeys) {
+	    for (let item of enumDatas) {
 	      const { text, key, isStyle = true } = item;
 
-	      if(key == styleKey) {
+	      if (key == styleKey) {
 	        result.push({
 	          text,
 	          key,

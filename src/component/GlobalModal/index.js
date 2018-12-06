@@ -29,7 +29,7 @@ export default class GlobalModal extends Component {
       enumerable: true,
       configurable: true,
       set: value => {
-        if(!value.visible) {
+        if (!value.visible) {
           return value;
         }
 

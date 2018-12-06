@@ -11,21 +11,21 @@ export default class CurrentTime extends Component {
     };
   }
 
-    componentDidMount = () => {
-    	this.getCurrentTime();
-    }
+  componentDidMount = () => {
+    this.getCurrentTime();
+  }
 
-    getCurrentTime = () => {
-    	setInterval(() => {
-    		this.setState({ time: moment().format('HH:mm:ss') });
-    	}, 1000);
-    }
+  getCurrentTime = () => {
+    setInterval(() => {
+      this.setState({ time: moment().format('HH:mm:ss') });
+    }, 1000);
+  }
 
-    render = () => {
-    	const { time } = this.state;
+  render = () => {
+    const { time } = this.state;
 
-    	return (
-    		<div className='CurrentTime'>{ time }</div>
-    	);
-    }
+    return (
+      <div className='CurrentTime'>{time}</div>
+    );
+  }
 }

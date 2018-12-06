@@ -39,7 +39,7 @@ export const ajax = ({
 
   realParams = getRealParams(realUrl, data, fix);
 
-  if(method != 'GET') {
+  if (method != 'GET') {
     postParam = {
       body: JSON.stringify(data),
       method,
@@ -56,7 +56,7 @@ export const ajax = ({
 };
 
 export const checkMethod = method => {
-  if(!method) {
+  if (!method) {
     console.error('fetch method is undefined.');
 
     return;
@@ -74,7 +74,7 @@ export const checkMethod = method => {
 };
 
 export const checkType = type => {
-  if(!type) {
+  if (!type) {
     console.error('fetch type is undefined.');
 
     return;
@@ -92,14 +92,14 @@ export const checkType = type => {
 };
 
 export const getRealParams = (url, data, fixStr) => {
-  if(!url || !data) {
+  if (!url || !data) {
     return '';
   }
 
   let fix = url.includes('?') ? fixStr : '?';
   let result = serialize(data, fixStr);
 
-  if(result) {
+  if (result) {
     return fix + result;
   }
 
@@ -107,18 +107,18 @@ export const getRealParams = (url, data, fixStr) => {
 };
 
 export const serialize = (data, fixStr) => {
-  if(!data || Object.keys(data).lenght == 0 || data instanceof Array) {
+  if (!data || Object.keys(data).lenght == 0 || data instanceof Array) {
     return '';
   }
 
-  if(typeof data == 'string') {
+  if (typeof data == 'string') {
     return data;
   }
 
   let paramStr = '';
 
-  for(let key in data) {
-    paramStr += `${ key }=${ data[key] }${ fixStr }`;
+  for (let key in data) {
+    paramStr += `${key}=${data[key]}${fixStr}`;
   }
 
   paramStr = paramStr.substr(0, paramStr.length - (fixStr == '&' ? 1 : 3));
@@ -141,7 +141,7 @@ export const getRealUrl = (key, path, proxy, isProxy) => {
     return;
   }
 
-  if(proxy && isProxy) {
+  if (proxy && isProxy) {
     realUrl = proxy + realUrl;
   }
 

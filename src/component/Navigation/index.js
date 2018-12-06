@@ -25,9 +25,9 @@ export default class Navigation extends Component {
 	  };
 	}
 
-    componentDidMount = () => {
-    	this.props.clock && this.loadCurrentTime();
-    }
+	componentDidMount = () => {
+	  this.props.clock && this.loadCurrentTime();
+	}
 
 	loadCurrentTime = () => {
 		import('./CurrentTime')
@@ -51,10 +51,10 @@ export default class Navigation extends Component {
 	  const date = (
 	    <div className='content-wrapper'>
 	      <div className='content-time-detail'>
-	        { moment().format('YYYY-MM-DD') }
+	        {moment().format('YYYY-MM-DD')}
 	      </div>
 	      <div className='content-time-detail'>
-	        { moment().format('dddd') }
+	        {moment().format('dddd')}
 	      </div>
 	    </div>
 	  );
@@ -67,10 +67,10 @@ export default class Navigation extends Component {
 
 	          return (
 	            <Menu.Item
-	              key={ id }
-	              onClick={ e => onClick(item) }
+	              key={id}
+	              onClick={e => onClick(item)}
 	            >
-	              <a rel='noopener noreferrer'>{ title }</a>
+	              <a rel='noopener noreferrer'>{title}</a>
 	            </Menu.Item>
 	          );
 	        })
@@ -85,32 +85,32 @@ export default class Navigation extends Component {
 	          className='content-wrapper'
 	          style={{ width: 300 }}
 	        >
-	          { title }
+	          {title}
 	        </div>
 
 	        <div className='content-wrapper' style={{ width: 300 }}>
 	          <div className='content-time'>
-	            { CurrentTime && <CurrentTime /> }
+	            {CurrentTime && <CurrentTime />}
 	          </div>
 	        </div>
 
-	        { clock && date }
+	        {clock && date}
 
 	        <div
 	          className='content-wrapper content-switch'
 	        >
 	          <Dropdown
-	            overlay={ switchMeal }
-	            trigger={ ['hover', 'click'] }
-	            onVisibleChange={ this.handleIconType }
-	            visible={ dropDownVisible }
+	            overlay={switchMeal}
+	            trigger={['hover', 'click']}
+	            onVisibleChange={this.handleIconType}
+	            visible={dropDownVisible}
 	          >
 	            <span className='droplink'>
 								套餐切换
 	              <Icon
 	                type='down'
 	                style={{
-	                  transform: `rotate(${ iconRotate }deg)`,
+	                  transform: `rotate(${iconRotate}deg)`,
 	                }}
 	                className='droplink-icon'
 	              />
@@ -123,7 +123,7 @@ export default class Navigation extends Component {
 	        className='children-wrapper'
 	        style={{ height: (document.body.clientHeight - 65) }}
 	      >
-	        { children }
+	        {children}
 	      </div>
 	    </div>
 	  );

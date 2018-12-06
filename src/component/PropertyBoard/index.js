@@ -24,12 +24,12 @@ export default class PropertyBoard extends Component {
 	  enumDatas: [],
 	}
 
-    componentDidMount = () => {
-    	this.loadPropertyDatas(this.props.visible);
-    }
+	componentDidMount = () => {
+	  this.loadPropertyDatas(this.props.visible);
+	}
 
 	loadPropertyDatas = visible => {
-	  if(visible) {
+	  if (visible) {
 	    const { shellStyleDatas, enumDatas } = this.props;
 	    const { i: key, style } = shellStyleDatas;
 
@@ -56,14 +56,14 @@ export default class PropertyBoard extends Component {
 	    const { key, text, value, id } = item;
 
 	    return (
-	      <li key={ `property-li-${ key }` }>
-	        <div className='property-key'>{ text }：</div>
+	      <li key={`property-li-${key}`}>
+	        <div className='property-key'>{text}：</div>
 	        <div className='property-value'>
 	          <Input
-	            onBlur={ e => {
+	            onBlur={e => {
 	              this.handleInput(e.target.value, key, id);
-	            } }
-	            defaultValue={ value }
+	            }}
+	            defaultValue={value}
 	          />
 	        </div>
 	      </li>
@@ -71,35 +71,35 @@ export default class PropertyBoard extends Component {
 	  })
 	)
 
-    render = () => {
-    	const { visible, onClose, shellStyleDatas } = this.props;
-    	const { title } = shellStyleDatas;
-    	const { propertyDatas } = this.state;
+	render = () => {
+	  const { visible, onClose, shellStyleDatas } = this.props;
+	  const { title } = shellStyleDatas;
+	  const { propertyDatas } = this.state;
 
-    	const drawerTitle = (
-    		<div>
-    			<Icon type='form' theme='outlined' />
-    			<span style={{ paddingLeft: 10 }}>{ `${ title } 外壳属性修改` }</span>
-    		</div>
-    	);
+	  const drawerTitle = (
+	    <div>
+	      <Icon type='form' theme='outlined' />
+	      <span style={{ paddingLeft: 10 }}>{`${title} 外壳属性修改`}</span>
+	    </div>
+	  );
 
-    	return (
-    		<div className='PropertyBoard'>
-    			<Drawer
-    				visible={ visible }
-    				className='PropertyBoard'
-    				onClose={ () => onClose && onClose(!visible) }
-    				title={ drawerTitle }
-    				width='20%'
-    				destroyOnClose
-    			>
-    				<ul className='property-wrapper'>
-    					{ this.generateProperties(propertyDatas) }
-    				</ul>
-    			</Drawer>
-    		</div>
-    	);
-    }
+	  return (
+	    <div className='PropertyBoard'>
+	      <Drawer
+	        visible={visible}
+	        className='PropertyBoard'
+	        onClose={() => onClose && onClose(!visible)}
+	        title={drawerTitle}
+	        width='20%'
+	        destroyOnClose
+	      >
+	        <ul className='property-wrapper'>
+	          {this.generateProperties(propertyDatas)}
+	        </ul>
+	      </Drawer>
+	    </div>
+	  );
+	}
 }
 
 PropertyBoard.propTypes = {

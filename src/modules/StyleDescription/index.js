@@ -16,9 +16,9 @@ export default class StyleDescription extends Component {
     };
   }
 
-    componentDidMount = () => {
-    	this.loadMenuDatas();
-    }
+	componentDidMount = () => {
+	  this.loadMenuDatas();
+	}
 
 	loadMenuDatas = () => {
 	  ajax({
@@ -44,11 +44,11 @@ export default class StyleDescription extends Component {
 	  return (
 	    <div className='StyleDescription'>
 	      <LoadMenu
-	        onClick={ this.handleMenuClick }
-	        menuDatas={ menuDatas }
-	        selectedKey={ selectedKey }
+	        onClick={this.handleMenuClick}
+	        menuDatas={menuDatas}
+	        selectedKey={selectedKey}
 	      >
-	        <RenderHtml paths={ paths } />
+	        <RenderHtml paths={paths} />
 	      </LoadMenu>
 	    </div>
 	  );

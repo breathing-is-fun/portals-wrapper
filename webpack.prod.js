@@ -41,6 +41,6 @@ const options = {
   module: commonModule
 };
 
-dev && webpack(options).watch({}, () => {});
+dev && webpack(options).watch({}, () => { });
 
 !dev && webpack(options).run();

@@ -31,12 +31,12 @@ export default class RenderHtml extends Component {
 
 	loadTemplate = (paths, index, markdowns, callback) => {
 	  ajax({
-	    url: `${ this.prefix }${ paths[index] }.html`,
+	    url: `${this.prefix}${paths[index]}.html`,
 	    type: 'text',
 	    success: markdown => {
 	      markdowns.push(markdown);
 
-	      if(index < paths.length - 1) {
+	      if (index < paths.length - 1) {
 	        this.loadTemplate(paths, ++index, markdowns, callback);
 	      } else {
 	        callback && callback(markdowns);
@@ -53,9 +53,9 @@ export default class RenderHtml extends Component {
 	      {
 	        markdowns.map((item, i) => (
 	          <ReactMarkdown
-	            source={ item }
-	            escapeHtml={ false }
-	            key={ `mark-item-${ i }` }
+	            source={item}
+	            escapeHtml={false}
+	            key={`mark-item-${i}`}
 	          />
 	        ))
 	      }

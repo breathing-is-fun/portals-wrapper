@@ -22,18 +22,18 @@ export default class Display extends Component {
     };
   }
 
-    componentDidMount = () => {
-    	this.validateTicket(() => this.loadMenu());
+	componentDidMount = () => {
+	  this.validateTicket(() => this.loadMenu());
 
-    	window.onresize = () => {
-    		this.setState({});
-    	};
-    }
+	  window.onresize = () => {
+	    this.setState({});
+	  };
+	}
 
 	validateTicket = callback => {
 	  const ticket = this.getParams('ticket');
 
-	  if(!ticket) {
+	  if (!ticket) {
 	    message.error('ticket is null.');
 	    return;
 	  }
@@ -50,16 +50,16 @@ export default class Display extends Component {
 	}
 
 	getParams = name => {
-    	let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+	  let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
 	  let result = window.location.href.split('?').length > 1 ?
 	    window.location.href.split('?')[1].match(reg) :
 	    0;
 
-    	if (result != null) {
-    		return result[2] === 'undefined' ? undefined : result[2];
-    	}
+	  if (result != null) {
+	    return result[2] === 'undefined' ? undefined : result[2];
+	  }
 
-    	return null;
+	  return null;
 	}
 
 	loadLayout = id => {
@@ -71,10 +71,10 @@ export default class Display extends Component {
 	    success: ({ data: result }) => {
 	      let layout = [];
 
-	      for(let item of result) {
+	      for (let item of result) {
 	        let { style } = item;
 
-	        if(typeof style == 'string') {
+	        if (typeof style == 'string') {
 	          item.style = JSON.parse(style);
 	        }
 
@@ -110,7 +110,7 @@ export default class Display extends Component {
 	    style: { top: 65 },
 	    content: (
 	      <iframe
-	        src={ detailPath }
+	        src={detailPath}
 	        style={{
 	          border: 'none',
 	          width: '100%',
@@ -120,29 +120,29 @@ export default class Display extends Component {
 	  };
 	}
 
-    render = () => {
-    	const { layout, menuDatas, loading } = this.state;
+	render = () => {
+	  const { layout, menuDatas, loading } = this.state;
 
-    	const title = SCTool.listener.get('systemTitle');
+	  const title = SCTool.listener.get('systemTitle');
 
-    	return (
-    		<Navigation
-    			onClick={ ({ id }) => this.loadLayout(id) }
-    			datas={ menuDatas }
-    			clock
-    			title={ title }
-    		>
-    			{
-    				!loading &&
-						<Grid
-    					showEdit={ false }
-    					showDelete={ false }
-						  layout={ layout }
-						  onDetail={ this.handleOnDetail }
-    					ref={ ref => ref && (this.grid = ref) }
-    				/>
-    			}
-    		</Navigation>
-    	);
-    }
+	  return (
+	    <Navigation
+	      onClick={({ id }) => this.loadLayout(id)}
+	      datas={menuDatas}
+	      clock
+	      title={title}
+	    >
+	      {
+	        !loading &&
+					<Grid
+					  showEdit={false}
+					  showDelete={false}
+					  layout={layout}
+					  onDetail={this.handleOnDetail}
+					  ref={ref => ref && (this.grid = ref)}
+					/>
+	      }
+	    </Navigation>
+	  );
+	}
 }

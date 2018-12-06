@@ -53,7 +53,7 @@ export default class ModuleEdit extends Component {
 	      this.setState({
 	        menuDatas,
 	        openKeys: [group],
-	        selectedKeys:  [group + id]
+	        selectedKeys: [group + id]
 	      }, () => this.loadLayoutDatas(1));
 	    },
 	  });
@@ -70,32 +70,32 @@ export default class ModuleEdit extends Component {
 	  });
 	}
 
-    render = () => {
-    	const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
+	render = () => {
+	  const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
 
-    	const draggableMenuProps = {
-    		selectedKeys, menuDatas, openKeys,
-    		type: 'module',
-    		onClick: this.handleMenuClick,
-    		onOpenChange: this.handleOnOpenChange,
-    	};
+	  const draggableMenuProps = {
+	    selectedKeys, menuDatas, openKeys,
+	    type: 'module',
+	    onClick: this.handleMenuClick,
+	    onOpenChange: this.handleOnOpenChange,
+	  };
 
-    	return (
-    		// <Navigation type='moduleEdit'>
-    			<Layout style={{ minHeight: '100vh' }}>
-    				<Sider theme='light' width='256'>
-    					<DraggableMenu { ...draggableMenuProps } />
-    				</Sider>
+	  return (
+	  // <Navigation type='moduleEdit'>
+	    <Layout style={{ minHeight: '100vh' }}>
+	      <Sider theme='light' width='256'>
+	        <DraggableMenu {...draggableMenuProps} />
+	      </Sider>
 
-    				<Layout>
-    					<ModuleLayout
-    					layout={ layout }
-    					onDelete={ this.handleMealOnDelete }
-    					isAll={ isAll }
-    				/>
-    				</Layout>
-    			</Layout>
-    		// </Navigation>
-    	);
-    }
+	      <Layout>
+	        <ModuleLayout
+	          layout={layout}
+	          onDelete={this.handleMealOnDelete}
+	          isAll={isAll}
+	        />
+	      </Layout>
+	    </Layout>
+	  // </Navigation>
+	  );
+	}
 }

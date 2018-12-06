@@ -17,13 +17,13 @@ new Store(null, store => {
   window.SCTool.store = store;
   window.SCTool.listener = new GlobalListener(MOUNT_NODE);
 
-  for(let key in store.get('meta')) {
+  for (let key in store.get('meta')) {
     window.SCTool.listener.set(key, store.get('meta')[key]);
   }
 
   ReactDOM.render((
     <div>
-      <GlobalModal on={ window.SCTool } />
+      <GlobalModal on={window.SCTool} />
       <Router />
     </div>
   ), MOUNT_NODE);

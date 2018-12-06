@@ -25,23 +25,20 @@ export default class ComponentEdit extends Component {
   }
 
 	componentWillMount = () => {
-	  const { moduleToComponent } = window['_acrossDatas'];
-	  const { data = {} } = moduleToComponent;
-
-	  if(SCTool.listener.get('formData').length == 0) {
+	  if (SCTool.listener.get('formData').length == 0) {
 	    location.hash = '/edit/module';
 	  }
 	}
 
-    componentDidMount = () => {
-    	this.loadMenuDatas();
+	componentDidMount = () => {
+	  this.loadMenuDatas();
 
-    	this.loadPropertyBoardData();
+	  this.loadPropertyBoardData();
 
-    	window.onresize = () => {
-    		this.setState({});
-    	};
-    }
+	  window.onresize = () => {
+	    this.setState({});
+	  };
+	}
 
 	loadPropertyBoardData = () => {
 	  ajax({
@@ -63,7 +60,7 @@ export default class ComponentEdit extends Component {
 	      this.setState({
 	        menuDatas,
 	        openKeys: [group],
-	        selectedKeys:  [group + id]
+	        selectedKeys: [group + id]
 	      }, () => this.loadLayoutDatas());
 	    },
 	  });
@@ -78,10 +75,10 @@ export default class ComponentEdit extends Component {
 	    success: ({ data: result }) => {
 	      let layout = [];
 
-	      for(let item of result) {
+	      for (let item of result) {
 	        let { style } = item;
 
-	        if(typeof style == 'string') {
+	        if (typeof style == 'string') {
 	          item.style = JSON.parse(style);
 	        }
 
@@ -113,7 +110,7 @@ export default class ComponentEdit extends Component {
 	    method: 'POST',
 	    data: postData,
 	    success: result => {
-	      if(result) {
+	      if (result) {
 
 	      } else {
 	        console.error(result);
@@ -153,8 +150,8 @@ export default class ComponentEdit extends Component {
 	  } = this.state;
 
 	  const draggableMenuProps = {
-    		selectedKeys, menuDatas, openKeys,
-    		onClick: this.handleMenuClick,
+	    selectedKeys, menuDatas, openKeys,
+	    onClick: this.handleMenuClick,
 	    onOpenChange: this.handleOnOpenChange,
 	    shellStyleDatas,
 	    onSave: this.handleOnSave,
@@ -179,12 +176,12 @@ export default class ComponentEdit extends Component {
 	      }}
 	    >
 	      <Sider theme='light' width='256'>
-	        <DraggableMenu { ...draggableMenuProps } />
+	        <DraggableMenu {...draggableMenuProps} />
 	      </Sider>
 
 	      <Layout style={{ position: 'relative' }}>
 	        <Ruler>
-	          <Grid { ...gridProps } />
+	          <Grid {...gridProps} />
 	        </Ruler>
 	      </Layout>
 	    </Layout>

@@ -8,7 +8,7 @@ import { ajax } from '../../urlHelper';
 import { handleMenuGroup } from '../../component/DraggableMenu/handler';
 
 const egUrl = '请输入像url的地址，' +
-'比如http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg';
+	'比如http://47.95.1.229:9003/UploadFile/201808/41509923_0.jpg';
 
 class PropertyForm extends Component {
   constructor (props) {
@@ -19,11 +19,11 @@ class PropertyForm extends Component {
     };
   }
 
-    componentDidMount = () => {
-    	this.setDefaultValueOfInput();
+	componentDidMount = () => {
+	  this.setDefaultValueOfInput();
 
-    	this.loadDepartDatas();
-    }
+	  this.loadDepartDatas();
+	}
 
 	loadDepartDatas = () => {
 	  ajax({
@@ -35,10 +35,10 @@ class PropertyForm extends Component {
 	      // hack. Need to modify
 	      // function selectGroup in /DraggableMenu/handler.js
 	      // 修改参数名， group => value, groupName => title
-	      for(let item of departmentDatas) {
+	      for (let item of departmentDatas) {
 	        const { group, groupName, key, children, id } = item;
 
-	        if(group != 'all') {
+	        if (group != 'all') {
 	          newDepart.push({
 	            title: groupName,
 	            value: id,
@@ -55,7 +55,7 @@ class PropertyForm extends Component {
 	setDefaultValueOfInput = () => {
 	  const { form, currentModalItem } = this.props;
 	  const { title, imgurl } = currentModalItem;
-    	const { setFields } = form;
+	  const { setFields } = form;
 
 	  // hack, need to filter the params of currentModalItem
 	  setFields({
@@ -91,82 +91,83 @@ class PropertyForm extends Component {
 	  return Object.keys(fieldsError).some(field => fieldsError[field]);
 	}
 
-    render = () => {
-    	const { departmentDatas } = this.state;
-    	const { form } = this.props;
-    	const { getFieldDecorator, getFieldsError, resetFields } = form;
+	render = () => {
+	  const { departmentDatas } = this.state;
+	  const { form } = this.props;
+	  const { getFieldDecorator, getFieldsError, resetFields } = form;
 
-    	const formItemLayout = {
-    		labelCol: {
-    			xs: { span: 24 },
-    			sm: { span: 6 },
-    		},
-    		wrapperCol: {
-    			xs: { span: 24 },
-    			sm: { span: 16 },
-    		},
-    	};
+	  const formItemLayout = {
+	    labelCol: {
+	      xs: { span: 24 },
+	      sm: { span: 6 },
+	    },
+	    wrapperCol: {
+	      xs: { span: 24 },
+	      sm: { span: 16 },
+	    },
+	  };
 
-    	const treeSelectProps = {
-    		dropdownStyle: { overflow: 'auto' },
-    		allowClear: true,
-    		multiple: true,
-    		treeCheckable: true,
-    		treeDefaultExpandAll: true,
-    		treeData: departmentDatas,
-    	};
+	  const treeSelectProps = {
+	    dropdownStyle: { overflow: 'auto' },
+	    allowClear: true,
+	    multiple: true,
+	    treeCheckable: true,
+	    treeDefaultExpandAll: true,
+	    treeData: departmentDatas,
+	  };
 
-    	const buttonGroup = (
-    		<Row>
-    			<Col span={ 22 } style={{ textAlign: 'right' }}>
-    				<Button onClick={ () => resetFields() }>重置</Button>
-    				<Button
-    					type='primary'
-    					style={{ marginLeft: 8 }}
-    					disabled={ this.hasErrors(getFieldsError()) }
-    					onClick={ this.handleSubmit }
-    				>确定</Button>
-    			</Col>
-    		</Row>
-    	);
+	  const buttonGroup = (
+	    <Row>
+	      <Col span={22} style={{ textAlign: 'right' }}>
+	        <Button onClick={() => resetFields()}>重置</Button>
+	        <Button
+	          type='primary'
+	          style={{ marginLeft: 8 }}
+	          disabled={this.hasErrors(getFieldsError())}
+	          onClick={this.handleSubmit}
+	        >确定</Button>
+	      </Col>
+	    </Row>
+	  );
 
-    	return (
-    		<div className='PropertyForm'>
-    			<Form>
-    				<FormItem { ...formItemLayout } label='标题'>
-    					{
-    						getFieldDecorator('title', {
-    							rules: [{ required: true, message: '请输入标题' }],
-    						})(<Input />)
-    					}
-    				</FormItem>
+	  return (
+	    <div className='PropertyForm'>
+	      <Form>
+	        <FormItem {...formItemLayout} label='标题'>
+	          {
+	            getFieldDecorator('title', {
+	              rules: [{ required: true, message: '请输入标题' }],
+	            })(<Input />)
+	          }
+	        </FormItem>
 
-    				<FormItem { ...formItemLayout } label='缩略图地址'>
-    					{
-    						getFieldDecorator('imgurl', {
-    							rules: [{
-    								required: true,
-    								message: egUrl,
-    								type: 'url' }],
-    						})(<Input />)
-    					}
-    				</FormItem>
+	        <FormItem {...formItemLayout} label='缩略图地址'>
+	          {
+	            getFieldDecorator('imgurl', {
+	              rules: [{
+	                required: true,
+	                message: egUrl,
+	                type: 'url'
+	              }],
+	            })(<Input />)
+	          }
+	        </FormItem>
 
-    				<FormItem { ...formItemLayout } label='人员权限'>
-    					{
-    						getFieldDecorator('department', {
-    							rules: [{ required: true, message: '请勾上至少一个' }],
-    						})(<TreeSelect { ...treeSelectProps } />)
-    					}
-    				</FormItem>
+	        <FormItem {...formItemLayout} label='人员权限'>
+	          {
+	            getFieldDecorator('department', {
+	              rules: [{ required: true, message: '请勾上至少一个' }],
+	            })(<TreeSelect {...treeSelectProps} />)
+	          }
+	        </FormItem>
 
-    				<FormItem>
-    					{ buttonGroup }
-    				</FormItem>
-    			</Form>
-    		</div>
-    	);
-    }
+	        <FormItem>
+	          {buttonGroup}
+	        </FormItem>
+	      </Form>
+	    </div>
+	  );
+	}
 }
 
 export default Form.create()(PropertyForm);

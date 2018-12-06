@@ -10,7 +10,7 @@ describe('Ruler', () => {
   });
 
   it('padding should work', () => {
-    const wrapper = mount(<Ruler padding={ 20 }>test</Ruler>);
+    const wrapper = mount(<Ruler padding={20}>test</Ruler>);
 
     expect(wrapper).toMatchSnapshot();
   });

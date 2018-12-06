@@ -5,28 +5,28 @@ export default class GlobalListener {
     this.meta = {};
   }
 
-    on = (key, callback) => {
-    	let targetListener = this.listeners[key];
+	on = (key, callback) => {
+	  let targetListener = this.listeners[key];
 
-    	if(!targetListener) {
-    		this.root.addEventListener(key, ({ detail }) => {
-    			callback && callback(detail);
-    		});
+	  if (!targetListener) {
+	    this.root.addEventListener(key, ({ detail }) => {
+	      callback && callback(detail);
+	    });
 
-    		this.listeners[key] = {
-    			key,
-    			value: callback,
-    		};
-    	}
+	    this.listeners[key] = {
+	      key,
+	      value: callback,
+	    };
+	  }
 
-    	return this;
-    }
+	  return this;
+	}
 
-    do = (key, detail) => {
-    	this.root.dispatchEvent(new CustomEvent(key, { detail }));
+	do = (key, detail) => {
+	  this.root.dispatchEvent(new CustomEvent(key, { detail }));
 
-    	return this;
-    }
+	  return this;
+	}
 
 	set = (key, data) => {
 	  this.meta[key] = data;

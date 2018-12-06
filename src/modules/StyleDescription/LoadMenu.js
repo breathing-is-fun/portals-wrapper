@@ -19,10 +19,10 @@ export default class LoadMenu extends Component {
 
 	    return (
 	      <Menu.Item
-	        key={ ktemKey }
-	        onClick={ () => this.handleMenuClick(ktem, ktemKey) }
+	        key={ktemKey}
+	        onClick={() => this.handleMenuClick(ktem, ktemKey)}
 	      >
-	        { ketmText }
+	        {ketmText}
 	      </Menu.Item>
 	    );
 	  })
@@ -37,8 +37,8 @@ export default class LoadMenu extends Component {
 	    } = jtem;
 
 	    return (
-	      <ItemGroup key={ key } title={ text }>
-	        { this.generateItemGroups(children) }
+	      <ItemGroup key={key} title={text}>
+	        {this.generateItemGroups(children)}
 	      </ItemGroup>
 	    );
 	  })
@@ -53,13 +53,13 @@ export default class LoadMenu extends Component {
 	      children = [],
 	    } = item;
 
-	    if(type == 'item') {
+	    if (type == 'item') {
 	      const menuItem = (
 	        <Menu.Item
-	          key={ key }
-	          onClick={ () => this.handleMenuClick(item, key) }
+	          key={key}
+	          onClick={() => this.handleMenuClick(item, key)}
 	        >
-	          <span>{ text }</span>
+	          <span>{text}</span>
 	        </Menu.Item>
 	      );
 
@@ -67,49 +67,49 @@ export default class LoadMenu extends Component {
 	    }
 
 	    return (
-	      <SubMenu key={ key } title={ <span>{ text }</span> }>
-	        { this.generateSubMenu(children) }
+	      <SubMenu key={key} title={<span>{text}</span>}>
+	        {this.generateSubMenu(children)}
 	      </SubMenu>
 	    );
 	  })
 	)
 
-    render = () => {
-    	const { children, menuDatas, selectedKey } = this.props;
+	render = () => {
+	  const { children, menuDatas, selectedKey } = this.props;
 
-    	const menu = (
-    		<Menu
-    			selectedKeys={ [selectedKey] }
-    			mode='inline'
-    			forceSubMenuRender
-    		>
-    			{ this.generateMenuItems(menuDatas) }
-    		</Menu>
-    	);
+	  const menu = (
+	    <Menu
+	      selectedKeys={[selectedKey]}
+	      mode='inline'
+	      forceSubMenuRender
+	    >
+	      {this.generateMenuItems(menuDatas)}
+	    </Menu>
+	  );
 
-    	const footerText =
+	  const footerText =
 			'Poverty makes us meet,' +
 			'but later, only you come out of the closet...';
 
-    	return (
-    		<div className='LoadMenu'>
-    			<Layout style={{ minHeight: '100vh' }}>
-    				<Sider collapsible style={{ background: '#FFF' }}>
-    					{ menu }
-    				</Sider>
+	  return (
+	    <div className='LoadMenu'>
+	      <Layout style={{ minHeight: '100vh' }}>
+	        <Sider collapsible style={{ background: '#FFF' }}>
+	          {menu}
+	        </Sider>
 
-    				<Layout>
-    					<Content style={{ margin: 16 }}>
-    						{ children }
-    					</Content>
+	        <Layout>
+	          <Content style={{ margin: 16 }}>
+	            {children}
+	          </Content>
 
-    					<Footer style={{ textAlign: 'center' }}>
-    						<div>贫穷使我们相遇</div>
-    						<div>{ footerText }</div>
-    					</Footer>
-    				</Layout>
-    			</Layout>
-    		</div>
-    	);
-    }
+	          <Footer style={{ textAlign: 'center' }}>
+	            <div>贫穷使我们相遇</div>
+	            <div>{footerText}</div>
+	          </Footer>
+	        </Layout>
+	      </Layout>
+	    </div>
+	  );
+	}
 }

@@ -58,8 +58,8 @@ export default class ModuleLayout extends Component {
 	    const height = showTitle ? 'calc(100% - 21px)' : '100%';
 
 	    return (
-	      <Shell { ...shellProps }>
-	        <img src={ imgUrl } style={{
+	      <Shell {...shellProps}>
+	        <img src={imgUrl} style={{
 	          width: '100%',
 	          height,
 	        }} />
@@ -71,12 +71,12 @@ export default class ModuleLayout extends Component {
 	generateAddShell = shellStyle => (
 	  <Shell
 	    key='add'
-	    style={ Object.assign({}, shellStyle, {
+	    style={Object.assign({}, shellStyle, {
 	      display: 'flex',
 	      alignItems: 'center',
 	      justifyContent: 'center'
-	    }) } type='add'
-	    onAdd={ () => this.handleShellonEdit(true, {}) }
+	    })} type='add'
+	    onAdd={() => this.handleShellonEdit(true, {})}
 	  >
 	    <i className='plus-icon'>+</i>
 	  </Shell>
@@ -105,12 +105,12 @@ export default class ModuleLayout extends Component {
 
 	  return (
 	    <div className='ModuleLayout'>
-	      { this.generateEditShell(layout, shellStyle, isAll) }
+	      {this.generateEditShell(layout, shellStyle, isAll)}
 
-	      { this.generateAddShell(shellStyle) }
+	      {this.generateAddShell(shellStyle)}
 
-	      <Modal { ...modalProps }>
-	        <PropertyForm currentModalItem={ currentModalItem } />
+	      <Modal {...modalProps}>
+	        <PropertyForm currentModalItem={currentModalItem} />
 	      </Modal>
 	    </div>
 	  );
