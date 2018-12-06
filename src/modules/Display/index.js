@@ -134,11 +134,11 @@ export default class Display extends Component {
     		>
     			{
     				!loading &&
-					<Grid
+						<Grid
     					showEdit={ false }
     					showDelete={ false }
-					  layout={ layout }
-					  onDetail={ this.handleOnDetail }
+						  layout={ layout }
+						  onDetail={ this.handleOnDetail }
     					ref={ ref => ref && (this.grid = ref) }
     				/>
     			}
