@@ -25,15 +25,12 @@ export default class index extends Component {
 
     componentDidMount = () => {
     	let { showDatas, index } = this.state;
-    	const ticket = this.getParams('ticket');
+    	// const ticket = this.getParams('ticket');
 
-    	if(!window.SCTool) {
-    		window.SCTool = {};
-    	}
+    	// window.SCTool.ticket = ticket;
 
-    	window.SCTool.ticket = ticket;
-
-    	showDatas.push(`这是你要的ticket，请查收：${ ticket }`);
+			// showDatas.push(`这是你要的ticket，请查收：${ ticket }`);
+			showDatas.push('如果到现在页面还没加载完，请看看是不是网突然断了');
 
     	this.setState({ showDatas }, () => {
     		setTimeout(() => {
