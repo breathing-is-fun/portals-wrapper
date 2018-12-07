@@ -1,5 +1,5 @@
-var Demo = function (root, ticket) {
-  root.innerHTML = '<p>Hello World, ' + ticket + '</p>';
+var Demo = function (root, SCTool) {
+  root.innerHTML = '<p>Hello World, ' + SCTool.ticket + '</p>';
 };
 
 module.exports = Demo;

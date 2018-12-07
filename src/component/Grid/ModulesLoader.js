@@ -26,7 +26,7 @@ export default class ModulesLoader {
     this.roots = roots;
   }
 
-	load = () => {
+	load = tool => {
 	  let pathArr = [], newLayout = [];
 
 	  for (let item of this.layout) {
@@ -56,7 +56,7 @@ export default class ModulesLoader {
 
 	        const loadedModule = new TargetModule(
 	          this.roots[key],
-	          window.SCTool.ticket
+	          tool,
 	        );
 	        const { _moduleOnMount } = loadedModule;
 
