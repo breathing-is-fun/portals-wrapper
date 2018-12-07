@@ -17,7 +17,7 @@ npm install
 npm run build
 ```
 
-把需要加载的 [`插件`](#什么是插件) 放到 `dist/thirdModules` 下并部署到服务器上，比如本地的9000
+把需要加载的 [`插件`](#什么是插件) 放到 `dist/thirdModules` 下并部署到服务器上，比如本地的9099
   
 打开你的的浏览器访问 http://localhost:9099/#/edit/module
   
