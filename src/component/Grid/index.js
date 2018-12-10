@@ -38,7 +38,7 @@ export default class Grid extends Component {
 
 	  const loader = new Loader(layout, this.roots);
 
-	  loader.load(window.SCTool);
+	  loader.load(SCTool);
 	}
 
 	handleLayoutChange = layout => {

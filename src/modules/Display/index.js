@@ -24,10 +24,6 @@ export default class Display extends Component {
 
 	componentDidMount = () => {
 	  this.validateTicket(() => this.loadMenu());
-
-	  window.onresize = () => {
-	    this.setState({});
-	  };
 	}
 
 	validateTicket = callback => {
@@ -42,7 +38,7 @@ export default class Display extends Component {
 	    key: 'login-ticket',
 	    data: { ticket },
 	    success: ({ data }) => {
-	      window.SCTool.ticket = data;
+	      SCTool.ticket = data;
 
 	      callback && callback();
 	    },
@@ -102,7 +98,7 @@ export default class Display extends Component {
 	handleOnDetail = item => {
 	  const { title, detailpath: detailPath } = item;
 
-	  window.SCTool.modal = {
+	  SCTool.modal = {
 	    visible: true,
 	    title,
 	    mask: false,

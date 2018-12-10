@@ -25,7 +25,7 @@ export default class ComponentEdit extends Component {
   }
 
 	componentWillMount = () => {
-	  if (SCTool.listener.get('formData').length == 0) {
+	  if (!SCTool.listener.get('formData')) {
 	    location.hash = '/edit/module';
 	  }
 	}
@@ -34,10 +34,6 @@ export default class ComponentEdit extends Component {
 	  this.loadMenuDatas();
 
 	  this.loadPropertyBoardData();
-
-	  window.onresize = () => {
-	    this.setState({});
-	  };
 	}
 
 	loadPropertyBoardData = () => {
