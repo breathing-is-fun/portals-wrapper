@@ -106,6 +106,13 @@ export default class Shell extends Component {
 	    'onAdd',
 	  ]);
 
+	  if (window.SCTool) {
+	    SCTool.listener.set(newProps['data-grid'].i, {
+	      width: newProps.style.width,
+	      height: newProps.style.height,
+	    });
+	  }
+
 	  return (
 	    <div
 	      {...newProps}
