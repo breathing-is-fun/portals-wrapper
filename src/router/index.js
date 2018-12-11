@@ -1,7 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Login from '../modules/Login';
 const ComponentEdit = lazy(() => import('../modules/ComponentEdit'));
 const ModuleEdit = lazy(() => import('../modules/ModuleEdit'));
 const Display = lazy(() => import('../modules/Display'));
@@ -11,7 +10,7 @@ export default class Entry extends Component {
   render = () => {
     return (
       <Router>
-        <Suspense fallback={<Login />}>
+        <Suspense fallback={<div>加载中...</div>}>
           <Switch>
             <Route
               path='/edit/component'
