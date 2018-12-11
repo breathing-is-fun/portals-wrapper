@@ -14,7 +14,7 @@ const methods = ['GET', 'POST', 'PUT', 'DELETE'];
  * @param { params } 当需要设置header时可以用这个
  * @param { success } 请求结束时的回调
  * @param { fix } 使用代理时，被代理地址参数分隔符
- * @param { isProxy } 是否启用代理
+ * @param { isProxy } 是否启用代理，默认为 false
  * @param { error } 异常抛出
  */
 export const ajax = ({
@@ -26,7 +26,7 @@ export const ajax = ({
   success,
   params,
   fix = '&',
-  isProxy = true,
+  isProxy = false,
   error,
 }) => {
   let realUrl, realParams, postParam = {};
