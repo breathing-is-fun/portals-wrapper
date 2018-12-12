@@ -22,19 +22,22 @@ new Store(null, store => {
   // 分发 Grid 宽高
   window.onresize = e => {
     if (subscriber.length != 0) {
-      for (let item of subscriber) {
-        const { onResize, key } = item;
-        const { innerWidth, innerHeight } = e.target;
-        const { width, height } = SCTool.listener.get(key);
+      // onresize执行到这里时，Grid尚未渲染完成
+      setTimeout(() => {
+        for (let item of subscriber) {
+          const { onResize, key } = item;
+          const { innerWidth, innerHeight } = e.target;
+          const { width, height } = SCTool.listener.get(key);
 
-        onResize && onResize({
-          innerHeight,
-          innerWidth,
-          key,
-          width,
-          height,
-        });
-      }
+          onResize && onResize({
+            innerHeight,
+            innerWidth,
+            key,
+            width: parseFloat(width.replace('px', '')),
+            height: parseFloat(height.replace('px', '')),
+          });
+        }
+      }, 1);
     }
   };
 

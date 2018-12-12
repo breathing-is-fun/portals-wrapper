@@ -23,7 +23,8 @@ export default class Display extends Component {
   }
 
 	componentDidMount = () => {
-	  this.validateTicket(() => this.loadMenu());
+	  // this.validateTicket(() => this.loadMenu());
+	  this.loadMenu();
 	}
 
 	validateTicket = callback => {
