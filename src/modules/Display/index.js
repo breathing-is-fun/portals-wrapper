@@ -110,7 +110,7 @@ export default class Display extends Component {
 	        style={{
 	          border: 'none',
 	          width: '100%',
-	          height: document.body.clientHeight - 55 - 24 - 65,
+	          height: document.body.clientHeight - 55 - 65,
 	        }}></iframe>
 	    )
 	  };
