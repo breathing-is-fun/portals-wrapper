@@ -26,6 +26,7 @@ exports[`Grid render correctly 1`] = `
   }
   showDelete={false}
   showEdit={false}
+  size=""
 >
   <div
     className="Grid"
@@ -256,6 +257,7 @@ exports[`Grid render correctly 1`] = `
                 showDetail={false}
                 showEdit={false}
                 showTitle={false}
+                size=""
                 style={
                   Object {
                     "MozTransform": "translate(10px,10px)",
@@ -295,6 +297,7 @@ exports[`Grid render correctly 1`] = `
                     }
                   }
                   onClick={[Function]}
+                  size=""
                   style={
                     Object {
                       "MozTransform": "translate(10px,10px)",

@@ -4,6 +4,7 @@ exports[`Navigation render correctly 1`] = `
 <Navigation
   clock={false}
   datas={Array []}
+  size=""
   title=""
 >
   <div
@@ -341,7 +342,7 @@ exports[`Navigation render correctly 1`] = `
       className="children-wrapper"
       style={
         Object {
-          "height": -65,
+          "height": "-65px",
         }
       }
     >
