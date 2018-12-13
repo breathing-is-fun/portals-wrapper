@@ -19,19 +19,38 @@ new Store(null, store => {
   window.SCTool.store = store;
   window.SCTool.listener = new GlobalListener(MOUNT_NODE);
 
-  // 分发 Grid 宽高
   window.onresize = e => {
     if (subscriber.length != 0) {
-      // onresize执行到这里时，Grid尚未渲染完成
+      const {
+        innerWidth,
+        innerHeight,
+      } = e.target;
+      const {
+        clientWidth,
+        clientHeight,
+      } = document.documentElement || document.body;
+      const sizes = {
+        innerWidth,
+        innerHeight,
+        clientWidth,
+        clientHeight,
+      };
+
+      // 控制内部组件自适应
+      SCTool.listener.do('onResize', {
+        ...sizes,
+        size: clientWidth <= 1700 ? 'sm' : '',
+      });
+
+      // onresize 执行到这里时，Grid 渲染尚未完成
       setTimeout(() => {
         for (let item of subscriber) {
           const { onResize, key } = item;
-          const { innerWidth, innerHeight } = e.target;
           const { width, height } = SCTool.listener.get(key);
 
+          // 分发插件各自宽高
           onResize && onResize({
-            innerHeight,
-            innerWidth,
+            ...sizes,
             key,
             width: parseFloat(width.replace('px', '')),
             height: parseFloat(height.replace('px', '')),

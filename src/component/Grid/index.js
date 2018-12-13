@@ -31,6 +31,7 @@ export default class Grid extends Component {
 	  showDelete: false,
 	  layout: [],
 	  enumDatas: [],
+	  size: '',
 	}
 
 	mountRoots = () => {
@@ -156,7 +157,8 @@ export default class Grid extends Component {
 	    layout,
 	    onDelete,
 	    onDetail,
-	    enumDatas
+	    enumDatas,
+	    size,
 	  } = this.props;
 
 	  const layoutProps = {
@@ -221,6 +223,7 @@ export default class Grid extends Component {
 	              detailPath,
 	              showDetail,
 	              style,
+	              size,
 	              'data-grid': item,
 	              onEdit: dataGrid => {
 	                this.handleShellonEdit(dataGrid);
@@ -250,4 +253,5 @@ Grid.propTypes = {
   showDelete: PropTypes.bool,
   onDelete: PropTypes.func,
   onDetail: PropTypes.func,
+  size: PropTypes.string,
 };

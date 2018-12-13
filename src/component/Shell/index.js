@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Icon } from 'antd';
 import omit from 'omit.js';
@@ -66,6 +67,7 @@ export default class Shell extends Component {
 	    style,
 	    showDetail,
 	    title,
+	    size,
 	  } = this.props;
 
 	  const editButton = (
@@ -119,10 +121,10 @@ export default class Shell extends Component {
 	      style={Object.assign({}, {
 	        overflow: showEdit ? 'hidden' : 'auto'
 	      }, style)}
-	      className={`Shell${type != 'component' ?
-	        ' border-transition' :
-	        ''}`
-	      }
+	      className={classNames({
+	        Shell: true,
+	        'border-transition': type != 'component',
+	      })}
 	      onClick={e => type == 'add' && onAdd && onAdd(e)}
 	    >
 	      {showDelete && deleteButton}
@@ -134,7 +136,11 @@ export default class Shell extends Component {
 	      {
 	        type != 'add' &&
 					showTitle &&
-					<span className='operation-title'>{title}</span>
+					<span className={classNames({
+					  'sc-title': size == '',
+					  'sc-title-sm': size == 'sm',
+					  'operation-title': true,
+					})}>{title}</span>
 	      }
 
 	      {children}

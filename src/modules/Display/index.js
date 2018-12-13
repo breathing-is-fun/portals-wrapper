@@ -19,12 +19,20 @@ export default class Display extends Component {
       layout: [],
       menuDatas: [],
       loading: true,
+      size: '',
     };
   }
 
 	componentDidMount = () => {
+	  SCTool.listener.on('onResize', ({ size }) => {
+	    this.setState({ size });
+	  });
 	  // this.validateTicket(() => this.loadMenu());
 	  this.loadMenu();
+
+	  const { clientWidth } = document.documentElement || document.body;
+
+	  SCTool.listener.do('onResize', { size: clientWidth <= 1700 ? 'sm' : '' });
 	}
 
 	validateTicket = callback => {
@@ -118,7 +126,7 @@ export default class Display extends Component {
 	}
 
 	render = () => {
-	  const { layout, menuDatas, loading } = this.state;
+	  const { layout, menuDatas, loading, size } = this.state;
 
 	  const title = SCTool.listener.get('systemTitle');
 
@@ -128,6 +136,7 @@ export default class Display extends Component {
 	      datas={menuDatas}
 	      clock
 	      title={title}
+	      size={size}
 	    >
 	      {
 	        !loading &&
@@ -135,6 +144,7 @@ export default class Display extends Component {
 					  showEdit={false}
 					  showDelete={false}
 					  layout={layout}
+					  size={size}
 					  onDetail={this.handleOnDetail}
 					  ref={ref => ref && (this.grid = ref)}
 					/>

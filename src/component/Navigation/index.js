@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { Menu, Dropdown, Icon } from 'antd';
 
@@ -13,6 +14,7 @@ export default class Navigation extends Component {
 	  title: '',
 	  datas: [],
 	  clock: false,
+	  size: '',
 	}
 
 	constructor (props) {
@@ -22,10 +24,17 @@ export default class Navigation extends Component {
 	    CurrentTime: null,
 	    iconRotate: 0,
 	    dropDownVisible: false,
+	    clientHeight: document.body.clientHeight,
 	  };
 	}
 
 	componentDidMount = () => {
+	  if (window.SCTool) {
+	    SCTool.listener.on('onResize', ({ clientHeight }) => {
+	      this.setState({ clientHeight });
+	    });
+	  }
+
 	  this.props.clock && this.loadCurrentTime();
 	}
 
@@ -45,17 +54,40 @@ export default class Navigation extends Component {
 	}
 
 	render = () => {
-	  const { children, datas, onClick, clock, title } = this.props;
-	  const { CurrentTime, dropDownVisible, iconRotate } = this.state;
+	  const {
+	    children,
+	    datas,
+	    onClick,
+	    clock,
+	    title,
+	    size,
+	  } = this.props;
+	  const {
+	    CurrentTime,
+	    dropDownVisible,
+	    iconRotate,
+	    clientHeight,
+	  } = this.state;
 
 	  const date = (
-	    <div className='content-wrapper'>
-	      <div className='content-time-detail'>
+	    <div className={classNames({
+	      'content-wrapper': true,
+	      'sm': size == 'sm',
+	    })}>
+	      <div className={classNames({
+	        'content-time-detail': true,
+	        'sm': size == 'sm',
+	      })}>
 	        {moment().format('YYYY-MM-DD')}
 	      </div>
-	      <div className='content-time-detail'>
-	        {moment().format('dddd')}
-	      </div>
+	      {size != 'sm' && (
+	        <div className={classNames({
+	          'content-time-detail': true,
+	          'sm': size == 'sm',
+	        })}>
+	          {moment().format('dddd')}
+	        </div>
+	      )}
 	    </div>
 	  );
 
@@ -80,25 +112,41 @@ export default class Navigation extends Component {
 
 	  return (
 	    <div className='Navigation'>
-	      <div className='content'>
+	      <div className={classNames({
+	        'content': size == '',
+	        'content-sm': size == 'sm',
+	      })}>
 	        <div
-	          className='content-wrapper'
+	          className={classNames({
+	            'content-wrapper': true,
+	            'sm': size == 'sm',
+	          })}
 	          style={{ width: 300 }}
 	        >
 	          {title}
 	        </div>
 
-	        <div className='content-wrapper' style={{ width: 300 }}>
-	          <div className='content-time'>
+	        <div className={classNames({
+	          'content-wrapper': true,
+	          'sm': size == 'sm',
+	        })}
+	        style={{ width: 300 }}
+	        >
+	          <div className={classNames({
+	            'content-time': size == '',
+	            'sm': size == 'sm',
+	          })}>
 	            {CurrentTime && <CurrentTime />}
 	          </div>
 	        </div>
 
 	        {clock && date}
 
-	        <div
-	          className='content-wrapper content-switch'
-	        >
+	        <div className={classNames({
+	          'content-wrapper': true,
+	          'content-switch': true,
+	          'sm': size == 'sm',
+	        })}>
 	          <Dropdown
 	            overlay={switchMeal}
 	            trigger={['hover', 'click']}
@@ -121,7 +169,7 @@ export default class Navigation extends Component {
 
 	      <div
 	        className='children-wrapper'
-	        style={{ height: (document.body.clientHeight - 65) }}
+	        style={{ height: (clientHeight - 65) + 'px' }}
 	      >
 	        {children}
 	      </div>
@@ -135,4 +183,5 @@ Navigation.propTypes = {
   datas: PropTypes.array,
   onClick: PropTypes.func,
   clock: PropTypes.bool,
+  size: PropTypes.string,
 };

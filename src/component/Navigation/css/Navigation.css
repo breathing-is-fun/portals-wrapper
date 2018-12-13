@@ -1,72 +1,75 @@
 .Navigation .content {
-    height: 65px;
-    background: #2e7df3;
-    box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
+  height: 65px;
+  background: #2e7df3;
+  box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
+}
+
+.Navigation .content-sm {
+  height: 40px;
+  background: #2e7df3;
+  box-shadow: 0px 0px 9px 0px rgba(39, 93, 214, 0.39);
 }
 
 .Navigation .children-wrapper {
-    overflow-x: hidden;
-    overflow-y: auto;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 29px 0px rgba(93, 106, 113, 0.12);
-    border-radius: 2px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 29px 0px rgba(93, 106, 113, 0.12);
+  border-radius: 2px;
 }
 
-.Navigation .content .content-wrapper {
-    font-family: MicrosoftYaHeiLight;
-    font-size: 28px;
-    font-weight: normal;
-    font-stretch: normal;
-    letter-spacing: 1px;
-    color: #ffffff;
-    float: left;
-    height: 100%;
-    line-height: 65px;
-    text-align: center;
+.Navigation .content-wrapper {
+  font-size: 28px;
+  color: #ffffff;
+  float: left;
+  height: 100%;
+  line-height: 65px;
+  text-align: center;
 }
 
-.Navigation .content .content-switch {
-    float: right;
-    margin-right: 20px;
-    color: #FFF;
+.Navigation .sm {
+  font-size: 20px;
+  color: #ffffff;
+  float: left;
+  height: 100%;
+  line-height: 40px;
+  text-align: center;
 }
 
-.Navigation .content .content-space {
-    width: 1px;
-    height: 100%;
-    background: #2372e7;
-    float: left;
+.Navigation .content-switch {
+  float: right;
+  margin-right: 20px;
+  color: #FFF;
 }
 
-.Navigation .content .content-time {
-    font-family: MicrosoftYaHeiLight;
-    font-size: 34px;
-    font-weight: normal;
-    font-stretch: normal;
-    letter-spacing: 0px;
-    color: #ffffff;
+.Navigation .content-space {
+  width: 1px;
+  height: 100%;
+  background: #2372e7;
+  float: left;
 }
 
-.Navigation .content .content-time-detail {
-    height: 24px;
-    font-family: MicrosoftYaHei;
-    font-size: 13px;
-    font-weight: normal;
-    font-stretch: normal;
-    line-height: 33px;
-    letter-spacing: 0px;
-    color: #ffffff;
+.Navigation .content-time {
+  font-size: 34px;
+  color: #ffffff;
 }
 
-.Navigation .content .content-wrapper .droplink {
-    color: #FFF;
-    background-color: transparent;
-    text-decoration: none;
-    outline: none;
-    cursor: pointer;
+.Navigation .content-time-detail {
+  height: 24px;
+  font-size: 13px;
+  line-height: 33px;
+  color: #ffffff;
 }
 
-.Navigation .content .content-wrapper .droplink .droplink-icon{
-    font-size: 18px;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+.Navigation .content-wrapper .droplink {
+  color: #FFF;
+  background-color: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.Navigation .content-wrapper .droplink .droplink-icon {
+  font-size: 18px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
