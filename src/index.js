@@ -51,6 +51,7 @@ new Store(null, store => {
           // 分发插件各自宽高
           onResize && onResize({
             ...sizes,
+            size: parseFloat(width.replace('px', '')) <= 1700 ? 'sm' : '',
             key,
             width: parseFloat(width.replace('px', '')),
             height: parseFloat(height.replace('px', '')),

@@ -86,13 +86,27 @@ export default class Shell extends Component {
 	      style={{ right: 10 }}
 	    />
 	  );
+	  // const detailButton = (
+	  //   <Icon
+	  //     type='small-dash'
+	  //     className='operation'
+	  //     onMouseDown={this.handleOnDetail}
+	  //     style={{ right: 10, fontSize: '2vw' }}
+	  //   />
+	  // );
 	  const detailButton = (
-	    <Icon
-	      type='small-dash'
-	      className='operation'
+	    <span
+	      className={classNames({
+	        'sc-title': size == '',
+	        'sc-title-sm': size == 'sm',
+	      })}
 	      onMouseDown={this.handleOnDetail}
-	      style={{ right: 10, fontSize: '2vw' }}
-	    />
+	      style={{
+	        right: 10,
+	        position: 'absolute',
+	        cursor: 'pointer',
+	      }}
+	    >详情 ></span>
 	  );
 
 	  const newProps = omit(this.props, [
