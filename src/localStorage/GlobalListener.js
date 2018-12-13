@@ -6,24 +6,21 @@ export default class GlobalListener {
   }
 
 	on = (key, callback) => {
-	  let targetListener = this.listeners[key];
-
-	  if (!targetListener) {
-	    this.root.addEventListener(key, ({ detail }) => {
-	      callback && callback(detail);
-	    });
-
-	    this.listeners[key] = {
-	      key,
-	      value: callback,
-	    };
+	  if (!this.listeners[key]) {
+	    this.listeners[key] = [];
 	  }
+
+	  this.listeners[key].push(callback);
 
 	  return this;
 	}
 
 	do = (key, detail) => {
-	  this.root.dispatchEvent(new CustomEvent(key, { detail }));
+	  const listeners = this.listeners[key];
+
+	  for(let item of listeners) {
+	    item(detail);
+	  }
 
 	  return this;
 	}
