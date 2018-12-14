@@ -21,14 +21,9 @@ new Store(null, store => {
 
   window.onresize = e => {
     if (subscriber.length != 0) {
-      const {
-        innerWidth,
-        innerHeight,
-      } = e.target;
-      const {
-        clientWidth,
-        clientHeight,
-      } = document.documentElement || document.body;
+      const { innerWidth, innerHeight } = e.target;
+      const { clientWidth, clientHeight } =
+        document.documentElement || document.body;
       const sizes = {
         innerWidth,
         innerHeight,
@@ -49,13 +44,14 @@ new Store(null, store => {
           const { width, height } = SCTool.listener.get(key);
 
           // 分发插件各自宽高
-          onResize && onResize({
-            ...sizes,
-            size: parseFloat(width.replace('px', '')) <= 1700 ? 'sm' : '',
-            key,
-            width: parseFloat(width.replace('px', '')),
-            height: parseFloat(height.replace('px', '')),
-          });
+          onResize &&
+            onResize({
+              ...sizes,
+              size: parseFloat(width.replace('px', '')) <= 1700 ? 'sm' : '',
+              key,
+              width: parseFloat(width.replace('px', '')),
+              height: parseFloat(height.replace('px', '')),
+            });
         }
       }, 1);
     }
@@ -68,19 +64,20 @@ new Store(null, store => {
       subscriber.push(value);
 
       return null;
-    }
+    },
   });
 
   for (let key in store.get('meta')) {
     window.SCTool.listener.set(key, store.get('meta')[key]);
   }
 
-  ReactDOM.render((
+  ReactDOM.render(
     <div>
       <GlobalModal on={window.SCTool} />
       <Router />
-    </div>
-  ), MOUNT_NODE);
+    </div>,
+    MOUNT_NODE,
+  );
 
   if (module.hot) {
     module.hot.accept();

@@ -8,7 +8,7 @@ import PropertyForm from './PropertyForm';
 import './css/ModuleLayout.css';
 
 export default class ModuleLayout extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -17,102 +17,100 @@ export default class ModuleLayout extends Component {
     };
   }
 
-	handleShellOnDelete = dataGrid => {
-	  const { id } = dataGrid;
-	  const { layout, onDelete } = this.props;
+  handleShellOnDelete = dataGrid => {
+    const { id } = dataGrid;
+    const { layout, onDelete } = this.props;
 
-	  onDelete && onDelete(reject(layout, { id }), id);
-	}
+    onDelete && onDelete(reject(layout, { id }), id);
+  };
 
-	handleShellonEdit = (currentModalItem) => {
-	  this.setState({
-	    modalVisible: true,
-	    currentModalItem,
-	  });
-	}
+  handleShellonEdit = currentModalItem => {
+    this.setState({
+      modalVisible: true,
+      currentModalItem,
+    });
+  };
 
-	generateEditShell = (layout, shellStyle, isAll) => (
-	  layout.map(item => {
-	    const {
-	      id,
-	      group,
-	      title,
-	      imgurl: imgUrl,
-	      showtitle: showTitle
-	    } = item;
+  generateEditShell = (layout, shellStyle, isAll) =>
+    layout.map(item => {
+      const { id, group, title, imgurl: imgUrl, showtitle: showTitle } = item;
 
-	    const shellProps = {
-	      key: group + id,
-	      title, showTitle,
-	      showEdit: isAll,
-	      showDelete: true,
-	      type: 'module',
-	      'data-grid': item,
-	      style: shellStyle,
-	      onDelete: this.handleShellOnDelete,
-	      onEdit: dataGrid => {
-	        this.handleShellonEdit(dataGrid);
-	      },
-	    };
+      const shellProps = {
+        key: group + id,
+        title,
+        showTitle,
+        showEdit: isAll,
+        showDelete: true,
+        type: 'module',
+        'data-grid': item,
+        style: shellStyle,
+        onDelete: this.handleShellOnDelete,
+        onEdit: dataGrid => {
+          this.handleShellonEdit(dataGrid);
+        },
+      };
 
-	    const height = showTitle ? 'calc(100% - 21px)' : '100%';
+      const height = showTitle ? 'calc(100% - 21px)' : '100%';
 
-	    return (
-	      <Shell {...shellProps}>
-	        <img src={imgUrl} style={{
-	          width: '100%',
-	          height,
-	        }} />
-	      </Shell>
-	    );
-	  })
-	)
+      return (
+        <Shell {...shellProps}>
+          <img
+            src={imgUrl}
+            style={{
+              width: '100%',
+              height,
+            }}
+          />
+        </Shell>
+      );
+    });
 
-	generateAddShell = shellStyle => (
-	  <Shell
-	    key='add'
-	    style={Object.assign({}, shellStyle, {
-	      display: 'flex',
-	      alignItems: 'center',
-	      justifyContent: 'center'
-	    })} type='add'
-	    onAdd={() => this.handleShellonEdit(true, {})}
-	  >
-	    <i className='plus-icon'>+</i>
-	  </Shell>
-	)
+  generateAddShell = shellStyle => (
+    <Shell
+      key="add"
+      style={Object.assign({}, shellStyle, {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      })}
+      type="add"
+      onAdd={() => this.handleShellonEdit(true, {})}
+    >
+      <i className="plus-icon">+</i>
+    </Shell>
+  );
 
-	render = () => {
-	  const { layout, isAll } = this.props;
-	  const { modalVisible, currentModalItem } = this.state;
+  render = () => {
+    const { layout, isAll } = this.props;
+    const { modalVisible, currentModalItem } = this.state;
 
-	  const shellStyle = {
-	    width: '20%',
-	    background: '#e0e6ee',
-	    float: 'left',
-	    margin: 30,
-	    position: 'relative',
-	  };
+    const shellStyle = {
+      width: '20%',
+      background: '#e0e6ee',
+      float: 'left',
+      margin: 30,
+      position: 'relative',
+    };
 
-	  const modalProps = {
-	    title: '套餐基础设置',
-	    visible: modalVisible,
-	    onCancel: () => this.setState({ modalVisible: !modalVisible }),
-	    destroyOnClose: true,
-	    footer: null,
-	    width: 700,
-	  };
+    const modalProps = {
+      title: '套餐基础设置',
+      visible: modalVisible,
+      onCancel: () => this.setState({ modalVisible: !modalVisible }),
+      destroyOnClose: true,
+      footer: null,
+      width: 700,
+    };
 
-	  return (
-	    <div className='ModuleLayout'>
-	      {this.generateEditShell(layout, shellStyle, isAll)}
+    return (
+      <div className="ModuleLayout">
+        {this.generateEditShell(layout, shellStyle, isAll)}
 
-	      {this.generateAddShell(shellStyle)}
+        {this.generateAddShell(shellStyle)}
 
-	      <Modal {...modalProps}>
-	        <PropertyForm currentModalItem={currentModalItem} />
-	      </Modal>
-	    </div>
-	  );
-	}
+        <Modal {...modalProps}>
+          <PropertyForm currentModalItem={currentModalItem} />
+        </Modal>
+      </div>
+    );
+  };
 }

@@ -13,24 +13,24 @@ export default class Entry extends Component {
         <Suspense fallback={<div>加载中...</div>}>
           <Switch>
             <Route
-              path='/edit/component'
+              path="/edit/component"
               component={props => <ComponentEdit {...props} />}
             />
             <Route
-              path='/edit/module'
+              path="/edit/module"
               component={props => <ModuleEdit {...props} />}
             />
             <Route
-              path='/display'
+              path="/display"
               component={props => <Display {...props} />}
             />
             <Route
-              path='/style'
+              path="/style"
               component={props => <StyleDescription {...props} />}
             />
           </Switch>
         </Suspense>
       </Router>
     );
-  }
+  };
 }

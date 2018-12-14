@@ -3,12 +3,10 @@ import React, { Component } from 'react';
 import Loader from '../Grid/ModulesLoader';
 
 export default class Content extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
-    this.state = {
-
-    };
+    this.state = {};
 
     this.root = React.createRef();
   }
@@ -17,16 +15,19 @@ export default class Content extends Component {
     const { path } = this.props;
 
     if (path) {
-      const loader = new Loader([
-        {
-          i: 'content',
-          path,
-        },
-      ], { content: this.root.current });
+      const loader = new Loader(
+        [
+          {
+            i: 'content',
+            path,
+          },
+        ],
+        { content: this.root.current },
+      );
 
       loader.load();
     }
-  }
+  };
 
   render = () => {
     const { content, path } = this.props;
@@ -46,10 +47,10 @@ export default class Content extends Component {
     }
 
     return (
-      <div className='Content'>
+      <div className="Content">
         {renderHtml}
-        <div ref={this.root}></div>
+        <div ref={this.root} />
       </div>
     );
-  }
+  };
 }

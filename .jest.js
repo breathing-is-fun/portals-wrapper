@@ -4,13 +4,12 @@ module.exports = {
   bail: true,
   verbose: true,
   setupFiles: [
-    './tests/setup.js',
+    './scripts/setup.js',
   ],
   moduleFileExtensions: [
     'js',
     'jsx',
     'json',
-    'md',
   ],
   testPathIgnorePatterns: [
     '/node_modules/',

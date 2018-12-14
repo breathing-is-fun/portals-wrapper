@@ -6,7 +6,7 @@ import omit from 'omit.js';
 import { Modal } from 'antd';
 
 export default class GlobalModal extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -20,7 +20,7 @@ export default class GlobalModal extends Component {
   static defaultProps = {
     on: {},
     type: 'modal',
-  }
+  };
 
   componentDidMount = () => {
     const { on, type } = this.props;
@@ -36,9 +36,9 @@ export default class GlobalModal extends Component {
         this.setState({ ...value });
 
         return value;
-      }
+      },
     });
-  }
+  };
 
   handleOnCancel = () => {
     this.setState({
@@ -46,24 +46,14 @@ export default class GlobalModal extends Component {
       path: null,
       content: null,
     });
-  }
+  };
 
   render = () => {
-    const {
-      visible,
-      title,
-      style,
-      width,
-      ...restStates
-    } = this.state;
-    const newStates = omit(this.state, [
-      'content',
-      'path',
-      'style',
-    ]);
+    const { visible, title, style, width, ...restStates } = this.state;
+    const newStates = omit(this.state, ['content', 'path', 'style']);
 
     return (
-      <div className='GlobalModal'>
+      <div className="GlobalModal">
         <Modal
           destroyOnClose
           onCancel={this.handleOnCancel}
@@ -75,7 +65,7 @@ export default class GlobalModal extends Component {
         </Modal>
       </div>
     );
-  }
+  };
 }
 
 GlobalModal.propTypes = {

@@ -4,9 +4,7 @@ import Navigation from '..';
 
 describe('Navigation', () => {
   it('render correctly', () => {
-    const wrapper = mount(
-      <Navigation datas={[]}>test</Navigation>
-    );
+    const wrapper = mount(<Navigation datas={[]}>test</Navigation>);
 
     expect(wrapper).toMatchSnapshot();
   });
@@ -15,17 +13,16 @@ describe('Navigation', () => {
     const onClick = jest.fn();
     const datas = [
       {
-        'text': 'testText',
-        'url': 'testUrl',
-        'id': 'testKey'
-      }
+        text: 'testText',
+        url: 'testUrl',
+        id: 'testKey',
+      },
     ];
 
     const demo = (
-      <Navigation
-        datas={datas}
-        onClick={onClick}
-      >test</Navigation>
+      <Navigation datas={datas} onClick={onClick}>
+        test
+      </Navigation>
     );
     const wrapper = mount(demo);
 

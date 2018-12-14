@@ -1,81 +1,81 @@
 {
-    "data": [
-        {
-            "text": "全部",
-            "group": "all",
-            "groupName": "全部",
-            "order": 0,
-            "key": "all"
-        },
-        {
-            "text": "马林云",
-            "group": "tz",
-            "groupName": "厅长",
-            "order": 1,
-            "key": "tz"
-        },
-        {
-            "text": "徐国平",
-            "group": "ftz",
-            "groupName": "副厅长",
-            "order": 2,
-            "key": "ftz1"
-        },
-        {
-            "text": "冯强",
-            "group": "ftz",
-            "groupName": "副厅长",
-            "order": 2,
-            "key": "ftz2"
-        },
-        {
-            "text": "处长",
-            "group": "szyysbc",
-            "groupName": "水资源与水保处",
-            "order": 3,
-            "key": "bgs1"
-        },
-        {
-            "text": "副处长",
-            "group": "szyysbc",
-            "groupName": "水资源与水保处",
-            "order": 4,
-            "key": "bgs2"
-        },
-        {
-            "text": "处长",
-            "group": "jgc",
-            "groupName": "建管处",
-            "order": 5,
-            "key": "bgs3"
-        },
-        {
-            "text": "调研员",
-            "group": "jgc",
-            "groupName": "建管处",
-            "order": 6,
-            "key": "zcfgc1"
-        },
-        {
-            "text": "副处长",
-            "group": "jgc",
-            "groupName": "建管处",
-            "order": 7,
-            "key": "zcfgc2"
-        },
-        {
-            "text": "处长",
-            "group": "szc",
-            "groupName": "水政处",
-            "order": 8,
-            "key": "ghjhc1"
-        },
-        {
-            "text": "调研员",
-            "group": "szc",
-            "groupName": "水政处",
-            "order": 9,
-            "key": "ghjhc2"
-        }
-    ]
+  "data": [
+    {
+      "text": "全部",
+      "group": "all",
+      "groupName": "全部",
+      "order": 0,
+      "key": "all"
+    },
+    {
+      "text": "马林云",
+      "group": "tz",
+      "groupName": "厅长",
+      "order": 1,
+      "key": "tz"
+    },
+    {
+      "text": "徐国平",
+      "group": "ftz",
+      "groupName": "副厅长",
+      "order": 2,
+      "key": "ftz1"
+    },
+    {
+      "text": "冯强",
+      "group": "ftz",
+      "groupName": "副厅长",
+      "order": 2,
+      "key": "ftz2"
+    },
+    {
+      "text": "处长",
+      "group": "szyysbc",
+      "groupName": "水资源与水保处",
+      "order": 3,
+      "key": "bgs1"
+    },
+    {
+      "text": "副处长",
+      "group": "szyysbc",
+      "groupName": "水资源与水保处",
+      "order": 4,
+      "key": "bgs2"
+    },
+    {
+      "text": "处长",
+      "group": "jgc",
+      "groupName": "建管处",
+      "order": 5,
+      "key": "bgs3"
+    },
+    {
+      "text": "调研员",
+      "group": "jgc",
+      "groupName": "建管处",
+      "order": 6,
+      "key": "zcfgc1"
+    },
+    {
+      "text": "副处长",
+      "group": "jgc",
+      "groupName": "建管处",
+      "order": 7,
+      "key": "zcfgc2"
+    },
+    {
+      "text": "处长",
+      "group": "szc",
+      "groupName": "水政处",
+      "order": 8,
+      "key": "ghjhc1"
+    },
+    {
+      "text": "调研员",
+      "group": "szc",
+      "groupName": "水政处",
+      "order": 9,
+      "key": "ghjhc2"
+    }
+  ]
 }

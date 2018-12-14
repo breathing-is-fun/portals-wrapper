@@ -15,67 +15,68 @@ const importPolyfill = url => {
       generate(module);
 
       return module.exports;
-    }).catch(error => console.error('importPolyfill error: ' + error));
+    })
+    .catch(error => console.error('importPolyfill error: ' + error));
 
   return promise;
 };
 
 export default class ModulesLoader {
-  constructor (layout, roots) {
+  constructor(layout, roots) {
     this.layout = layout;
     this.roots = roots;
   }
 
-	load = tool => {
-	  let pathArr = [], newLayout = [];
+  load = tool => {
+    let pathArr = [],
+      newLayout = [];
 
-	  for (let item of this.layout) {
-	    const { path, moduletype: type } = item;
+    for (let item of this.layout) {
+      const { path, moduletype: type } = item;
 
-	    if (type != 'iframe') {
-	      pathArr.push(importPolyfill(path));
-	      newLayout.push(item);
-	    }
-	  }
+      if (type != 'iframe') {
+        pathArr.push(importPolyfill(path));
+        newLayout.push(item);
+      }
+    }
 
-	  this.layout = newLayout;
-	  this.loadScripts(pathArr, 0, [], modules => {
-	    for (let i = 0; i < modules.length; i++) {
-	      let TargetModule = modules[i];
+    this.layout = newLayout;
+    this.loadScripts(pathArr, 0, [], modules => {
+      for (let i = 0; i < modules.length; i++) {
+        let TargetModule = modules[i];
 
-	      if (!TargetModule) {
-	        continue;
-	      }
+        if (!TargetModule) {
+          continue;
+        }
 
-	      try {
-	        const { i: key } = this.layout[i];
+        try {
+          const { i: key } = this.layout[i];
 
-	        if ('default' in TargetModule) {
-	          TargetModule = TargetModule.default;
-	        }
+          if ('default' in TargetModule) {
+            TargetModule = TargetModule.default;
+          }
 
-	        const loadedModule = new TargetModule(
-	          this.roots[key],
-	          tool,
-	        );
-	        const { _moduleOnMount } = loadedModule;
+          const loadedModule = new TargetModule(this.roots[key], tool);
+          const { _moduleOnMount } = loadedModule;
 
-	        _moduleOnMount && _moduleOnMount.call(loadedModule);
-	      } catch (error) {
-	        console.warn('Ignored error => ' + error);
-	      }
-	    }
-	  });
-	}
+          _moduleOnMount && _moduleOnMount.call(loadedModule);
+        } catch (error) {
+          console.warn('Ignored error => ' + error);
+        }
+      }
+    });
+  };
 
-	loadScripts = (pathArr, index = 0, importedModules = [], callback) => {
-	  if (index != pathArr.length) {
-	    pathArr[index].then(importModule => {
-	      importedModules.push(importModule);
-	      this.loadScripts(pathArr, ++index, importedModules, callback);
-	    }).catch(error => console.error('loadScripts error: ' + error));
-	  } else {
-	    callback && callback(importedModules);
-	  }
-	}
+  loadScripts = (pathArr, index = 0, importedModules = [], callback) => {
+    if (index != pathArr.length) {
+      pathArr[index]
+        .then(importModule => {
+          importedModules.push(importModule);
+          this.loadScripts(pathArr, ++index, importedModules, callback);
+        })
+        .catch(error => console.error('loadScripts error: ' + error));
+    } else {
+      callback && callback(importedModules);
+    }
+  };
 }

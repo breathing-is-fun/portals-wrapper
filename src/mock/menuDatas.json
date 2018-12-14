@@ -1,56 +1,43 @@
 {
-    "data": [
+  "data": [
+    {
+      "key": "HomePage",
+      "type": "item",
+      "text": "简介",
+      "paths": ["HomePage"]
+    },
+    {
+      "key": "LayoutGuide",
+      "type": "item",
+      "text": "布局规范",
+      "paths": ["LayoutGuide"]
+    },
+    {
+      "key": "components",
+      "text": "组件",
+      "children": [
         {
-            "key": "HomePage",
-            "type": "item",
-            "text": "简介",
-            "paths": [
-                "HomePage"
-            ]
-        },
-        {
-            "key": "LayoutGuide",
-            "type": "item",
-            "text": "布局规范",
-            "paths": [
-                "LayoutGuide"
-            ]
-        },
-        {
-            "key": "components",
-            "text": "组件",
-            "children": [
-                {
-                    "key": "common",
-                    "text": "通用",
-                    "children": [
-                        {
-                            "key": "badge",
-                            "text": "角标",
-                            "paths": [
-                                "Badge-red",
-                                "Badge-green"
-                            ]
-                        },
-                        {
-                            "key": "tabs",
-                            "text": "页签",
-                            "paths": [
-                                "Tabs-orange",
-                                "Tabs-blue",
-                                "Tabs-switch"
-                            ]
-                        },
-                        {
-                            "key": "border",
-                            "text": "边框",
-                            "paths": [
-                                "Border"
-                            ]
-                        }
-                    ]
-                }
-            ]
+          "key": "common",
+          "text": "通用",
+          "children": [
+            {
+              "key": "badge",
+              "text": "角标",
+              "paths": ["Badge-red", "Badge-green"]
+            },
+            {
+              "key": "tabs",
+              "text": "页签",
+              "paths": ["Tabs-orange", "Tabs-blue", "Tabs-switch"]
+            },
+            {
+              "key": "border",
+              "text": "边框",
+              "paths": ["Border"]
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

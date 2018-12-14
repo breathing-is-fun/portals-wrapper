@@ -26,18 +26,18 @@ const webpackConfig = {
   devtool: 'source-map',
   entry: [
     'webpack-dev-server/client?http://' +
-    devServerOptions.host +
-    ':' +
-    devServerOptions.port,
+      devServerOptions.host +
+      ':' +
+      devServerOptions.port,
     // 'webpack/hot/only-dev-server',
     __dirname + '/src',
   ],
   output: {
     filename: '[name].js',
-    chunkFilename: 'vendor/[name].[chunkHash:8].js'
+    chunkFilename: 'vendor/[name].[chunkHash:8].js',
   },
   plugins,
-  module: commonModule
+  module: commonModule,
 };
 
 const compiler = webpack(webpackConfig);

@@ -29,10 +29,9 @@ module.exports = {
         'no-mixed-spaces-and-tabs': 0,
         'camelcase': 2,
         'no-console': ['error', { allow: ['warn', 'error'] }],
-        'space-in-parens': [2, 'never'],
-        'space-before-function-paren': [2, 'never'],
-        'default-case': 2,
-        'brace-style': ['error', '1tbs', { 'allowSingleLine': true }],
+        // 'space-in-parens': [2, 'never'],
+        // 'default-case': 2,
+        // 'brace-style': ['error', '1tbs', { 'allowSingleLine': true }],
         'no-delete-var': 2,
         'no-dupe-keys': 2,
         'no-dupe-args': 2,
@@ -52,32 +51,32 @@ module.exports = {
         'no-underscore-dangle': 2,
         'no-unneeded-ternary': 2,
         'no-useless-call': 2,
-        'arrow-spacing': 2,
-        'comma-spacing': 2,
-        'comma-style': [2, 'last'],
-        'key-spacing': [0, { 'beforeColon': false, 'afterColon': true }],
-        'newline-after-var': 2,
-        'object-curly-spacing': [2, 'always'],
-        'space-before-function-paren': [2, 'always'],
-        'wrap-iife': [2, 'inside'],
-        'use-isnan': 2,
-        'yoda': [2, 'never'],
-        'prefer-arrow-callback': 2,
+        // 'arrow-spacing': 2,
+        // 'comma-spacing': 2,
+        // 'comma-style': [2, 'last'],
+        // 'key-spacing': [0, { 'beforeColon': false, 'afterColon': true }],
+        // 'newline-after-var': 2,
+        // 'object-curly-spacing': [2, 'always'],
+        // 'space-before-function-paren': [0, 'always'],
+        // 'wrap-iife': [2, 'inside'],
+        // 'use-isnan': 2,
+        // 'yoda': [2, 'never'],
+        // 'prefer-arrow-callback': 2,
         'no-empty': 0,
         'no-duplicate-imports': 2,
         'no-floating-decimal': 2,
-        'space-before-blocks': 2,
-        'max-len': 2,
-        'require-jsdoc': ['error', {
-            'require': {
-                'FunctionDeclaration': true,
-                'MethodDefinition': false,
-                'ClassDeclaration': false,
-                'ArrowFunctionExpression': false,
-                'FunctionExpression': false
-            }
-        }],
-        'space-infix-ops': ['error', { 'int32Hint': false }]
+        // 'space-before-blocks': 2,
+        // 'max-len': 2,
+        // 'require-jsdoc': ['error', {
+        //     'require': {
+        //         'FunctionDeclaration': true,
+        //         'MethodDefinition': false,
+        //         'ClassDeclaration': false,
+        //         'ArrowFunctionExpression': false,
+        //         'FunctionExpression': false
+        //     }
+        // }],
+        // 'space-infix-ops': ['error', { 'int32Hint': false }]
     }
 };
 

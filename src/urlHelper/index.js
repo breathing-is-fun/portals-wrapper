@@ -29,7 +29,9 @@ export const ajax = ({
   isProxy = false,
   error,
 }) => {
-  let realUrl, realParams, postParam = {};
+  let realUrl,
+    realParams,
+    postParam = {};
 
   checkType(type);
 

@@ -11,26 +11,27 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
-            }
-          }
-        ]
+              limit: 8192,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
       },
-    ]
+    ],
   },
   commonPlugin: [
-    new htmlWebpackPlugin({ // 生成html
+    new htmlWebpackPlugin({
+      // 生成html
       template: './src/index.html',
       hash: true,
       minify: {
@@ -38,25 +39,25 @@ module.exports = {
         minifyCSS: true,
         removeComments: true,
         collapseWhitespace: true,
-      }
+      },
     }),
     new CopyWebpackPlugin([
       {
         from: __dirname + '/src/assets',
-        to: __dirname + '/dist/lib/assets'
+        to: __dirname + '/dist/lib/assets',
       },
       {
         from: __dirname + '/src/mock',
-        to: __dirname + '/dist/mock'
+        to: __dirname + '/dist/mock',
       },
       {
         from: __dirname + '/thirdModules',
-        to: __dirname + '/dist/thirdModules'
+        to: __dirname + '/dist/thirdModules',
       },
       {
         from: __dirname + '/src/guide',
-        to: __dirname + '/dist/guide'
-      }
-    ])
-  ]
+        to: __dirname + '/dist/guide',
+      },
+    ]),
+  ],
 };

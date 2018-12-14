@@ -44,18 +44,22 @@ describe('Shell', () => {
   it('when button is clicked, theirs click event should be called', () => {
     const wrapper = mount(<Shell {...props}>test</Shell>);
 
-    wrapper.find('i').at(0).simulate('mousedown');
+    wrapper
+      .find('i')
+      .at(0)
+      .simulate('mousedown');
     expect(props.onDelete.mock.calls.length).toBe(1);
 
-    wrapper.find('i').at(1).simulate('mousedown');
+    wrapper
+      .find('i')
+      .at(1)
+      .simulate('mousedown');
     expect(props.onEdit.mock.calls.length).toBe(1);
   });
 
   it('when showTitle is false, title should be hidden', () => {
     const demo = (
-      <Shell
-        {...Object.assign({}, props, { showTitle: false })}
-      >test</Shell>
+      <Shell {...Object.assign({}, props, { showTitle: false })}>test</Shell>
     );
     const wrapper = mount(demo);
 
@@ -64,9 +68,7 @@ describe('Shell', () => {
 
   it('when add button is clicked, its click event should be called', () => {
     const demo = (
-      <Shell
-        {...Object.assign({}, props, { type: 'add' })}
-      >test</Shell>
+      <Shell {...Object.assign({}, props, { type: 'add' })}>test</Shell>
     );
     const wrapper = shallow(demo);
 

@@ -1,53 +1,53 @@
 {
-    "data": [
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "防汛抗旱专题",
-            "isDelete": true,
-            "isEdit": true,
-            "key": "fxkh"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "水资源专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "szy"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "河湖管理专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "hh"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "水土保持专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "stbc"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "农村水利专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "ncsl"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "标准化监管专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "bzh"
-        },
-        {
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
-            "title": "全过程监管专题",
-            "isDelete": false,
-            "isEdit": false,
-            "key": "qgcjg"
-        }
-    ]
+  "data": [
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "防汛抗旱专题",
+      "isDelete": true,
+      "isEdit": true,
+      "key": "fxkh"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "水资源专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "szy"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "河湖管理专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "hh"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "水土保持专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "stbc"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "农村水利专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "ncsl"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "标准化监管专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "bzh"
+    },
+    {
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/static.png",
+      "title": "全过程监管专题",
+      "isDelete": false,
+      "isEdit": false,
+      "key": "qgcjg"
+    }
+  ]
 }

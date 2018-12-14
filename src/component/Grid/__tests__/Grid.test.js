@@ -11,13 +11,12 @@ describe('Grid', () => {
     mealid: 1,
     path: '../../../thirdModules/dbzx/index.js',
     showtitle: false,
-    style: { 'background': '#F96', 'border': '1px solid #ccc' },
+    style: { background: '#F96', border: '1px solid #ccc' },
     title: '代办中心',
     w: 4,
     x: 0,
     y: 0,
   };
-
 
   it('render correctly', () => {
     const wrapper = mount(<Grid layout={[layoutItem]} />);

@@ -1,48 +1,48 @@
 {
-    "layout": [
-        {
-            "i": "typhoon",
-            "x": 6,
-            "y": 0,
-            "w": 6,
-            "h": 21,
-            "static": false,
-            "path": "http://typhoon.zjwater.gov.cn/default.aspx",
-            "title": "台风路径",
-            "style": {},
-            "type": "iframe",
-            "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/8d2d316c3beb795fc588062f347f78ce.jpg"
-        },
-        {
-            "i": "dbzx",
-            "x": 0,
-            "y": 0,
-            "w": 6,
-            "h": 7,
-            "static": false,
-            "path": "../../../thirdModules/dbzx/index.js",
-            "title": "待办中心",
-            "style": {}
-        },
-        {
-            "i": "zbzx",
-            "x": 0,
-            "y": 8,
-            "w": 6,
-            "h": 7,
-            "minW": 2,
-            "maxW": 4,
-            "path": "../../../thirdModules/zbzx/index.js",
-            "title": "在办中心"
-        },
-        {
-            "i": "tqyb",
-            "x": 0,
-            "y": 9,
-            "w": 6,
-            "h": 7,
-            "path": "../../../thirdModules/tqyb/index.js",
-            "title": "天气预报"
-        }
-    ]
+  "layout": [
+    {
+      "i": "typhoon",
+      "x": 6,
+      "y": 0,
+      "w": 6,
+      "h": 21,
+      "static": false,
+      "path": "http://typhoon.zjwater.gov.cn/default.aspx",
+      "title": "台风路径",
+      "style": {},
+      "type": "iframe",
+      "imgUrl": "http://47.95.1.229:9003/UploadFile/201808/8d2d316c3beb795fc588062f347f78ce.jpg"
+    },
+    {
+      "i": "dbzx",
+      "x": 0,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "static": false,
+      "path": "../../../thirdModules/dbzx/index.js",
+      "title": "待办中心",
+      "style": {}
+    },
+    {
+      "i": "zbzx",
+      "x": 0,
+      "y": 8,
+      "w": 6,
+      "h": 7,
+      "minW": 2,
+      "maxW": 4,
+      "path": "../../../thirdModules/zbzx/index.js",
+      "title": "在办中心"
+    },
+    {
+      "i": "tqyb",
+      "x": 0,
+      "y": 9,
+      "w": 6,
+      "h": 7,
+      "path": "../../../thirdModules/tqyb/index.js",
+      "title": "天气预报"
+    }
+  ]
 }

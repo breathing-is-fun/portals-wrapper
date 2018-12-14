@@ -5,11 +5,7 @@ import PropertyBoard from '..';
 describe('PropertyBoard', () => {
   it('render correctly', () => {
     const demo = (
-      <PropertyBoard
-        visible={true}
-        shellStyleDatas={{}}
-        enumDatas={[]}
-      />
+      <PropertyBoard visible={true} shellStyleDatas={{}} enumDatas={[]} />
     );
 
     expect(mount(demo)).toMatchSnapshot();

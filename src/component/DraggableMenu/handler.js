@@ -1,5 +1,6 @@
 const handleMenuGroup = dataSource => {
-  let result = [], groupDatas = selectGroup(dataSource);
+  let result = [],
+    groupDatas = selectGroup(dataSource);
 
   // 凑菜单数据结构，[{ groupName: '', children: [{ text: '', url: '' }] }]
   for (let item of groupDatas) {
@@ -14,11 +15,13 @@ const handleMenuGroup = dataSource => {
         childResult.key = groupChild + id;
         childResult.id = id;
 
-        children.push(Object.assign({}, jtem, {
-          title: text,
-          value: id,
-          key
-        }));
+        children.push(
+          Object.assign({}, jtem, {
+            title: text,
+            value: id,
+            key,
+          }),
+        );
       }
     }
 
@@ -30,7 +33,8 @@ const handleMenuGroup = dataSource => {
 
 // 分出有哪几组及组别名称
 const selectGroup = dataSource => {
-  let result = [], tempGroupDatas = [];
+  let result = [],
+    tempGroupDatas = [];
 
   for (let item of dataSource) {
     const { group, groupname: groupName } = item;

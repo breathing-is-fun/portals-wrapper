@@ -1,5 +1,5 @@
 export default class Store {
-  constructor (name, defaults) {
+  constructor(name, defaults) {
     this.name = name;
 
     if (defaults !== undefined) {
@@ -11,86 +11,88 @@ export default class Store {
     }
   }
 
-	get = (propsName) => {
-	  let name = 'store.' + this.name + '.' + propsName;
+  get = propsName => {
+    let name = 'store.' + this.name + '.' + propsName;
 
-	  if (localStorage.getItem(name) === null) {
-	    return undefined;
-	  }
+    if (localStorage.getItem(name) === null) {
+      return undefined;
+    }
 
-	  try {
-	    return JSON.parse(localStorage.getItem(name));
-	  } catch (e) {
-	    return null;
-	  }
-	}
+    try {
+      return JSON.parse(localStorage.getItem(name));
+    } catch (e) {
+      return null;
+    }
+  };
 
-	set = (name, value) => {
-	  if (value === undefined) {
-	    this.remove(name);
-	  } else {
-	    if (typeof value === 'function') {
-	      value = null;
-	    } else {
-	      try {
-	        value = JSON.stringify(value);
-	      } catch (e) {
-	        value = null;
-	      }
-	    }
+  set = (name, value) => {
+    if (value === undefined) {
+      this.remove(name);
+    } else {
+      if (typeof value === 'function') {
+        value = null;
+      } else {
+        try {
+          value = JSON.stringify(value);
+        } catch (e) {
+          value = null;
+        }
+      }
 
-	    localStorage.setItem('store.' + this.name + '.' + name, value);
-	  }
+      localStorage.setItem('store.' + this.name + '.' + name, value);
+    }
 
-	  return this;
-	}
+    return this;
+  };
 
-	remove = name => {
-	  localStorage.removeItem('store.' + this.name + '.' + name);
+  remove = name => {
+    localStorage.removeItem('store.' + this.name + '.' + name);
 
-	  return this;
-	}
+    return this;
+  };
 
-	removeAll = () => {
-	  let name = 'store.' + this.name + '.';
+  removeAll = () => {
+    let name = 'store.' + this.name + '.';
 
-	  for (let i = (localStorage.length - 1); i >= 0; i--) {
-	    if (localStorage.key(i).substring(0, name.length) === name) {
-	      localStorage.removeItem(localStorage.key(i));
-	    }
-	  }
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      if (localStorage.key(i).substring(0, name.length) === name) {
+        localStorage.removeItem(localStorage.key(i));
+      }
+    }
 
-	  return this;
-	}
+    return this;
+  };
 
-	toObject = () => {
-	  let values = {}, key, value;
+  toObject = () => {
+    let values = {},
+      key,
+      value;
 
-	  let name = 'store.' + this.name + '.';
+    let name = 'store.' + this.name + '.';
 
-	  for (let i = (localStorage.length - 1); i >= 0; i--) {
-	    if (localStorage.key(i).substring(0, name.length) === name) {
-	      key = localStorage.key(i).substring(name.length);
-	      value = this.get(key);
-	      if (value !== undefined) {
-	        values[key] = value;
-	      }
-	    }
-	  }
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+      if (localStorage.key(i).substring(0, name.length) === name) {
+        key = localStorage.key(i).substring(name.length);
+        value = this.get(key);
+        if (value !== undefined) {
+          values[key] = value;
+        }
+      }
+    }
 
-	  return values;
-	}
+    return values;
+  };
 
-	fromObject = (values, merge) => {
-	  if (merge !== true) {
-	    this.removeAll();
-	  }
-	  for (let key in values) {
-	    if (values.hasOwnProperty(key)) {
-	      this.set(key, values[key]);
-	    }
-	  }
+  fromObject = (values, merge) => {
+    if (merge !== true) {
+      this.removeAll();
+    }
+    for (let key in values) {
+      if (values.hasOwnProperty(key)) {
+        this.set(key, values[key]);
+      }
+    }
 
-	  return this;
-	}
+    return this;
+  };
 }

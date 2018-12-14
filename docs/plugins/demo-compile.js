@@ -1,4 +1,4 @@
-var Demo = function (root, SCTool) {
+var Demo = function(root, SCTool) {
   root.innerHTML = '<p>Hello World, ' + SCTool.ticket + '</p>';
 };
 

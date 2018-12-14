@@ -6,7 +6,8 @@
     "test": "jest --config .jest.js --verbose=false",
     "build": "node webpack.prod.js",
     "dev": "node webpack.prod.js --development",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "prettier": "node ./scripts/prettier.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -45,6 +46,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "postcss-loader": "^2.1.4",
     "pre-commit": "^1.2.2",
+    "prettier": "1.15.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-hot-loader": "^4.3.12",
@@ -62,6 +64,7 @@
     }
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "prettier"
   ]
 }

@@ -1,31 +1,31 @@
 {
-    "data": [
-        {
-            "url": "../demo/module_1",
-            "left": "0",
-            "top": "1%",
-            "width": "60%",
-            "height": "30%",
-            "id": "1",
-            "style": "background: #ccc; cursor: crosshair; padding: 2px;"
-        },
-        {
-            "url": "../demo/module_2",
-            "left": "60%",
-            "top": "1%",
-            "width": "38%",
-            "height": "30%",
-            "id": "2",
-            "style": "background: #fff; margin-left: 1%;"
-        },
-        {
-            "url": "../demo/module_3",
-            "left": "67%",
-            "top": "50%",
-            "width": "40%",
-            "height": "30%",
-            "id": "3",
-            "style": "background: #fff;"
-        }
-    ]
+  "data": [
+    {
+      "url": "../demo/module_1",
+      "left": "0",
+      "top": "1%",
+      "width": "60%",
+      "height": "30%",
+      "id": "1",
+      "style": "background: #ccc; cursor: crosshair; padding: 2px;"
+    },
+    {
+      "url": "../demo/module_2",
+      "left": "60%",
+      "top": "1%",
+      "width": "38%",
+      "height": "30%",
+      "id": "2",
+      "style": "background: #fff; margin-left: 1%;"
+    },
+    {
+      "url": "../demo/module_3",
+      "left": "67%",
+      "top": "50%",
+      "width": "40%",
+      "height": "30%",
+      "id": "3",
+      "style": "background: #fff;"
+    }
+  ]
 }

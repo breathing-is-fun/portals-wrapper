@@ -10,7 +10,7 @@ import { Layout } from 'antd';
 const { Sider } = Layout;
 
 export default class ModuleEdit extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -22,80 +22,85 @@ export default class ModuleEdit extends Component {
     };
   }
 
-	componentDidMount = () => {
-	  this.loadMenuDatas();
-	}
+  componentDidMount = () => {
+    this.loadMenuDatas();
+  };
 
-	handleMenuClick = (group, selectedKeys, id) => {
-	  this.loadLayoutDatas(group == 'all' ? 1 : id);
+  handleMenuClick = (group, selectedKeys, id) => {
+    this.loadLayoutDatas(group == 'all' ? 1 : id);
 
-	  this.setState({ selectedKeys, isAll: group == 'all' });
-	}
+    this.setState({ selectedKeys, isAll: group == 'all' });
+  };
 
-	handleOnOpenChange = openKeys => this.setState({ openKeys });
+  handleOnOpenChange = openKeys => this.setState({ openKeys });
 
-	loadLayoutDatas = id => {
-	  ajax({
-	    key: 's_slmh_meal_switch',
-	    data: { id },
-	    success: ({ data }) => this.setState({ layout: data }),
-	  });
-	}
+  loadLayoutDatas = id => {
+    ajax({
+      key: 's_slmh_meal_switch',
+      data: { id },
+      success: ({ data }) => this.setState({ layout: data }),
+    });
+  };
 
-	loadMenuDatas = () => {
-	  ajax({
-	    key: 's_slmh_menu_data',
-	    data: { type: 1 },
-	    success: ({ data }) => {
-	      const menuDatas = handleMenuGroup(data);
-	      const { group, id } = data.length != 0 ? data[0] : {};
+  loadMenuDatas = () => {
+    ajax({
+      key: 's_slmh_menu_data',
+      data: { type: 1 },
+      success: ({ data }) => {
+        const menuDatas = handleMenuGroup(data);
+        const { group, id } = data.length != 0 ? data[0] : {};
 
-	      this.setState({
-	        menuDatas,
-	        openKeys: [group],
-	        selectedKeys: [group + id]
-	      }, () => this.loadLayoutDatas(1));
-	    },
-	  });
-	}
+        this.setState(
+          {
+            menuDatas,
+            openKeys: [group],
+            selectedKeys: [group + id],
+          },
+          () => this.loadLayoutDatas(1),
+        );
+      },
+    });
+  };
 
-	handleMealOnDelete = (layout, id) => {
-	  ajax({
-	    key: 'd_slmh_meal',
-	    data: { id },
-	    success: ({ data }) => {
-	      // this.setState({ layout });
-	      this.loadLayoutDatas(1);
-	    },
-	  });
-	}
+  handleMealOnDelete = (layout, id) => {
+    ajax({
+      key: 'd_slmh_meal',
+      data: { id },
+      success: ({ data }) => {
+        // this.setState({ layout });
+        this.loadLayoutDatas(1);
+      },
+    });
+  };
 
-	render = () => {
-	  const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
+  render = () => {
+    const { layout, menuDatas, openKeys, selectedKeys, isAll } = this.state;
 
-	  const draggableMenuProps = {
-	    selectedKeys, menuDatas, openKeys,
-	    type: 'module',
-	    onClick: this.handleMenuClick,
-	    onOpenChange: this.handleOnOpenChange,
-	  };
+    const draggableMenuProps = {
+      selectedKeys,
+      menuDatas,
+      openKeys,
+      type: 'module',
+      onClick: this.handleMenuClick,
+      onOpenChange: this.handleOnOpenChange,
+    };
 
-	  return (
-	  // <Navigation type='moduleEdit'>
-	    <Layout style={{ minHeight: '100vh' }}>
-	      <Sider theme='light' width='256'>
-	        <DraggableMenu {...draggableMenuProps} />
-	      </Sider>
+    return (
+      // <Navigation type='moduleEdit'>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider theme="light" width="256">
+          <DraggableMenu {...draggableMenuProps} />
+        </Sider>
 
-	      <Layout>
-	        <ModuleLayout
-	          layout={layout}
-	          onDelete={this.handleMealOnDelete}
-	          isAll={isAll}
-	        />
-	      </Layout>
-	    </Layout>
-	  // </Navigation>
-	  );
-	}
+        <Layout>
+          <ModuleLayout
+            layout={layout}
+            onDelete={this.handleMealOnDelete}
+            isAll={isAll}
+          />
+        </Layout>
+      </Layout>
+      // </Navigation>
+    );
+  };
 }

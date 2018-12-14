@@ -3,7 +3,7 @@ import {
   getRealParams,
   serialize,
   getRealUrl,
-  checkMethod
+  checkMethod,
 } from '..';
 
 const error = console.error;
@@ -72,8 +72,7 @@ describe('fetchUtil', () => {
   });
 
   it('getRealUrl should work with proxy', () => {
-    expect(getRealUrl('test', { test: url }, proxy, true))
-      .toBe(proxy + url);
+    expect(getRealUrl('test', { test: url }, proxy, true)).toBe(proxy + url);
     expect(getRealUrl('test', { test: url }, proxy, false)).toBe(url);
   });
 });

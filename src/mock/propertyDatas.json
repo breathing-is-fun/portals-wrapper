@@ -1,21 +1,21 @@
 {
-    "data": [
-        {
-            "text": "标题",
-            "key": "title",
-            "isStyle": false
-        },
-        {
-            "text": "字体",
-            "key": "fontSize"
-        },
-        {
-            "text": "背景颜色",
-            "key": "background"
-        },
-        {
-            "text": "边框",
-            "key": "border"
-        }
-    ]
+  "data": [
+    {
+      "text": "标题",
+      "key": "title",
+      "isStyle": false
+    },
+    {
+      "text": "字体",
+      "key": "fontSize"
+    },
+    {
+      "text": "背景颜色",
+      "key": "background"
+    },
+    {
+      "text": "边框",
+      "key": "border"
+    }
+  ]
 }
