@@ -17,6 +17,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`
       confirmLoading={false}
       destroyOnClose={true}
       footer={null}
+      forceRender={true}
       maskTransitionName="fade"
       okButtonDisabled={false}
       okType="primary"
@@ -47,6 +48,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`
         confirmLoading={false}
         destroyOnClose={true}
         footer={null}
+        forceRender={true}
         maskTransitionName="fade"
         okButtonDisabled={false}
         okType="primary"
@@ -86,6 +88,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`
       confirmLoading={false}
       destroyOnClose={true}
       footer={null}
+      forceRender={true}
       maskTransitionName="fade"
       okButtonDisabled={false}
       okType="primary"
@@ -116,6 +119,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`
         confirmLoading={false}
         destroyOnClose={true}
         footer={null}
+        forceRender={true}
         maskTransitionName="fade"
         okButtonDisabled={false}
         okType="primary"
@@ -155,6 +159,7 @@ exports[`GlobalModal when visible is true, Modal should work 1`] = `
       confirmLoading={false}
       destroyOnClose={true}
       footer={null}
+      forceRender={true}
       maskTransitionName="fade"
       okButtonDisabled={false}
       okType="primary"
@@ -185,6 +190,7 @@ exports[`GlobalModal when visible is true, Modal should work 1`] = `
         confirmLoading={false}
         destroyOnClose={true}
         footer={null}
+        forceRender={true}
         maskTransitionName="fade"
         okButtonDisabled={false}
         okType="primary"

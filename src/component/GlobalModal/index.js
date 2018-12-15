@@ -24,6 +24,11 @@ export default class GlobalModal extends Component {
 
   componentDidMount = () => {
     const { on, type } = this.props;
+    const defaultProps = {
+      mask: false,
+      width: '100%',
+      style: { top: 65 },
+    };
 
     Object.defineProperty(on, type, {
       enumerable: true,
@@ -33,7 +38,7 @@ export default class GlobalModal extends Component {
           return value;
         }
 
-        this.setState({ ...value });
+        this.setState({ ...defaultProps, ...value });
 
         return value;
       },
@@ -58,6 +63,7 @@ export default class GlobalModal extends Component {
           destroyOnClose
           onCancel={this.handleOnCancel}
           footer={null}
+          forceRender
           style={Object.assign({}, { top: 65 }, style)}
           {...newStates}
         >
