@@ -7,7 +7,8 @@
     "build": "node webpack.prod.js",
     "dev": "node webpack.prod.js --development",
     "lint": "npx eslint .",
-    "prettier": "node ./scripts/prettier.js"
+    "prettier": "node ./scripts/prettier.js",
+    "lint-staged": "lint-staged"
   },
   "license": "MIT",
   "dependencies": {
@@ -41,7 +42,9 @@
     "enzyme-to-json": "^3.3.4",
     "eslint": "^5.9.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.2.1",
     "jest": "^23.6.0",
+    "lint-staged": "^8.1.0",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.4.0",
     "postcss-loader": "^2.1.4",
@@ -64,7 +67,13 @@
     }
   },
   "pre-commit": [
-    "lint",
-    "prettier"
-  ]
+    "lint-staged"
+  ],
+  "lint-staged": {
+    "*.{js,css}": [
+      "node ./scripts/prettier.js",
+      "npx eslint .",
+      "git add"
+    ]
+  }
 }
