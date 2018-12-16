@@ -24,11 +24,13 @@ export default class ComponentEdit extends Component {
     };
   }
 
-  componentWillMount = () => {
+  static getDerivedStateFromProps() {
     if (!SCTool.listener.get('formData')) {
       location.hash = '/edit/module';
     }
-  };
+
+    return null;
+  }
 
   componentDidMount = () => {
     this.loadMenuDatas();
