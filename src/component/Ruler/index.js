@@ -8,6 +8,10 @@ export default class Ruler extends Component {
     padding: 35,
   };
 
+  static propTypes = {
+    padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  };
+
   handleScale = type => {
     let cm = [],
       mm = [];
@@ -45,7 +49,3 @@ export default class Ruler extends Component {
     );
   };
 }
-
-Ruler.propTypes = {
-  padding: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};

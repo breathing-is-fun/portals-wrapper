@@ -8,6 +8,25 @@ const SubMenu = Menu.SubMenu;
 import DragMenuItem from './DragMenuItem';
 
 export default class DraggableMenu extends Component {
+  static defaultProps = {
+    selectedKeys: [],
+    menuDatas: [],
+    openKeys: [],
+    shellStyleDatas: [],
+    type: 'component',
+  };
+
+  static propTypes = {
+    selectedKeys: PropTypes.array,
+    menuDatas: PropTypes.array,
+    openKeys: PropTypes.array,
+    onClick: PropTypes.func,
+    onOpenChange: PropTypes.func,
+    shellStyleDatas: PropTypes.array,
+    onSave: PropTypes.func,
+    type: PropTypes.oneOf(['component', 'module']),
+  };
+
   constructor(props) {
     super(props);
 
@@ -17,14 +36,6 @@ export default class DraggableMenu extends Component {
 
     this.menuSelectPrefix = 'dragMenuItem';
   }
-
-  static defaultProps = {
-    selectedKeys: [],
-    menuDatas: [],
-    openKeys: [],
-    shellStyleDatas: [],
-    type: 'component',
-  };
 
   handleMenuClick = ({ item, keyPath }) => {
     const { onClick } = this.props;
@@ -116,14 +127,3 @@ export default class DraggableMenu extends Component {
     );
   };
 }
-
-DraggableMenu.propTypes = {
-  selectedKeys: PropTypes.array,
-  menuDatas: PropTypes.array,
-  openKeys: PropTypes.array,
-  onClick: PropTypes.func,
-  onOpenChange: PropTypes.func,
-  shellStyleDatas: PropTypes.array,
-  onSave: PropTypes.func,
-  type: PropTypes.oneOf(['component', 'module']),
-};

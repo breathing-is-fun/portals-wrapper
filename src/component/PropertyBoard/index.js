@@ -7,6 +7,20 @@ import Loader from './PropertyLoader';
 import './css/PropertyBoard.css';
 
 export default class PropertyBoard extends Component {
+  static defaultProps = {
+    visible: false,
+    shellStyleDatas: {},
+    enumDatas: [],
+  };
+
+  static propTypes = {
+    visible: PropTypes.bool,
+    onClose: PropTypes.func,
+    shellStyleDatas: PropTypes.object,
+    enumDatas: PropTypes.array,
+    onChange: PropTypes.func,
+  };
+
   constructor(props) {
     super(props);
 
@@ -17,12 +31,6 @@ export default class PropertyBoard extends Component {
     this.loader = new Loader();
     this.currentShellStyle = {};
   }
-
-  static defaultProps = {
-    visible: false,
-    shellStyleDatas: {},
-    enumDatas: [],
-  };
 
   componentDidMount = () => {
     this.loadPropertyDatas(this.props.visible);
@@ -97,11 +105,3 @@ export default class PropertyBoard extends Component {
     );
   };
 }
-
-PropertyBoard.propTypes = {
-  visible: PropTypes.bool,
-  onClose: PropTypes.func,
-  shellStyleDatas: PropTypes.object,
-  enumDatas: PropTypes.array,
-  onChange: PropTypes.func,
-};

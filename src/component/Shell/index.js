@@ -20,6 +20,22 @@ export default class Shell extends Component {
     'data-grid': {},
   };
 
+  static propTypes = {
+    showDetail: PropTypes.bool,
+    detailPath: PropTypes.string,
+    onDetail: PropTypes.func,
+    showEdit: PropTypes.bool,
+    showDelete: PropTypes.bool,
+    type: PropTypes.oneOf(['add', 'module', 'component']),
+    onAdd: PropTypes.func,
+    showTitle: PropTypes.bool,
+    style: PropTypes.object,
+    title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    onDelete: PropTypes.func,
+    'data-grid': PropTypes.object,
+    onEdit: PropTypes.func,
+  };
+
   handleOnDelete = e => {
     const { onDelete } = this.props;
     const dataGrid = this.props['data-grid'] || {};
@@ -170,19 +186,3 @@ export default class Shell extends Component {
     );
   };
 }
-
-Shell.propTypes = {
-  showDetail: PropTypes.bool,
-  detailPath: PropTypes.string,
-  onDetail: PropTypes.func,
-  showEdit: PropTypes.bool,
-  showDelete: PropTypes.bool,
-  type: PropTypes.oneOf(['add', 'module', 'component']),
-  onAdd: PropTypes.func,
-  showTitle: PropTypes.bool,
-  style: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-  onDelete: PropTypes.func,
-  'data-grid': PropTypes.object,
-  onEdit: PropTypes.func,
-};

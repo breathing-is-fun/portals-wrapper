@@ -6,6 +6,16 @@ import omit from 'omit.js';
 import { Modal } from 'antd';
 
 export default class GlobalModal extends Component {
+  static defaultProps = {
+    on: {},
+    type: 'modal',
+  };
+
+  static propTypes = {
+    on: PropTypes.object,
+    type: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
 
@@ -16,11 +26,6 @@ export default class GlobalModal extends Component {
       style: {},
     };
   }
-
-  static defaultProps = {
-    on: {},
-    type: 'modal',
-  };
 
   componentDidMount = () => {
     const { on, type } = this.props;
@@ -73,8 +78,3 @@ export default class GlobalModal extends Component {
     );
   };
 }
-
-GlobalModal.propTypes = {
-  on: PropTypes.object,
-  type: PropTypes.string,
-};

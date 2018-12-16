@@ -13,6 +13,25 @@ import Loader from './ModulesLoader';
 import './css/Grid.css';
 
 export default class Grid extends Component {
+  static defaultProps = {
+    showEdit: false,
+    showDelete: false,
+    layout: [],
+    enumDatas: [],
+    size: '',
+  };
+
+  static propTypes = {
+    layout: PropTypes.array,
+    onLayoutChange: PropTypes.func,
+    enumDatas: PropTypes.array,
+    showEdit: PropTypes.bool,
+    showDelete: PropTypes.bool,
+    onDelete: PropTypes.func,
+    onDetail: PropTypes.func,
+    size: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
 
@@ -25,14 +44,6 @@ export default class Grid extends Component {
 
     this.roots = {};
   }
-
-  static defaultProps = {
-    showEdit: false,
-    showDelete: false,
-    layout: [],
-    enumDatas: [],
-    size: '',
-  };
 
   mountRoots = () => {
     const { layout } = this.props;
@@ -233,14 +244,3 @@ export default class Grid extends Component {
     );
   };
 }
-
-Grid.propTypes = {
-  layout: PropTypes.array,
-  onLayoutChange: PropTypes.func,
-  enumDatas: PropTypes.array,
-  showEdit: PropTypes.bool,
-  showDelete: PropTypes.bool,
-  onDelete: PropTypes.func,
-  onDetail: PropTypes.func,
-  size: PropTypes.string,
-};

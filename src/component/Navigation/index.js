@@ -17,6 +17,14 @@ export default class Navigation extends Component {
     size: '',
   };
 
+  static propTypes = {
+    title: PropTypes.string,
+    datas: PropTypes.array,
+    onClick: PropTypes.func,
+    clock: PropTypes.bool,
+    size: PropTypes.string,
+  };
+
   constructor(props) {
     super(props);
 
@@ -177,11 +185,3 @@ export default class Navigation extends Component {
     );
   };
 }
-
-Navigation.propTypes = {
-  title: PropTypes.string,
-  datas: PropTypes.array,
-  onClick: PropTypes.func,
-  clock: PropTypes.bool,
-  size: PropTypes.string,
-};
