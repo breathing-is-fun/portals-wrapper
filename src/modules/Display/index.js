@@ -24,12 +24,15 @@ export default class Display extends Component {
   }
 
   componentDidMount = () => {
-    SCTool.RegisterResizeDispatcher = {
-      key: 'Display',
-      onResize: ({ size }) => {
-        this.setState({ size });
-      },
-    };
+    if (window.SCTool) {
+      SCTool.RegisterResizeDispatcher = {
+        key: 'Display',
+        onResize: ({ size }) => {
+          this.setState({ size });
+        },
+      };
+    }
+
     this.loadMenu();
 
     SCTool.resize();
