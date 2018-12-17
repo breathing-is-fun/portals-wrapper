@@ -11,6 +11,8 @@ import GlobalListener from './localStorage/GlobalListener';
 
 const MOUNT_NODE = document.getElementById('root');
 
+const getSize = clientWidth => (clientWidth <= 1366 ? 'sm' : '');
+
 new Store(null, store => {
   let subscriber = [];
   // 控制内部组件自适应
@@ -25,10 +27,27 @@ new Store(null, store => {
       clientHeight,
     };
 
-    SCTool.listener.do('onResize', {
-      ...sizes,
-      size: clientWidth <= 1700 ? 'sm' : '',
-    });
+    for (let item of subscriber) {
+      const { onResize, key } = item;
+      const listenItem = SCTool.listener.get(key);
+      let params = {
+        key,
+        size: getSize(sizes.clientWidth),
+        ...sizes,
+      };
+
+      if (listenItem) {
+        const { width, height } = listenItem;
+
+        params = Object.assign({}, params, {
+          width: parseFloat(width.replace('px', '')),
+          height: parseFloat(height.replace('px', '')),
+        });
+      }
+
+      // 分发插件各自宽高
+      onResize && onResize(params);
+    }
 
     return sizes;
   };
@@ -41,36 +60,20 @@ new Store(null, store => {
 
   window.onresize = e => {
     if (subscriber.length != 0) {
-      // 控制内部组件自适应
-      const sizes = resize(e.target);
-
       // onresize 执行到这里时，Grid 渲染尚未完成
       setTimeout(() => {
-        for (let item of subscriber) {
-          const { onResize, key } = item;
-          const { width, height } = SCTool.listener.get(key);
-
-          // 分发插件各自宽高
-          onResize &&
-            onResize({
-              ...sizes,
-              size: parseFloat(width.replace('px', '')) <= 1700 ? 'sm' : '',
-              key,
-              width: parseFloat(width.replace('px', '')),
-              height: parseFloat(height.replace('px', '')),
-            });
-        }
+        resize();
       }, 1);
     }
   };
 
-  Object.defineProperty(window.SCTool, 'ResizeDispathcher', {
+  Object.defineProperty(window.SCTool, 'RegisterResizeDispatcher', {
     enumerable: true,
     configurable: true,
     set: value => {
       subscriber.push(value);
 
-      return null;
+      return;
     },
   });
 
@@ -79,10 +82,10 @@ new Store(null, store => {
   }
 
   ReactDOM.render(
-    <div>
+    <React.Fragment>
       <GlobalModal on={window.SCTool} />
       <Router />
-    </div>,
+    </React.Fragment>,
     MOUNT_NODE,
   );
 

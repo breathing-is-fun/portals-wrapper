@@ -37,11 +37,12 @@ export default class Navigation extends Component {
   }
 
   componentDidMount = () => {
-    if (window.SCTool) {
-      SCTool.listener.on('onResize', ({ clientHeight }) => {
+    SCTool.RegisterResizeDispatcher = {
+      key: 'Navigation',
+      onResize: ({ clientHeight }) => {
         this.setState({ clientHeight });
-      });
-    }
+      },
+    };
 
     this.props.clock && this.loadCurrentTime();
   };
