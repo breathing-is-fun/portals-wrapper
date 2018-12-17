@@ -30,9 +30,7 @@ export default class Display extends Component {
     // this.validateTicket(() => this.loadMenu());
     this.loadMenu();
 
-    const { clientWidth } = document.documentElement || document.body;
-
-    SCTool.listener.do('onResize', { size: clientWidth <= 1700 ? 'sm' : '' });
+    SCTool.resize();
   };
 
   validateTicket = callback => {

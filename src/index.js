@@ -13,29 +13,36 @@ const MOUNT_NODE = document.getElementById('root');
 
 new Store(null, store => {
   let subscriber = [];
+  // 控制内部组件自适应
+  const resize = (target = window) => {
+    const { innerWidth, innerHeight } = target;
+    const { clientWidth, clientHeight } =
+      document.documentElement || document.body;
+    const sizes = {
+      innerWidth,
+      innerHeight,
+      clientWidth,
+      clientHeight,
+    };
+
+    SCTool.listener.do('onResize', {
+      ...sizes,
+      size: clientWidth <= 1700 ? 'sm' : '',
+    });
+
+    return sizes;
+  };
 
   window.SCTool = {};
   window.SCTool.modal = {};
   window.SCTool.store = store;
   window.SCTool.listener = new GlobalListener(MOUNT_NODE);
+  window.SCTool.resize = resize;
 
   window.onresize = e => {
     if (subscriber.length != 0) {
-      const { innerWidth, innerHeight } = e.target;
-      const { clientWidth, clientHeight } =
-        document.documentElement || document.body;
-      const sizes = {
-        innerWidth,
-        innerHeight,
-        clientWidth,
-        clientHeight,
-      };
-
       // 控制内部组件自适应
-      SCTool.listener.do('onResize', {
-        ...sizes,
-        size: clientWidth <= 1700 ? 'sm' : '',
-      });
+      const sizes = resize(e.target);
 
       // onresize 执行到这里时，Grid 渲染尚未完成
       setTimeout(() => {
