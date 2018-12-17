@@ -23,6 +23,7 @@ const ignoreFiles = [
   '**/**.snap',
   '**/dist/**',
   '**/thirdModules/**',
+  '**/**.map',
 ];
 
 const jsFiles = glob.sync('**/*.js*', {
