@@ -16,7 +16,7 @@ export default class GlobalListener {
   };
 
   do = (key, detail) => {
-    const listeners = this.listeners[key];
+    const listeners = this.listeners[key] || [];
 
     for (let item of listeners) {
       item(detail);
