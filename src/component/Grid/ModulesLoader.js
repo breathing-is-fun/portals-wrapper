@@ -1,4 +1,4 @@
-import { fetch } from 'whatwg-fetch';
+// import { fetch } from 'whatwg-fetch';
 
 const importPolyfill = url => {
   if (!url) {

@@ -1,4 +1,4 @@
-import { fetch } from 'whatwg-fetch';
+// import { fetch } from 'whatwg-fetch';
 import { path, proxy } from './path';
 
 const types = ['json', 'html', 'text'];
