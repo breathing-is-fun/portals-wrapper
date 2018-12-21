@@ -25,7 +25,7 @@ export default class Content extends Component {
         { content: this.root.current },
       );
 
-      loader.load();
+      loader.load(SCTool);
     }
   };
 
