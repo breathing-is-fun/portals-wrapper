@@ -292,11 +292,11 @@ exports[`Navigation render correctly 1`] = `
                 onMouseLeave={[Function]}
                 onTouchStart={[Function]}
               >
-                套餐切换
                 <Icon
                   className="droplink-icon"
                   style={
                     Object {
+                      "marginLeft": 10,
                       "transform": "rotate(0deg)",
                     }
                   }
@@ -306,6 +306,7 @@ exports[`Navigation render correctly 1`] = `
                     className="anticon anticon-down droplink-icon"
                     style={
                       Object {
+                        "marginLeft": 10,
                         "transform": "rotate(0deg)",
                       }
                     }

@@ -112,15 +112,13 @@ export default class Shell extends Component {
     // );
     const detailButton = (
       <span
-        className={classNames({
-          'sc-title': size == '',
-          'sc-title-sm': size == 'sm',
-        })}
         onMouseDown={this.handleOnDetail}
         style={{
           right: 10,
           position: 'absolute',
           cursor: 'pointer',
+          fontSize: 17,
+          top: 6,
         }}
       >
         详情 >

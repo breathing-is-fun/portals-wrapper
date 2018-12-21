@@ -92,7 +92,7 @@ export default class Grid extends Component {
 
   createShellChild = (showEdit, item) => {
     const { i, moduletype: type, imgurl, imgUrl, path } = item;
-    const height = 'calc(100% - 21px)';
+    const height = 'calc(100% - 33px)';
 
     if (showEdit) {
       return <img src={imgurl || imgUrl} style={{ width: '100%', height }} />;
@@ -169,7 +169,7 @@ export default class Grid extends Component {
       breakpoints: { lg: 1300, md: 996, sm: 768, xs: 480, xxs: 0 },
       rowHeight,
       width: document.body.clientWidth - (showEdit ? 256 : 0),
-      // margin: [10, 10],
+      margin: [20, 25],
       onLayoutChange: this.handleLayoutChange,
       isDraggable: showEdit,
       isResizable: showEdit,

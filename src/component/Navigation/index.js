@@ -33,8 +33,21 @@ export default class Navigation extends Component {
       iconRotate: 0,
       dropDownVisible: false,
       clientHeight: document.body.clientHeight,
+      currentSelect: '',
     };
   }
+
+  static getDerivedStateFromProps = (props, state) => {
+    const { datas } = props;
+    const { currentSelect } = state;
+    let newState = {};
+
+    if (!currentSelect && datas.length != 0) {
+      newState.currentSelect = datas[0].title;
+    }
+
+    return newState;
+  };
 
   componentDidMount = () => {
     if (window.SCTool) {
@@ -57,19 +70,31 @@ export default class Navigation extends Component {
 
   handleIconType = dropDownVisible => {
     let { iconRotate } = this.state;
-
     iconRotate = dropDownVisible ? '180' : '0';
 
-    this.setState({ iconRotate, dropDownVisible });
+    this.setState({
+      iconRotate,
+      dropDownVisible,
+    });
+  };
+
+  handleMenuItemClick = item => {
+    const { onClick } = this.props;
+    const { title } = item;
+
+    this.setState({ currentSelect: title }, () => {
+      onClick && onClick(item);
+    });
   };
 
   render = () => {
-    const { children, datas, onClick, clock, title, size } = this.props;
+    const { children, datas, clock, title, size } = this.props;
     const {
       CurrentTime,
       dropDownVisible,
       iconRotate,
       clientHeight,
+      currentSelect,
     } = this.state;
 
     const date = (
@@ -106,7 +131,7 @@ export default class Navigation extends Component {
           const { title, id } = item;
 
           return (
-            <Menu.Item key={id} onClick={e => onClick(item)}>
+            <Menu.Item key={id} onClick={e => this.handleMenuItemClick(item)}>
               <a rel="noopener noreferrer">{title}</a>
             </Menu.Item>
           );
@@ -165,11 +190,12 @@ export default class Navigation extends Component {
               visible={dropDownVisible}
             >
               <span className="droplink">
-                套餐切换
+                {currentSelect}
                 <Icon
                   type="down"
                   style={{
                     transform: `rotate(${iconRotate}deg)`,
+                    marginLeft: 10,
                   }}
                   className="droplink-icon"
                 />

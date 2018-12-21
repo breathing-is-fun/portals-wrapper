@@ -348,11 +348,12 @@ exports[`Display render correctly 1`] = `
                   onMouseLeave={[Function]}
                   onTouchStart={[Function]}
                 >
-                  套餐切换
+                  test
                   <Icon
                     className="droplink-icon"
                     style={
                       Object {
+                        "marginLeft": 10,
                         "transform": "rotate(0deg)",
                       }
                     }
@@ -362,6 +363,7 @@ exports[`Display render correctly 1`] = `
                       className="anticon anticon-down droplink-icon"
                       style={
                         Object {
+                          "marginLeft": 10,
                           "transform": "rotate(0deg)",
                         }
                       }
@@ -475,6 +477,12 @@ exports[`Display render correctly 1`] = `
               }
               isDraggable={false}
               isResizable={false}
+              margin={
+                Array [
+                  20,
+                  25,
+                ]
+              }
               measureBeforeMount={false}
               onBreakpointChange={[Function]}
               onLayoutChange={[Function]}
@@ -546,6 +554,12 @@ exports[`Display render correctly 1`] = `
                     ],
                   }
                 }
+                margin={
+                  Array [
+                    20,
+                    25,
+                  ]
+                }
                 onBreakpointChange={[Function]}
                 onLayoutChange={[Function]}
                 onWidthChange={[Function]}
@@ -604,8 +618,8 @@ exports[`Display render correctly 1`] = `
                   }
                   margin={
                     Array [
-                      10,
-                      10,
+                      20,
+                      25,
                     ]
                   }
                   maxRows={Infinity}
@@ -643,8 +657,8 @@ exports[`Display render correctly 1`] = `
                       cols={2}
                       containerPadding={
                         Array [
-                          10,
-                          10,
+                          20,
+                          25,
                         ]
                       }
                       containerWidth={0}
@@ -656,8 +670,8 @@ exports[`Display render correctly 1`] = `
                       key=".$demo1"
                       margin={
                         Array [
-                          10,
-                          10,
+                          20,
+                          25,
                         ]
                       }
                       maxH={Infinity}
@@ -711,14 +725,14 @@ exports[`Display render correctly 1`] = `
                         size=""
                         style={
                           Object {
-                            "MozTransform": "translate(10px,10px)",
-                            "OTransform": "translate(10px,10px)",
-                            "WebkitTransform": "translate(10px,10px)",
-                            "height": "170px",
-                            "msTransform": "translate(10px,10px)",
+                            "MozTransform": "translate(20px,25px)",
+                            "OTransform": "translate(20px,25px)",
+                            "WebkitTransform": "translate(20px,25px)",
+                            "height": "335px",
+                            "msTransform": "translate(20px,25px)",
                             "position": "absolute",
-                            "transform": "translate(10px,10px)",
-                            "width": "-20px",
+                            "transform": "translate(20px,25px)",
+                            "width": "-40px",
                           }
                         }
                         title="demo1"
@@ -750,27 +764,28 @@ exports[`Display render correctly 1`] = `
                           size=""
                           style={
                             Object {
-                              "MozTransform": "translate(10px,10px)",
-                              "OTransform": "translate(10px,10px)",
-                              "WebkitTransform": "translate(10px,10px)",
-                              "height": "170px",
-                              "msTransform": "translate(10px,10px)",
+                              "MozTransform": "translate(20px,25px)",
+                              "OTransform": "translate(20px,25px)",
+                              "WebkitTransform": "translate(20px,25px)",
+                              "height": "335px",
+                              "msTransform": "translate(20px,25px)",
                               "overflow": "auto",
                               "position": "absolute",
-                              "transform": "translate(10px,10px)",
-                              "width": "-20px",
+                              "transform": "translate(20px,25px)",
+                              "width": "-40px",
                             }
                           }
                           type="component"
                         >
                           <span
-                            className="sc-title"
                             onMouseDown={[Function]}
                             style={
                               Object {
                                 "cursor": "pointer",
+                                "fontSize": 17,
                                 "position": "absolute",
                                 "right": 10,
+                                "top": 6,
                               }
                             }
                           >
@@ -786,7 +801,7 @@ exports[`Display render correctly 1`] = `
                             id="demo1"
                             style={
                               Object {
-                                "height": "calc(100% - 21px)",
+                                "height": "calc(100% - 33px)",
                               }
                             }
                           />
@@ -799,8 +814,8 @@ exports[`Display render correctly 1`] = `
                       cols={2}
                       containerPadding={
                         Array [
-                          10,
-                          10,
+                          20,
+                          25,
                         ]
                       }
                       containerWidth={0}
@@ -812,8 +827,8 @@ exports[`Display render correctly 1`] = `
                       key=".$demo2"
                       margin={
                         Array [
-                          10,
-                          10,
+                          20,
+                          25,
                         ]
                       }
                       maxH={Infinity}
@@ -867,14 +882,14 @@ exports[`Display render correctly 1`] = `
                         size=""
                         style={
                           Object {
-                            "MozTransform": "translate(10px,190px)",
-                            "OTransform": "translate(10px,190px)",
-                            "WebkitTransform": "translate(10px,190px)",
-                            "height": "125px",
-                            "msTransform": "translate(10px,190px)",
+                            "MozTransform": "translate(20px,385px)",
+                            "OTransform": "translate(20px,385px)",
+                            "WebkitTransform": "translate(20px,385px)",
+                            "height": "245px",
+                            "msTransform": "translate(20px,385px)",
                             "position": "absolute",
-                            "transform": "translate(10px,190px)",
-                            "width": "-20px",
+                            "transform": "translate(20px,385px)",
+                            "width": "-40px",
                           }
                         }
                         title="demo2"
@@ -906,27 +921,28 @@ exports[`Display render correctly 1`] = `
                           size=""
                           style={
                             Object {
-                              "MozTransform": "translate(10px,190px)",
-                              "OTransform": "translate(10px,190px)",
-                              "WebkitTransform": "translate(10px,190px)",
-                              "height": "125px",
-                              "msTransform": "translate(10px,190px)",
+                              "MozTransform": "translate(20px,385px)",
+                              "OTransform": "translate(20px,385px)",
+                              "WebkitTransform": "translate(20px,385px)",
+                              "height": "245px",
+                              "msTransform": "translate(20px,385px)",
                               "overflow": "auto",
                               "position": "absolute",
-                              "transform": "translate(10px,190px)",
-                              "width": "-20px",
+                              "transform": "translate(20px,385px)",
+                              "width": "-40px",
                             }
                           }
                           type="component"
                         >
                           <span
-                            className="sc-title"
                             onMouseDown={[Function]}
                             style={
                               Object {
                                 "cursor": "pointer",
+                                "fontSize": 17,
                                 "position": "absolute",
                                 "right": 10,
+                                "top": 6,
                               }
                             }
                           >
@@ -942,7 +958,7 @@ exports[`Display render correctly 1`] = `
                             id="demo2"
                             style={
                               Object {
-                                "height": "calc(100% - 21px)",
+                                "height": "calc(100% - 33px)",
                               }
                             }
                           />
