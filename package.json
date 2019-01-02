@@ -55,7 +55,7 @@
     "react-hot-loader": "^4.3.12",
     "react-router-dom": "^4.3.1",
     "style-loader": "^0.21.0",
-    "toho-log-plugin": "https://github.com/zy410419243/toho-log-plugin.git",
+    "toho-log-plugin": "^1.0.11",
     "url-loader": "^1.0.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
