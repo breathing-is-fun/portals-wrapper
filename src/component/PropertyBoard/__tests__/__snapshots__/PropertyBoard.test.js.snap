@@ -63,6 +63,8 @@ exports[`PropertyBoard render correctly 1`] = `
         showMask={true}
         style={
           Object {
+            "style": undefined,
+            "transform": undefined,
             "zIndex": undefined,
           }
         }
@@ -187,6 +189,8 @@ exports[`PropertyBoard render correctly 1`] = `
             onTransitionEnd={[Function]}
             style={
               Object {
+                "style": undefined,
+                "transform": undefined,
                 "zIndex": undefined,
               }
             }
