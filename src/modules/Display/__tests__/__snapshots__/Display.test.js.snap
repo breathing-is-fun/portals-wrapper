@@ -464,7 +464,7 @@ exports[`Display render correctly 1`] = `
             <WidthProvider
               breakpoints={
                 Object {
-                  "lg": 1300,
+                  "lg": 1270,
                   "md": 996,
                   "sm": 768,
                   "xs": 480,
@@ -504,7 +504,7 @@ exports[`Display render correctly 1`] = `
               <ResponsiveReactGridLayout
                 breakpoints={
                   Object {
-                    "lg": 1300,
+                    "lg": 1270,
                     "md": 996,
                     "sm": 768,
                     "xs": 480,
@@ -525,7 +525,7 @@ exports[`Display render correctly 1`] = `
                 isResizable={false}
                 layouts={
                   Object {
-                    "md": Array [],
+                    "lg": Array [],
                     "xxs": Array [
                       Object {
                         "h": 12,

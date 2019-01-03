@@ -166,7 +166,7 @@ export default class Grid extends Component {
     const layoutProps = {
       className: 'layout',
       cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-      breakpoints: { lg: 1300, md: 996, sm: 768, xs: 480, xxs: 0 },
+      breakpoints: { lg: 1270, md: 996, sm: 768, xs: 480, xxs: 0 },
       rowHeight,
       width: document.body.clientWidth - (showEdit ? 256 : 0),
       margin: [20, 25],
