@@ -15,6 +15,7 @@ export default class Navigation extends Component {
     datas: [],
     clock: false,
     size: '',
+    display: true,
   };
 
   static propTypes = {
@@ -23,6 +24,7 @@ export default class Navigation extends Component {
     onClick: PropTypes.func,
     clock: PropTypes.bool,
     size: PropTypes.string,
+    display: PropTypes.bool,
   };
 
   constructor(props) {
@@ -88,7 +90,7 @@ export default class Navigation extends Component {
   };
 
   render = () => {
-    const { children, datas, clock, title, size } = this.props;
+    const { children, datas, clock, title, size, display } = this.props;
     const {
       CurrentTime,
       dropDownVisible,
@@ -146,6 +148,7 @@ export default class Navigation extends Component {
             content: size == '',
             'content-sm': size == 'sm',
           })}
+          style={{ display: display ? '' : 'none' }}
         >
           <div
             className={classNames({

@@ -15,15 +15,9 @@ export default class Content extends Component {
     const { path } = this.props;
 
     if (path) {
-      const loader = new Loader(
-        [
-          {
-            i: 'content',
-            path,
-          },
-        ],
-        { content: this.root.current },
-      );
+      const loader = new Loader([{ i: 'globalModalContent', path }], {
+        globalModalContent: this.root.current,
+      });
 
       loader.load(SCTool);
     }

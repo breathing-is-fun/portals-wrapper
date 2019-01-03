@@ -4,6 +4,7 @@ exports[`Navigation render correctly 1`] = `
 <Navigation
   clock={false}
   datas={Array []}
+  display={true}
   size=""
   title=""
 >
@@ -12,6 +13,11 @@ exports[`Navigation render correctly 1`] = `
   >
     <div
       className="content"
+      style={
+        Object {
+          "display": "",
+        }
+      }
     >
       <div
         className="content-wrapper"

@@ -18,6 +18,7 @@ exports[`Display render correctly 1`] = `
         },
       ]
     }
+    display={true}
     size=""
     title="test"
   >
@@ -26,6 +27,11 @@ exports[`Display render correctly 1`] = `
     >
       <div
         className="content"
+        style={
+          Object {
+            "display": "",
+          }
+        }
       >
         <div
           className="content-wrapper"

@@ -20,31 +20,77 @@ export default class Display extends Component {
       menuDatas: [],
       loading: true,
       size: '',
+      isMainPage: false, // 判断是否是一级页面，如果是就加载iframe
+      detailPath: '',
+      display: false, // 导航是否显示
     };
   }
 
   componentDidMount = () => {
-    if (window.SCTool) {
-      SCTool.RegisterResizeDispatcher = {
-        key: 'Display',
-        onResize: ({ size }) => {
-          this.setState({ size });
-        },
-      };
+    const display = this.getParams('display') !== 'false';
+
+    if (!display) {
+      window.parent.SCTool.listener.do('destroyIframe');
     }
 
-    this.loadMenu();
+    if (window.SCTool) {
+      SCTool.listener.on('controlSkip', params => {
+        this.setState(params);
+      });
 
-    SCTool.resize();
+      SCTool.listener.on('destroyIframe', () => {
+        this.setState({ isMainPage: true }, () => {
+          this.grid.mountRoots();
+        });
+      });
+    }
+
+    if (display) {
+      if (window.SCTool) {
+        SCTool.RegisterResizeDispatcher = {
+          key: 'Display',
+          onResize: ({ size }) => {
+            this.setState({ size, display });
+          },
+        };
+      }
+
+      this.loadMenu();
+
+      SCTool.resize();
+    } else {
+      this.setState(
+        {
+          display,
+          isMainPage: true,
+          loading: false,
+        },
+        () => {
+          this.loadMenu();
+        },
+      );
+    }
+  };
+
+  getParams = name => {
+    let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+    const href = window.location.href;
+    let result = href.split('?').length > 1 ? href.split('?')[1].match(reg) : 0;
+
+    if (result != null) {
+      return result[2] === 'undefined' ? undefined : result[2];
+    }
+
+    return null;
   };
 
   validateTicket = callback => {
     const ticket = this.getParams('ticket');
 
-    if (!ticket) {
-      message.error('ticket is null.');
-      return;
-    }
+    // if (!ticket) {
+    //   message.error('ticket is null.');
+    //   return;
+    // }
 
     ajax({
       key: 'login-ticket',
@@ -57,21 +103,8 @@ export default class Display extends Component {
     });
   };
 
-  getParams = name => {
-    let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
-    let result =
-      window.location.href.split('?').length > 1
-        ? window.location.href.split('?')[1].match(reg)
-        : 0;
-
-    if (result != null) {
-      return result[2] === 'undefined' ? undefined : result[2];
-    }
-
-    return null;
-  };
-
-  loadLayout = id => {
+  loadLayout = item => {
+    const { id } = item;
     this.setState({ loading: true });
 
     ajax({
@@ -89,8 +122,10 @@ export default class Display extends Component {
 
           layout.push(item);
         }
-        this.setState({ layout, loading: false }, () => {
-          this.grid.mountRoots();
+        this.setState({ layout, loading: false, isMainPage: true }, () => {
+          this.validateTicket(() => {
+            this.grid.mountRoots();
+          });
         });
       },
     });
@@ -102,7 +137,7 @@ export default class Display extends Component {
       data: { id: 1 },
       success: ({ data: menuDatas }) => {
         this.setState({ menuDatas }, () => {
-          menuDatas.length != 0 && this.loadLayout(menuDatas[0].id);
+          menuDatas.length != 0 && this.loadLayout(menuDatas[0]);
         });
       },
     });
@@ -111,39 +146,32 @@ export default class Display extends Component {
   handleOnDetail = item => {
     const { title, detailpath: detailPath } = item;
 
-    SCTool.modal = {
-      visible: true,
-      title,
-      mask: false,
-      width: '100%',
-      style: { top: 65 },
-      content: (
-        <iframe
-          src={detailPath}
-          style={{
-            border: 'none',
-            width: '100%',
-            height: document.body.clientHeight - 55 - 65,
-          }}
-        />
-      ),
-    };
+    this.setState({ detailPath, isMainPage: false });
   };
 
   render = () => {
-    const { layout, menuDatas, loading, size } = this.state;
+    const {
+      layout,
+      menuDatas,
+      loading,
+      size,
+      isMainPage,
+      detailPath,
+      display,
+    } = this.state;
 
     const title = SCTool.listener.get('systemTitle');
 
     return (
       <Navigation
-        onClick={({ id }) => this.loadLayout(id)}
+        onClick={item => this.loadLayout(item)}
         datas={menuDatas}
         clock
         title={title}
         size={size}
+        display={display}
       >
-        {!loading && (
+        {isMainPage && !loading && (
           <Grid
             showEdit={false}
             showDelete={false}
@@ -151,6 +179,16 @@ export default class Display extends Component {
             size={size}
             onDetail={this.handleOnDetail}
             ref={ref => ref && (this.grid = ref)}
+          />
+        )}
+        {!isMainPage && (
+          <iframe
+            src={detailPath}
+            style={{
+              width: '100%',
+              border: 'none',
+              height: '100%',
+            }}
           />
         )}
       </Navigation>
