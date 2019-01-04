@@ -11,7 +11,7 @@ import GlobalListener from './localStorage/GlobalListener';
 
 const MOUNT_NODE = document.getElementById('root');
 
-const getSize = clientWidth => (clientWidth <= 1270 ? 'sm' : '');
+const getSize = clientWidth => (clientWidth <= 1366 ? 'sm' : '');
 
 new Store(null, store => {
   let subscriber = [];
