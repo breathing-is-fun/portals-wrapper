@@ -1,5 +1,5 @@
 // import { fetch } from 'whatwg-fetch';
-import { path, proxy } from './path';
+import { path, proxy, isDev } from './path';
 
 const types = ['json', 'html', 'text'];
 const methods = ['GET', 'POST', 'PUT', 'DELETE'];
@@ -17,7 +17,7 @@ const methods = ['GET', 'POST', 'PUT', 'DELETE'];
  * @param { isProxy } 是否启用代理，默认为 false
  * @param { error } 异常抛出
  */
-export const ajax = ({
+const ajax = ({
   url,
   key,
   method = 'GET',
@@ -149,3 +149,5 @@ export const getRealUrl = (key, path, proxy, isProxy) => {
 
   return realUrl;
 };
+
+export { isDev, ajax };

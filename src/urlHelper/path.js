@@ -1,4 +1,5 @@
 const proxy = null;
+const isDev = false;
 
 /*eslint-disable */
 const prod = {
@@ -19,7 +20,6 @@ const prod = {
 /*eslint-disable */
 const dev = {};
 
-// const path = process.argv.toString().includes('development') ? dev : prod;
-const path = prod;
+const path = isDev ? dev : prod;
 
 export { path, proxy };
