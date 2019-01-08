@@ -15,7 +15,6 @@ exports[`DraggableMenu component edit render correctly 1`] = `
         "all",
       ]
     }
-    prefixCls="ant-menu"
     selectedKeys={
       Array [
         "dragMenuItemall",
@@ -82,7 +81,6 @@ exports[`DraggableMenu module edit render correctly 1`] = `
         "all",
       ]
     }
-    prefixCls="ant-menu"
     selectedKeys={
       Array [
         "dragMenuItemall",

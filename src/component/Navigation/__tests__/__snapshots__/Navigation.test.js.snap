@@ -50,12 +50,10 @@ exports[`Navigation render correctly 1`] = `
             <Menu
               className=""
               focusable={false}
-              prefixCls="ant-menu"
               theme="light"
             />
           }
           placement="bottomLeft"
-          prefixCls="ant-dropdown"
           trigger={
             Array [
               "hover",
@@ -69,26 +67,7 @@ exports[`Navigation render correctly 1`] = `
             mouseEnterDelay={0.15}
             mouseLeaveDelay={0.1}
             onVisibleChange={[Function]}
-            overlay={
-              <Menu
-                className=""
-                expandIcon={
-                  <span
-                    className="ant-dropdown-menu-submenu-arrow"
-                  >
-                    <Icon
-                      className="ant-dropdown-menu-submenu-arrow-icon"
-                      type="right"
-                    />
-                  </span>
-                }
-                focusable={false}
-                mode="vertical"
-                prefixCls="ant-menu"
-                selectable={false}
-                theme="light"
-              />
-            }
+            overlay={[Function]}
             overlayClassName=""
             overlayStyle={Object {}}
             placement="bottomLeft"
@@ -238,47 +217,8 @@ exports[`Navigation render correctly 1`] = `
               onPopupAlign={[Function]}
               onPopupVisibleChange={[Function]}
               onVisibleChange={[Function]}
-              overlay={
-                <Menu
-                  className=""
-                  expandIcon={
-                    <span
-                      className="ant-dropdown-menu-submenu-arrow"
-                    >
-                      <Icon
-                        className="ant-dropdown-menu-submenu-arrow-icon"
-                        type="right"
-                      />
-                    </span>
-                  }
-                  focusable={false}
-                  mode="vertical"
-                  prefixCls="ant-menu"
-                  selectable={false}
-                  theme="light"
-                />
-              }
-              popup={
-                <Menu
-                  className=""
-                  expandIcon={
-                    <span
-                      className="ant-dropdown-menu-submenu-arrow"
-                    >
-                      <Icon
-                        className="ant-dropdown-menu-submenu-arrow-icon"
-                        type="right"
-                      />
-                    </span>
-                  }
-                  focusable={false}
-                  mode="vertical"
-                  onClick={[Function]}
-                  prefixCls="ant-dropdown-menu"
-                  selectable={false}
-                  theme="light"
-                />
-              }
+              overlay={[Function]}
+              popup={[Function]}
               popupAlign={Object {}}
               popupClassName=""
               popupPlacement="bottomLeft"
