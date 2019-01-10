@@ -1,7 +1,7 @@
-const proxy = null;
-const isDev = false;
-
 /*eslint-disable */
+const proxy = null;
+const isDev = process.env.NODE_ENV === 'development';
+
 const prod = {
   propertyDatas: '../../mock/propertyDatas.json',
   s_slmh_menu_data:
@@ -17,9 +17,8 @@ const prod = {
   'login-ticket': 'http://47.95.1.229:9007/webapi/api/v1/zjzhsl/login-ticket',
 };
 
-/*eslint-disable */
 const dev = {};
 
 const path = isDev ? dev : prod;
 
-export { path, proxy };
+export { path, proxy, isDev };
