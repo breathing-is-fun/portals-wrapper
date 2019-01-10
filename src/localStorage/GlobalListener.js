@@ -38,4 +38,22 @@ export default class GlobalListener {
   get = key => {
     return this.meta[key];
   };
+
+  /**
+    to get datas if module is not mounted
+    usage:
+      from:
+        listener.set('listenerName', count);
+      to:
+        componentDidMount = () => {
+          if (!listener.isListenerExist('listenerName')) {
+            listener.on('listenerName', data => {
+              todo();
+            });
+          }
+          const data = listener.get('listenerName');
+          listener.do('listenerName', data);
+        };
+  */
+  isListenerExist = name => !!this.listeners[name];
 }
