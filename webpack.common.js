@@ -1,6 +1,7 @@
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WebpackBar = require('webpackbar');
 
 module.exports = {
   commonModule: {
@@ -31,7 +32,6 @@ module.exports = {
   },
   commonPlugin: [
     new htmlWebpackPlugin({
-      // 生成html
       template: './src/index.html',
       hash: true,
       minify: {
@@ -40,6 +40,10 @@ module.exports = {
         removeComments: true,
         collapseWhitespace: true,
       },
+    }),
+    new WebpackBar({
+      name: '少女祈祷中...  ',
+      color: 'cyanBright',
     }),
     new CopyWebpackPlugin([
       {

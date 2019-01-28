@@ -1,19 +1,15 @@
 const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const TohoLogPlugin = require('toho-log-plugin');
 const { commonModule, commonPlugin } = require('./webpack.common');
 
 let plugins = commonPlugin;
 
-// plugins.push(new webpack.HotModuleReplacementPlugin());
-// plugins.push(new webpack.NamedModulesPlugin());
-plugins.push(new TohoLogPlugin({ defaultWords: true }));
+plugins.push(new TohoLogPlugin({ defaultWords: true, isPray: false }));
 
 const devServerOptions = {
   port: 9099,
-  // hot: true,
   host: 'localhost',
   noInfo: true,
   clientLogLevel: 'error',

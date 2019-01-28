@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const WebpackOnBuildPlugin = require('on-build-webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TohoLogPlugin = require('toho-log-plugin');
 const { commonModule, commonPlugin } = require('./webpack.common');
 
@@ -11,7 +10,7 @@ let plugins = commonPlugin;
 
 // plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
 
-plugins.push(new TohoLogPlugin({ dev }));
+plugins.push(new TohoLogPlugin({ dev, isPray: false }));
 
 !dev &&
   plugins.push(
