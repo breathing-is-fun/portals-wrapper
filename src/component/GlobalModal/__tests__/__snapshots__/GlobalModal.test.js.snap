@@ -100,6 +100,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`
                             class="ant-modal-close-x"
                           >
                             <i
+                              aria-label="icon: close"
                               class="anticon anticon-close ant-modal-close-icon"
                             >
                               <svg
@@ -359,6 +360,7 @@ exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`
                             class="ant-modal-close-x"
                           >
                             <i
+                              aria-label="icon: close"
                               class="anticon anticon-close ant-modal-close-icon"
                             >
                               <svg
@@ -618,6 +620,7 @@ exports[`GlobalModal when visible is true, Modal should work 1`] = `
                             class="ant-modal-close-x"
                           >
                             <i
+                              aria-label="icon: close"
                               class="anticon anticon-close ant-modal-close-icon"
                             >
                               <svg
