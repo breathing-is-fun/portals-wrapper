@@ -3,3 +3,4 @@
 /thirdModules/
 /scripts/prettier.js
 *.css
+/coverage/

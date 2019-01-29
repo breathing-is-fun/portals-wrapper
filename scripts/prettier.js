@@ -24,6 +24,7 @@ const ignoreFiles = [
   '**/dist/**',
   '**/thirdModules/**',
   '**/**.map',
+  '**/coverage/**',
 ];
 
 const jsFiles = glob.sync('**/*.js*', {

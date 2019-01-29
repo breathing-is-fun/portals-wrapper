@@ -179,32 +179,34 @@ export default class Navigation extends Component {
 
           {clock && date}
 
-          <div
-            className={classNames({
-              'content-wrapper': true,
-              'content-switch': true,
-              sm: size == 'sm',
-            })}
-          >
-            <Dropdown
-              overlay={switchMeal}
-              trigger={['hover', 'click']}
-              onVisibleChange={this.handleIconType}
-              visible={dropDownVisible}
+          {datas && datas.length != 0 && (
+            <div
+              className={classNames({
+                'content-wrapper': true,
+                'content-switch': true,
+                sm: size == 'sm',
+              })}
             >
-              <span className="droplink">
-                {currentSelect}
-                <Icon
-                  type="down"
-                  style={{
-                    transform: `rotate(${iconRotate}deg)`,
-                    marginLeft: 10,
-                  }}
-                  className="droplink-icon"
-                />
-              </span>
-            </Dropdown>
-          </div>
+              <Dropdown
+                overlay={switchMeal}
+                trigger={['hover', 'click']}
+                onVisibleChange={this.handleIconType}
+                visible={dropDownVisible}
+              >
+                <span className="droplink">
+                  {currentSelect}
+                  <Icon
+                    type="down"
+                    style={{
+                      transform: `rotate(${iconRotate}deg)`,
+                      marginLeft: 10,
+                    }}
+                    className="droplink-icon"
+                  />
+                </span>
+              </Dropdown>
+            </div>
+          )}
         </div>
 
         <div

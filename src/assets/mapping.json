@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "path": "path1",
+      "id": "id1"
+    },
+    {
+      "path": "path2",
+      "id": "id2"
+    }
+  ]
+}
