@@ -74,19 +74,7 @@ export default class ComponentEdit extends Component {
       ajax({
         key: 's_slmh_meal_layout_data',
         data: { id },
-        success: ({ data: result }) => {
-          let layout = [];
-
-          for (let item of result) {
-            let { style } = item;
-
-            if (typeof style == 'string') {
-              item.style = JSON.parse(style);
-            }
-
-            layout.push(item);
-          }
-
+        success: ({ data: layout }) => {
           this.setState({ layout }, () => {
             setTimeout(() => {
               this.grid.mountRoots();

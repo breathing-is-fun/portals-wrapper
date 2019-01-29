@@ -23,4 +23,14 @@ describe('Grid', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('showEdit, isResizable and isDraggable should work', () => {
+    const wrapper = mount(<Grid layout={[layoutItem]} />);
+
+    wrapper.setProps({ isResizable: true });
+    expect(wrapper.find('.react-resizable-handle').length).toBe(1);
+
+    wrapper.setProps({ isResizable: false, showEdit: true });
+    expect(wrapper.find('.react-resizable-handle').length).toBe(1);
+  });
 });

@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "mealid": 89,
+      "i": "szy",
+      "x": 0,
+      "y": 0,
+      "w": 12,
+      "h": 9,
+      "minw": 0,
+      "maxw": 0,
+      "still": false,
+      "path": "../../thirdModules/sc-szy/lib/main/index.js",
+      "imgurl": "http://47.95.1.229:9003/UploadFile/201808/szy.png",
+      "title": "水资源",
+      "style": "{}",
+      "id": 117,
+      "showdetail": true,
+      "detailpath": "http://screen.zj.htwater.net/",
+      "isDraggable": true,
+      "isResizable": true
+    }
+  ],
+  "paging": null
+}

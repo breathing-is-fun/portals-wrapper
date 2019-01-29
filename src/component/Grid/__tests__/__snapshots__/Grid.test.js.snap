@@ -3,6 +3,8 @@
 exports[`Grid render correctly 1`] = `
 <Grid
   enumDatas={Array []}
+  isDraggable={false}
+  isResizable={false}
   layout={
     Array [
       Object {

@@ -19,6 +19,8 @@ export default class Grid extends Component {
     layout: [],
     enumDatas: [],
     size: '',
+    isResizable: false,
+    isDraggable: false,
   };
 
   static propTypes = {
@@ -30,6 +32,8 @@ export default class Grid extends Component {
     onDelete: PropTypes.func,
     onDetail: PropTypes.func,
     size: PropTypes.string,
+    isResizable: PropTypes.bool,
+    isDraggable: PropTypes.bool,
   };
 
   constructor(props) {
@@ -161,6 +165,8 @@ export default class Grid extends Component {
       onDetail,
       enumDatas,
       size,
+      isDraggable,
+      isResizable,
     } = this.props;
 
     const layoutProps = {
@@ -171,8 +177,8 @@ export default class Grid extends Component {
       width: document.body.clientWidth - (showEdit ? 256 : 0),
       margin: [20, 25],
       onLayoutChange: this.handleLayoutChange,
-      isDraggable: showEdit,
-      isResizable: showEdit,
+      isDraggable: showEdit || isDraggable,
+      isResizable: showEdit || isResizable,
       // compactType: 'horizontal',
       style: {
         background: '#f5f6fa',
@@ -204,7 +210,7 @@ export default class Grid extends Component {
       >
         <ResponsiveGridLayout {...layoutProps}>
           {layout.map(item => {
-            const {
+            let {
               i: key,
               title,
               style = {},
@@ -212,6 +218,10 @@ export default class Grid extends Component {
               showdetail: showDetail,
               detailpath: detailPath,
             } = item;
+
+            if (typeof style == 'string') {
+              style = JSON.parse(style);
+            }
 
             const shellProps = {
               key,
