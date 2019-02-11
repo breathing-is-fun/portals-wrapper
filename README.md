@@ -1,5 +1,7 @@
 [![CircleCI](https://circleci.com/gh/zy410419243/portals-wrapper.svg?style=svg&circle-token=404c6203d8a6b711aedd2044f065c04e51113583)](https://circleci.com/gh/zy410419243/portals-wrapper)
 
+[![codecov](https://codecov.io/gh/zy410419243/portals-wrapper/branch/master/graph/badge.svg?token=57gr4q41PI)](https://codecov.io/gh/zy410419243/portals-wrapper)
+
 Q：这是什么？  
 A：面上标着是省水利厅集成各单位资源的门户，但其实只是个 js 加载器
 
