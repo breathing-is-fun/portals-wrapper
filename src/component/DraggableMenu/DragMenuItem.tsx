@@ -4,11 +4,7 @@ import { Menu } from 'antd';
 export interface DragMenuItemProps {
   item?: any;
 }
-export interface DragMenuItemState {}
-export default class DragMenuItem extends Component<
-  DragMenuItemProps,
-  DragMenuItemState
-> {
+export default class DragMenuItem extends Component<DragMenuItemProps> {
   handleDragStart = (event: any, item: any) => {
     event.dataTransfer.setData('menuItemToGrid', JSON.stringify(item));
   };

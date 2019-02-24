@@ -25,7 +25,7 @@ export default class Navigation extends Component<
   NavigationProps,
   NavigationState
 > {
-  public static defaultProps = {
+  static defaultProps = {
     datas: [],
   };
 
@@ -56,7 +56,7 @@ export default class Navigation extends Component<
   };
 
   componentDidMount = () => {
-    if ((window as any).SCTool) {
+    if (window.SCTool) {
       SCTool.RegisterResizeDispatcher = {
         key: 'Navigation',
         onResize: (item: any) => {

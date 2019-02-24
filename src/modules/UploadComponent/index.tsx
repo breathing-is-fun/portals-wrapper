@@ -22,7 +22,7 @@ class UploadComponent extends Component<
   }
 
   componentDidMount = () => {
-    if ((window as any).SCTool) {
+    if (window.SCTool) {
       SCTool.RegisterResizeDispatcher = {
         key: 'UploadComponent',
         onResize: (item: any) => {

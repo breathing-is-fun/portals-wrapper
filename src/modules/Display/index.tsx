@@ -9,7 +9,6 @@ message.config({
   maxCount: 3,
 });
 import './css/Display.css';
-export interface DisplayProps {}
 export interface DisplayState {
   layout: Array<any>;
   menuDatas: Array<any>;
@@ -19,8 +18,8 @@ export interface DisplayState {
   detailPath: string;
   display: boolean;
 }
-export default class Display extends Component<DisplayProps, DisplayState> {
-  private grid: any = {};
+export default class Display extends Component<any, DisplayState> {
+  grid: any = {};
   constructor(props: any) {
     super(props);
 
@@ -39,10 +38,10 @@ export default class Display extends Component<DisplayProps, DisplayState> {
     const display = this.getParams('display') !== 'false';
 
     if (!display) {
-      (window as any).parent.SCTool.listener.do('destroyIframe');
+      window.parent.SCTool.listener.do('destroyIframe');
     }
 
-    if ((window as any).SCTool) {
+    if (window.SCTool) {
       SCTool.listener.on('controlSkip', (params: any) => {
         this.setState(params);
       });
@@ -55,7 +54,7 @@ export default class Display extends Component<DisplayProps, DisplayState> {
     }
 
     if (display) {
-      if ((window as any).SCTool) {
+      if (window.SCTool) {
         SCTool.RegisterResizeDispatcher = {
           key: 'Display',
           onResize: (item: any) => {

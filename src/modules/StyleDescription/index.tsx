@@ -3,7 +3,6 @@ import LoadMenu from './LoadMenu';
 import RenderHtml from './RenderHtml';
 import { ajax } from '../../urlHelper';
 
-export interface StyleDescriptionProps {}
 export interface StyleDescriptionState {
   paths: Array<any>;
   menuDatas: Array<any>;
@@ -11,10 +10,10 @@ export interface StyleDescriptionState {
 }
 
 export default class StyleDescription extends Component<
-  StyleDescriptionProps,
+  any,
   StyleDescriptionState
 > {
-  constructor(props: StyleDescriptionProps) {
+  constructor(props: any) {
     super(props);
 
     this.state = {

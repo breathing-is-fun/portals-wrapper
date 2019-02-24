@@ -50,13 +50,13 @@ new Store(null, (store: any) => {
     return sizes;
   };
 
-  (window as any).SCTool = {};
-  (window as any).SCTool.modal = {};
-  (window as any).SCTool.store = store;
-  (window as any).SCTool.listener = new GlobalListener();
-  (window as any).SCTool.resize = resize;
+  window.SCTool = {};
+  window.SCTool.modal = {};
+  window.SCTool.store = store;
+  window.SCTool.listener = new GlobalListener();
+  window.SCTool.resize = resize;
 
-  (window as any).onresize = (e: any) => {
+  window.onresize = (e: any) => {
     if (subscriber.length != 0) {
       // onresize 执行到这里时，Grid 渲染尚未完成
       setTimeout(() => {
@@ -65,7 +65,7 @@ new Store(null, (store: any) => {
     }
   };
 
-  Object.defineProperty((window as any).SCTool, 'RegisterResizeDispatcher', {
+  Object.defineProperty(window.SCTool, 'RegisterResizeDispatcher', {
     enumerable: true,
     configurable: true,
     set: value => {
@@ -76,12 +76,12 @@ new Store(null, (store: any) => {
   });
 
   for (let key in store.get('meta')) {
-    (window as any).SCTool.listener.set(key, store.get('meta')[key]);
+    window.SCTool.listener.set(key, store.get('meta')[key]);
   }
 
   ReactDOM.render(
     <React.Fragment>
-      <GlobalModal on={(window as any).SCTool} />
+      <GlobalModal on={window.SCTool} />
       <Router />
     </React.Fragment>,
     MOUNT_NODE,

@@ -3,15 +3,14 @@ import { ajax, isDev } from '../../urlHelper';
 import Grid from '../../component/Grid';
 import Ruler from '../../component/Ruler';
 
-export interface UploadComponentCheckProps {}
 export interface UploadComponentCheckState {
   layout: Array<any>;
 }
 export default class UploadComponentCheck extends Component<
-  UploadComponentCheckProps,
+  any,
   UploadComponentCheckState
 > {
-  private grid: any;
+  grid: any;
   constructor(props: any) {
     super(props);
 

@@ -17,12 +17,11 @@ interface dataItem {
   path: string;
   id: string | number;
 }
-interface EntryProps {}
 interface EntryState {
   data: Array<dataItem>;
 }
 
-export default class Entry extends Component<EntryProps, EntryState> {
+export default class Entry extends Component<any, EntryState> {
   constructor(props: any) {
     super(props);
 
