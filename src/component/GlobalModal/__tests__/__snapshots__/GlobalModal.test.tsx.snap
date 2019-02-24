@@ -1,0 +1,487 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 1`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": Object {
+        "content": "<div>test</div>",
+        "visible": true,
+      },
+      "undefined": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      destroyOnClose={true}
+      footer={null}
+      forceRender={true}
+      mask={false}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={0}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        destroyOnClose={true}
+        footer={null}
+        forceRender={true}
+        mask={false}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={
+          Object {
+            "top": 65,
+          }
+        }
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={0}
+        wrapClassName=""
+      >
+        <Portal
+          getContainer={[Function]}
+        >
+          <Portal
+            containerInfo={
+              <div>
+                <div>
+                  <div
+                    class="ant-modal-wrap "
+                    role="dialog"
+                    style="display: none;"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
+            }
+          >
+            <Dialog
+              cancelButtonDisabled={false}
+              className=""
+              closable={true}
+              closeIcon={
+                <span
+                  className="ant-modal-close-x"
+                >
+                  <Icon
+                    className="ant-modal-close-icon"
+                    type="close"
+                  />
+                </span>
+              }
+              confirmLoading={false}
+              destroyOnClose={true}
+              footer={null}
+              forceRender={true}
+              key="dialog"
+              keyboard={true}
+              mask={false}
+              maskClosable={true}
+              maskTransitionName="fade"
+              okButtonDisabled={false}
+              okType="primary"
+              onCancel={[Function]}
+              onClose={[Function]}
+              prefixCls="ant-modal"
+              style={
+                Object {
+                  "top": 65,
+                }
+              }
+              title=""
+              transitionName="zoom"
+              visible={false}
+              width={0}
+              wrapClassName=""
+            >
+              <div>
+                <div
+                  aria-labelledby={null}
+                  className="ant-modal-wrap "
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="dialog"
+                  style={Object {}}
+                  tabIndex={-1}
+                >
+                  <Animate
+                    animation={Object {}}
+                    component=""
+                    componentProps={Object {}}
+                    key="dialog"
+                    onAppear={[Function]}
+                    onEnd={[Function]}
+                    onEnter={[Function]}
+                    onLeave={[Function]}
+                    showProp="visible"
+                    transitionAppear={true}
+                    transitionEnter={true}
+                    transitionLeave={true}
+                    transitionName="zoom"
+                  />
+                </div>
+              </div>
+            </Dialog>
+          </Portal>
+        </Portal>
+      </DialogWrap>
+    </Modal>
+  </div>
+</GlobalModal>
+`;
+
+exports[`GlobalModal when content exists, dangerouslySetInnerHTML should work 2`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": Object {
+        "content": <div>
+          test
+        </div>,
+      },
+      "undefined": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      destroyOnClose={true}
+      footer={null}
+      forceRender={true}
+      mask={false}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={0}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        destroyOnClose={true}
+        footer={null}
+        forceRender={true}
+        mask={false}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={
+          Object {
+            "top": 65,
+          }
+        }
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={0}
+        wrapClassName=""
+      >
+        <Portal
+          getContainer={[Function]}
+        >
+          <Portal
+            containerInfo={
+              <div>
+                <div>
+                  <div
+                    class="ant-modal-wrap "
+                    role="dialog"
+                    style="display: none;"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
+            }
+          >
+            <Dialog
+              cancelButtonDisabled={false}
+              className=""
+              closable={true}
+              closeIcon={
+                <span
+                  className="ant-modal-close-x"
+                >
+                  <Icon
+                    className="ant-modal-close-icon"
+                    type="close"
+                  />
+                </span>
+              }
+              confirmLoading={false}
+              destroyOnClose={true}
+              footer={null}
+              forceRender={true}
+              key="dialog"
+              keyboard={true}
+              mask={false}
+              maskClosable={true}
+              maskTransitionName="fade"
+              okButtonDisabled={false}
+              okType="primary"
+              onCancel={[Function]}
+              onClose={[Function]}
+              prefixCls="ant-modal"
+              style={
+                Object {
+                  "top": 65,
+                }
+              }
+              title=""
+              transitionName="zoom"
+              visible={false}
+              width={0}
+              wrapClassName=""
+            >
+              <div>
+                <div
+                  aria-labelledby={null}
+                  className="ant-modal-wrap "
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="dialog"
+                  style={Object {}}
+                  tabIndex={-1}
+                >
+                  <Animate
+                    animation={Object {}}
+                    component=""
+                    componentProps={Object {}}
+                    key="dialog"
+                    onAppear={[Function]}
+                    onEnd={[Function]}
+                    onEnter={[Function]}
+                    onLeave={[Function]}
+                    showProp="visible"
+                    transitionAppear={true}
+                    transitionEnter={true}
+                    transitionLeave={true}
+                    transitionName="zoom"
+                  />
+                </div>
+              </div>
+            </Dialog>
+          </Portal>
+        </Portal>
+      </DialogWrap>
+    </Modal>
+  </div>
+</GlobalModal>
+`;
+
+exports[`GlobalModal when visible is true, Modal should work 1`] = `
+<GlobalModal
+  on={
+    Object {
+      "modal": Object {
+        "visible": true,
+      },
+      "undefined": undefined,
+    }
+  }
+>
+  <div
+    className="GlobalModal"
+  >
+    <Modal
+      cancelButtonDisabled={false}
+      confirmLoading={false}
+      destroyOnClose={true}
+      footer={null}
+      forceRender={true}
+      mask={false}
+      maskTransitionName="fade"
+      okButtonDisabled={false}
+      okType="primary"
+      onCancel={[Function]}
+      style={
+        Object {
+          "top": 65,
+        }
+      }
+      title=""
+      transitionName="zoom"
+      visible={false}
+      width={0}
+    >
+      <DialogWrap
+        cancelButtonDisabled={false}
+        closeIcon={
+          <span
+            className="ant-modal-close-x"
+          >
+            <Icon
+              className="ant-modal-close-icon"
+              type="close"
+            />
+          </span>
+        }
+        confirmLoading={false}
+        destroyOnClose={true}
+        footer={null}
+        forceRender={true}
+        mask={false}
+        maskTransitionName="fade"
+        okButtonDisabled={false}
+        okType="primary"
+        onCancel={[Function]}
+        onClose={[Function]}
+        prefixCls="ant-modal"
+        style={
+          Object {
+            "top": 65,
+          }
+        }
+        title=""
+        transitionName="zoom"
+        visible={false}
+        width={0}
+        wrapClassName=""
+      >
+        <Portal
+          getContainer={[Function]}
+        >
+          <Portal
+            containerInfo={
+              <div>
+                <div>
+                  <div
+                    class="ant-modal-wrap "
+                    role="dialog"
+                    style="display: none;"
+                    tabindex="-1"
+                  />
+                </div>
+              </div>
+            }
+          >
+            <Dialog
+              cancelButtonDisabled={false}
+              className=""
+              closable={true}
+              closeIcon={
+                <span
+                  className="ant-modal-close-x"
+                >
+                  <Icon
+                    className="ant-modal-close-icon"
+                    type="close"
+                  />
+                </span>
+              }
+              confirmLoading={false}
+              destroyOnClose={true}
+              footer={null}
+              forceRender={true}
+              key="dialog"
+              keyboard={true}
+              mask={false}
+              maskClosable={true}
+              maskTransitionName="fade"
+              okButtonDisabled={false}
+              okType="primary"
+              onCancel={[Function]}
+              onClose={[Function]}
+              prefixCls="ant-modal"
+              style={
+                Object {
+                  "top": 65,
+                }
+              }
+              title=""
+              transitionName="zoom"
+              visible={false}
+              width={0}
+              wrapClassName=""
+            >
+              <div>
+                <div
+                  aria-labelledby={null}
+                  className="ant-modal-wrap "
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="dialog"
+                  style={Object {}}
+                  tabIndex={-1}
+                >
+                  <Animate
+                    animation={Object {}}
+                    component=""
+                    componentProps={Object {}}
+                    key="dialog"
+                    onAppear={[Function]}
+                    onEnd={[Function]}
+                    onEnter={[Function]}
+                    onLeave={[Function]}
+                    showProp="visible"
+                    transitionAppear={true}
+                    transitionEnter={true}
+                    transitionLeave={true}
+                    transitionName="zoom"
+                  />
+                </div>
+              </div>
+            </Dialog>
+          </Portal>
+        </Portal>
+      </DialogWrap>
+    </Modal>
+  </div>
+</GlobalModal>
+`;

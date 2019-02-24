@@ -38,10 +38,10 @@ export default class Display extends Component<any, DisplayState> {
     const display = this.getParams('display') !== 'false';
 
     if (!display) {
-      window.parent.SCTool.listener.do('destroyIframe');
+      (window as any).parent.SCTool.listener.do('destroyIframe');
     }
 
-    if (window.SCTool) {
+    if ((window as any).SCTool) {
       SCTool.listener.on('controlSkip', (params: any) => {
         this.setState(params);
       });
@@ -54,7 +54,7 @@ export default class Display extends Component<any, DisplayState> {
     }
 
     if (display) {
-      if (window.SCTool) {
+      if ((window as any).SCTool) {
         SCTool.RegisterResizeDispatcher = {
           key: 'Display',
           onResize: (item: any) => {

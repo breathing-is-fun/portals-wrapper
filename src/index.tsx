@@ -14,7 +14,7 @@ const getSize = (clientWidth: number) => (clientWidth <= 1366 ? 'sm' : '');
 new Store(null, (store: any) => {
   let subscriber: Array<any> = [];
   // 控制内部组件自适应
-  const resize = (target = window) => {
+  const resize = (target = window as any) => {
     const { innerWidth, innerHeight } = target;
     const { clientWidth, clientHeight } =
       document.documentElement || document.body;
@@ -50,13 +50,13 @@ new Store(null, (store: any) => {
     return sizes;
   };
 
-  window.SCTool = {};
-  window.SCTool.modal = {};
-  window.SCTool.store = store;
-  window.SCTool.listener = new GlobalListener();
-  window.SCTool.resize = resize;
+  (window as any).SCTool = {};
+  (window as any).SCTool.modal = {};
+  (window as any).SCTool.store = store;
+  (window as any).SCTool.listener = new GlobalListener();
+  (window as any).SCTool.resize = resize;
 
-  window.onresize = (e: any) => {
+  (window as any).onresize = (e: any) => {
     if (subscriber.length != 0) {
       // onresize 执行到这里时，Grid 渲染尚未完成
       setTimeout(() => {
@@ -65,7 +65,7 @@ new Store(null, (store: any) => {
     }
   };
 
-  Object.defineProperty(window.SCTool, 'RegisterResizeDispatcher', {
+  Object.defineProperty((window as any).SCTool, 'RegisterResizeDispatcher', {
     enumerable: true,
     configurable: true,
     set: value => {
@@ -76,12 +76,12 @@ new Store(null, (store: any) => {
   });
 
   for (let key of Object.keys(store.get('meta'))) {
-    window.SCTool.listener.set(key, store.get('meta')[key]);
+    (window as any).SCTool.listener.set(key, store.get('meta')[key]);
   }
 
   ReactDOM.render(
     <React.Fragment>
-      <GlobalModal on={window.SCTool} />
+      <GlobalModal on={(window as any).SCTool} />
       <Router />
     </React.Fragment>,
     MOUNT_NODE,

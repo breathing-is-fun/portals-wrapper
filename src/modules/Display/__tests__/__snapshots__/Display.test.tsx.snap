@@ -3,7 +3,6 @@
 exports[`Display render correctly 1`] = `
 <Demo>
   <Navigation
-    clock={false}
     datas={
       Array [
         Object {
@@ -18,18 +17,16 @@ exports[`Display render correctly 1`] = `
         },
       ]
     }
-    display={true}
-    size=""
     title="test"
   >
     <div
       className="Navigation"
     >
       <div
-        className="content"
+        className=""
         style={
           Object {
-            "display": "",
+            "display": "none",
           }
         }
       >
@@ -52,7 +49,7 @@ exports[`Display render correctly 1`] = `
           }
         >
           <div
-            className="content-time"
+            className=""
           />
         </div>
         <div
@@ -327,8 +324,6 @@ exports[`Display render correctly 1`] = `
       >
         <Grid
           enumDatas={Array []}
-          isDraggable={false}
-          isResizable={false}
           layout={
             Array [
               Object {
@@ -371,7 +366,6 @@ exports[`Display render correctly 1`] = `
           }
           showDelete={false}
           showEdit={false}
-          size=""
         >
           <div
             className="Grid"
@@ -398,8 +392,6 @@ exports[`Display render correctly 1`] = `
                   "xxs": 2,
                 }
               }
-              isDraggable={false}
-              isResizable={false}
               margin={
                 Array [
                   20,
@@ -438,8 +430,6 @@ exports[`Display render correctly 1`] = `
                     "xxs": 2,
                   }
                 }
-                isDraggable={false}
-                isResizable={false}
                 layouts={
                   Object {
                     "lg": Array [],
@@ -503,8 +493,8 @@ exports[`Display render correctly 1`] = `
                   containerPadding={null}
                   draggableCancel=""
                   draggableHandle=""
-                  isDraggable={false}
-                  isResizable={false}
+                  isDraggable={true}
+                  isResizable={true}
                   layout={
                     Array [
                       Object {
@@ -588,8 +578,8 @@ exports[`Display render correctly 1`] = `
                       h={12}
                       handle=""
                       i="demo1"
-                      isDraggable={false}
-                      isResizable={false}
+                      isDraggable={true}
+                      isResizable={true}
                       key=".$demo1"
                       margin={
                         Array [
@@ -616,120 +606,208 @@ exports[`Display render correctly 1`] = `
                       x={0}
                       y={0}
                     >
-                      <Shell
-                        className="react-grid-item cssTransforms"
-                        data-grid={
-                          Object {
-                            "detailpath": "http://www.baidu.com/",
-                            "h": 12,
-                            "i": "demo1",
-                            "id": 117,
-                            "imgurl": "http://47.95.1.229:9003/UploadFile/201808/szy.png",
-                            "maxw": 0,
-                            "mealid": 89,
-                            "minw": 0,
-                            "path": "../../../../thirdModules/demo1/index.js",
-                            "showdetail": true,
-                            "still": false,
-                            "style": Object {},
-                            "title": "demo1",
-                            "w": 12,
-                            "x": 0,
-                            "y": 0,
-                          }
-                        }
-                        detailPath="http://www.baidu.com/"
-                        key="demo1"
-                        onEdit={[Function]}
-                        showDelete={false}
-                        showDetail={true}
-                        showEdit={false}
-                        showTitle={true}
-                        size=""
-                        style={
-                          Object {
-                            "MozTransform": "translate(20px,25px)",
-                            "OTransform": "translate(20px,25px)",
-                            "WebkitTransform": "translate(20px,25px)",
-                            "height": "335px",
-                            "msTransform": "translate(20px,25px)",
-                            "position": "absolute",
-                            "transform": "translate(20px,25px)",
-                            "width": "-40px",
-                          }
-                        }
-                        title="demo1"
-                        type="component"
+                      <DraggableCore
+                        allowAnyClick={false}
+                        cancel=".react-resizable-handle"
+                        disabled={false}
+                        enableUserSelectHack={true}
+                        grid={null}
+                        handle=""
+                        offsetParent={null}
+                        onDrag={[Function]}
+                        onMouseDown={[Function]}
+                        onStart={[Function]}
+                        onStop={[Function]}
+                        transform={null}
                       >
-                        <div
-                          className="Shell"
-                          data-grid={
-                            Object {
-                              "detailpath": "http://www.baidu.com/",
-                              "h": 12,
-                              "i": "demo1",
-                              "id": 117,
-                              "imgurl": "http://47.95.1.229:9003/UploadFile/201808/szy.png",
-                              "maxw": 0,
-                              "mealid": 89,
-                              "minw": 0,
-                              "path": "../../../../thirdModules/demo1/index.js",
-                              "showdetail": true,
-                              "still": false,
-                              "style": Object {},
-                              "title": "demo1",
-                              "w": 12,
-                              "x": 0,
-                              "y": 0,
-                            }
+                        <Resizable
+                          axis="both"
+                          handleSize={
+                            Array [
+                              20,
+                              20,
+                            ]
                           }
-                          onClick={[Function]}
-                          size=""
+                          height={335}
+                          lockAspectRatio={false}
+                          maxConstraints={
+                            Array [
+                              -40,
+                              Infinity,
+                            ]
+                          }
+                          minConstraints={
+                            Array [
+                              -30,
+                              5,
+                            ]
+                          }
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onResize={[Function]}
+                          onResizeStart={[Function]}
+                          onResizeStop={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
                           style={
                             Object {
-                              "MozTransform": "translate(20px,25px)",
-                              "OTransform": "translate(20px,25px)",
-                              "WebkitTransform": "translate(20px,25px)",
-                              "height": "335px",
-                              "msTransform": "translate(20px,25px)",
-                              "overflow": "auto",
-                              "position": "absolute",
-                              "transform": "translate(20px,25px)",
-                              "width": "-40px",
+                              "touchAction": "none",
                             }
                           }
-                          type="component"
+                          width={-40}
                         >
-                          <span
+                          <Shell
+                            className="react-grid-item react-draggable cssTransforms react-resizable"
+                            data-grid={
+                              Object {
+                                "detailpath": "http://www.baidu.com/",
+                                "h": 12,
+                                "i": "demo1",
+                                "id": 117,
+                                "imgurl": "http://47.95.1.229:9003/UploadFile/201808/szy.png",
+                                "maxw": 0,
+                                "mealid": 89,
+                                "minw": 0,
+                                "path": "../../../../thirdModules/demo1/index.js",
+                                "showdetail": true,
+                                "still": false,
+                                "style": Object {},
+                                "title": "demo1",
+                                "w": 12,
+                                "x": 0,
+                                "y": 0,
+                              }
+                            }
+                            detailPath="http://www.baidu.com/"
+                            key="demo1"
+                            onEdit={[Function]}
                             onMouseDown={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchStart={[Function]}
+                            showDelete={false}
+                            showDetail={true}
+                            showEdit={false}
+                            showTitle={true}
                             style={
                               Object {
-                                "cursor": "pointer",
-                                "fontSize": 17,
+                                "MozTransform": "translate(20px,25px)",
+                                "OTransform": "translate(20px,25px)",
+                                "WebkitTransform": "translate(20px,25px)",
+                                "height": "335px",
+                                "msTransform": "translate(20px,25px)",
                                 "position": "absolute",
-                                "right": 10,
-                                "top": 6,
+                                "touchAction": "none",
+                                "transform": "translate(20px,25px)",
+                                "width": "-40px",
                               }
                             }
+                            title="demo1"
+                            type="component"
                           >
-                            详情 &gt;
-                          </span>
-                          <span
-                            className="sc-title operation-title"
-                          >
-                            demo1
-                          </span>
-                          <div
-                            className="render-div"
-                            id="demo1"
-                            style={
-                              Object {
-                                "height": "calc(100% - 33px)",
+                            <div
+                              className="Shell"
+                              data-grid={
+                                Object {
+                                  "detailpath": "http://www.baidu.com/",
+                                  "h": 12,
+                                  "i": "demo1",
+                                  "id": 117,
+                                  "imgurl": "http://47.95.1.229:9003/UploadFile/201808/szy.png",
+                                  "maxw": 0,
+                                  "mealid": 89,
+                                  "minw": 0,
+                                  "path": "../../../../thirdModules/demo1/index.js",
+                                  "showdetail": true,
+                                  "still": false,
+                                  "style": Object {},
+                                  "title": "demo1",
+                                  "w": 12,
+                                  "x": 0,
+                                  "y": 0,
+                                }
                               }
-                            }
-                          />
-                        </div>
-                      </Shell>
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                              onTouchEnd={[Function]}
+                              onTouchStart={[Function]}
+                              style={
+                                Object {
+                                  "MozTransform": "translate(20px,25px)",
+                                  "OTransform": "translate(20px,25px)",
+                                  "WebkitTransform": "translate(20px,25px)",
+                                  "height": "335px",
+                                  "msTransform": "translate(20px,25px)",
+                                  "overflow": "auto",
+                                  "position": "absolute",
+                                  "touchAction": "none",
+                                  "transform": "translate(20px,25px)",
+                                  "width": "-40px",
+                                }
+                              }
+                              type="component"
+                            >
+                              <span
+                                onMouseDown={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "fontSize": 17,
+                                    "position": "absolute",
+                                    "right": 10,
+                                    "top": 6,
+                                  }
+                                }
+                              >
+                                详情 &gt;
+                              </span>
+                              <span
+                                className="operation-title"
+                              >
+                                demo1
+                              </span>
+                              <div
+                                className="render-div"
+                                id="demo1"
+                                style={
+                                  Object {
+                                    "height": "calc(100% - 33px)",
+                                  }
+                                }
+                              />
+                              <DraggableCore
+                                allowAnyClick={false}
+                                cancel={null}
+                                disabled={false}
+                                enableUserSelectHack={true}
+                                grid={null}
+                                handle={null}
+                                key="resizableHandle"
+                                offsetParent={null}
+                                onDrag={[Function]}
+                                onMouseDown={[Function]}
+                                onStart={[Function]}
+                                onStop={[Function]}
+                                transform={null}
+                              >
+                                <span
+                                  className="react-resizable-handle"
+                                  onMouseDown={[Function]}
+                                  onMouseUp={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchStart={[Function]}
+                                  style={
+                                    Object {
+                                      "touchAction": "none",
+                                    }
+                                  }
+                                />
+                              </DraggableCore>
+                            </div>
+                          </Shell>
+                        </Resizable>
+                      </DraggableCore>
                     </GridItem>
                     <GridItem
                       cancel=""
@@ -745,8 +823,8 @@ exports[`Display render correctly 1`] = `
                       h={9}
                       handle=""
                       i="demo2"
-                      isDraggable={false}
-                      isResizable={false}
+                      isDraggable={true}
+                      isResizable={true}
                       key=".$demo2"
                       margin={
                         Array [
@@ -773,120 +851,208 @@ exports[`Display render correctly 1`] = `
                       x={0}
                       y={12}
                     >
-                      <Shell
-                        className="react-grid-item cssTransforms"
-                        data-grid={
-                          Object {
-                            "detailpath": "http://www.baidu.com/",
-                            "h": 9,
-                            "i": "demo2",
-                            "id": 118,
-                            "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dzx.png",
-                            "maxw": 0,
-                            "mealid": 89,
-                            "minw": 0,
-                            "path": "../../../../thirdModules/demo2/index.js",
-                            "showdetail": true,
-                            "still": false,
-                            "style": Object {},
-                            "title": "demo2",
-                            "w": 3,
-                            "x": 0,
-                            "y": 12,
-                          }
-                        }
-                        detailPath="http://www.baidu.com/"
-                        key="demo2"
-                        onEdit={[Function]}
-                        showDelete={false}
-                        showDetail={true}
-                        showEdit={false}
-                        showTitle={true}
-                        size=""
-                        style={
-                          Object {
-                            "MozTransform": "translate(20px,385px)",
-                            "OTransform": "translate(20px,385px)",
-                            "WebkitTransform": "translate(20px,385px)",
-                            "height": "245px",
-                            "msTransform": "translate(20px,385px)",
-                            "position": "absolute",
-                            "transform": "translate(20px,385px)",
-                            "width": "-40px",
-                          }
-                        }
-                        title="demo2"
-                        type="component"
+                      <DraggableCore
+                        allowAnyClick={false}
+                        cancel=".react-resizable-handle"
+                        disabled={false}
+                        enableUserSelectHack={true}
+                        grid={null}
+                        handle=""
+                        offsetParent={null}
+                        onDrag={[Function]}
+                        onMouseDown={[Function]}
+                        onStart={[Function]}
+                        onStop={[Function]}
+                        transform={null}
                       >
-                        <div
-                          className="Shell"
-                          data-grid={
-                            Object {
-                              "detailpath": "http://www.baidu.com/",
-                              "h": 9,
-                              "i": "demo2",
-                              "id": 118,
-                              "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dzx.png",
-                              "maxw": 0,
-                              "mealid": 89,
-                              "minw": 0,
-                              "path": "../../../../thirdModules/demo2/index.js",
-                              "showdetail": true,
-                              "still": false,
-                              "style": Object {},
-                              "title": "demo2",
-                              "w": 3,
-                              "x": 0,
-                              "y": 12,
-                            }
+                        <Resizable
+                          axis="both"
+                          handleSize={
+                            Array [
+                              20,
+                              20,
+                            ]
                           }
-                          onClick={[Function]}
-                          size=""
+                          height={245}
+                          lockAspectRatio={false}
+                          maxConstraints={
+                            Array [
+                              -40,
+                              Infinity,
+                            ]
+                          }
+                          minConstraints={
+                            Array [
+                              -30,
+                              5,
+                            ]
+                          }
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onResize={[Function]}
+                          onResizeStart={[Function]}
+                          onResizeStop={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
                           style={
                             Object {
-                              "MozTransform": "translate(20px,385px)",
-                              "OTransform": "translate(20px,385px)",
-                              "WebkitTransform": "translate(20px,385px)",
-                              "height": "245px",
-                              "msTransform": "translate(20px,385px)",
-                              "overflow": "auto",
-                              "position": "absolute",
-                              "transform": "translate(20px,385px)",
-                              "width": "-40px",
+                              "touchAction": "none",
                             }
                           }
-                          type="component"
+                          width={-40}
                         >
-                          <span
+                          <Shell
+                            className="react-grid-item react-draggable cssTransforms react-resizable"
+                            data-grid={
+                              Object {
+                                "detailpath": "http://www.baidu.com/",
+                                "h": 9,
+                                "i": "demo2",
+                                "id": 118,
+                                "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dzx.png",
+                                "maxw": 0,
+                                "mealid": 89,
+                                "minw": 0,
+                                "path": "../../../../thirdModules/demo2/index.js",
+                                "showdetail": true,
+                                "still": false,
+                                "style": Object {},
+                                "title": "demo2",
+                                "w": 3,
+                                "x": 0,
+                                "y": 12,
+                              }
+                            }
+                            detailPath="http://www.baidu.com/"
+                            key="demo2"
+                            onEdit={[Function]}
                             onMouseDown={[Function]}
+                            onMouseUp={[Function]}
+                            onTouchEnd={[Function]}
+                            onTouchStart={[Function]}
+                            showDelete={false}
+                            showDetail={true}
+                            showEdit={false}
+                            showTitle={true}
                             style={
                               Object {
-                                "cursor": "pointer",
-                                "fontSize": 17,
+                                "MozTransform": "translate(20px,385px)",
+                                "OTransform": "translate(20px,385px)",
+                                "WebkitTransform": "translate(20px,385px)",
+                                "height": "245px",
+                                "msTransform": "translate(20px,385px)",
                                 "position": "absolute",
-                                "right": 10,
-                                "top": 6,
+                                "touchAction": "none",
+                                "transform": "translate(20px,385px)",
+                                "width": "-40px",
                               }
                             }
+                            title="demo2"
+                            type="component"
                           >
-                            详情 &gt;
-                          </span>
-                          <span
-                            className="sc-title operation-title"
-                          >
-                            demo2
-                          </span>
-                          <div
-                            className="render-div"
-                            id="demo2"
-                            style={
-                              Object {
-                                "height": "calc(100% - 33px)",
+                            <div
+                              className="Shell"
+                              data-grid={
+                                Object {
+                                  "detailpath": "http://www.baidu.com/",
+                                  "h": 9,
+                                  "i": "demo2",
+                                  "id": 118,
+                                  "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dzx.png",
+                                  "maxw": 0,
+                                  "mealid": 89,
+                                  "minw": 0,
+                                  "path": "../../../../thirdModules/demo2/index.js",
+                                  "showdetail": true,
+                                  "still": false,
+                                  "style": Object {},
+                                  "title": "demo2",
+                                  "w": 3,
+                                  "x": 0,
+                                  "y": 12,
+                                }
                               }
-                            }
-                          />
-                        </div>
-                      </Shell>
+                              onClick={[Function]}
+                              onMouseDown={[Function]}
+                              onMouseUp={[Function]}
+                              onTouchEnd={[Function]}
+                              onTouchStart={[Function]}
+                              style={
+                                Object {
+                                  "MozTransform": "translate(20px,385px)",
+                                  "OTransform": "translate(20px,385px)",
+                                  "WebkitTransform": "translate(20px,385px)",
+                                  "height": "245px",
+                                  "msTransform": "translate(20px,385px)",
+                                  "overflow": "auto",
+                                  "position": "absolute",
+                                  "touchAction": "none",
+                                  "transform": "translate(20px,385px)",
+                                  "width": "-40px",
+                                }
+                              }
+                              type="component"
+                            >
+                              <span
+                                onMouseDown={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "fontSize": 17,
+                                    "position": "absolute",
+                                    "right": 10,
+                                    "top": 6,
+                                  }
+                                }
+                              >
+                                详情 &gt;
+                              </span>
+                              <span
+                                className="operation-title"
+                              >
+                                demo2
+                              </span>
+                              <div
+                                className="render-div"
+                                id="demo2"
+                                style={
+                                  Object {
+                                    "height": "calc(100% - 33px)",
+                                  }
+                                }
+                              />
+                              <DraggableCore
+                                allowAnyClick={false}
+                                cancel={null}
+                                disabled={false}
+                                enableUserSelectHack={true}
+                                grid={null}
+                                handle={null}
+                                key="resizableHandle"
+                                offsetParent={null}
+                                onDrag={[Function]}
+                                onMouseDown={[Function]}
+                                onStart={[Function]}
+                                onStop={[Function]}
+                                transform={null}
+                              >
+                                <span
+                                  className="react-resizable-handle"
+                                  onMouseDown={[Function]}
+                                  onMouseUp={[Function]}
+                                  onTouchEnd={[Function]}
+                                  onTouchStart={[Function]}
+                                  style={
+                                    Object {
+                                      "touchAction": "none",
+                                    }
+                                  }
+                                />
+                              </DraggableCore>
+                            </div>
+                          </Shell>
+                        </Resizable>
+                      </DraggableCore>
                     </GridItem>
                   </div>
                 </ReactGridLayout>

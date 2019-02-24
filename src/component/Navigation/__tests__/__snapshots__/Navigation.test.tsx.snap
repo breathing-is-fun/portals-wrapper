@@ -2,20 +2,16 @@
 
 exports[`Navigation render correctly 1`] = `
 <Navigation
-  clock={false}
   datas={Array []}
-  display={true}
-  size=""
-  title=""
 >
   <div
     className="Navigation"
   >
     <div
-      className="content"
+      className=""
       style={
         Object {
-          "display": "",
+          "display": "none",
         }
       }
     >
@@ -36,7 +32,7 @@ exports[`Navigation render correctly 1`] = `
         }
       >
         <div
-          className="content-time"
+          className=""
         />
       </div>
     </div>

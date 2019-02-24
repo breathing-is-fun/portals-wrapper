@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid render correctly 1`] = `
+<Grid
+  enumDatas={Array []}
+  layout={
+    Array [
+      Object {
+        "h": 6,
+        "i": "dbzx",
+        "id": 1,
+        "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+        "mealid": 1,
+        "path": "../../../thirdModules/dbzx/index.js",
+        "showtitle": false,
+        "style": Object {
+          "background": "#F96",
+          "border": "1px solid #ccc",
+        },
+        "title": "代办中心",
+        "w": 4,
+        "x": 0,
+        "y": 0,
+      },
+    ]
+  }
+>
+  <div
+    className="Grid"
+    onDragOver={[Function]}
+    onDrop={[Function]}
+  >
+    <WidthProvider
+      breakpoints={
+        Object {
+          "lg": 1270,
+          "md": 996,
+          "sm": 768,
+          "xs": 480,
+          "xxs": 0,
+        }
+      }
+      className="layout"
+      cols={
+        Object {
+          "lg": 12,
+          "md": 10,
+          "sm": 6,
+          "xs": 4,
+          "xxs": 2,
+        }
+      }
+      margin={
+        Array [
+          20,
+          25,
+        ]
+      }
+      measureBeforeMount={false}
+      onBreakpointChange={[Function]}
+      onLayoutChange={[Function]}
+      rowHeight={5}
+      style={
+        Object {
+          "background": "#f5f6fa",
+          "height": "100%",
+        }
+      }
+      width={0}
+    >
+      <ResponsiveReactGridLayout
+        breakpoints={
+          Object {
+            "lg": 1270,
+            "md": 996,
+            "sm": 768,
+            "xs": 480,
+            "xxs": 0,
+          }
+        }
+        className="layout"
+        cols={
+          Object {
+            "lg": 12,
+            "md": 10,
+            "sm": 6,
+            "xs": 4,
+            "xxs": 2,
+          }
+        }
+        layouts={
+          Object {
+            "lg": Array [],
+            "xxs": Array [
+              Object {
+                "h": 6,
+                "i": "dbzx",
+                "isDraggable": undefined,
+                "isResizable": undefined,
+                "maxH": undefined,
+                "maxW": undefined,
+                "minH": undefined,
+                "minW": undefined,
+                "moved": false,
+                "static": false,
+                "w": 2,
+                "x": 0,
+                "y": 0,
+              },
+            ],
+          }
+        }
+        margin={
+          Array [
+            20,
+            25,
+          ]
+        }
+        onBreakpointChange={[Function]}
+        onLayoutChange={[Function]}
+        onWidthChange={[Function]}
+        rowHeight={5}
+        style={
+          Object {
+            "background": "#f5f6fa",
+            "height": "100%",
+          }
+        }
+        width={0}
+      >
+        <ReactGridLayout
+          autoSize={true}
+          className="layout"
+          cols={2}
+          compactType="vertical"
+          containerPadding={null}
+          draggableCancel=""
+          draggableHandle=""
+          isDraggable={true}
+          isResizable={true}
+          layout={
+            Array [
+              Object {
+                "h": 6,
+                "i": "dbzx",
+                "isDraggable": undefined,
+                "isResizable": undefined,
+                "maxH": undefined,
+                "maxW": undefined,
+                "minH": undefined,
+                "minW": undefined,
+                "moved": false,
+                "static": false,
+                "w": 2,
+                "x": 0,
+                "y": 0,
+              },
+            ]
+          }
+          margin={
+            Array [
+              20,
+              25,
+            ]
+          }
+          maxRows={Infinity}
+          onDrag={[Function]}
+          onDragStart={[Function]}
+          onDragStop={[Function]}
+          onLayoutChange={[Function]}
+          onResize={[Function]}
+          onResizeStart={[Function]}
+          onResizeStop={[Function]}
+          preventCollision={false}
+          rowHeight={5}
+          style={
+            Object {
+              "background": "#f5f6fa",
+              "height": "100%",
+            }
+          }
+          useCSSTransforms={true}
+          verticalCompact={true}
+          width={0}
+        >
+          <div
+            className="react-grid-layout layout"
+            style={
+              Object {
+                "background": "#f5f6fa",
+                "height": "100%",
+              }
+            }
+          >
+            <GridItem
+              cancel=""
+              className=""
+              cols={2}
+              containerPadding={
+                Array [
+                  20,
+                  25,
+                ]
+              }
+              containerWidth={0}
+              h={6}
+              handle=""
+              i="dbzx"
+              isDraggable={true}
+              isResizable={true}
+              key=".$dbzx"
+              margin={
+                Array [
+                  20,
+                  25,
+                ]
+              }
+              maxH={Infinity}
+              maxRows={Infinity}
+              maxW={Infinity}
+              minH={1}
+              minW={1}
+              onDrag={[Function]}
+              onDragStart={[Function]}
+              onDragStop={[Function]}
+              onResize={[Function]}
+              onResizeStart={[Function]}
+              onResizeStop={[Function]}
+              rowHeight={5}
+              static={false}
+              useCSSTransforms={true}
+              usePercentages={false}
+              w={2}
+              x={0}
+              y={0}
+            >
+              <DraggableCore
+                allowAnyClick={false}
+                cancel=".react-resizable-handle"
+                disabled={false}
+                enableUserSelectHack={true}
+                grid={null}
+                handle=""
+                offsetParent={null}
+                onDrag={[Function]}
+                onMouseDown={[Function]}
+                onStart={[Function]}
+                onStop={[Function]}
+                transform={null}
+              >
+                <Resizable
+                  axis="both"
+                  handleSize={
+                    Array [
+                      20,
+                      20,
+                    ]
+                  }
+                  height={155}
+                  lockAspectRatio={false}
+                  maxConstraints={
+                    Array [
+                      -40,
+                      Infinity,
+                    ]
+                  }
+                  minConstraints={
+                    Array [
+                      -30,
+                      5,
+                    ]
+                  }
+                  onMouseDown={[Function]}
+                  onMouseUp={[Function]}
+                  onResize={[Function]}
+                  onResizeStart={[Function]}
+                  onResizeStop={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "touchAction": "none",
+                    }
+                  }
+                  width={-40}
+                >
+                  <Shell
+                    className="react-grid-item react-draggable cssTransforms react-resizable"
+                    data-grid={
+                      Object {
+                        "h": 6,
+                        "i": "dbzx",
+                        "id": 1,
+                        "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+                        "mealid": 1,
+                        "path": "../../../thirdModules/dbzx/index.js",
+                        "showtitle": false,
+                        "style": Object {
+                          "background": "#F96",
+                          "border": "1px solid #ccc",
+                        },
+                        "title": "代办中心",
+                        "w": 4,
+                        "x": 0,
+                        "y": 0,
+                      }
+                    }
+                    detailPath=""
+                    key="dbzx"
+                    onEdit={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchStart={[Function]}
+                    showDelete={false}
+                    showDetail={false}
+                    showEdit={false}
+                    showTitle={false}
+                    style={
+                      Object {
+                        "MozTransform": "translate(20px,25px)",
+                        "OTransform": "translate(20px,25px)",
+                        "WebkitTransform": "translate(20px,25px)",
+                        "background": "#F96",
+                        "border": "1px solid #ccc",
+                        "height": "155px",
+                        "msTransform": "translate(20px,25px)",
+                        "position": "absolute",
+                        "touchAction": "none",
+                        "transform": "translate(20px,25px)",
+                        "width": "-40px",
+                      }
+                    }
+                    title="代办中心"
+                    type="component"
+                  >
+                    <div
+                      className="Shell"
+                      data-grid={
+                        Object {
+                          "h": 6,
+                          "i": "dbzx",
+                          "id": 1,
+                          "imgurl": "http://47.95.1.229:9003/UploadFile/201808/dbzx.png",
+                          "mealid": 1,
+                          "path": "../../../thirdModules/dbzx/index.js",
+                          "showtitle": false,
+                          "style": Object {
+                            "background": "#F96",
+                            "border": "1px solid #ccc",
+                          },
+                          "title": "代办中心",
+                          "w": 4,
+                          "x": 0,
+                          "y": 0,
+                        }
+                      }
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      onMouseUp={[Function]}
+                      onTouchEnd={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "MozTransform": "translate(20px,25px)",
+                          "OTransform": "translate(20px,25px)",
+                          "WebkitTransform": "translate(20px,25px)",
+                          "background": "#F96",
+                          "border": "1px solid #ccc",
+                          "height": "155px",
+                          "msTransform": "translate(20px,25px)",
+                          "overflow": "auto",
+                          "position": "absolute",
+                          "touchAction": "none",
+                          "transform": "translate(20px,25px)",
+                          "width": "-40px",
+                        }
+                      }
+                      type="component"
+                    >
+                      <div
+                        className="render-div"
+                        id="dbzx"
+                        style={
+                          Object {
+                            "height": "calc(100% - 33px)",
+                          }
+                        }
+                      />
+                      <DraggableCore
+                        allowAnyClick={false}
+                        cancel={null}
+                        disabled={false}
+                        enableUserSelectHack={true}
+                        grid={null}
+                        handle={null}
+                        key="resizableHandle"
+                        offsetParent={null}
+                        onDrag={[Function]}
+                        onMouseDown={[Function]}
+                        onStart={[Function]}
+                        onStop={[Function]}
+                        transform={null}
+                      >
+                        <span
+                          className="react-resizable-handle"
+                          onMouseDown={[Function]}
+                          onMouseUp={[Function]}
+                          onTouchEnd={[Function]}
+                          onTouchStart={[Function]}
+                          style={
+                            Object {
+                              "touchAction": "none",
+                            }
+                          }
+                        />
+                      </DraggableCore>
+                    </div>
+                  </Shell>
+                </Resizable>
+              </DraggableCore>
+            </GridItem>
+          </div>
+        </ReactGridLayout>
+      </ResponsiveReactGridLayout>
+    </WidthProvider>
+  </div>
+</Grid>
+`;

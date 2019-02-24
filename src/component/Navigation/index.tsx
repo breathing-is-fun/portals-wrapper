@@ -56,7 +56,7 @@ export default class Navigation extends Component<
   };
 
   componentDidMount = () => {
-    if (window.SCTool) {
+    if ((window as any).SCTool) {
       SCTool.RegisterResizeDispatcher = {
         key: 'Navigation',
         onResize: (item: any) => {
