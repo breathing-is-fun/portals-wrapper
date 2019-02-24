@@ -8,7 +8,7 @@
     "lib": ["es6", "dom"],
     "sourceMap": true,
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "moduleResolution": "node",
     "rootDirs": ["./src", "./typings"],
     "forceConsistentCasingInFileNames": true,
