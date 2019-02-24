@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navigation render correctly 1`] = `
+<Navigation
+  datas={Array []}
+>
+  <div
+    className="Navigation"
+  >
+    <div
+      className=""
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <div
+        className="content-wrapper"
+        style={
+          Object {
+            "width": 300,
+          }
+        }
+      />
+      <div
+        className="content-wrapper"
+        style={
+          Object {
+            "width": 300,
+          }
+        }
+      >
+        <div
+          className=""
+        />
+      </div>
+    </div>
+    <div
+      className="children-wrapper"
+      style={
+        Object {
+          "height": "-65px",
+        }
+      }
+    >
+      test
+    </div>
+  </div>
+</Navigation>
+`;

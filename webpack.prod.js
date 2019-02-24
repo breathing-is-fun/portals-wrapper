@@ -2,7 +2,11 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const WebpackOnBuildPlugin = require('on-build-webpack');
 const TohoLogPlugin = require('toho-log-plugin');
-const { commonModule, commonPlugin } = require('./webpack.common');
+const {
+  commonModule,
+  commonPlugin,
+  resolveModule,
+} = require('./webpack.common');
 
 const dev = !!process.argv.toString().includes('development');
 
@@ -25,9 +29,7 @@ const options = {
   devServer: {
     port: 9099,
   },
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
+  resolve: resolveModule,
   devtool: dev ? 'source-map' : '',
   entry: {
     main: __dirname + '/src',
