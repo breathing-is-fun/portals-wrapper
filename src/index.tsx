@@ -75,7 +75,7 @@ new Store(null, (store: any) => {
     },
   });
 
-  for (let key in store.get('meta')) {
+  for (let key of Object.keys(store.get('meta'))) {
     window.SCTool.listener.set(key, store.get('meta')[key]);
   }
 

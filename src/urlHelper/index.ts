@@ -130,7 +130,7 @@ export const serialize = (data: any, fixStr?: string) => {
 
   let paramStr = '';
 
-  for (let key in data) {
+  for (let key of Object.keys(data)) {
     paramStr += `${key}=${data[key]}${fixStr}`;
   }
 
