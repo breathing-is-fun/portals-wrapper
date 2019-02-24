@@ -28,6 +28,11 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.ts[x]?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ],
   },
   commonPlugin: [
@@ -64,4 +69,7 @@ module.exports = {
       },
     ]),
   ],
+  resolveModule: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
 };

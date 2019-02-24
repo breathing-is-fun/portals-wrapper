@@ -2,7 +2,11 @@ const webpack = require('webpack');
 const webpackDevServer = require('webpack-dev-server');
 const path = require('path');
 const TohoLogPlugin = require('toho-log-plugin');
-const { commonModule, commonPlugin } = require('./webpack.common');
+const {
+  commonModule,
+  commonPlugin,
+  resolveModule,
+} = require('./webpack.common');
 
 let plugins = commonPlugin;
 
@@ -26,7 +30,7 @@ const webpackConfig = {
       ':' +
       devServerOptions.port,
     // 'webpack/hot/only-dev-server',
-    __dirname + '/src',
+    path.join(__dirname, '/src/index.tsx'),
   ],
   output: {
     filename: '[name].js',
@@ -34,6 +38,7 @@ const webpackConfig = {
   },
   plugins,
   module: commonModule,
+  resolve: resolveModule,
 };
 
 const compiler = webpack(webpackConfig);
