@@ -3,7 +3,8 @@
   "version": "0.0.2",
   "scripts": {
     "start": "node webpack.dev.js",
-    "test": "jest --config .jest.js --verbose=false -w 1 --coverage",
+    "codecov": "jest --config .jest.js --verbose=false -w 1 --coverage",
+    "test": "jest --config .jest.js",
     "build": "node webpack.prod.js",
     "dev": "node webpack.prod.js --development",
     "lint": "npx eslint .",
