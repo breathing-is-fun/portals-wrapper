@@ -9,7 +9,7 @@ exports[`PropertyBoard render correctly 1`] = `
   <div
     className="PropertyBoard"
   >
-    <Component
+    <withConfigConsumer(Drawer)
       className="PropertyBoard"
       destroyOnClose={true}
       onClose={[Function]}
@@ -360,7 +360,7 @@ exports[`PropertyBoard render correctly 1`] = `
           </Portal>
         </Drawer>
       </Drawer>
-    </Component>
+    </withConfigConsumer(Drawer)>
   </div>
 </PropertyBoard>
 `;
